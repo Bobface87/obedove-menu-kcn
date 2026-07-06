@@ -7,26 +7,17 @@ async function loadMenu() {
 
   data.forEach(r => {
     const div = document.createElement("div");
-    div.className = "restaurant";
 
-    let html = `<h2>${r.restaurant}</h2>`;
+    div.innerHTML = `
+      <h2>${r.restaurant}</h2>
+      <p><strong>Polievka:</strong> ${r.soup}</p>
+      <ul>
+        ${r.meals.map(m => `
+          <li>${m.name} - ${m.price} €</li>
+        `).join("")}
+      </ul>
+    `;
 
-    if (r.soup) {
-      html += `<p><strong>Polievka:</strong> ${r.soup}</p>`;
-    }
-
-    html += `<ul>`;
-
-    r.meals.forEach(m => {
-      html += `<li>
-        ${m.name}
-        ${m.price !== null ? ` - ${m.price} €` : ""}
-      </li>`;
-    });
-
-    html += `</ul>`;
-
-    div.innerHTML = html;
     app.appendChild(div);
   });
 }
