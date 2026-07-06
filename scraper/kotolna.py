@@ -3,14 +3,29 @@ from bs4 import BeautifulSoup
 from io import BytesIO
 import pdfplumber
 import re
+import datetime
 
 
-# 🔥 HLAVNÁ STRÁNKA (SPRÁVNA)
 PAGE_URL = "https://starakotolna.sk/#obedove-menu"
 
 
+SKIP_KEYWORDS = [
+    "balné",
+    "donáška",
+    "príplatok",
+    "objednávky",
+    "otváracie",
+    "www",
+    "facebook",
+    "instagram",
+    "cena zahŕňa",
+    "krabica",
+    "alobal"
+]
+
+
 # -----------------------------
-# 1. NAJDI VŠETKY PDF LINKY
+# 1. NAJDI VŠETKY PDF
 # -----------------------------
 def get_pdf_links():
     r = requests.get(PAGE_URL)
@@ -32,7 +47,7 @@ def get_pdf_links():
 
 
 # -----------------------------
-# 2. VYBER NAJLEPŠIE PDF (SCORE SYSTEM)
+# 2. VÝBER NAJLEPŠIEHO PDF
 # -----------------------------
 def get_pdf_url():
     pdf_links = get_pdf_links()
@@ -56,18 +71,15 @@ def get_pdf_url():
 
                 score = 0
 
-                # ✅ pozitívne signály (správne menu)
-                if "menu 1" in text: score += 3
-                if "menu 2" in text: score += 3
-                if "menu 3" in text: score += 3
-                if "polievka" in text: score += 2
+                # pozitívne signály
+                if "menu" in text: score += 2
+                if "polievka" in text: score += 3
                 if re.search(r"\d+,\d+", text): score += 1
-                if "obed" in text: score += 2
 
-                # ❌ negatívne signály (bordel PDF)
+                # negatívne signály
                 if "krabica" in text: score -= 5
-                if "alobal" in text: score -= 5
                 if "balné" in text: score -= 5
+                if "alobal" in text: score -= 5
                 if "donáška" in text: score -= 5
                 if "príplatok" in text: score -= 5
 
@@ -84,21 +96,6 @@ def get_pdf_url():
 # -----------------------------
 # 3. FILTER RIADKOV
 # -----------------------------
-SKIP_KEYWORDS = [
-    "balné",
-    "donáška",
-    "príplatok",
-    "objednávky",
-    "otváracie",
-    "www",
-    "facebook",
-    "instagram",
-    "cena zahŕňa",
-    "krabica",
-    "alobal"
-]
-
-
 def is_valid_line(line: str) -> bool:
     line_lower = line.lower()
 
@@ -151,17 +148,44 @@ def scrape_kotolna():
 
     lines = [l.strip() for l in text.split("\n") if l.strip()]
 
+    # -----------------------------
+    # 5. DŇOVÝ PARSER (FIX PIATOK vs PONDELOK)
+    # -----------------------------
+    DAYS = {
+        "pondelok": 0,
+        "utorok": 1,
+        "streda": 2,
+        "štvrtok": 3,
+        "piatok": 4,
+        "sobota": 5,
+        "nedeľa": 6
+    }
+
+    today_index = datetime.datetime.today().weekday()
+
+    current_day = None
+
     meals = []
     soup = ""
 
     for line in lines:
 
-        if not is_valid_line(line):
+        line_lower = line.lower()
+
+        # detekcia dňa
+        for day_name in DAYS:
+            if day_name in line_lower:
+                current_day = DAYS[day_name]
+
+        # ignoruj iné dni
+        if current_day is not None and current_day != today_index:
             continue
 
-        if "POLIEVKA" in line.upper():
+        # polievka
+        if "polievka" in line_lower:
             soup = line
 
+        # cena
         price_match = re.search(r"\d+,\d+", line)
         price = float(price_match.group(0).replace(",", ".")) if price_match else None
 

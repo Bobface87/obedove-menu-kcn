@@ -38,7 +38,7 @@
   },
   {
     "restaurant": "Kotolňa",
-    "soup": "Polievka: 0,40 l Fazuľovica, chlieb /1, 9/",
+    "soup": "Polievka: 0,40 l Zeleninová s kuracím mäsom a haluškami (SK) /1, 9/",
     "meals": [
       {
         "name": "paradajkovú polievku je za poplatok",
@@ -57,12 +57,12 @@
         "price": 9.0
       },
       {
-        "name": "a parmezánom (SK) /1, 7/ *Cena pre donášku a osobný odber:",
-        "price": 9.2
+        "name": "",
+        "price": 8.9
       },
       {
-        "name": "pre donášku a osobný odber:",
-        "price": 9.0
+        "name": "a parmezánom (SK) /1, 7/ *Cena pre donášku a osobný odber:",
+        "price": 9.2
       }
     ]
   }
