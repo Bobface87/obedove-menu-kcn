@@ -7,9 +7,6 @@ URL = "https://www.penzion-hoffer.sk/22413/obedove-menu"
 
 
 def clean_price(text):
-    """
-    Vytiahne cenu ako NUMBER (float)
-    """
     match = re.search(r"\d+,\d+", text)
     if match:
         return float(match.group(0).replace(",", "."))
@@ -27,7 +24,15 @@ def scrape_hoffer():
     res = requests.get(URL)
     soup = BeautifulSoup(res.text, "html.parser")
 
-    text = soup.get_text("\n")
+    # 🔥 KĽÚČOVÁ ZMENA:
+    # berieme len hlavný obsah (nie celý web)
+    content = soup.select_one("article, .content, .post, main")
+
+    if not content:
+        content = soup
+
+    text = content.get_text("\n")
+
     lines = [l.strip() for l in text.split("\n") if l.strip()]
 
     soup_text = ""
@@ -40,27 +45,34 @@ def scrape_hoffer():
             if i + 1 < len(lines):
                 soup_text = clean_name(lines[i + 1])
 
-        # ignoruj hlavičky
-        if line.upper() in ["HLAVNÉ JEDLÁ", "DENNÉ MENU", "OBEDOVÉ MENU"]:
+        # ignorujeme zbytočné sekcie
+        if line.upper() in [
+            "HLAVNÉ JEDLÁ",
+            "DENNÉ MENU",
+            "OBEDOVÉ MENU",
+            "PONDELOK",
+            "UTOROK",
+            "STREDA",
+            "ŠTVRTOK",
+            "PIATOK"
+        ]:
             continue
 
         price = clean_price(line)
 
-        # jedlo (heuristika)
         if any(x in line for x in ["g", "Kurací", "steak", "omáč", "zemiak", "€"]):
             name = clean_name(line)
 
             if name and not price:
                 meals.append({"name": name, "price": None})
 
-            if price:
-                if meals:
-                    meals[-1]["price"] = price
+            if price and meals:
+                meals[-1]["price"] = price
 
     return {
         "restaurant": "Hoffer",
         "soup": soup_text,
-        "meals": meals
+        "meals": meals[:6]  # 🔥 limit – iba obedové menu
     }
 
 
