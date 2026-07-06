@@ -1,17 +1,224 @@
 [
   {
     "restaurant": "Hoffer",
-    "soup": "Cesnaková polievka",
+    "soup": "Teľací vývar s mäsom, zeleninou a širokými rezancami",
     "meals": [
-      { "name": "Kurací steak s ryžou", "price": 8.90 },
-      { "name": "Vyprážaný syr", "price": 8.20 }
-    ]
-  },
-  {
-    "restaurant": "Quo Vadis",
-    "soup": "Gulášová polievka",
-    "meals": [
-      { "name": "Lasagne", "price": 9.20 }
+      {
+        "name": "Marinovaný kurací steak na quatro formaggi omáčke, opekané zemiaky, slaninový chips",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Pečené prasiatko, dusená hlávková kapusta, parená knedľa",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Tagliatelle s kuracími rezančekmi, sušenými paradajkami, olivami a mozzarellou",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Pizza podľa vlastného výberu (veľkosť classic), tatárska omáčka, kečup",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Šopský šalát s vyprážanými kuracími nugetkami v panko strúhanke, pizza štangle, bylinkový dressing",
+        "price": null
+      },
+      {
+        "name": "NEPLATÍ PRE DONÁŠKU - 50g\tČerstvý melón",
+        "price": null
+      },
+      {
+        "name": "Jedlá môžu obsahovať zložky spôsobujúce alergickú reakciu podľa výnosu MP SR č. 1187/2004",
+        "price": null
+      },
+      {
+        "name": "Bravčový guláš so zemiakmi, chlieb",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Sous-vide bravčová panenka obalená v slaninke na dubákovej omáčke, ryža",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Zemiaková placka plnená pikantným kuracím soté, posypaná syrom",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Vyprážaný karfiol, varené zemiaky s vňaťkou, tatárska omáčka",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Pizza podľa vlastného výberu (veľkosť classic), tatárska omáčka, kečup",
+        "price": "9,40 €"
+      },
+      {
+        "name": "Pečené batáty plnené hovädzím ragú, zapečené syrom cheddar, miešaný listový šalát, smotanový dressing",
+        "price": null
+      },
+      {
+        "name": "NEPLATÍ PRE DONÁŠKU - 50g\tOvocná bublanina",
+        "price": null
+      },
+      {
+        "name": "Jedlá môžu obsahovať zložky spôsobujúce alergickú reakciu podľa výnosu MP SR č. 1187/2004",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Šťavnaté trhané bravčové mäso na domácich hranolkách, preliate cheddarovou omáčkou, chrumkavá cibuľka",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Marinované kuracie filety na grilovanej zelenine, pečené zemiaky v šupke cesnakový dressing",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Mletý holandský rezeň, zemiaková kaša, rajčinovo-cibuľový šalát",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Pizza podľa vlastného výberu (veľkosť classic), tatárska omáčka, kečup",
+        "price": "9,40 €"
+      },
+      {
+        "name": "Grilovaný zubáč na cukrovom hrášku, batátové pyré, citrónové maslo",
+        "price": null
+      },
+      {
+        "name": "NEPLATÍ PRE DONÁŠKU - 50g\tPalacinka s čučoriedkovým džemom a šľahačkou",
+        "price": null
+      },
+      {
+        "name": "Jedlá môžu obsahovať zložky spôsobujúce alergickú reakciu podľa výnosu MP SR č. 1187/2004",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Medailónky z bravčovej panenky v zemiakovom cestíčku zapekané so slaninou a oštiepkom, restované zemiaky na cibuľke, čalamáda",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Vykostené kuracie stehná na čiernom pive s cibuľkou a slaninkou, ryža, cviklový šalát",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Špenátové halušky, syrová omáčka, restovaná slaninka, chrumkavá cibuľka",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Pizza podľa vlastného výberu (veľkosť classic), tatárska omáčka, kečup",
+        "price": "9,40 €"
+      },
+      {
+        "name": "Hovädzia poké miska (jazmínová ryža, avokádo, mango, mrkva, edame fazule, mungo klíčky, uhorka, sezam)",
+        "price": null
+      },
+      {
+        "name": "NEPLATÍ PRE DONÁŠKU - 50g\tJahodový sorbet",
+        "price": null
+      },
+      {
+        "name": "Jedlá môžu obsahovať zložky spôsobujúce alergickú reakciu podľa výnosu MP SR č. 1187/2004",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Vyprážané kuracie rezne v cornfleksoch, ryža, kompót",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Hovädzie ragú na koreňovej zelenine a červenom víne, žemľová knedľa",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Cuketová placka plnená kuracím mäsom, šampiňónmi, fazuľkami, posypaná mozzarellou, bylinkový dressing",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Pizza podľa vlastného výberu (veľkosť classic), tatárska omáčka, kečup",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Fritovaný halloumi syr na listovom šaláte s medovo-horčicovou zálievkou a granátovým jablkom, pizza štangle",
+        "price": null
+      },
+      {
+        "name": "NEPLATÍ PRE DONÁŠKU - 50g\tLokša plnená makovou plnkou",
+        "price": null
+      },
+      {
+        "name": "Jedlá môžu obsahovať zložky spôsobujúce alergickú reakciu podľa výnosu MP SR č. 1187/2004",
+        "price": "10,90 €"
+      },
+      {
+        "name": "Kuracie rezne v parmezánovom cestíčku, zemiaková kaša",
+        "price": "10,90 €"
+      },
+      {
+        "name": "Bravčové medailóniky zapekané s hubovým ragú, krokety",
+        "price": "10,90 €"
+      },
+      {
+        "name": "Furmanské halušky s klobásou, slaninou a údeným syrom",
+        "price": "10,90 €"
+      },
+      {
+        "name": "Pizza podľa vlastného výberu (veľkosť classic), tatárska omáčka, kečup",
+        "price": "10,90 €"
+      },
+      {
+        "name": "Šalát Caesar s grilovaným kuracím mäsom, pečenou slaninkou, krutónmi, pošírované vajíčko,parmezán, caesar dressing",
+        "price": null
+      },
+      {
+        "name": "NEPLATÍ PRE DONÁŠKU - 50g\tKrémový čokoládový puding s mandarínkami, piškótami a so šľahačkou",
+        "price": null
+      },
+      {
+        "name": "Jedlá môžu obsahovať zložky spôsobujúce alergickú reakciu podľa výnosu MP SR č. 1187/2004",
+        "price": "10,90 €"
+      },
+      {
+        "name": "Pečené kačacie stehno, červená kapusta, domáce lokše",
+        "price": "10,90 €"
+      },
+      {
+        "name": "Vyprážaný kurací a bravčový rezeň, varené zemiaky, miešaný šalát",
+        "price": "10,90 €"
+      },
+      {
+        "name": "Bravčová panenka na smotanovom rizote s dubákmi, posypané hoblinami parmezánu",
+        "price": "10,90 €"
+      },
+      {
+        "name": "Pizza podľa vlastného výberu (veľkosť classic), tatárska omáčka, kečup",
+        "price": "10,90 €"
+      },
+      {
+        "name": "Konfitované teľacie stehno so zemiakovo-hráškovým pyré, posypané šampióňónovými hoblinami",
+        "price": null
+      },
+      {
+        "name": "NEPLATÍ PRE DONÁŠKU - 50g\tMalinová kocka",
+        "price": null
+      },
+      {
+        "name": "Jedlá môžu obsahovať zložky spôsobujúce alergickú reakciu podľa výnosu MP SR č. 1187/2004",
+        "price": null
+      },
+      {
+        "name": "{\"general_search_short\":\"H\\u013eada\\u0165\"}",
+        "price": null
+      },
+      {
+        "name": "Fotogalérie",
+        "price": null
+      },
+      {
+        "name": "galérií",
+        "price": null
+      },
+      {
+        "name": "spoločnosti Google.",
+        "price": null
+      }
     ]
   }
 ]
