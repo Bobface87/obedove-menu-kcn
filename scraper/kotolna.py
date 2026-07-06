@@ -22,23 +22,32 @@ SKIP_KEYWORDS = [
 ]
 
 
+# -----------------------------
+# 1. NAJDI SPRÁVNY PDF
+# -----------------------------
 def get_pdf_url():
     r = requests.get(PAGE_URL)
     soup = BeautifulSoup(r.text, "html.parser")
 
-    for a in soup.find_all("a", href=True):
-        href = a["href"].lower()
+    links = soup.find_all("a", href=True)
 
-        if ".pdf" in href:
-            return a["href"]
+    for link in links:
+        href = link["href"]
+
+        # 🔥 PRESNÝ FILTER – iba Kotolňa menu PDF
+        if "obedove-menu-kotolna" in href.lower():
+            return href
 
     return None
 
 
+# -----------------------------
+# 2. FILTER RIADKOV
+# -----------------------------
 def is_valid_line(line: str) -> bool:
     line_lower = line.lower()
 
-    # vyradenie bordelu
+    # ignoruj bordel texty
     if any(word in line_lower for word in SKIP_KEYWORDS):
         return False
 
@@ -46,13 +55,16 @@ def is_valid_line(line: str) -> bool:
     if not re.search(r"\d+,\d+", line):
         return False
 
-    # minimálna dĺžka (odfiltruje hlúposti)
+    # minimálna dĺžka
     if len(line) < 10:
         return False
 
     return True
 
 
+# -----------------------------
+# 3. SCRAPER
+# -----------------------------
 def scrape_kotolna():
 
     pdf_url = get_pdf_url()
@@ -63,6 +75,7 @@ def scrape_kotolna():
             "error": "PDF link not found"
         }
 
+    # fix relatívnych linkov
     if pdf_url.startswith("/"):
         pdf_url = "https://starakotolna.sk" + pdf_url
 
@@ -101,9 +114,11 @@ def scrape_kotolna():
         if not is_valid_line(line):
             continue
 
+        # polievka
         if "POLIEVKA" in line.upper():
             soup = line
 
+        # cena
         price_match = re.search(r"\d+,\d+", line)
         price = float(price_match.group(0).replace(",", ".")) if price_match else None
 

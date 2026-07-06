@@ -38,32 +38,6 @@
   },
   {
     "restaurant": "Kotolňa",
-    "soup": "",
-    "meals": [
-      {
-        "name": "Pondelok - Štvrtok 11:00 - 21:30 Menu box/krabica burger:",
-        "price": 0.3
-      },
-      {
-        "name": "Piatok - Sobota 11:00 - 22:30 Malý menu box:",
-        "price": 0.3
-      },
-      {
-        "name": "Nedeľa 11:00 - 21:30 Krabica na pizzu:",
-        "price": 0.3
-      },
-      {
-        "name": "Polievková miska:",
-        "price": 0.1
-      },
-      {
-        "name": "Alobal:",
-        "price": 0.1
-      },
-      {
-        "name": "Grill box",
-        "price": 0.5
-      }
-    ]
+    "error": "PDF link not found"
   }
 ]
