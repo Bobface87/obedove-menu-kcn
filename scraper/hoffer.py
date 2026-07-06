@@ -2,8 +2,19 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import re
+from datetime import datetime
 
-URL = "https://www.penzion-hoffer.sk/22413/obedove-menu"
+URL = "https://www.penzion-hoffer.sk/22411/obedove-menu"
+
+DAYS = {
+    0: "PONDELOK",
+    1: "UTOROK",
+    2: "STREDA",
+    3: "ŠTVRTOK",
+    4: "PIATOK",
+    5: "SOBOTA",
+    6: "NEDEĽA"
+}
 
 
 def clean_price(text):
@@ -24,38 +35,37 @@ def scrape_hoffer():
     res = requests.get(URL)
     soup = BeautifulSoup(res.text, "html.parser")
 
-    # 🔥 KĽÚČOVÁ ZMENA:
-    # berieme len hlavný obsah (nie celý web)
-    content = soup.select_one("article, .content, .post, main")
+    today = DAYS[datetime.now().weekday()]
 
-    if not content:
-        content = soup
-
-    text = content.get_text("\n")
-
+    text = soup.get_text("\n")
     lines = [l.strip() for l in text.split("\n") if l.strip()]
 
     soup_text = ""
     meals = []
 
+    active = False
+
     for i, line in enumerate(lines):
+
+        # 👉 zapni parsing iba pre dnešný deň
+        if today in line.upper():
+            active = True
+            continue
+
+        # 👉 keď narazíme na ďalší deň, stop
+        if active and any(d in line.upper() for d in DAYS.values()) and today not in line.upper():
+            break
+
+        if not active:
+            continue
 
         # polievka
         if "POLIEVKA" in line.upper():
             if i + 1 < len(lines):
                 soup_text = clean_name(lines[i + 1])
 
-        # ignorujeme zbytočné sekcie
-        if line.upper() in [
-            "HLAVNÉ JEDLÁ",
-            "DENNÉ MENU",
-            "OBEDOVÉ MENU",
-            "PONDELOK",
-            "UTOROK",
-            "STREDA",
-            "ŠTVRTOK",
-            "PIATOK"
-        ]:
+        # ignoruj hlavičky
+        if line.upper() in ["HLAVNÉ JEDLÁ", "OBEDOVÉ MENU"]:
             continue
 
         price = clean_price(line)
@@ -71,8 +81,9 @@ def scrape_hoffer():
 
     return {
         "restaurant": "Hoffer",
+        "day": today,
         "soup": soup_text,
-        "meals": meals[:6]  # 🔥 limit – iba obedové menu
+        "meals": meals
     }
 
 
