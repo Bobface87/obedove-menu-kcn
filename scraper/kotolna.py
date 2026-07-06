@@ -25,17 +25,15 @@ SKIP_KEYWORDS = [
 
 
 # -----------------------------
-# 1. NAJDI VŠETKY PDF
+# 1. NAJDI PDF LINKY
 # -----------------------------
 def get_pdf_links():
     r = requests.get(PAGE_URL)
     soup = BeautifulSoup(r.text, "html.parser")
 
-    links = soup.find_all("a", href=True)
-
     pdf_links = []
 
-    for link in links:
+    for link in soup.find_all("a", href=True):
         href = link["href"]
 
         if ".pdf" in href:
@@ -47,7 +45,7 @@ def get_pdf_links():
 
 
 # -----------------------------
-# 2. VÝBER NAJLEPŠIEHO PDF
+# 2. VÝBER NAJLEPŠIEHO PDF (score)
 # -----------------------------
 def get_pdf_url():
     pdf_links = get_pdf_links()
@@ -71,12 +69,10 @@ def get_pdf_url():
 
                 score = 0
 
-                # pozitívne signály
                 if "menu" in text: score += 2
                 if "polievka" in text: score += 3
                 if re.search(r"\d+,\d+", text): score += 1
 
-                # negatívne signály
                 if "krabica" in text: score -= 5
                 if "balné" in text: score -= 5
                 if "alobal" in text: score -= 5
@@ -105,7 +101,7 @@ def is_valid_line(line: str) -> bool:
     if not re.search(r"\d+,\d+", line):
         return False
 
-    if len(line) < 10:
+    if len(line) < 8:
         return False
 
     return True
@@ -132,73 +128,69 @@ def scrape_kotolna():
             "error": "Selected file is not PDF"
         }
 
-    text = ""
+    # -----------------------------
+    # 5. PDF → WORDS PARSING (FIX)
+    # -----------------------------
+    meals = []
+    soup = ""
 
     try:
         with pdfplumber.open(BytesIO(r.content)) as pdf:
+
             for page in pdf.pages:
-                page_text = page.extract_text()
-                if page_text:
-                    text += page_text + "\n"
+
+                words = page.extract_words()
+
+                lines = []
+                current_line = ""
+                last_top = None
+
+                for w in words:
+                    top = round(w["top"])
+
+                    if last_top is None:
+                        last_top = top
+
+                    if abs(top - last_top) > 3:
+                        lines.append(current_line.strip())
+                        current_line = w["text"]
+                        last_top = top
+                    else:
+                        current_line += " " + w["text"]
+
+                if current_line:
+                    lines.append(current_line.strip())
+
+                # -------------------------
+                # PARSING JEDÁL
+                # -------------------------
+                for line in lines:
+
+                    if not is_valid_line(line):
+                        continue
+
+                    if "polievka" in line.lower():
+                        soup = line
+
+                    price_match = re.search(r"\d+,\d+", line)
+                    price = float(price_match.group(0).replace(",", ".")) if price_match else None
+
+                    if price:
+                        name = re.sub(r"\d+,\d+.*", "", line).strip()
+
+                        meals.append({
+                            "name": name,
+                            "price": price
+                        })
+
     except Exception as e:
         return {
             "restaurant": "Kotolňa",
             "error": str(e)
         }
 
-    lines = [l.strip() for l in text.split("\n") if l.strip()]
-
-    # -----------------------------
-    # 5. DŇOVÝ PARSER (FIX PIATOK vs PONDELOK)
-    # -----------------------------
-    DAYS = {
-        "pondelok": 0,
-        "utorok": 1,
-        "streda": 2,
-        "štvrtok": 3,
-        "piatok": 4,
-        "sobota": 5,
-        "nedeľa": 6
-    }
-
-    today_index = datetime.datetime.today().weekday()
-
-    current_day = None
-
-    meals = []
-    soup = ""
-
-    for line in lines:
-
-        line_lower = line.lower()
-
-        # detekcia dňa
-        for day_name in DAYS:
-            if day_name in line_lower:
-                current_day = DAYS[day_name]
-
-        # ignoruj iné dni
-        if current_day is not None and current_day != today_index:
-            continue
-
-        # polievka
-        if "polievka" in line_lower:
-            soup = line
-
-        # cena
-        price_match = re.search(r"\d+,\d+", line)
-        price = float(price_match.group(0).replace(",", ".")) if price_match else None
-
-        if price:
-            name = re.sub(r"\d+,\d+.*", "", line).strip()
-
-            meals.append({
-                "name": name,
-                "price": price
-            })
-
     return {
         "restaurant": "Kotolňa",
         "soup": soup,
-        "meals": meals[:6]
+        "meals": meals
     }
