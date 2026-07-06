@@ -8,21 +8,49 @@ import re
 PAGE_URL = "https://starakotolna.sk/castellum-cafe/"
 
 
+SKIP_KEYWORDS = [
+    "balné",
+    "donáška",
+    "príplatok",
+    "objednávky",
+    "otváracie",
+    "www",
+    "menu podávame",
+    "facebook",
+    "instagram",
+    "cena zahŕňa"
+]
+
+
 def get_pdf_url():
     r = requests.get(PAGE_URL)
     soup = BeautifulSoup(r.text, "html.parser")
 
-    # nájdi všetky linky
-    links = soup.find_all("a", href=True)
+    for a in soup.find_all("a", href=True):
+        href = a["href"].lower()
 
-    for link in links:
-        href = link["href"].lower()
-
-        # hľadáme PDF súbory
         if ".pdf" in href:
-            return link["href"]
+            return a["href"]
 
     return None
+
+
+def is_valid_line(line: str) -> bool:
+    line_lower = line.lower()
+
+    # vyradenie bordelu
+    if any(word in line_lower for word in SKIP_KEYWORDS):
+        return False
+
+    # musí obsahovať cenu
+    if not re.search(r"\d+,\d+", line):
+        return False
+
+    # minimálna dĺžka (odfiltruje hlúposti)
+    if len(line) < 10:
+        return False
+
+    return True
 
 
 def scrape_kotolna():
@@ -32,16 +60,14 @@ def scrape_kotolna():
     if not pdf_url:
         return {
             "restaurant": "Kotolňa",
-            "error": "PDF link not found in HTML"
+            "error": "PDF link not found"
         }
 
-    # FIX: niekedy je relatívny link
     if pdf_url.startswith("/"):
         pdf_url = "https://starakotolna.sk" + pdf_url
 
     r = requests.get(pdf_url)
 
-    # kontrola či je to PDF
     if "pdf" not in r.headers.get("Content-Type", "").lower():
         return {
             "restaurant": "Kotolňa",
@@ -71,6 +97,10 @@ def scrape_kotolna():
 
     for line in lines:
 
+        # ❌ filter bordelu
+        if not is_valid_line(line):
+            continue
+
         if "POLIEVKA" in line.upper():
             soup = line
 
@@ -79,6 +109,7 @@ def scrape_kotolna():
 
         if price:
             name = re.sub(r"\d+,\d+.*", "", line).strip()
+
             meals.append({
                 "name": name,
                 "price": price
