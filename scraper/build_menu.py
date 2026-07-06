@@ -19,7 +19,7 @@ def build():
     except Exception as e:
         print("❌ Hoffer error:", e)
 
-    # Quo Vadis (zatiaľ placeholder)
+    # Quo Vadis (link mode)
     try:
         data.append(scrape_quovadis())
         print("✔ Quo Vadis OK")
