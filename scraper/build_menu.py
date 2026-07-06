@@ -3,33 +3,52 @@ import os
 
 from hoffer import scrape_hoffer
 from quovadis import scrape_quovadis
+from kotolna import scrape_kotolna
+
 
 OUTPUT_PATH = "docs/menu.json"
 
 
 def build():
-    print("🔄 Generujem menu...")
+    print("🔄 Generujem obedové menu...")
 
     data = []
 
-    # Hoffer
+    # -------------------------
+    # HOFFER (HTML scraping)
+    # -------------------------
     try:
         data.append(scrape_hoffer())
         print("✔ Hoffer OK")
     except Exception as e:
         print("❌ Hoffer error:", e)
 
-    # Quo Vadis (link mode)
+    # -------------------------
+    # QUO VADIS (link / menu page)
+    # -------------------------
     try:
         data.append(scrape_quovadis())
         print("✔ Quo Vadis OK")
     except Exception as e:
         print("❌ Quo Vadis error:", e)
 
-    # vytvor docs priečinok ak neexistuje
+    # -------------------------
+    # KOTOLŇA (PDF scraping)
+    # -------------------------
+    try:
+        data.append(scrape_kotolna())
+        print("✔ Kotolňa OK")
+    except Exception as e:
+        print("❌ Kotolňa error:", e)
+
+    # -------------------------
+    # CREATE OUTPUT FOLDER
+    # -------------------------
     os.makedirs("docs", exist_ok=True)
 
-    # zapis JSON
+    # -------------------------
+    # WRITE JSON OUTPUT
+    # -------------------------
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 

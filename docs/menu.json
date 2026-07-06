@@ -35,5 +35,9 @@
     "menu_url": "https://www.quovadisnitra.sk/tyzdenne-menu/",
     "soup": "",
     "meals": []
+  },
+  {
+    "restaurant": "Kotolňa",
+    "error": "No /Root object! - Is this really a PDF?"
   }
 ]
