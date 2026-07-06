@@ -1,51 +1,34 @@
-
 async function loadMenu() {
-	const res = await fetch("menu.json");
-	const data = await res.json();
+  const res = await fetch("menu.json");
+  const data = await res.json();
 
-	render(data);
-}
+  const app = document.getElementById("app");
+  app.innerHTML = "";
 
-function render(data) {
-	const app = document.getElementById("app");
-	const search = document.getElementById("search");
+  data.forEach(r => {
+    const div = document.createElement("div");
+    div.className = "restaurant";
 
-	function draw(filter = "") {
-		app.innerHTML = "";
+    let html = `<h2>${r.restaurant}</h2>`;
 
-		data.forEach(r => {
-			let meals = r.meals.filter(m =>
-				m.name.toLowerCase().includes(filter.toLowerCase())
-			);
+    if (r.soup) {
+      html += `<p><strong>Polievka:</strong> ${r.soup}</p>`;
+    }
 
-			if (meals.length === 0) return;
+    html += `<ul>`;
 
-			let html = `
-				<div class="card">
-					<h2>🍽 ${r.restaurant}</h2>
-					<p>🥣 ${r.soup}</p>
-			`;
+    r.meals.forEach(m => {
+      html += `<li>
+        ${m.name}
+        ${m.price !== null ? ` - ${m.price} €` : ""}
+      </li>`;
+    });
 
-			meals.forEach(m => {
-				html += `
-					<div>
-						${m.name}
-						<span class="price">${m.price.toFixed(2)} €</span>
-					</div>
-				`;
-			});
+    html += `</ul>`;
 
-			html += `</div>`;
-
-			app.innerHTML += html;
-		});
-	}
-
-	search.addEventListener("input", e => {
-		draw(e.target.value);
-	});
-
-	draw();
+    div.innerHTML = html;
+    app.appendChild(div);
+  });
 }
 
 loadMenu();
