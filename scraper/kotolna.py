@@ -13,9 +13,14 @@ def get_pdf_url():
     soup = BeautifulSoup(r.text, "html.parser")
 
     # nájdi všetky linky
-    for a in soup.find_all("a", href=True):
-        if "obedove" in a.text.lower() or "menu" in a.text.lower():
-            return a["href"]
+    links = soup.find_all("a", href=True)
+
+    for link in links:
+        href = link["href"].lower()
+
+        # hľadáme PDF súbory
+        if ".pdf" in href:
+            return link["href"]
 
     return None
 
@@ -27,10 +32,21 @@ def scrape_kotolna():
     if not pdf_url:
         return {
             "restaurant": "Kotolňa",
-            "error": "PDF link not found"
+            "error": "PDF link not found in HTML"
         }
 
+    # FIX: niekedy je relatívny link
+    if pdf_url.startswith("/"):
+        pdf_url = "https://starakotolna.sk" + pdf_url
+
     r = requests.get(pdf_url)
+
+    # kontrola či je to PDF
+    if "pdf" not in r.headers.get("Content-Type", "").lower():
+        return {
+            "restaurant": "Kotolňa",
+            "error": "URL does not return PDF"
+        }
 
     pdf_file = BytesIO(r.content)
 
