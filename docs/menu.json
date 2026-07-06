@@ -28,5 +28,15 @@
         "price": 0.33
       }
     ]
+  },
+  {
+    "restaurant": "Quo Vadis",
+    "soup": "",
+    "meals": [
+      {
+        "name": "test menu (parsujeme neskôr)",
+        "price": 0
+      }
+    ]
   }
 ]
