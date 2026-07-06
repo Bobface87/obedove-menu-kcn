@@ -1,0 +1,17 @@
+[
+  {
+    "restaurant": "Hoffer",
+    "soup": "Cesnaková polievka",
+    "meals": [
+      { "name": "Kurací steak s ryžou", "price": 8.90 },
+      { "name": "Vyprážaný syr", "price": 8.20 }
+    ]
+  },
+  {
+    "restaurant": "Quo Vadis",
+    "soup": "Gulášová polievka",
+    "meals": [
+      { "name": "Lasagne", "price": 9.20 }
+    ]
+  }
+]
