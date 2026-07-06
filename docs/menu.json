@@ -41,168 +41,124 @@
     "soup": "Polievka: 0,40 l Fazuľovica, chlieb /1, 9/",
     "meals": [
       {
-        "name": "paradajkovú polievku je za poplatok",
-        "price": 1.0
+        "menu": "MENU 1",
+        "text": "výpeku, 1/2 ryža, 1/2 pečené zemiaky, šalátik (SK) /1, 7/ *Cena pre donášku a osobný 8,70 € odber: 9,00 €*"
       },
       {
-        "name": "Polievka:",
-        "price": 0.4
+        "menu": "MENU 2",
+        "text": "8,90 € a parmezánom (SK) /1, 7/ *Cena pre donášku a osobný odber: 9,20 €*"
       },
       {
-        "name": "výpeku, 1/2 ryža, 1/2 pečené zemiaky, šalátik (SK) /1, 7/ *Cena pre donášku a osobný",
-        "price": 8.7
+        "menu": "MENU 3",
+        "text": "8,70 € pre donášku a osobný odber: 9,00 €*"
       },
       {
-        "name": "odber:",
-        "price": 9.0
+        "menu": "MENU 4",
+        "text": "bylinkový dresing, parmezán, pizza chlieb (SK) /1, 3, 7, 10/ *Cena pre donášku a osobný 8,70 € odber: 9,00 €*"
       },
       {
-        "name": "a parmezánom (SK) /1, 7/ *Cena pre donášku a osobný odber:",
-        "price": 9.2
+        "menu": "MENU 5",
+        "text": "8,50 € donášku a osobný odber: 8,80 €*"
       },
       {
-        "name": "pre donášku a osobný odber:",
-        "price": 9.0
+        "menu": "MENU 6",
+        "text": "10,50 € kyslá uhorka, bbq), hranolky (SK) /1, 3, 7/ *Cena pre donášku a osobný odber: 10,90 €* Denné menu na Utorok (07.07.2026) Polievka: 0,40 l Hrachová s klobáskou a zeleninou, chlieb /1, 9/"
       },
       {
-        "name": "bylinkový dresing, parmezán, pizza chlieb (SK) /1, 3, 7, 10/ *Cena pre donášku a osobný",
-        "price": 8.7
+        "menu": "MENU 1",
+        "text": "8,70 € cibuľke, nakladaná cvikla (SK) *Cena pre donášku a osobný odber: 9,00 €*"
       },
       {
-        "name": "odber:",
-        "price": 9.0
+        "menu": "MENU 2",
+        "text": "jazmínová ryža, mladá cibuľka, japonská majonéza, sezam (SK) /1, 3, 7, 11/ *Cena pre 8,70 € donášku a osobný odber: 9,00 €*"
       },
       {
-        "name": "donášku a osobný odber:",
-        "price": 8.8
+        "menu": "MENU 3",
+        "text": "8,70 € kukurica) /1, 7/ *Cena pre donášku a osobný odber: 9,00 €*"
       },
       {
-        "name": "kyslá uhorka, bbq), hranolky (SK) /1, 3, 7/ *Cena pre donášku a osobný odber:",
-        "price": 10.9
+        "menu": "MENU 4",
+        "text": "slaninka, parmezán, bylinkový dresing, pizza chlieb (SK) /1, 7, 10/ *Cena pre donášku a 8,90 € osobný odber: 9,20 €*"
       },
       {
-        "name": "Polievka:",
-        "price": 0.4
+        "menu": "MENU 5",
+        "text": "8,70 € donášku a osobný odber: 9,00 €*"
       },
       {
-        "name": "cibuľke, nakladaná cvikla (SK) *Cena pre donášku a osobný odber:",
-        "price": 9.0
+        "menu": "MENU 6",
+        "text": "8,50 € parmezánom /1, 7/ *Cena pre donášku a osobný odber: 8,80 €* Jedálny lístok Vám prináša portál www.obedvmeste.sk. Stará Kotolňa - reštaurácia, pizzeria Topoľová 2, Nitra , tel.: +421 904 199 850, +421 948 221 718 Denné menu na Streda (08.07.2026) Polievka: 0,40 l Mrkvovo - batátový krém s krutónmi /1, 7/"
       },
       {
-        "name": "jazmínová ryža, mladá cibuľka, japonská majonéza, sezam (SK) /1, 3, 7, 11/ *Cena pre",
-        "price": 8.7
+        "menu": "MENU 1",
+        "text": "8,70 € popučené maslové zemiaky (SK) /1, 7/ *Cena pre donášku a osobný odber: 9,00 €*"
       },
       {
-        "name": "donášku a osobný odber:",
-        "price": 9.0
+        "menu": "MENU 2",
+        "text": "8,90 € miešaný sladko - kyslý šalát (SK) /1, 3, 7/ *Cena pre donášku a osobný odber: 9,20 €*"
       },
       {
-        "name": "kukurica) /1, 7/ *Cena pre donášku a osobný odber:",
-        "price": 9.0
+        "menu": "MENU 3",
+        "text": "8,70 € cibuľa, feferóny) /1, 7/ *Cena pre donášku a osobný odber: 9,00 €*"
       },
       {
-        "name": "slaninka, parmezán, bylinkový dresing, pizza chlieb (SK) /1, 7, 10/ *Cena pre donášku a",
-        "price": 8.9
+        "menu": "MENU 4",
+        "text": "medovo - horčicový dresing, pizza palice /1, 7, 8, 10/ *Cena pre donášku a osobný odber: 8,70 € 9,00 €*"
       },
       {
-        "name": "osobný odber:",
-        "price": 9.2
+        "menu": "MENU 5",
+        "text": "8,90 € chlieb (AT) /1, 3, 7/ *Cena pre donášku a osobný odber: 9,20 €*"
       },
       {
-        "name": "donášku a osobný odber:",
-        "price": 9.0
+        "menu": "MENU 6",
+        "text": "8,50 € pre donášku a osobný odber: 8,80 €* Denné menu na Štvrtok (09.07.2026) Polievka: 0,40 l Frankfurtská s párkom a zemiakmi, chlieb /1, 7/"
       },
       {
-        "name": "parmezánom /1, 7/ *Cena pre donášku a osobný odber:",
-        "price": 8.8
+        "menu": "MENU 1",
+        "text": "8,70 € 3, 7/ *Cena pre donášku a osobný odber: 9,00 €*"
       },
       {
-        "name": "Polievka:",
-        "price": 0.4
+        "menu": "MENU 2",
+        "text": "8,70 € 10/ *Cena pre donášku a osobný odber: 9,00 €*"
       },
       {
-        "name": "popučené maslové zemiaky (SK) /1, 7/ *Cena pre donášku a osobný odber:",
-        "price": 9.0
+        "menu": "MENU 3",
+        "text": "8,70 € 7/ *Cena pre donášku a osobný odber: 9,00 €*"
       },
       {
-        "name": "miešaný sladko - kyslý šalát (SK) /1, 3, 7/ *Cena pre donášku a osobný odber:",
-        "price": 9.2
+        "menu": "MENU 4",
+        "text": "8,90 € paradajky, pizza chlieb (SK) /1, 3, 7, 10/ *Cena pre donášku a osobný odber: 9,20 €*"
       },
       {
-        "name": "cibuľa, feferóny) /1, 7/ *Cena pre donášku a osobný odber:",
-        "price": 9.0
+        "menu": "MENU 5",
+        "text": "stehno, karamelizovaná cibuľka, brusnice), hranolky (SK) /1, 3, 7/ *Cena pre donášku a 10,50 € osobný odber: 10,90 €*"
       },
       {
-        "name": "medovo - horčicový dresing, pizza palice /1, 7, 8, 10/ *Cena pre donášku a osobný odber:",
-        "price": 8.7
+        "menu": "MENU 6",
+        "text": "8,90 € a cesnaku /1, 2, 7/ *Cena pre donášku a osobný odber: 9,20 €* Jedálny lístok Vám prináša portál www.obedvmeste.sk. Stará Kotolňa - reštaurácia, pizzeria Topoľová 2, Nitra , tel.: +421 904 199 850, +421 948 221 718 Denné menu na Piatok (10.07.2026) Polievka: 0,40 l Fazuľovica, chlieb /1, 9/"
       },
       {
-        "name": "chlieb (AT) /1, 3, 7/ *Cena pre donášku a osobný odber:",
-        "price": 9.2
+        "menu": "MENU 1",
+        "text": "8,90 € šalátik (SK) /7/ *Cena pre donášku a osobný odber: 9,20 €*"
       },
       {
-        "name": "pre donášku a osobný odber:",
-        "price": 8.8
+        "menu": "MENU 2",
+        "text": "8,90 € *Cena pre donášku a osobný odber: 9,00 €*"
       },
       {
-        "name": "Polievka:",
-        "price": 0.4
+        "menu": "MENU 3",
+        "text": "8,70 € parmezán) /1, 7/ *Cena pre donášku a osobný odber: 9,00 €*"
       },
       {
-        "name": "3, 7/ *Cena pre donášku a osobný odber:",
-        "price": 9.0
+        "menu": "MENU 4",
+        "text": "8,90 € paradajky, pizza chlieb /1, 7, 10/ *Cena pre donášku a osobný odber: 9,20 €*"
       },
       {
-        "name": "10/ *Cena pre donášku a osobný odber:",
-        "price": 9.0
+        "menu": "MENU 5",
+        "text": "8,70 € osobný odber: 9,00 €*"
       },
       {
-        "name": "7/ *Cena pre donášku a osobný odber:",
-        "price": 9.0
-      },
-      {
-        "name": "paradajky, pizza chlieb (SK) /1, 3, 7, 10/ *Cena pre donášku a osobný odber:",
-        "price": 9.2
-      },
-      {
-        "name": "stehno, karamelizovaná cibuľka, brusnice), hranolky (SK) /1, 3, 7/ *Cena pre donášku a",
-        "price": 10.5
-      },
-      {
-        "name": "osobný odber:",
-        "price": 10.9
-      },
-      {
-        "name": "a cesnaku /1, 2, 7/ *Cena pre donášku a osobný odber:",
-        "price": 9.2
-      },
-      {
-        "name": "Polievka:",
-        "price": 0.4
-      },
-      {
-        "name": "šalátik (SK) /7/ *Cena pre donášku a osobný odber:",
-        "price": 9.2
-      },
-      {
-        "name": "*Cena pre donášku a osobný odber:",
-        "price": 9.0
-      },
-      {
-        "name": "parmezán) /1, 7/ *Cena pre donášku a osobný odber:",
-        "price": 9.0
-      },
-      {
-        "name": "paradajky, pizza chlieb /1, 7, 10/ *Cena pre donášku a osobný odber:",
-        "price": 9.2
-      },
-      {
-        "name": "osobný odber:",
-        "price": 9.0
-      },
-      {
-        "name": "pre donášku a osobný odber:",
-        "price": 8.8
+        "menu": "MENU 6",
+        "text": "8,50 € pre donášku a osobný odber: 8,80 €* Zoznam možných alergénov v jedle: 1. Obilniny obsahujúce lepok / t.j. pšenica, raž, jačmeň, ovos, špalda, kamut alebo ich hybridné odrody/. 2. Kôrovce a výrobky z nich. 3. Vajcia a výrobky z nich. 4. Ryby a výrobky z nich. 5. Arašidy a výrobky z nich. 6. Sójové zrná a výrobky z nich. 7. Mlieko a výrobky z neho. 8. Orechy, ktorými sú mandle, lieskové orechy, vlašské orechy, kešu, pekanové orechy, para orechy, pistácie, makadamové orechy a výrobky z nich. 9. Zeler a výrobky z neho. 10. Horčica a výrobky z nej. 11. Sezamové semená a výrobky z nich. 12. Oxid siričitý a siričitany v koncentráciách vyšších ako 10mg/kg alebo 10 mg/l. 13. Vlčí bôb a výrobky z neho. 14. Mäkkýše a výrobky z nich. Jedálny lístok Vám prináša portál www.obedvmeste.sk."
       }
     ]
   }
