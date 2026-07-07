@@ -16,15 +16,38 @@ async function loadMenu() {
       }
 
       if (r.meals && r.meals.length > 0) {
+
         html += `<p><strong>Polievka:</strong> ${r.soup}</p>`;
+
         html += `<ul>`;
 
         r.meals.forEach(m => {
-          html += `<li>${m.name} - ${m.price} €</li>`;
+          html += `
+            <li>
+              ${m.menu ? m.menu + ". " : ""}
+              ${m.name} - ${m.price}
+            </li>
+          `;
         });
 
         html += `</ul>`;
       }
+
+
+      // DEZERT - iba ak existuje
+      if (r.dessert) {
+
+        html += `
+          <p>
+            <strong>Dezert:</strong>
+            ${r.dessert.name}
+            ${r.dessert.weight ? "(" + r.dessert.weight + ")" : ""}
+            ${r.dessert.delivery === false ? " - neplatí pre donášku" : ""}
+          </p>
+        `;
+
+      }
+
 
       div.innerHTML = html;
       app.appendChild(div);
@@ -33,8 +56,10 @@ async function loadMenu() {
   } catch (e) {
     document.getElementById("app").innerHTML =
       "❌ Chyba načítania menu";
+
     console.error(e);
   }
 }
+
 
 loadMenu();
