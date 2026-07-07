@@ -1,38 +1,40 @@
 async function loadMenu() {
-  const res = await fetch("menu.json");
-  const data = await res.json();
+  try {
+    const res = await fetch("menu.json");
+    const data = await res.json();
 
-  const app = document.getElementById("app");
-  app.innerHTML = "";
+    const app = document.getElementById("app");
+    app.innerHTML = "";
 
-  data.forEach(r => {
-    const div = document.createElement("div");
+    data.forEach(r => {
+      const div = document.createElement("div");
 
-    let html = `<h2>${r.restaurant}</h2>`;
+      let html = `<h2>${r.restaurant}</h2>`;
 
-    // 🔥 LINK-BASED RESTAURÁCIE (Quo Vadis)
-    if (r.type === "link_menu") {
-      html += `<a href="${r.menu_url}" target="_blank">Zobraziť menu</a>`;
-    }
-
-    // 🔥 klasické menu (Hoffer atď.)
-    if (r.meals && r.meals.length > 0) {
-      if (r.soup) {
-        html += `<p><strong>Polievka:</strong> ${r.soup}</p>`;
+      if (r.type === "link_menu") {
+        html += `<a href="${r.menu_url}" target="_blank">Zobraziť menu</a>`;
       }
 
-      html += `<ul>`;
+      if (r.meals && r.meals.length > 0) {
+        html += `<p><strong>Polievka:</strong> ${r.soup}</p>`;
+        html += `<ul>`;
 
-      r.meals.forEach(m => {
-        html += `<li>${m.name} - ${m.price} €</li>`;
-      });
+        r.meals.forEach(m => {
+          html += `<li>${m.name} - ${m.price} €</li>`;
+        });
 
-      html += `</ul>`;
-    }
+        html += `</ul>`;
+      }
 
-    div.innerHTML = html;
-    app.appendChild(div);
-  });
+      div.innerHTML = html;
+      app.appendChild(div);
+    });
+
+  } catch (e) {
+    document.getElementById("app").innerHTML =
+      "❌ Chyba načítania menu";
+    console.error(e);
+  }
 }
 
 loadMenu();
