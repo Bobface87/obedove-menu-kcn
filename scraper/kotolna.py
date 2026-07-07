@@ -1,143 +1,97 @@
-import requests
-from bs4 import BeautifulSoup
-from io import BytesIO
-import pdfplumber
 import re
+from datetime import datetime
+from io import BytesIO
+
+import pdfplumber
+import requests
 
 
-PAGE_URL = "https://starakotolna.sk/#obedove-menu"
+PDF_URL = "https://starakotolna.sk/wp-content/uploads/2026/07/Obedove-menu-Kotolna-262026.pdf"
 
 
-# -----------------------------
-# 1. PDF LINKY
-# -----------------------------
-def get_pdf_links():
-    r = requests.get(PAGE_URL)
-    soup = BeautifulSoup(r.text, "html.parser")
-
-    links = soup.find_all("a", href=True)
-
-    pdfs = []
-
-    for l in links:
-        href = l["href"]
-        if ".pdf" in href:
-            if href.startswith("/"):
-                href = "https://starakotolna.sk" + href
-            pdfs.append(href)
-
-    return pdfs
+DAY_NAMES = [
+    "Pondelok",
+    "Utorok",
+    "Streda",
+    "Štvrtok",
+    "Piatok",
+]
 
 
-# -----------------------------
-# 2. NAJLEPŠIE PDF
-# -----------------------------
-def get_pdf_url():
-    pdfs = get_pdf_links()
+def download_pdf():
 
-    best = None
-    best_score = -999
+    print("⬇ Sťahujem PDF...")
 
-    for url in pdfs:
-        try:
-            r = requests.get(url)
+    r = requests.get(PDF_URL, timeout=20)
+    r.raise_for_status()
 
-            if "pdf" not in r.headers.get("Content-Type", ""):
-                continue
-
-            with pdfplumber.open(BytesIO(r.content)) as pdf:
-                text = ""
-                for p in pdf.pages:
-                    t = p.extract_text()
-                    if t:
-                        text += t.lower()
-
-                score = 0
-                if "menu" in text: score += 2
-                if "polievka" in text: score += 3
-                if "menu 1" in text: score += 3
-                if "menu 2" in text: score += 3
-                if "menu 3" in text: score += 3
-
-                if score > best_score:
-                    best_score = score
-                    best = url
-
-        except:
-            continue
-
-    return best
+    return BytesIO(r.content)
 
 
-# -----------------------------
-# 3. SCRAPER (BLOCK PARSER)
-# -----------------------------
-def scrape_kotolna():
+def load_text():
 
-    pdf_url = get_pdf_url()
+    pdf_file = download_pdf()
 
-    if not pdf_url:
-        return {"restaurant": "Kotolňa", "error": "no pdf"}
+    text = ""
 
-    r = requests.get(pdf_url)
+    with pdfplumber.open(pdf_file) as pdf:
 
-    meals = []
-    soup = ""
+        for page in pdf.pages:
 
-    try:
-        with pdfplumber.open(BytesIO(r.content)) as pdf:
+            t = page.extract_text()
 
-            full_text = []
-            for page in pdf.pages:
-                t = page.extract_text()
-                if t:
-                    full_text += t.split("\n")
+            if t:
+                text += t + "\n"
 
-            current_menu = None
-            buffer = []
+    return text
 
-            def flush():
-                nonlocal current_menu, buffer, meals
 
-                if current_menu and buffer:
-                    meals.append({
-                        "menu": current_menu,
-                        "text": " ".join(buffer)
-                    })
+def today_name():
 
-                buffer = []
+    return DAY_NAMES[datetime.today().weekday()]
 
-            for line in full_text:
 
-                line_lower = line.lower()
+def split_days(text):
 
-                # polievka
-                if "polievka" in line_lower:
-                    soup = line
+    pattern = r"Denné menu na (?:Pondelok|Utorok|Streda|Štvrtok|Piatok).*?(?=Denné menu na|\Z)"
 
-                # menu start
-                match = re.search(r"menu\s*[1-6]", line_lower)
+    return [
+        m.group(0)
+        for m in re.finditer(pattern, text, flags=re.S)
+    ]
 
-                if match:
-                    flush()
-                    current_menu = match.group(0).upper()
-                    continue
 
-                # stop garbage
-                if any(x in line_lower for x in ["krabica", "balné", "alobal"]):
-                    continue
+def find_today_block(text):
 
-                # append do bloku
-                if current_menu:
-                    buffer.append(line.strip())
+    today = today_name()
 
-            flush()
+    blocks = split_days(text)
 
-    except Exception as e:
-        return {"restaurant": "Kotolňa", "error": str(e)}
+    for block in blocks:
 
-    return {
-        "restaurant": "Kotolňa",
-        "soup": soup,
-        "meals": meals
-    }
+        if f"Denné menu na {today}" in block:
+            return block
+
+    return None
+
+
+def main():
+
+    print("Načítavam PDF...")
+
+    text = load_text()
+
+    block = find_today_block(text)
+
+    if not block:
+
+        print("❌ Dnešný deň sa nenašiel.")
+        return
+
+    print("=" * 80)
+    print(block)
+    print("=" * 80)
+
+
+if __name__ == "__main__":
+    main()
