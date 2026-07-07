@@ -1,8 +1,46 @@
 [
   {
     "restaurant": "Hoffer",
-    "soup": "",
-    "meals": []
+    "soup": "0,33l Bravčový guláš so zemiakmi, chlieb",
+    "soup_allergens": "1",
+    "meals": [
+      {
+        "menu": 1,
+        "name": "Sous-vide bravčová panenka obalená v slaninke na dubákovej omáčke, ryža",
+        "price": "8,90 €",
+        "allergens": "1,7"
+      },
+      {
+        "menu": 2,
+        "name": "Zemiaková placka plnená pikantným kuracím soté, posypaná syrom",
+        "price": "8,90 €",
+        "allergens": "1,3,7"
+      },
+      {
+        "menu": 3,
+        "name": "Vyprážaný karfiol, varené zemiaky s vňaťkou, tatárska omáčka",
+        "price": "8,90 €",
+        "allergens": "1,3,7,10"
+      },
+      {
+        "menu": 4,
+        "name": "Pizza podľa vlastného výberu (veľkosť classic), tatárska omáčka, kečup",
+        "price": "8,90 €",
+        "allergens": "1,7"
+      },
+      {
+        "menu": 5,
+        "name": "Pečené batáty plnené hovädzím ragú, zapečené syrom cheddar, miešaný listový šalát, smotanový dressing",
+        "price": "9,40 €",
+        "allergens": "7"
+      }
+    ],
+    "dessert": {
+      "name": "Ovocná bublanina",
+      "weight": "50g",
+      "allergens": "1,3,7",
+      "delivery": false
+    }
   },
   {
     "restaurant": "Quo Vadis",
