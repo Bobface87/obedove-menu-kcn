@@ -23,7 +23,7 @@ async function loadMenu() {
           <img
             src="${r.image_url}"
             alt="Denné menu"
-            style="max-width:100%;border-radius:8px;margin:10px 0;"
+            style="max-width:60%;border-radius:8px;margin:10px auto;display:block;"
           >
         `;
       }
