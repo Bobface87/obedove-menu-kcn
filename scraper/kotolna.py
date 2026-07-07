@@ -19,6 +19,7 @@ DAY_NAMES = [
 
 
 def download_pdf():
+
     print("⬇ Sťahujem PDF...")
 
     r = requests.get(
@@ -92,7 +93,7 @@ def find_today_block(text):
 
 def clean_meal(text):
 
-    # odstráni MENU číslo
+    # MENU označenie
     text = re.sub(
         r"Menu\s+\d+:",
         "",
@@ -101,15 +102,7 @@ def clean_meal(text):
     )
 
 
-    # odstráni gramáž
-    text = re.sub(
-        r"^\d+\s*g\s*",
-        "",
-        text
-    )
-
-
-    # odstráni alergény
+    # odstráni alergény v lomkách
     text = re.sub(
         r"/[^/]+/",
         "",
@@ -117,26 +110,18 @@ def clean_meal(text):
     )
 
 
-    # odstráni SK značky
+    # odstráni iba SK označenie
     text = re.sub(
-        r"\([^)]*SK[^)]*\)",
-        "",
-        text
-    )
-
-
-    # odstráni cenu donášky
-    text = re.sub(
-        r"\*Cena pre donášku.*?\*",
+        r"\(SK\)",
         "",
         text,
-        flags=re.I | re.S
+        flags=re.I
     )
 
 
-    # poistka keby hviezdičky chýbali
+    # odstráni cenu donášky aj bez hviezdičiek
     text = re.sub(
-        r"Cena pre donášku a osobný odber:.*",
+        r"\*?Cena pre donášku a osobný odber:.*",
         "",
         text,
         flags=re.I | re.S
@@ -151,7 +136,8 @@ def clean_meal(text):
     )
 
 
-    text = text.replace("*","")
+    # odstráni hviezdičky
+    text = text.replace("*", "")
 
 
     text = " ".join(
@@ -171,10 +157,11 @@ def extract_price(text):
     )
 
     if prices:
+
         return float(
             prices[0]
             .replace(",", ".")
-            .replace("€","")
+            .replace("€", "")
         )
 
     return None
@@ -184,7 +171,6 @@ def extract_price(text):
 def parse_today(block):
 
     soup = ""
-
 
     meals = []
 
@@ -242,9 +228,7 @@ def scrape_kotolna():
 
     print("Načítavam Kotolňu...")
 
-
     text = load_text()
-
 
     block = find_today_block(text)
 
@@ -260,49 +244,15 @@ def scrape_kotolna():
 
 
     return {
-
         "restaurant": "Kotolňa",
-
         "soup": soup,
-
         "meals": meals
-
     }
-
-
-
-def main():
-
-    data = scrape_kotolna()
-
-
-    print()
-
-    print("Kotolňa")
-
-    print()
-
-    print("POLIEVKA:")
-
-    print(data["soup"])
-
-
-    print()
-
-
-    for meal in data["meals"]:
-
-        print(meal["name"])
-
-        print(
-            "Cena:",
-            meal["price"]
-        )
-
-        print("-"*50)
 
 
 
 if __name__ == "__main__":
 
-    main()
+    data = scrape_kotolna()
+
+    print(data)
