@@ -37,8 +37,8 @@
   },
   {
     "restaurant": "Quo Vadis",
-    "type": "link_menu",
-    "menu_url": "https://www.quovadisnitra.sk/tyzdenne-menu/",
+    "type": "image_menu",
+    "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/07/5-2-724x1024.jpg",
     "soup": "",
     "meals": []
   },

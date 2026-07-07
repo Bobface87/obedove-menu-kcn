@@ -12,59 +12,69 @@ async function loadMenu() {
 
       let html = `<h2>${r.restaurant}</h2>`;
 
-
+      // Reštaurácie iba s odkazom
       if (r.type === "link_menu") {
-
-        html += `<a href="${r.menu_url}" target="_blank">
-          Zobraziť menu
-        </a>`;
-
+        html += `<a href="${r.menu_url}" target="_blank">Zobraziť menu</a>`;
       }
 
+      // Quo Vadis - zobrazenie obrázka menu
+      if (r.type === "image_menu") {
+        html += `
+          <img
+            src="${r.image_url}"
+            alt="Denné menu"
+            style="max-width:100%;border-radius:8px;margin:10px 0;"
+          >
+        `;
+      }
 
+      // Klasické menu (Hoffer, Kotolňa)
       if (r.meals && r.meals.length > 0) {
 
         html += `<p><strong>Polievka:</strong> ${r.soup}</p>`;
 
         html += `<ul>`;
 
-
         r.meals.forEach(m => {
 
-          html += `
-            <li>
-              <strong>${m.menu ? m.menu + ". " : ""}</strong>
-              ${m.name} - ${m.price}
-            </li>
-          `;
+          html += `<li>`;
+
+          if (m.menu) {
+            html += `<strong>${m.menu}.</strong> `;
+          }
+
+          html += `${m.name} - ${m.price}`;
+
+          html += `</li>`;
 
         });
 
-
         html += `</ul>`;
 
-
+        // Dezert (iba Hoffer)
         if (r.dessert) {
 
-          html += `
-            <p>
-              <strong>Dezert:</strong>
-              ${r.dessert.name}
-              ${r.dessert.weight ? "(" + r.dessert.weight + ")" : ""}
-            </p>
-          `;
+          html += `<p><strong>🍰 Dezert:</strong> `;
 
+          html += r.dessert.name;
+
+          if (r.dessert.weight) {
+            html += ` (${r.dessert.weight})`;
+          }
+
+          if (r.dessert.delivery === false) {
+            html += ` <em>– neplatí pre donášku</em>`;
+          }
+
+          html += `</p>`;
         }
 
       }
 
-
       div.innerHTML = html;
-
       app.appendChild(div);
 
     });
-
 
   } catch (e) {
 
@@ -75,6 +85,5 @@ async function loadMenu() {
 
   }
 }
-
 
 loadMenu();
