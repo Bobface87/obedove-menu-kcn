@@ -14,27 +14,89 @@ h1 {
   margin: 10px auto 20px auto;
   padding: 10px;
   width: 300px;
+  max-width: 90%;
 }
 
+
+/* Hlavný priestor pre reštaurácie */
+#app {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+
+  align-items: start;
+}
+
+
+/* Karta reštaurácie */
 .card {
   background: white;
-  margin: 10px auto;
-  padding: 15px;
+  padding: 20px;
   border-radius: 10px;
-  max-width: 500px;
+
+  width: 100%;
+  box-sizing: border-box;
+
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+
+/* ceny jedál */
 .price {
   float: right;
 }
 
+
 /* Obrázok menu Quo Vadis */
 .qv-image {
-  width: 320px;
-  max-width: 100%;
+  width: 120%;
+  max-width: none;
+
   height: auto;
   display: block;
-  margin: 10px auto;
+
+  margin: 10px -10%;
+
   border-radius: 8px;
+  cursor: pointer;
+}
+
+
+/* Tablet */
+@media (max-width: 1000px) {
+
+  #app {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+/* Mobil */
+@media (max-width: 700px) {
+
+  body {
+    padding: 10px;
+  }
+
+
+  #app {
+    grid-template-columns: 1fr;
+  }
+
+
+  .card {
+    padding: 15px;
+  }
+
+
+  .qv-image {
+    width: 100%;
+    margin: 10px auto;
+  }
+
 }
