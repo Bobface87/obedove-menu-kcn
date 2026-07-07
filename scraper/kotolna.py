@@ -43,10 +43,10 @@ def load_text():
 
         for page in pdf.pages:
 
-            page_text = page.extract_text()
+            t = page.extract_text()
 
-            if page_text:
-                text += page_text + "\n"
+            if t:
+                text += t + "\n"
 
     return text
 
@@ -91,18 +91,67 @@ def find_today_block(text):
 
 
 
+def extract_price(text):
+
+    prices = re.findall(
+        r"\d+,\d+\s*€",
+        text
+    )
+
+    if prices:
+        return prices[0]
+
+    return None
+
+
+
+def remove_delivery_text(text):
+
+    # odstráni všetko od "Cena pre" až po koniec donáškového textu
+    text = re.sub(
+        r"Cena\s+pre.*?(?=\d+,\d+\s*€)",
+        "",
+        text,
+        flags=re.I | re.S
+    )
+
+    text = re.sub(
+        r"donášku.*?(?=\d+,\d+\s*€)",
+        "",
+        text,
+        flags=re.I | re.S
+    )
+
+    text = re.sub(
+        r"osobný.*?(?=\d+,\d+\s*€)",
+        "",
+        text,
+        flags=re.I | re.S
+    )
+
+    return text
+
+
+
 def clean_meal(text):
 
-    # MENU označenie
+    # spojenie zalomených riadkov PDF
+    text = " ".join(text.split())
+
+
+    # odstráni menu číslo
     text = re.sub(
         r"Menu\s+\d+:",
         "",
-        text,
-        flags=re.I
+        text
     )
 
 
-    # odstráni alergény v lomkách
+    # odstráni donášku
+    text = remove_delivery_text(text)
+
+
+    # odstráni alergény
     text = re.sub(
         r"/[^/]+/",
         "",
@@ -110,7 +159,7 @@ def clean_meal(text):
     )
 
 
-    # odstráni iba SK označenie
+    # odstráni SK
     text = re.sub(
         r"\(SK\)",
         "",
@@ -119,12 +168,11 @@ def clean_meal(text):
     )
 
 
-    # odstráni cenu donášky aj bez hviezdičiek
+    # odstráni gramáž
     text = re.sub(
-        r"\*?Cena pre donášku a osobný odber:.*",
+        r"^\d+\s*g\s*",
         "",
-        text,
-        flags=re.I | re.S
+        text
     )
 
 
@@ -140,37 +188,22 @@ def clean_meal(text):
     text = text.replace("*", "")
 
 
-    text = " ".join(
-        text.split()
+    # odstráni zvyšné kúsky footeru PDF
+    text = re.sub(
+        r"Jedálny lístok.*$",
+        "",
+        text,
+        flags=re.I
     )
 
 
-    return text.strip()
-
-
-
-def extract_price(text):
-
-    prices = re.findall(
-        r"\d+,\d+\s*€",
-        text
-    )
-
-    if prices:
-
-        return float(
-            prices[0]
-            .replace(",", ".")
-            .replace("€", "")
-        )
-
-    return None
+    return " ".join(text.split()).strip()
 
 
 
 def parse_today(block):
 
-    soup = ""
+    soup = None
 
     meals = []
 
@@ -181,7 +214,6 @@ def parse_today(block):
         flags=re.S
     )
 
-
     if soup_match:
 
         soup = clean_meal(
@@ -189,27 +221,21 @@ def parse_today(block):
         )
 
 
-    for i in range(1,7):
 
-        pattern = (
-            rf"Menu {i}:"
-            r"(.*?)"
-            rf"(?=Menu {i+1}:|Jedálny lístok|\Z)"
-        )
+    for i in range(1, 7):
 
-
-        result = re.search(
-            pattern,
+        match = re.search(
+            rf"Menu {i}:(.*?)(?=Menu {i+1}:|\Z)",
             block,
             flags=re.S
         )
 
 
-        if not result:
+        if not match:
             continue
 
 
-        raw = result.group(1)
+        raw = match.group(1)
 
 
         meals.append(
@@ -251,8 +277,14 @@ def scrape_kotolna():
 
 
 
-if __name__ == "__main__":
+def main():
 
     data = scrape_kotolna()
 
     print(data)
+
+
+
+if __name__ == "__main__":
+
+    main()

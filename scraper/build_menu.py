@@ -10,50 +10,97 @@ OUTPUT_PATH = "docs/menu.json"
 
 
 def build():
+
     print("🔄 Generujem obedové menu...")
 
     data = []
 
-    # -------------------------
-    # HOFFER (HTML scraping)
-    # -------------------------
+
+    # HOFFER
     try:
-        data.append(scrape_hoffer())
-        print("✔ Hoffer OK")
-    except Exception as e:
-        print("❌ Hoffer error:", e)
 
-    # -------------------------
-    # QUO VADIS (link / menu page)
-    # -------------------------
+        print("Načítavam Hoffera...")
+
+        data.append(
+            scrape_hoffer()
+        )
+
+        print("✅ Hoffer OK")
+
+
+    except Exception as e:
+
+        print(
+            "❌ Hoffer error:",
+            e
+        )
+
+
+    # QUO VADIS
     try:
-        data.append(scrape_quovadis())
-        print("✔ Quo Vadis OK")
-    except Exception as e:
-        print("❌ Quo Vadis error:", e)
 
-    # -------------------------
-    # KOTOLŇA (PDF scraping)
-    # -------------------------
+        print("Načítavam Quo Vadis...")
+
+        data.append(
+            scrape_quovadis()
+        )
+
+        print("✅ Quo Vadis OK")
+
+
+    except Exception as e:
+
+        print(
+            "❌ Quo Vadis error:",
+            e
+        )
+
+
+    # KOTOLŇA
     try:
-        data.append(scrape_kotolna())
-        print("✔ Kotolňa OK")
+
+        print("Načítavam Kotolňu...")
+
+        data.append(
+            scrape_kotolna()
+        )
+
+        print("✅ Kotolňa OK")
+
+
     except Exception as e:
-        print("❌ Kotolňa error:", e)
 
-    # -------------------------
-    # CREATE OUTPUT FOLDER
-    # -------------------------
-    os.makedirs("docs", exist_ok=True)
+        print(
+            "❌ Kotolňa error:",
+            e
+        )
 
-    # -------------------------
-    # WRITE JSON OUTPUT
-    # -------------------------
-    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print("✅ HOTOVO -> docs/menu.json")
+    os.makedirs(
+        "docs",
+        exist_ok=True
+    )
+
+
+    with open(
+        OUTPUT_PATH,
+        "w",
+        encoding="utf-8"
+    ) as f:
+
+        json.dump(
+            data,
+            f,
+            ensure_ascii=False,
+            indent=2
+        )
+
+
+    print(
+        "✅ HOTOVO -> docs/menu.json"
+    )
 
 
 if __name__ == "__main__":
+
     build()

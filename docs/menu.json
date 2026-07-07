@@ -16,28 +16,28 @@
     "soup": "0,40 l Hrachová s klobáskou a zeleninou, chlieb",
     "meals": [
       {
-        "name": "150 g Pomaly pečená bravčová krkovička, sedliacke paprikové zemiaky na cibuľke, nakladaná cvikla",
-        "price": 8.7
+        "name": "Pomaly pečená bravčová krkovička, sedliacke paprikové zemiaky na cibuľke, nakladaná cvikla",
+        "price": "8,70 €"
       },
       {
-        "name": "150 g Kuracie stripsy v korenenej panko strúhanke a kórejskej bbq marináde, jazmínová ryža, mladá cibuľka, japonská majonéza, sezam Cena pre donášku a osobný odber:",
-        "price": 8.7
+        "name": "Kuracie stripsy v korenenej panko strúhanke a kórejskej bbq marináde, jazmínová ryža, mladá cibuľka, japonská majonéza, sezam",
+        "price": "8,70 €"
       },
       {
-        "name": "620 g Pizza Smotanová delikatesa (smotana, mozzarella, šunka, slanina, niva, kukurica)",
-        "price": 8.7
+        "name": "Pizza Smotanová delikatesa (smotana, mozzarella, šunka, slanina, niva, kukurica)",
+        "price": "8,70 €"
       },
       {
-        "name": "250 g Miešané šalátové listy, bravčová panenka na grile, sušené paradajky, slaninka, parmezán, bylinkový dresing, pizza chlieb Cena pre donášku a osobný odber:",
-        "price": 8.9
+        "name": "Miešané šalátové listy, bravčová panenka na grile, sušené paradajky, slaninka, parmezán, bylinkový dresing, pizza chlieb",
+        "price": "8,90 €"
       },
       {
-        "name": "150 g Kuracie prsia na grile, syrový krém, hranolky, šalátik Cena pre donášku a osobný odber:",
-        "price": 8.7
+        "name": "Kuracie prsia na grile, syrový krém, hranolky, šalátik",
+        "price": "8,70 €"
       },
       {
-        "name": "350 g Rigatoni s bazalkovým pestom, pečenými cherry paradajkami a parmezánom",
-        "price": 8.5
+        "name": "Rigatoni s bazalkovým pestom, pečenými cherry paradajkami a parmezánom",
+        "price": "8,50 €"
       }
     ]
   }
