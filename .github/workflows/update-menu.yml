@@ -2,56 +2,35 @@ name: Update menu
 
 on:
   schedule:
-    # kazdy den 7:00 slovenskeho casu v lete
-    - cron: "0 5 * * *"
-
+    - cron: "0 6 * * *"
   workflow_dispatch:
-
-
-permissions:
-  contents: write
-
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout repo
         uses: actions/checkout@v4
-
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests beautifulsoup4
-
+          pip install requests beautifulsoup4 pdfplumber
 
       - name: Run menu builder
         run: |
           python scraper/build_menu.py
 
-
-      - name: Check generated files
-        run: |
-          git status
-
-
       - name: Commit changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-
           git add docs/menu.json
-
-          git commit -m "Automaticka aktualizacia menu" || exit 0
-
+          git commit -m "auto update menu" || exit 0
           git push
