@@ -19,13 +19,17 @@ DAY_NAMES = [
 
 
 def download_pdf():
-
     print("⬇ Sťahujem PDF...")
 
-    r = requests.get(PDF_URL, timeout=20)
+    r = requests.get(
+        PDF_URL,
+        timeout=20
+    )
+
     r.raise_for_status()
 
     return BytesIO(r.content)
+
 
 
 def load_text():
@@ -38,12 +42,13 @@ def load_text():
 
         for page in pdf.pages:
 
-            t = page.extract_text()
+            page_text = page.extract_text()
 
-            if t:
-                text += t + "\n"
+            if page_text:
+                text += page_text + "\n"
 
     return text
+
 
 
 def today_name():
@@ -51,23 +56,32 @@ def today_name():
     return DAY_NAMES[datetime.today().weekday()]
 
 
+
 def split_days(text):
 
-    pattern = r"Denné menu na (?:Pondelok|Utorok|Streda|Štvrtok|Piatok).*?(?=Denné menu na|\Z)"
+    pattern = (
+        r"Denné menu na "
+        r"(?:Pondelok|Utorok|Streda|Štvrtok|Piatok)"
+        r".*?"
+        r"(?=Denné menu na|\Z)"
+    )
 
     return [
-        m.group(0)
-        for m in re.finditer(pattern, text, flags=re.S)
+        x.group(0)
+        for x in re.finditer(
+            pattern,
+            text,
+            flags=re.S
+        )
     ]
+
 
 
 def find_today_block(text):
 
     today = today_name()
 
-    blocks = split_days(text)
-
-    for block in blocks:
+    for block in split_days(text):
 
         if f"Denné menu na {today}" in block:
             return block
@@ -75,8 +89,10 @@ def find_today_block(text):
     return None
 
 
+
 def clean_meal(text):
 
+    # odstráni MENU číslo
     text = re.sub(
         r"Menu\s+\d+:",
         "",
@@ -84,44 +100,67 @@ def clean_meal(text):
         flags=re.I
     )
 
+
+    # odstráni gramáž
     text = re.sub(
         r"^\d+\s*g\s*",
         "",
         text
     )
 
-    text = re.sub(
-        r"\([^)]*\)",
-        "",
-        text
-    )
 
+    # odstráni alergény
     text = re.sub(
         r"/[^/]+/",
         "",
         text
     )
 
-    # odstránenie ceny donášky
+
+    # odstráni SK značky
+    text = re.sub(
+        r"\([^)]*SK[^)]*\)",
+        "",
+        text
+    )
+
+
+    # odstráni cenu donášky
     text = re.sub(
         r"\*Cena pre donášku.*?\*",
         "",
         text,
-        flags=re.S
+        flags=re.I | re.S
     )
 
-    # odstránenie všetkých cien
+
+    # poistka keby hviezdičky chýbali
+    text = re.sub(
+        r"Cena pre donášku a osobný odber:.*",
+        "",
+        text,
+        flags=re.I | re.S
+    )
+
+
+    # odstráni ceny
     text = re.sub(
         r"\d+,\d+\s*€",
         "",
         text
     )
 
-    text = text.replace("*", "")
 
-    text = " ".join(text.split())
+    text = text.replace("*","")
+
+
+    text = " ".join(
+        text.split()
+    )
+
 
     return text.strip()
+
 
 
 def extract_price(text):
@@ -132,14 +171,20 @@ def extract_price(text):
     )
 
     if prices:
-        return prices[0]
+        return float(
+            prices[0]
+            .replace(",", ".")
+            .replace("€","")
+        )
 
     return None
 
 
+
 def parse_today(block):
 
-    soup = None
+    soup = ""
+
 
     meals = []
 
@@ -158,28 +203,32 @@ def parse_today(block):
         )
 
 
-    for i in range(1, 7):
+    for i in range(1,7):
 
-        pattern = rf"Menu {i}:(.*?)(?=Menu {i+1}:|Jedálny lístok|\Z)"
+        pattern = (
+            rf"Menu {i}:"
+            r"(.*?)"
+            rf"(?=Menu {i+1}:|Jedálny lístok|\Z)"
+        )
 
-        m = re.search(
+
+        result = re.search(
             pattern,
             block,
             flags=re.S
         )
 
 
-        if not m:
+        if not result:
             continue
 
 
-        raw = m.group(1)
+        raw = result.group(1)
 
 
         meals.append(
             {
-                "menu": f"MENU {i}",
-                "meal": clean_meal(raw),
+                "name": clean_meal(raw),
                 "price": extract_price(raw)
             }
         )
@@ -193,7 +242,9 @@ def scrape_kotolna():
 
     print("Načítavam Kotolňu...")
 
+
     text = load_text()
+
 
     block = find_today_block(text)
 
@@ -209,36 +260,49 @@ def scrape_kotolna():
 
 
     return {
+
         "restaurant": "Kotolňa",
+
         "soup": soup,
+
         "meals": meals
+
     }
 
 
 
 def main():
 
-    print("Načítavam Kotolňu...")
-
     data = scrape_kotolna()
 
 
     print()
+
     print("Kotolňa")
+
     print()
+
     print("POLIEVKA:")
+
     print(data["soup"])
+
+
     print()
 
 
     for meal in data["meals"]:
 
-        print(meal["menu"])
-        print(meal["meal"])
-        print("Cena:", meal["price"])
-        print("-" * 50)
+        print(meal["name"])
+
+        print(
+            "Cena:",
+            meal["price"]
+        )
+
+        print("-"*50)
 
 
 
 if __name__ == "__main__":
+
     main()

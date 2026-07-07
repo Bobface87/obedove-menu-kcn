@@ -16,34 +16,28 @@
     "soup": "0,40 l Hrachová s klobáskou a zeleninou, chlieb",
     "meals": [
       {
-        "menu": "MENU 1",
-        "meal": "150 g Pomaly pečená bravčová krkovička, sedliacke paprikové zemiaky na cibuľke, nakladaná cvikla",
-        "price": "8,70 €"
+        "name": "150 g Pomaly pečená bravčová krkovička, sedliacke paprikové zemiaky na cibuľke, nakladaná cvikla",
+        "price": 8.7
       },
       {
-        "menu": "MENU 2",
-        "meal": "150 g Kuracie stripsy v korenenej panko strúhanke a kórejskej bbq marináde, jazmínová ryža, mladá cibuľka, japonská majonéza, sezam Cena pre donášku a osobný odber:",
-        "price": "8,70 €"
+        "name": "150 g Kuracie stripsy v korenenej panko strúhanke a kórejskej bbq marináde, jazmínová ryža, mladá cibuľka, japonská majonéza, sezam Cena pre donášku a osobný odber:",
+        "price": 8.7
       },
       {
-        "menu": "MENU 3",
-        "meal": "620 g Pizza Smotanová delikatesa",
-        "price": "8,70 €"
+        "name": "620 g Pizza Smotanová delikatesa",
+        "price": 8.7
       },
       {
-        "menu": "MENU 4",
-        "meal": "250 g Miešané šalátové listy, bravčová panenka na grile, sušené paradajky, slaninka, parmezán, bylinkový dresing, pizza chlieb",
-        "price": "8,90 €"
+        "name": "250 g Miešané šalátové listy, bravčová panenka na grile, sušené paradajky, slaninka, parmezán, bylinkový dresing, pizza chlieb",
+        "price": 8.9
       },
       {
-        "menu": "MENU 5",
-        "meal": "150 g Kuracie prsia na grile, syrový krém, hranolky, šalátik Cena pre donášku a osobný odber:",
-        "price": "8,70 €"
+        "name": "150 g Kuracie prsia na grile, syrový krém, hranolky, šalátik Cena pre donášku a osobný odber:",
+        "price": 8.7
       },
       {
-        "menu": "MENU 6",
-        "meal": "350 g Rigatoni s bazalkovým pestom, pečenými cherry paradajkami a parmezánom",
-        "price": "8,50 €"
+        "name": "350 g Rigatoni s bazalkovým pestom, pečenými cherry paradajkami a parmezánom",
+        "price": 8.5
       }
     ]
   }
