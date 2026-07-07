@@ -74,6 +74,86 @@ def find_today_block(text):
 
     return None
 
+def clean_meal(text):
+
+    text = re.sub(r"Menu\s+\d+:", "", text)
+
+    text = re.sub(r"^\d+\s*g\s*", "", text)
+
+    text = re.sub(r"\([^)]*SK[^)]*\)", "", text)
+
+    text = re.sub(r"/[^/]+/", "", text)
+
+    text = re.sub(
+        r"\*Cena pre donášku.*",
+        "",
+        text,
+        flags=re.S,
+    )
+
+    text = re.sub(
+        r"\d+,\d+\s*€",
+        "",
+        text,
+    )
+
+    text = " ".join(text.split())
+
+    return text.strip()
+
+
+def extract_price(text):
+
+    prices = re.findall(r"\d+,\d+\s*€", text)
+
+    if not prices:
+        return None
+
+    return prices[0]
+
+def parse_today(block):
+
+    soup = None
+
+    meals = []
+
+    soup_match = re.search(
+        r"Polievka:(.*?)(?=Menu 1:)",
+        block,
+        flags=re.S,
+    )
+
+    if soup_match:
+
+        soup = clean_meal(soup_match.group(1))
+
+    for i in range(1, 7):
+
+        pattern = rf"Menu {i}:(.*?)(?=Menu {i+1}:|Jedálny lístok|\Z)"
+
+        m = re.search(
+            pattern,
+            block,
+            flags=re.S,
+        )
+
+        if not m:
+            continue
+
+        raw = m.group(1)
+
+        meals.append({
+
+            "menu": i,
+
+            "meal": clean_meal(raw),
+
+            "price": extract_price(raw)
+
+        })
+
+    return soup, meals
+
 
 def main():
 
@@ -84,13 +164,23 @@ def main():
     block = find_today_block(text)
 
     if not block:
-
         print("❌ Dnešný deň sa nenašiel.")
         return
 
-    print("=" * 80)
-    print(block)
-    print("=" * 80)
+    soup, meals = parse_today(block)
+
+    print()
+
+    print("POLIEVKA")
+    print(soup)
+
+    print()
+
+    for meal in meals:
+        print("MENU", meal["menu"])
+        print(meal["meal"])
+        print("Cena:", meal["price"])
+        print("-" * 50)
 
 
 if __name__ == "__main__":
