@@ -9,6 +9,7 @@ async function loadMenu() {
     data.forEach(r => {
 
       const div = document.createElement("div");
+      div.className = "card";
 
       let html = `<h2>${r.restaurant}</h2>`;
 
@@ -17,18 +18,19 @@ async function loadMenu() {
         html += `<a href="${r.menu_url}" target="_blank">Zobraziť menu</a>`;
       }
 
-      // Quo Vadis - zobrazenie obrázka menu
+      // Quo Vadis - obrázok menu s otvorením vo veľkom
       if (r.type === "image_menu") {
         html += `
-          <img
-            src="${r.image_url}"
-            alt="Denné menu"
-            style="max-width:60%;border-radius:8px;margin:10px auto;display:block;"
-          >
+          <a href="${r.image_url}" target="_blank">
+            <img
+              src="${r.image_url}"
+              alt="Denné menu"
+              class="qv-image">
+          </a>
         `;
       }
 
-      // Klasické menu (Hoffer, Kotolňa)
+      // Klasické menu
       if (r.meals && r.meals.length > 0) {
 
         html += `<p><strong>Polievka:</strong> ${r.soup}</p>`;
@@ -51,7 +53,6 @@ async function loadMenu() {
 
         html += `</ul>`;
 
-        // Dezert (iba Hoffer)
         if (r.dessert) {
 
           html += `<p><strong>🍰 Dezert:</strong> `;
@@ -68,7 +69,6 @@ async function loadMenu() {
 
           html += `</p>`;
         }
-
       }
 
       div.innerHTML = html;
