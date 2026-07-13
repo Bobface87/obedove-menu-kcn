@@ -52,7 +52,7 @@ def should_update():
 
 
     # iba medzi 08:00 - 12:59
-    if not (8 <= now.hour <= 12):
+    if not (8 <= now.hour <= 17):
 
         print(
             "⏰ Mimo času aktualizácie (08:00 - 12:59)."
