@@ -66,6 +66,34 @@ def should_update():
 
 
 
+def safe_scrape(
+    restaurant_name,
+    scraper
+):
+
+    try:
+
+        return scraper()
+
+
+    except Exception as e:
+
+        print(
+            f"❌ {restaurant_name} chyba:",
+            e
+        )
+
+
+        return {
+            "restaurant": restaurant_name,
+            "status": "error",
+            "message": "Menu sa nepodarilo načítať",
+            "soup": "",
+            "meals": []
+        }
+
+
+
 def build():
 
 
@@ -99,7 +127,10 @@ def build():
 
 
         data.append(
-            scrape_hoffer()
+            safe_scrape(
+                "Hoffer",
+                scrape_hoffer
+            )
         )
 
 
@@ -126,7 +157,10 @@ def build():
 
 
         data.append(
-            scrape_quovadis()
+            safe_scrape(
+                "Quo Vadis",
+                scrape_quovadis
+            )
         )
 
 
@@ -153,7 +187,10 @@ def build():
 
 
         data.append(
-            scrape_hospudka()
+            safe_scrape(
+                "Hospúdka u Slováka",
+                scrape_hospudka
+            )
         )
 
 
@@ -180,7 +217,10 @@ def build():
 
 
         data.append(
-            scrape_kotolna()
+            safe_scrape(
+                "Kotolňa",
+                scrape_kotolna
+            )
         )
 
 
