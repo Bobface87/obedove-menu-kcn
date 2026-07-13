@@ -5,17 +5,17 @@
     "meals": [
       {
         "menu": 1,
-        "name": "Sous-vide bravčová panenka obalená v slaninke na dubákovej omáčke, ryža",
+        "name": "Šťavnaté trhané bravčové mäso na domácich hranolkách, preliate cheddarovou omáčkou, chrumkavá cibuľka",
         "price": "8,90 €"
       },
       {
         "menu": 2,
-        "name": "Zemiaková placka plnená pikantným kuracím soté, posypaná syrom",
+        "name": "Marinované kuracie filety na grilovanej zelenine, pečené zemiaky v šupke cesnakový dressing",
         "price": "8,90 €"
       },
       {
         "menu": 3,
-        "name": "Vyprážaný karfiol, varené zemiaky s vňaťkou, tatárska omáčka",
+        "name": "Mletý holandský rezeň, zemiaková kaša, rajčinovo-cibuľový šalát",
         "price": "8,90 €"
       },
       {
@@ -25,7 +25,7 @@
       },
       {
         "menu": 5,
-        "name": "Pečené batáty plnené hovädzím ragú, zapečené syrom cheddar, miešaný listový šalát, smotanový dressing",
+        "name": "Grilovaný zubáč na cukrovom hrášku, batátové pyré, citrónové maslo",
         "price": "9,40 €"
       }
     ],
@@ -37,37 +37,37 @@
   },
   {
     "restaurant": "Quo Vadis",
-    "type": "link_menu",
-    "menu_url": "https://www.quovadisnitra.sk/tyzdenne-menu/",
+    "type": "image_menu",
+    "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/07/pondelok-5-724x1024.jpg",
     "soup": "",
     "meals": []
   },
   {
     "restaurant": "Kotolňa",
-    "soup": "0,40 l Hrachová s klobáskou a zeleninou, chlieb",
+    "soup": "0,40 l Mrkvovo - batátový krém s krutónmi",
     "meals": [
       {
-        "name": "Pomaly pečená bravčová krkovička, sedliacke paprikové zemiaky na cibuľke, nakladaná cvikla",
+        "name": "Kuracie prsia podávané na smotanovom cuketovo - pórkovom ragú, popučené maslové zemiaky",
         "price": "8,70 €"
       },
       {
-        "name": "Kuracie stripsy v korenenej panko strúhanke a kórejskej bbq marináde, jazmínová ryža, mladá cibuľka, japonská majonéza, sezam",
-        "price": "8,70 €"
-      },
-      {
-        "name": "Pizza Smotanová delikatesa (smotana, mozzarella, šunka, slanina, niva, kukurica)",
-        "price": "8,70 €"
-      },
-      {
-        "name": "Miešané šalátové listy, bravčová panenka na grile, sušené paradajky, slaninka, parmezán, bylinkový dresing, pizza chlieb",
+        "name": "Vyprážaný bravčový rezeň z panenky, dusená ryža na cibuľke s kukuricou, miešaný sladko - kyslý šalát",
         "price": "8,90 €"
       },
       {
-        "name": "Kuracie prsia na grile, syrový krém, hranolky, šalátik",
+        "name": "Pizza Sellácka (paradajková omáčka, mozzarella, saláma, klobása, slanina, cibuľa, feferóny)",
         "price": "8,70 €"
       },
       {
-        "name": "Rigatoni s bazalkovým pestom, pečenými cherry paradajkami a parmezánom",
+        "name": "Miešané šalátové listy, halloumi syr na grile, hruška, vlašské orechy, medovo - horčicový dresing, pizza palice",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Zemiakový prívarok, teľacie fašírky, karamelizovaná cibuľa, kváskový chlieb (AT)",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Vegetariánske \"kung pao\" s tofu syrom a jazmínovou ryžou Cena pre",
         "price": "8,50 €"
       }
     ]
