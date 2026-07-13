@@ -1,2 +1,8 @@
 __pycache__/
 *.pyc
+
+# Lokálny stav scraperu
+.menu_updated
+
+# Visual Studio Code
+.vscode/
