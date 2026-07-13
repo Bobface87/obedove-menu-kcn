@@ -6,6 +6,7 @@ from zoneinfo import ZoneInfo
 from hoffer import scrape_hoffer
 from quovadis import scrape_quovadis
 from kotolna import scrape_kotolna
+from hospudka import scrape_hospudka
 
 
 # koreň projektu (o úroveň vyššie ako scraper)
@@ -51,11 +52,11 @@ def should_update():
         return False
 
 
-    # iba medzi 08:00 - 12:59
+    # iba medzi 08:00 - 17:59
     if not (8 <= now.hour <= 17):
 
         print(
-            "⏰ Mimo času aktualizácie (08:00 - 12:59)."
+            "⏰ Mimo času aktualizácie (08:00 - 17:59)."
         )
 
         return False
@@ -138,6 +139,33 @@ def build():
 
         print(
             "❌ Quo Vadis error:",
+            e
+        )
+
+
+
+    # HOSPÚDKA
+    try:
+
+        print(
+            "Načítavam Hospúdku..."
+        )
+
+
+        data.append(
+            scrape_hospudka()
+        )
+
+
+        print(
+            "✅ Hospúdka OK"
+        )
+
+
+    except Exception as e:
+
+        print(
+            "❌ Hospúdka error:",
             e
         )
 

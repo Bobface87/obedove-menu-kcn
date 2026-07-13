@@ -43,31 +43,72 @@
     "meals": []
   },
   {
-    "restaurant": "Kotolňa",
-    "soup": "0,40 l Zeleninová s kuracím mäsom a haluškami",
+    "restaurant": "Hospúdka u Slováka",
+    "soup": "Paradajková s čiernou šošovicou 0,3 l",
     "meals": [
       {
-        "name": "Kuracie prsia plnené syrom a šunkou, pripravená na prírodno, omáčka z výpeku, 12 pečené zemiaky, šalátik odber:",
+        "menu": 1,
+        "name": "Pečené marinované kuracie stehno, tarhoňa na masle so zeleninou, cviklový šalát s chrenom 250 g (1,7)",
+        "price": "9,90 €"
+      },
+      {
+        "menu": 2,
+        "name": "Špagety „carbonara“ so slaninkou, chilli papričkou a strúhaným parmezánom 300 g (1,7)",
+        "price": "9,90 €"
+      },
+      {
+        "menu": 4,
+        "name": "Vyprážaný rezeň z bravčového karé, alebo kuracích pŕs, majonézový šalát 150 g (1,3,7)",
+        "price": "9,90 €"
+      },
+      {
+        "menu": 5,
+        "name": "Vyprážaný / grilovaný kurací rezeň podávaný na listovom miešanom šaláte, medovo-horčicový dresing s limetkovou šťavou 150 g (1,3,7,10)",
+        "price": "9,50 €"
+      },
+      {
+        "menu": 6,
+        "name": "Losos z grilu, podávaný na listovom miešanom šaláte, jogurtovo – medový dresing, opekaná bagetka 150 g (1,4,7)",
+        "price": "10,90 €"
+      },
+      {
+        "menu": 7,
+        "name": "Hovädzí rozbif krájaný za studena, podávaný na listovom miešanom šaláte, pikantný majonézový dresing, cesnaková bagetka 120 g (1,3,7)",
+        "price": "10,90 €"
+      },
+      {
+        "menu": 8,
+        "name": "Grilovaný syr HERMELÍN, podávaný na listovom miešanom šaláte, tzatziky dresing 120 g (7)",
+        "price": "9,50 €"
+      }
+    ]
+  },
+  {
+    "restaurant": "Kotolňa",
+    "soup": "0,40 l Zeleninová s kuracím mäsom a cestovinou",
+    "meals": [
+      {
+        "name": "Kuracie prsia zapečené s brusnicami a nivou, demi glace, pečené zemiaky, šalátik",
         "price": "8,70 €"
       },
       {
-        "name": "Fusilli s bravčovou panenkou, slaninkou, cuketou, sušenými paradajkami a parmezánom",
+        "name": "Cestoviny \"mac n´cheese\" s trhaným bravčovým stehnom",
         "price": "8,90 €"
       },
       {
-        "name": "Pizza Salámová (paradajková omáčka, mozzarella, saláma) Cena pre",
+        "name": "Pizza Salámová s kukuricou (paradajková omáčka, mozzarella, saláma, kukurica)",
         "price": "8,70 €"
       },
       {
-        "name": "Miešané šalátové listy, grilované kuracie prsia, vajíčko, uhorka, kukurica, bylinkový dresing, parmezán, pizza chlieb odber:",
+        "name": "Miešané šalátové listy, grilované kuracie prsia, slaninka, sušené paradajky, parmezán, bylinkový dresing, pizza chlieb",
         "price": "8,70 €"
       },
       {
         "name": "Vyprážaný syr, maslové zemiaky, tatárska omáčka",
-        "price": "8,50 €"
+        "price": "8,70 €"
       },
       {
-        "name": "Hovädzí burger (slaninová majonéza, polníček, mäso, čedar, slanina, kyslá uhorka, bbq), hranolky",
+        "name": "Hovädzí burger (dijon majonéza, mäso, čedar, slanina, bbq omáčka), hranolky",
         "price": "10,50 €"
       }
     ]
