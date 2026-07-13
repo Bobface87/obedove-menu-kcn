@@ -206,7 +206,6 @@ def scrape_hoffer():
         strip=True
     )
 
-
     lines = [
         clean_text(x)
         for x in text.split("\n")
@@ -352,7 +351,6 @@ def scrape_hoffer():
                     "weight": weight,
                     "delivery": delivery
                 }
-
 
 
     if not meals:
