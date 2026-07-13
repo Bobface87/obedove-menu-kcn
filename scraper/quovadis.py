@@ -1,37 +1,71 @@
 import requests
-from bs4 import BeautifulSoup
 from datetime import datetime
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin
+
 
 URL = "https://www.quovadisnitra.sk/tyzdenne-menu/"
 
 
-def scrape_quovadis():
+DAY_NAMES = [
+    "Pondelok",
+    "Utorok",
+    "Streda",
+    "Štvrtok",
+    "Piatok",
+]
 
-    print("Načítavam Quo Vadis...")
 
-    headers = {
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/137.0 Safari/537.36"
-        ),
-        "Referer": "https://www.google.com/",
-        "Accept-Language": "sk-SK,sk;q=0.9,en;q=0.8",
-    }
+HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/137 Safari/537.36"
+    ),
+    "Accept": (
+        "text/html,application/xhtml+xml,"
+        "application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"
+    ),
+    "Accept-Language": "sk-SK,sk;q=0.9,en;q=0.8",
+    "Referer": "https://www.google.com/",
+}
 
-    res = requests.get(
+
+
+def today_index():
+
+    weekday = datetime.today().weekday()
+
+    if 0 <= weekday < 5:
+        return weekday
+
+    return None
+
+
+
+def download_page():
+
+    response = requests.get(
         URL,
-        headers=headers,
-        timeout=20,
+        headers=HEADERS,
+        timeout=20
     )
 
-    print("HTTP STATUS:", res.status_code)
+    print("HTTP STATUS:", response.status_code)
 
-    res.raise_for_status()
+    response.raise_for_status()
 
-    soup = BeautifulSoup(res.text, "html.parser")
+    return BeautifulSoup(
+        response.text,
+        "html.parser"
+    )
+
+
+
+def extract_images(soup):
 
     images = []
+
 
     for img in soup.find_all("img"):
 
@@ -40,29 +74,78 @@ def scrape_quovadis():
         if not src:
             continue
 
-        if "/2026/" not in src:
-            continue
 
-        if "724x1024" not in src:
-            continue
+        full_url = urljoin(
+            URL,
+            src
+        )
 
-        images.append(src)
 
-    # odstránenie duplicít pri zachovaní poradia
-    images = list(dict.fromkeys(images))
+        if "wp-content/uploads" in full_url and (
+            ".jpg" in full_url.lower()
+            or ".jpeg" in full_url.lower()
+            or ".png" in full_url.lower()
+        ):
 
-    print("\n===== QUO VADIS OBRÁZZKY =====")
+            if full_url not in images:
+
+                images.append(full_url)
+
+
+    return images
+
+
+
+def find_today_image():
+
+    soup = download_page()
+
+
+    images = extract_images(
+        soup
+    )
+
+
+    print()
+    print("===== QUO VADIS OBRÁZKY =====")
+
     for img in images:
+
         print(img)
-    print("===== KONIEC OBRÁZKOV =====\n")
 
-    # Pondelok=0 ... Piatok=4
-    weekday = datetime.today().weekday()
+    print("===== KONIEC OBRÁZKOV =====")
+    print()
 
-    image_url = ""
 
-    if 0 <= weekday <= 4 and len(images) > weekday:
-        image_url = images[weekday]
+
+    if len(images) < 5:
+
+        raise Exception(
+            "Nenašlo sa 5 obrázkov menu"
+        )
+
+
+    index = today_index()
+
+
+    if index is None:
+
+        raise Exception(
+            "Dnes nie je pracovný deň"
+        )
+
+
+    return images[index]
+
+
+
+def scrape_quovadis():
+
+    print("Načítavam Quo Vadis...")
+
+
+    image_url = find_today_image()
+
 
     return {
         "restaurant": "Quo Vadis",

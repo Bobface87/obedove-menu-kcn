@@ -11,9 +11,59 @@
 
 <h1>🍽 Obedové menu Nitra</h1>
 
-<input id="search" placeholder="Hľadať jedlo..." />
+<div id="current-date"></div>
 
 <div id="app">Načítavam...</div>
+
+
+<script>
+
+function showCurrentDate() {
+
+	const now = new Date();
+
+	const days = [
+		"Nedeľa",
+		"Pondelok",
+		"Utorok",
+		"Streda",
+		"Štvrtok",
+		"Piatok",
+		"Sobota"
+	];
+
+
+	const months = [
+		"januára",
+		"februára",
+		"marca",
+		"apríla",
+		"mája",
+		"júna",
+		"júla",
+		"augusta",
+		"septembra",
+		"októbra",
+		"novembra",
+		"decembra"
+	];
+
+
+	const text =
+		`${days[now.getDay()]} ${now.getDate()}. ${months[now.getMonth()]} ${now.getFullYear()}`;
+
+
+	document.getElementById(
+		"current-date"
+	).innerHTML = "📅 Menu na deň: " + text;
+
+}
+
+
+showCurrentDate();
+
+</script>
+
 
 <script src="script.js"></script>
 

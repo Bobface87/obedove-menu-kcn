@@ -3,16 +3,86 @@ from bs4 import BeautifulSoup
 import re
 
 
-URL = "https://www.penzion-hoffer.sk/22411/obedove-menu"
+MAIN_URL = "https://www.penzion-hoffer.sk/18614/zamocka-koruna-u-hoffera"
+
+
+
+def find_menu_url():
+
+    print("🔎 Hľadám aktuálne Hoffer obedové menu...")
+
+
+    headers = {
+        "User-Agent": "Mozilla/5.0"
+    }
+
+
+    response = requests.get(
+        MAIN_URL,
+        headers=headers,
+        timeout=20
+    )
+
+    response.raise_for_status()
+
+
+    soup = BeautifulSoup(
+        response.text,
+        "html.parser"
+    )
+
+
+    for link in soup.find_all(
+        "a",
+        href=True
+    ):
+
+        href = link["href"]
+
+        text = link.get_text(
+            " ",
+            strip=True
+        ).lower()
+
+
+        if (
+            "obedové menu" in text
+            or "obedove menu" in text
+        ):
+
+            if href.startswith("/"):
+
+                href = (
+                    "https://www.penzion-hoffer.sk"
+                    + href
+                )
+
+
+            print(
+                "Hoffer menu URL:",
+                href
+            )
+
+
+            return href
+
+
+
+    raise Exception(
+        "Hoffer obedové menu sa nenašlo"
+    )
+
 
 
 def extract_price(text):
+
     match = re.search(
         r"(\d+,\d+)\s*€",
         text
     )
 
     if match:
+
         return match.group(1) + " €"
 
     return None
@@ -49,6 +119,7 @@ def extract_allergens(text):
     )
 
     if match:
+
         return match.group(1)
 
     return None
@@ -60,13 +131,16 @@ def scrape_hoffer():
     print("Načítavam Hoffera...")
 
 
+    url = find_menu_url()
+
+
     headers = {
         "User-Agent": "Mozilla/5.0"
     }
 
 
     response = requests.get(
-        URL,
+        url,
         headers=headers,
         timeout=20
     )
@@ -84,7 +158,9 @@ def scrape_hoffer():
 
 
     if not content:
+
         content = soup
+
 
 
     text = content.get_text(
@@ -110,10 +186,9 @@ def scrape_hoffer():
     current_menu = None
 
 
+
     for index, line in enumerate(lines):
 
-
-        # polievka
 
         if line.upper() == "POLIEVKA":
 
@@ -126,8 +201,6 @@ def scrape_hoffer():
             continue
 
 
-
-        # hlavné jedlá
 
         menu_match = re.match(
             r"(\d+)\.\)",
@@ -145,14 +218,15 @@ def scrape_hoffer():
 
 
 
-        # cena za menu
-
         if current_menu and re.match(
             r"\d+,\d+\s*€",
             line
         ):
 
-            price = extract_price(line)
+
+            price = extract_price(
+                line
+            )
 
 
             if index + 1 < len(lines):
@@ -187,8 +261,6 @@ def scrape_hoffer():
 
 
 
-        # dezert
-
         if line.upper() == "DEZERT":
 
             if index + 1 < len(lines):
@@ -196,7 +268,7 @@ def scrape_hoffer():
                 dessert_line = lines[index + 1]
 
 
-                delivery = False
+                delivery = True
 
 
                 if "NEPLATÍ PRE DONÁŠKU" in dessert_line.upper():
@@ -242,6 +314,7 @@ def scrape_hoffer():
                     "weight": weight,
                     "delivery": delivery
                 }
+
 
 
     return {

@@ -4,9 +4,10 @@ from io import BytesIO
 
 import pdfplumber
 import requests
+from bs4 import BeautifulSoup
 
 
-PDF_URL = "https://starakotolna.sk/wp-content/uploads/2026/07/Obedove-menu-Kotolna-262026.pdf"
+MAIN_URL = "https://starakotolna.sk/"
 
 
 DAY_NAMES = [
@@ -18,18 +19,89 @@ DAY_NAMES = [
 ]
 
 
-def download_pdf():
+def get_pdf_url():
 
-    print("⬇ Sťahujem PDF...")
+    print("🔎 Hľadám aktuálne PDF menu...")
 
     r = requests.get(
-        PDF_URL,
+        MAIN_URL,
         timeout=20
     )
 
     r.raise_for_status()
 
-    return BytesIO(r.content)
+
+    soup = BeautifulSoup(
+        r.text,
+        "html.parser"
+    )
+
+
+    for link in soup.find_all(
+        "a",
+        href=True
+    ):
+
+        href = link["href"]
+
+        text = link.get_text(
+            " ",
+            strip=True
+        ).lower()
+
+
+        if ".pdf" in href.lower():
+
+            if (
+                "menu" in text
+                or "obed" in text
+                or "menu" in href.lower()
+                or "obed" in href.lower()
+            ):
+
+                if href.startswith("/"):
+
+                    href = (
+                        "https://starakotolna.sk"
+                        + href
+                    )
+
+
+                return href
+
+
+    raise Exception(
+        "Aktuálne PDF obedového menu sa nenašlo"
+    )
+
+
+
+def download_pdf():
+
+    print("⬇ Sťahujem PDF...")
+
+
+    pdf_url = get_pdf_url()
+
+
+    print(
+        "PDF URL:",
+        pdf_url
+    )
+
+
+    r = requests.get(
+        pdf_url,
+        timeout=20
+    )
+
+
+    r.raise_for_status()
+
+
+    return BytesIO(
+        r.content
+    )
 
 
 
@@ -39,6 +111,7 @@ def load_text():
 
     text = ""
 
+
     with pdfplumber.open(pdf_file) as pdf:
 
         for page in pdf.pages:
@@ -46,7 +119,9 @@ def load_text():
             t = page.extract_text()
 
             if t:
+
                 text += t + "\n"
+
 
     return text
 
@@ -54,7 +129,9 @@ def load_text():
 
 def today_name():
 
-    return DAY_NAMES[datetime.today().weekday()]
+    return DAY_NAMES[
+        datetime.today().weekday()
+    ]
 
 
 
@@ -67,13 +144,17 @@ def split_days(text):
         r"(?=Denné menu na|\Z)"
     )
 
+
     return [
+
         x.group(0)
+
         for x in re.finditer(
             pattern,
             text,
             flags=re.S
         )
+
     ]
 
 
@@ -82,10 +163,13 @@ def find_today_block(text):
 
     today = today_name()
 
+
     for block in split_days(text):
 
         if f"Denné menu na {today}" in block:
+
             return block
+
 
     return None
 
@@ -98,8 +182,11 @@ def extract_price(text):
         text
     )
 
+
     if prices:
+
         return prices[0]
+
 
     return None
 
@@ -108,12 +195,14 @@ def extract_price(text):
 def remove_delivery_text(text):
 
     # odstráni všetko od "Cena pre" až po koniec donáškového textu
+
     text = re.sub(
         r"Cena\s+pre.*?(?=\d+,\d+\s*€)",
         "",
         text,
         flags=re.I | re.S
     )
+
 
     text = re.sub(
         r"donášku.*?(?=\d+,\d+\s*€)",
@@ -122,12 +211,14 @@ def remove_delivery_text(text):
         flags=re.I | re.S
     )
 
+
     text = re.sub(
         r"osobný.*?(?=\d+,\d+\s*€)",
         "",
         text,
         flags=re.I | re.S
     )
+
 
     return text
 
@@ -136,10 +227,14 @@ def remove_delivery_text(text):
 def clean_meal(text):
 
     # spojenie zalomených riadkov PDF
-    text = " ".join(text.split())
+
+    text = " ".join(
+        text.split()
+    )
 
 
     # odstráni menu číslo
+
     text = re.sub(
         r"Menu\s+\d+:",
         "",
@@ -148,10 +243,14 @@ def clean_meal(text):
 
 
     # odstráni donášku
-    text = remove_delivery_text(text)
+
+    text = remove_delivery_text(
+        text
+    )
 
 
     # odstráni alergény
+
     text = re.sub(
         r"/[^/]+/",
         "",
@@ -160,6 +259,7 @@ def clean_meal(text):
 
 
     # odstráni SK
+
     text = re.sub(
         r"\(SK\)",
         "",
@@ -169,6 +269,7 @@ def clean_meal(text):
 
 
     # odstráni gramáž
+
     text = re.sub(
         r"^\d+\s*g\s*",
         "",
@@ -177,6 +278,7 @@ def clean_meal(text):
 
 
     # odstráni ceny
+
     text = re.sub(
         r"\d+,\d+\s*€",
         "",
@@ -185,10 +287,15 @@ def clean_meal(text):
 
 
     # odstráni hviezdičky
-    text = text.replace("*", "")
+
+    text = text.replace(
+        "*",
+        ""
+    )
 
 
     # odstráni zvyšné kúsky footeru PDF
+
     text = re.sub(
         r"Jedálny lístok.*$",
         "",
@@ -197,7 +304,9 @@ def clean_meal(text):
     )
 
 
-    return " ".join(text.split()).strip()
+    return " ".join(
+        text.split()
+    ).strip()
 
 
 
@@ -213,6 +322,7 @@ def parse_today(block):
         block,
         flags=re.S
     )
+
 
     if soup_match:
 
@@ -232,6 +342,7 @@ def parse_today(block):
 
 
         if not match:
+
             continue
 
 
@@ -254,7 +365,9 @@ def scrape_kotolna():
 
     print("Načítavam Kotolňu...")
 
+
     text = load_text()
+
 
     block = find_today_block(text)
 
@@ -266,13 +379,19 @@ def scrape_kotolna():
         )
 
 
-    soup, meals = parse_today(block)
+    soup, meals = parse_today(
+        block
+    )
 
 
     return {
+
         "restaurant": "Kotolňa",
+
         "soup": soup,
+
         "meals": meals
+
     }
 
 
