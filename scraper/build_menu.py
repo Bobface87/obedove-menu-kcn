@@ -5,6 +5,7 @@ from zoneinfo import ZoneInfo
 
 from hoffer import scrape_hoffer
 from quovadis import scrape_quovadis
+from bellissimo import scrape_bellissimo
 from kotolna import scrape_kotolna
 from hospudka import scrape_hospudka
 
@@ -173,6 +174,36 @@ def build():
 
         print(
             "❌ Quo Vadis error:",
+            e
+        )
+
+
+
+    # BELLISSIMO
+    try:
+
+        print(
+            "Načítavam Bellissimo..."
+        )
+
+
+        data.append(
+            safe_scrape(
+                "Bellissimo",
+                scrape_bellissimo
+            )
+        )
+
+
+        print(
+            "✅ Bellissimo OK"
+        )
+
+
+    except Exception as e:
+
+        print(
+            "❌ Bellissimo error:",
             e
         )
 

@@ -43,6 +43,13 @@
     "meals": []
   },
   {
+    "restaurant": "Bellissimo",
+    "type": "image_menu",
+    "image_url": "https://bellissimonitra.com/wp-content/uploads/2026/07/menu-bellissimo-30-722x1024.jpg",
+    "soup": "",
+    "meals": []
+  },
+  {
     "restaurant": "Hospúdka u Slováka",
     "soup": "Karfiolový krém „Dubari“ s krutónmi 0,3 l (1,7)",
     "meals": [
