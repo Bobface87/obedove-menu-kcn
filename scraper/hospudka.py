@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+from datetime import datetime
+import re
 
 
 URL = "https://www.hospudkauslovaka.sk/"
@@ -12,7 +14,6 @@ HEADERS = {
         "Chrome/137 Safari/537.36"
     )
 }
-
 
 
 def download_page():
@@ -42,17 +43,83 @@ def clean_text(text):
 
 
 
-def extract_menu_block(parent, menu_number):
+def get_today_name():
 
-    result = None
+    days = {
+        0: "pondelok",
+        1: "utorok",
+        2: "streda",
+        3: "štvrtok",
+        4: "piatok"
+    }
 
-
-    headings = parent.find_all(
-        ["h1", "h2"]
+    return days.get(
+        datetime.today().weekday()
     )
 
 
-    for heading in headings:
+
+def normalize_day(text):
+
+    """
+    Pondelok
+    Pondelok 1
+    Pondelok 2
+
+    -> pondelok
+    """
+
+    text = clean_text(text).lower()
+
+    match = re.match(
+        r"^(pondelok|utorok|streda|štvrtok|piatok)",
+        text
+    )
+
+    if match:
+        return match.group(1)
+
+    return ""
+
+
+
+def find_today_block(soup):
+
+    today = get_today_name()
+
+    if not today:
+        return None
+
+
+    wrappers = soup.find_all(
+        class_="daily-menu-wrapper"
+    )
+
+
+    for wrapper in wrappers:
+
+        parent = wrapper.parent
+
+
+        for heading in parent.find_all("h1"):
+
+            day = normalize_day(
+                heading.get_text()
+            )
+
+
+            if day == today:
+
+                return wrapper
+
+
+    return None
+
+
+
+def extract_menu_block(parent, menu_number):
+
+    for heading in parent.find_all("h1"):
 
         title = clean_text(
             heading.get_text()
@@ -79,44 +146,33 @@ def extract_menu_block(parent, menu_number):
                 price = ""
 
 
-                price_candidates = container.find_all(
-                    ["h1", "h2"]
-                )
-
-
-                for item in price_candidates:
+                for item in container.find_all("h1"):
 
                     value = clean_text(
                         item.get_text()
                     )
 
+
                     if "€" in value:
 
                         price = value
+                        break
 
 
-                result = {
+                return {
                     "menu": menu_number,
                     "name": name,
                     "price": price
                 }
 
 
-                break
-
-
-    return result
+    return None
 
 
 
 def extract_soup(parent):
 
-    headings = parent.find_all(
-        ["h1", "h2"]
-    )
-
-
-    for heading in headings:
+    for heading in parent.find_all("h1"):
 
         if clean_text(
             heading.get_text()
@@ -144,15 +200,18 @@ def extract_soup(parent):
 
 def scrape_daily_menu(soup):
 
-    daily = soup.find(
-        class_="daily-menu-wrapper"
+    meals = []
+
+
+    daily = find_today_block(
+        soup
     )
 
 
     if not daily:
 
         raise Exception(
-            "Denné menu sa nenašlo"
+            "Aktuálny deň sa nenašiel"
         )
 
 
@@ -161,10 +220,10 @@ def scrape_daily_menu(soup):
     )
 
 
-    meals = []
+    added = set()
 
 
-    # iba Menu 1 a Menu 2
+    # iba menu 1 a 2
     for number in [1, 2]:
 
         item = extract_menu_block(
@@ -172,11 +231,31 @@ def scrape_daily_menu(soup):
             number
         )
 
+
         if item:
 
-            meals.append(
-                item
+            key = (
+                item["menu"],
+                item["name"]
             )
+
+
+            if key not in added:
+
+                meals.append(
+                    item
+                )
+
+                added.add(
+                    key
+                )
+
+
+    if not meals:
+
+        raise Exception(
+            "Denné menu sa nenašlo"
+        )
 
 
     return soup_text, meals
@@ -191,17 +270,15 @@ def scrape_permanent_menu(soup):
     title = None
 
 
-    for heading in soup.find_all(
-        ["h1", "h2"]
-    ):
+    for heading in soup.find_all("h1"):
 
         if "Stála ponuka menu" in clean_text(
             heading.get_text()
         ):
 
             title = heading
-
             break
+
 
 
     if not title:
@@ -209,7 +286,9 @@ def scrape_permanent_menu(soup):
         return result
 
 
+
     container = title.parent.parent
+
 
 
     for number in range(4, 9):
@@ -218,6 +297,7 @@ def scrape_permanent_menu(soup):
             container,
             number
         )
+
 
         if item:
 
