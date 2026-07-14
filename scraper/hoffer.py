@@ -17,13 +17,20 @@ def find_menu_url():
     }
 
 
-    response = requests.get(
-        MAIN_URL,
-        headers=headers,
-        timeout=20
-    )
+    try:
 
-    response.raise_for_status()
+        response = requests.get(
+            MAIN_URL,
+            headers=headers,
+            timeout=20
+        )
+
+        response.raise_for_status()
+
+    except requests.RequestException:
+
+        return None
+
 
 
     soup = BeautifulSoup(
@@ -68,9 +75,9 @@ def find_menu_url():
 
 
 
-    raise Exception(
-        "Hoffer obedové menu sa nenašlo"
-    )
+    return None
+
+
 
 
 
@@ -89,6 +96,8 @@ def extract_price(text):
 
 
 
+
+
 def clean_text(text):
 
     text = re.sub(
@@ -101,6 +110,8 @@ def clean_text(text):
 
 
 
+
+
 def remove_allergens(text):
 
     return re.sub(
@@ -108,6 +119,8 @@ def remove_allergens(text):
         "",
         text
     ).strip()
+
+
 
 
 
@@ -126,6 +139,8 @@ def extract_allergens(text):
 
 
 
+
+
 def scrape_hoffer():
 
     print("Načítavam Hoffera...")
@@ -134,18 +149,41 @@ def scrape_hoffer():
     url = find_menu_url()
 
 
+    if not url:
+
+        return {
+            "restaurant": "Hoffer",
+            "status": "Web je momentálne nedostupný",
+            "soup": "",
+            "meals": []
+        }
+
+
+
     headers = {
         "User-Agent": "Mozilla/5.0"
     }
 
 
-    response = requests.get(
-        url,
-        headers=headers,
-        timeout=20
-    )
+    try:
 
-    response.raise_for_status()
+        response = requests.get(
+            url,
+            headers=headers,
+            timeout=20
+        )
+
+        response.raise_for_status()
+
+    except requests.RequestException:
+
+        return {
+            "restaurant": "Hoffer",
+            "status": "Web je momentálne nedostupný",
+            "soup": "",
+            "meals": []
+        }
+
 
 
     soup = BeautifulSoup(
@@ -167,7 +205,6 @@ def scrape_hoffer():
         "\n",
         strip=True
     )
-
 
     lines = [
         clean_text(x)
@@ -314,6 +351,36 @@ def scrape_hoffer():
                     "weight": weight,
                     "delivery": delivery
                 }
+
+
+    if not meals:
+
+        page_text = text.lower()
+
+
+        if any(word in page_text for word in [
+            "sviatok",
+            "zatvorené",
+            "zatvorene",
+            "dovolenka",
+            "nevaríme",
+            "nevarime"
+        ]):
+
+            return {
+                "restaurant": "Hoffer",
+                "status": "Sviatok",
+                "soup": "",
+                "meals": []
+            }
+
+
+        return {
+            "restaurant": "Hoffer",
+            "status": "Menu sa nepodarilo načítať",
+            "soup": "",
+            "meals": []
+        }
 
 
 
