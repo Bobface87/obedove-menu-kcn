@@ -8,6 +8,7 @@ from quovadis import scrape_quovadis
 from bellissimo import scrape_bellissimo
 from kotolna import scrape_kotolna
 from hospudka import scrape_hospudka
+from smichov import scrape_smichov
 
 
 # koreň projektu (o úroveň vyššie ako scraper)
@@ -264,6 +265,36 @@ def build():
 
         print(
             "❌ Kotolňa error:",
+            e
+        )
+
+
+
+    # SMÍCHOV
+    try:
+
+        print(
+            "Načítavam Smíchov..."
+        )
+
+
+        data.append(
+            safe_scrape(
+                "Smíchov",
+                scrape_smichov
+            )
+        )
+
+
+        print(
+            "✅ Smíchov OK"
+        )
+
+
+    except Exception as e:
+
+        print(
+            "❌ Smíchov error:",
             e
         )
 
