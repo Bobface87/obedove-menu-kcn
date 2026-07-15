@@ -122,8 +122,8 @@
   },
   {
     "restaurant": "Smíchov",
-    "status": "error",
-    "message": "Menu sa nepodarilo načítať",
+    "type": "image_menu",
+    "image_url": "https://www.restauraciasmichov.sk/images/Obedove%20Menu%2013.07.%20-%2017.07.2026.jpg",
     "soup": "",
     "meals": []
   }
