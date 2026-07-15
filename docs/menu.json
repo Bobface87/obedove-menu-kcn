@@ -5,17 +5,17 @@
     "meals": [
       {
         "menu": 1,
-        "name": "170 g Černohorský bravčový rezeň posypaný údeným syrom, zemiakové pyré, kyslé uhorky",
+        "name": "170 g Vyprážaný kurací Gordon bleu (šunka, syr)hranolky, dusená ryža, miešaný šalát",
         "price": "8,90 €"
       },
       {
         "menu": 2,
-        "name": "170 g Grilované kuracie medailónky na hríbovom cappuccine, dusená ryža",
+        "name": "Sous-vide bravčová panenka na omáčke zo zeleného korenia, opekané zemiaky",
         "price": "8,90 €"
       },
       {
         "menu": 3,
-        "name": "300 g Zapekané penne \"ALA ŠÉF\" (kuracie mäso, niva, šampiňóny, kukurica) 1,3,7",
+        "name": "300 g Parmezánovo rizoto s kuracím steakom plneným sušenými rajčinami a bazalkovým pestom",
         "price": "8,90 €"
       },
       {
@@ -25,7 +25,7 @@
       },
       {
         "menu": 5,
-        "name": "170 g Konfitované kačacie prsia, kapustové pyré z červenej kapusty, domáce zemiakové lokše (1,3,)",
+        "name": "300 g Smotanové gnocchi s kúskami marinovaného lososa, pečený parmezán",
         "price": "9,40 €"
       }
     ],
@@ -38,7 +38,7 @@
   {
     "restaurant": "Quo Vadis",
     "type": "image_menu",
-    "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/07/5-1-724x1024.jpg",
+    "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/07/pondelok-2-1-724x1024.jpg",
     "soup": "",
     "meals": []
   },
@@ -51,16 +51,16 @@
   },
   {
     "restaurant": "Hospúdka u Slováka",
-    "soup": "Karfiolový krém „Dubari“ s krutónmi 0,3 l (1,7)",
+    "soup": "Hrstková s koreňovou zeleninou a klobásou, chlieb 0,3 l (1)",
     "meals": [
       {
         "menu": 1,
-        "name": "Zemiaková haruľa plnená bravčovým mäsom na spôsob tokáň, strúhaný slaný syr, sedliacka obloha 150 g (1,3,7)",
-        "price": "9,90 €"
+        "name": "Flank Steak z hovädzieho mäsa na spôsob Chilli Con Carne, dusená ryža, zemiakové chipsy 150 g",
+        "price": "11,90 €"
       },
       {
         "menu": 2,
-        "name": "Vyprážaná kuracia pečeň, zemiakové pyré, hospodská tatárska omáčka 150 g (1,3,7)",
+        "name": "Plnená paprika a mäsová guľka v paradajkovej omáčke, parená knedľa 200 g (1,3)",
         "price": "9,90 €"
       },
       {
@@ -92,31 +92,31 @@
   },
   {
     "restaurant": "Kotolňa",
-    "soup": "0,40 l Zelerový krém s pórom, údeným mäsom a zemiakmi, chlieb",
+    "soup": "0,40 l Šošovicová s klobáskou a zeleninou, chlieb",
     "meals": [
       {
-        "name": "Kurací černohorský rezeň, popučené maslové zemiaky, údený syr, miešaný sladko - kyslý šalát",
-        "price": "8,90 €"
-      },
-      {
-        "name": "Pomaly dusené hovädzie plece, kôprová omáčka, parená knedľa",
-        "price": "9,50 €"
-      },
-      {
-        "name": "Pizza (paradajková omáčka, mozzarella, šunka, šampiňóny, kuracie kúsky) SK",
+        "name": "Kuracie prsia na grile, demi glace s portským vínom, hráškové pyré, pečené zemiaky",
         "price": "8,70 €"
       },
       {
-        "name": "Miešané šalátové listy, kurací gyros, kukurica, uhorka, bylinkový dresing, pizza chlieb",
+        "name": "Špíz s bravčovou panenkou, farebnou paprikou, slaninkou a cibuľkou, sladko - pikantná omáčka, jazmínová ryža €",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Pizza Smotanová delikatesa (smotana, mozzarella, šunka, slanina, niva, kukurica)",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Kurací cézar šalát so slaninkou, vajíčkom, parmezánom a krutónmi",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Marinované kuracie krídelka, hranolky, sweet chilli (AT) a",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Vyprážaný hermelín, maslové zemiaky, tatárska omáčka, brusnice",
         "price": "8,50 €"
-      },
-      {
-        "name": "Krémové arborio rizoto so zeleným hráškom, parmezánom a bravčovou panenkou",
-        "price": "8,90 €"
-      },
-      {
-        "name": "Pšeničná tortilla s grilovaným halloumi (mango majonéza, polníček, halloumi syr, uhorka), tenké hranolky",
-        "price": "8,90 €"
       }
     ]
   },
