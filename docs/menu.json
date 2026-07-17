@@ -5,17 +5,17 @@
     "meals": [
       {
         "menu": 1,
-        "name": "170 g Černohorský bravčový rezeň posypaný údeným syrom, zemiakové pyré, kyslé uhorky",
+        "name": "170 g Vyprážaná bravčová kapsa (slaninka, údený syr), restované zemiaky s cibuľkou, baraní roh",
         "price": "8,90 €"
       },
       {
         "menu": 2,
-        "name": "170 g Grilované kuracie medailónky na hríbovom cappuccine, dusená ryža",
+        "name": "Kuracie KUNG PAO, jazmínová ryža",
         "price": "8,90 €"
       },
       {
         "menu": 3,
-        "name": "300 g Zapekané penne \"ALA ŠÉF\" (kuracie mäso, niva, šampiňóny, kukurica) 1,3,7",
+        "name": "Grilovaný oštiepok, slivková omáčka, krokety",
         "price": "8,90 €"
       },
       {
@@ -25,8 +25,8 @@
       },
       {
         "menu": 5,
-        "name": "170 g Konfitované kačacie prsia, kapustové pyré z červenej kapusty, domáce zemiakové lokše (1,3,)",
-        "price": "9,40 €"
+        "name": "Zapekané cuketové korýtko s kuracím mäsom a chedarom, baby zemiaky s maslom a pažítkou",
+        "price": "8,90 €"
       }
     ],
     "dessert": {
@@ -38,7 +38,7 @@
   {
     "restaurant": "Quo Vadis",
     "type": "image_menu",
-    "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/07/5-1-724x1024.jpg",
+    "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/07/pondelok-4-2-724x1024.jpg",
     "soup": "",
     "meals": []
   },
@@ -51,17 +51,17 @@
   },
   {
     "restaurant": "Hospúdka u Slováka",
-    "soup": "Karfiolový krém „Dubari“ s krutónmi 0,3 l (1,7)",
+    "soup": "Hovädzí vývar s rezancami 0,3 l (1,3,9)",
     "meals": [
       {
         "menu": 1,
-        "name": "Zemiaková haruľa plnená bravčovým mäsom na spôsob tokáň, strúhaný slaný syr, sedliacka obloha 150 g (1,3,7)",
-        "price": "9,90 €"
+        "name": "Vyprážaný viedenský teľací rezeň, viedenský zemiakový šalát s cibuľou 200 g (1,3,7)",
+        "price": "12,90 €"
       },
       {
         "menu": 2,
-        "name": "Vyprážaná kuracia pečeň, zemiakové pyré, hospodská tatárska omáčka 150 g (1,3,7)",
-        "price": "9,90 €"
+        "name": "Pečený losos, syrová omáčka s čerstvým špenátom, varené baby zemiaky s maslom 300 g (1,4,7)",
+        "price": "12,90 €"
       },
       {
         "menu": 4,
@@ -92,30 +92,30 @@
   },
   {
     "restaurant": "Kotolňa",
-    "soup": "0,40 l Zelerový krém s pórom, údeným mäsom a zemiakmi, chlieb",
+    "soup": "0,40 l Hokkaido - batátový krém s krutónmi",
     "meals": [
       {
-        "name": "Kurací černohorský rezeň, popučené maslové zemiaky, údený syr, miešaný sladko - kyslý šalát",
+        "name": "Bravčová panenka na grile, šípková omáčka, štuchané zemiaky s cibuľkou a slaninkou, šalátik",
         "price": "8,90 €"
       },
       {
-        "name": "Pomaly dusené hovädzie plece, kôprová omáčka, parená knedľa",
-        "price": "9,50 €"
-      },
-      {
-        "name": "Pizza (paradajková omáčka, mozzarella, šunka, šampiňóny, kuracie kúsky) SK",
+        "name": "Pečené vykostené horné kuracie stehná, dusená ryža, parená brokolica, syrová omáčka",
         "price": "8,70 €"
       },
       {
-        "name": "Miešané šalátové listy, kurací gyros, kukurica, uhorka, bylinkový dresing, pizza chlieb",
-        "price": "8,50 €"
+        "name": "Pizza Bryndzová (smotana, mozzarella, bryndza, slanina, pažítka)",
+        "price": "8,70 €"
       },
       {
-        "name": "Krémové arborio rizoto so zeleným hráškom, parmezánom a bravčovou panenkou",
-        "price": "8,90 €"
+        "name": "Miešané šalátové listy, vyprážané olomoucké syrečky, sweet chilli, pizza chlieb",
+        "price": "8,70 €"
       },
       {
-        "name": "Pšeničná tortilla s grilovaným halloumi (mango majonéza, polníček, halloumi syr, uhorka), tenké hranolky",
+        "name": "Teľací kebab tanier (teľací kebab, hranolky, čínska kapusta, biela cibuľa, uhorka, paradajka, cesnakový dresing, pikantný dresing, pizza chlieb) SK Cena pre",
+        "price": "10,50 €"
+      },
+      {
+        "name": "Fish & chips - vyprážaná treska, tenké hranolky, tatárska omáčka Zoznam možných alergénov v jedle: 1. Obilniny obsahujúce lepok . 2. Kôrovce a výrobky z nich. 3. Vajcia a výrobky z nich. 4. Ryby a výrobky z nich. 5. Arašidy a výrobky z nich. 6. Sójové zrná a výrobky z nich. 7. Mlieko a výrobky z neho. 8. Orechy, ktorými sú mandle, lieskové orechy, vlašské orechy, kešu, pekanové orechy, para orechy, pistácie, makadamové orechy a výrobky z nich. 9. Zeler a výrobky z neho. 10. Horčica a výrobky z nej. 11. Sezamové semená a výrobky z nich. 12. Oxid siričitý a siričitany v koncentráciách vyšších ako 10mgl. 13. Vlčí bôb a výrobky z neho. 14. Mäkkýše a výrobky z nich.",
         "price": "8,90 €"
       }
     ]

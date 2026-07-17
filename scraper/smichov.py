@@ -1,3 +1,5 @@
+import re
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -13,6 +15,8 @@ HEADERS = {
     )
 }
 
+
+BASE_URL = "https://www.restauraciasmichov.sk"
 
 
 def download_page():
@@ -31,6 +35,116 @@ def download_page():
     )
 
 
+def normalize_url(url):
+
+    if not url:
+        return None
+
+    url = url.strip()
+
+    if url.startswith("//"):
+        return "https:" + url
+
+    if url.startswith("/"):
+        return BASE_URL + url
+
+    return url
+
+
+def looks_like_menu(url):
+
+    if not url:
+        return False
+
+    text = url.lower()
+
+    return (
+        "obedove" in text
+        or "obedov" in text
+        or "menu" in text
+    )
+
+
+def find_image(soup):
+
+    #
+    # 1. klasické IMG
+    #
+    for img in soup.find_all("img"):
+
+        for attr in (
+            "src",
+            "data-src",
+            "data-lazy-src",
+            "data-original",
+            "srcset"
+        ):
+
+            value = img.get(attr)
+
+            if not value:
+                continue
+
+            # srcset obsahuje viac obrázkov
+            if attr == "srcset":
+                value = value.split(",")[0].strip().split(" ")[0]
+
+            if looks_like_menu(value):
+
+                return normalize_url(value)
+
+    #
+    # 2. background-image
+    #
+    html = str(soup)
+
+    match = re.search(
+        r'background-image\s*:\s*url\((.*?)\)',
+        html,
+        re.IGNORECASE
+    )
+
+    if match:
+
+        url = (
+            match.group(1)
+            .strip("'\" ")
+        )
+
+        if looks_like_menu(url):
+
+            return normalize_url(url)
+
+    #
+    # 3. posledná záchrana - regex cez celé HTML
+    #
+    match = re.search(
+        r'(/images/[^"\']*?(?:obedove|menu)[^"\']*\.(?:jpg|jpeg|png|webp))',
+        html,
+        re.IGNORECASE
+    )
+
+    if match:
+
+        return normalize_url(
+            match.group(1)
+        )
+
+    #
+    # 4. absolútna URL kdekoľvek v HTML
+    #
+    match = re.search(
+        r'(https?://[^"\']*?(?:obedove|menu)[^"\']*\.(?:jpg|jpeg|png|webp))',
+        html,
+        re.IGNORECASE
+    )
+
+    if match:
+
+        return match.group(1)
+
+    return None
+
 
 def scrape_smichov():
 
@@ -38,44 +152,17 @@ def scrape_smichov():
         "Načítavam Smíchov..."
     )
 
-
     soup = download_page()
 
-
-    image_url = None
-
-
-    for img in soup.find_all("img"):
-
-        src = img.get("src")
-
-        if not src:
-            continue
-
-
-        if "Obedove" in src or "obedove" in src:
-
-            image_url = src
-            break
-
-
+    image_url = find_image(
+        soup
+    )
 
     if not image_url:
 
         raise Exception(
             "Obrázok menu Smíchov sa nenašiel"
         )
-
-
-
-    if image_url.startswith("/"):
-
-        image_url = (
-            "https://www.restauraciasmichov.sk"
-            + image_url
-        )
-
-
 
     return {
         "restaurant": "Smíchov",
@@ -84,7 +171,6 @@ def scrape_smichov():
         "soup": "",
         "meals": []
     }
-
 
 
 if __name__ == "__main__":
