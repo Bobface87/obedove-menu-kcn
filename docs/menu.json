@@ -30,7 +30,7 @@
       }
     ],
     "dessert": {
-      "name": "Smotanová kocka s lesným ovocím",
+      "name": "Kysnutý tvarohový závin",
       "weight": "50g",
       "delivery": false
     }
@@ -92,38 +92,15 @@
   },
   {
     "restaurant": "Kotolňa",
-    "soup": "0,40 l Hokkaido - batátový krém s krutónmi",
-    "meals": [
-      {
-        "name": "Bravčová panenka na grile, šípková omáčka, štuchané zemiaky s cibuľkou a slaninkou, šalátik",
-        "price": "8,90 €"
-      },
-      {
-        "name": "Pečené vykostené horné kuracie stehná, dusená ryža, parená brokolica, syrová omáčka",
-        "price": "8,70 €"
-      },
-      {
-        "name": "Pizza Bryndzová (smotana, mozzarella, bryndza, slanina, pažítka)",
-        "price": "8,70 €"
-      },
-      {
-        "name": "Miešané šalátové listy, vyprážané olomoucké syrečky, sweet chilli, pizza chlieb",
-        "price": "8,70 €"
-      },
-      {
-        "name": "Teľací kebab tanier (teľací kebab, hranolky, čínska kapusta, biela cibuľa, uhorka, paradajka, cesnakový dresing, pikantný dresing, pizza chlieb) SK Cena pre",
-        "price": "10,50 €"
-      },
-      {
-        "name": "Fish & chips - vyprážaná treska, tenké hranolky, tatárska omáčka",
-        "price": "8,90 €"
-      }
-    ]
+    "status": "error",
+    "message": "Menu sa nepodarilo načítať",
+    "soup": "",
+    "meals": []
   },
   {
     "restaurant": "Smíchov",
-    "status": "error",
-    "message": "Menu sa nepodarilo načítať",
+    "type": "image_menu",
+    "image_url": "https://www.restauraciasmichov.sk/images/Obedove%20Menu%2013.07.%20-%2017.07.2026.jpg",
     "soup": "",
     "meals": []
   }
