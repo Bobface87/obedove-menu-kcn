@@ -304,6 +304,16 @@ def clean_meal(text):
     )
 
 
+    # odstráni zoznam alergénov (piatkový footer PDF)
+
+    text = re.sub(
+        r"Zoznam\s+možných\s+alergénov.*$",
+        "",
+        text,
+        flags=re.I | re.S
+    )
+
+
     return " ".join(
         text.split()
     ).strip()

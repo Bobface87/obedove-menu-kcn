@@ -115,15 +115,15 @@
         "price": "10,50 €"
       },
       {
-        "name": "Fish & chips - vyprážaná treska, tenké hranolky, tatárska omáčka Zoznam možných alergénov v jedle: 1. Obilniny obsahujúce lepok . 2. Kôrovce a výrobky z nich. 3. Vajcia a výrobky z nich. 4. Ryby a výrobky z nich. 5. Arašidy a výrobky z nich. 6. Sójové zrná a výrobky z nich. 7. Mlieko a výrobky z neho. 8. Orechy, ktorými sú mandle, lieskové orechy, vlašské orechy, kešu, pekanové orechy, para orechy, pistácie, makadamové orechy a výrobky z nich. 9. Zeler a výrobky z neho. 10. Horčica a výrobky z nej. 11. Sezamové semená a výrobky z nich. 12. Oxid siričitý a siričitany v koncentráciách vyšších ako 10mgl. 13. Vlčí bôb a výrobky z neho. 14. Mäkkýše a výrobky z nich.",
+        "name": "Fish & chips - vyprážaná treska, tenké hranolky, tatárska omáčka",
         "price": "8,90 €"
       }
     ]
   },
   {
     "restaurant": "Smíchov",
-    "status": "error",
-    "message": "Menu sa nepodarilo načítať",
+    "type": "image_menu",
+    "image_url": "https://www.restauraciasmichov.sk/images/Obedove%20Menu%2013.07.%20-%2017.07.2026.jpg",
     "soup": "",
     "meals": []
   }
