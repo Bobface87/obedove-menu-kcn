@@ -1,36 +1,36 @@
 [
   {
     "restaurant": "Hoffer",
-    "soup": "0,33l Slepačí vývar s mäsom, zeleninou a niťovkami",
+    "soup": "0,33l Teľací vývar so zeleninou a fritovanými rezancami",
     "meals": [
       {
         "menu": 1,
-        "name": "170 g Vyprážaná bravčová kapsa (slaninka, údený syr), restované zemiaky s cibuľkou, baraní roh",
+        "name": "Grilovaná kuracia kapsa (špenát, mozzarella) na prírodnej omáčke, dusená ryža",
         "price": "8,90 €"
       },
       {
         "menu": 2,
-        "name": "Kuracie KUNG PAO, jazmínová ryža",
+        "name": "Plnená paprika v rajčinovej omáčke, varená knedľa",
         "price": "8,90 €"
       },
       {
         "menu": 3,
-        "name": "Grilovaný oštiepok, slivková omáčka, krokety",
+        "name": "Vyprážaný syr so šunkou, hranolky, tatárska omáčka",
         "price": "8,90 €"
       },
       {
         "menu": 4,
-        "name": "600 g Pizza podľa vlastného výberu (veľkosť classic), tatárska omáčka, kečup",
+        "name": "Pizza podľa vlastného výberu (veľkosť classic), tatárska omáčka, kečup",
         "price": "8,90 €"
       },
       {
         "menu": 5,
-        "name": "Zapekané cuketové korýtko s kuracím mäsom a chedarom, baby zemiaky s maslom a pažítkou",
+        "name": "Hráškové rizoto s grilovanými kuracími medailónkami a parmezánom",
         "price": "8,90 €"
       }
     ],
     "dessert": {
-      "name": "Kysnutý tvarohový závin",
+      "name": "Jahodové tiramisu",
       "weight": "50g",
       "delivery": false
     }
@@ -38,30 +38,30 @@
   {
     "restaurant": "Quo Vadis",
     "type": "image_menu",
-    "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/07/pondelok-4-2-724x1024.jpg",
+    "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/07/pondelok-9-724x1024.jpg",
     "soup": "",
     "meals": []
   },
   {
     "restaurant": "Bellissimo",
     "type": "image_menu",
-    "image_url": "https://bellissimonitra.com/wp-content/uploads/2026/07/menu-bellissimo-30-722x1024.jpg",
+    "image_url": "https://bellissimonitra.com/wp-content/uploads/2026/07/menu-bellissimo-31-722x1024.jpg",
     "soup": "",
     "meals": []
   },
   {
     "restaurant": "Hospúdka u Slováka",
-    "soup": "Hovädzí vývar s rezancami 0,3 l (1,3,9)",
+    "soup": "Zelerový krém s chipsom 0,3 l (7,9)",
     "meals": [
       {
         "menu": 1,
-        "name": "Vyprážaný viedenský teľací rezeň, viedenský zemiakový šalát s cibuľou 200 g (1,3,7)",
-        "price": "12,90 €"
+        "name": "Cordon Bleu z kuracích pŕs, plnený šunkou a syrom, zemiakové pyré, uhorkový šalát 150 g (1,3,7)",
+        "price": "9,90 €"
       },
       {
         "menu": 2,
-        "name": "Pečený losos, syrová omáčka s čerstvým špenátom, varené baby zemiaky s maslom 300 g (1,4,7)",
-        "price": "12,90 €"
+        "name": "Cestovinový šalát s čerstvou zeleninou a jogurtom, grilované kuracie stripsy 250 g (1,7)",
+        "price": "9,90 €"
       },
       {
         "menu": 4,
@@ -92,15 +92,38 @@
   },
   {
     "restaurant": "Kotolňa",
-    "status": "error",
-    "message": "Menu sa nepodarilo načítať",
-    "soup": "",
-    "meals": []
+    "soup": "0,40 l Hŕstková so zeleninou a klobáskou, chlieb",
+    "meals": [
+      {
+        "name": "Kuracie \"chilli con carne\", jazmínová ryža, kyslá smotana, limetka",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Fusilli v syrovom kréme s kuracími kúskami, slaninkou, kukuricou a nivou",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Pizza Ananásová (paradajková omáčka, mozzarella, šunka, ananás)",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Miešané šalátové listy, bravčová panenka na grile, čierne olivy, sušené paradajky, bylinkový dresing, parmezán, pizza chlieb",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Vyprážaný syr, maslové zemiaky, tatárska omáčka",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Hovädzí burger (dijon majo, mäso, čedar, slanina, karamelizovaná cibuľka, kyslá uhorka, slaninová majonéza), hranolky",
+        "price": "10,50 €"
+      }
+    ]
   },
   {
     "restaurant": "Smíchov",
     "type": "image_menu",
-    "image_url": "https://www.restauraciasmichov.sk/images/Obedove%20Menu%2013.07.%20-%2017.07.2026.jpg",
+    "image_url": "https://www.restauraciasmichov.sk/images/Obedove%20Menu%2020.07.%20-%2024.07.2026.jpg",
     "soup": "",
     "meals": []
   }
