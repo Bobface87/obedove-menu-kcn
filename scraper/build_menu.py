@@ -6,6 +6,7 @@ from zoneinfo import ZoneInfo
 from hoffer import scrape_hoffer
 from quovadis import scrape_quovadis
 from bellissimo import scrape_bellissimo
+from buganka import scrape_buganka
 from kotolna import scrape_kotolna
 from hospudka import scrape_hospudka
 from smichov import scrape_smichov
@@ -205,6 +206,36 @@ def build():
 
         print(
             "❌ Bellissimo error:",
+            e
+        )
+
+
+
+    # BUGANKA
+    try:
+
+        print(
+            "Načítavam Buganku..."
+        )
+
+
+        data.append(
+            safe_scrape(
+                "Buganka",
+                scrape_buganka
+            )
+        )
+
+
+        print(
+            "✅ Buganka OK"
+        )
+
+
+    except Exception as e:
+
+        print(
+            "❌ Buganka error:",
             e
         )
 
