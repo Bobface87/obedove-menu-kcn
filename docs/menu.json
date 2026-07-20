@@ -50,6 +50,13 @@
     "meals": []
   },
   {
+    "restaurant": "Buganka",
+    "type": "image_menu",
+    "image_url": "https://static.wixstatic.com/media/8822c6_000369dcbdbd46c3af009af5072582d8~mv2.jpg/v1/fill/w_713,h_1007,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Buganka%2020_7_%20-%2024_7_26_JPG.jpg",
+    "soup": "",
+    "meals": []
+  },
+  {
     "restaurant": "Hospúdka u Slováka",
     "soup": "Zelerový krém s chipsom 0,3 l (7,9)",
     "meals": [
