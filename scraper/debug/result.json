@@ -1,0 +1,25 @@
+{
+  "restaurant": "Sakura",
+  "soups": [
+    {
+      "name": "Rybacia polievka 0,2l",
+      "price": "1,90 €"
+    }
+  ],
+  "daily_menu": [
+    {
+      "name": "5. UDON REZANCE a) s kuracím mäsom () b) s krevetami () c) s tofu () Restované japonské rezance, zelenina, čínska kapusta, vajíčko, chrumkavá cibuľka. CHẢ LỐT 6. BÚN LÁ Mleté hovädzie () a bravčové mäso () obalené betelovým listom, zelenina, koriander, arašidy, ryžové rezance, šalátová rybacia omáčka. Podávané za studena. 7. CHICKEN GRILL Grilované kuracie prsia () na špízoch, restovaná zelenina, sakura omáčkou. Príloha: ryža.",
+      "price": null
+    },
+    {
+      "name": "8. LOSOS TERIYAKI Plátky lososa (), restovaná zelenina, sezam, teriyaki omáčka. Príloha: ryža. pripravenú našu týždennú ponuku, ktorú si viete C. CHRUMKAVÉ KURA Kuracie stehno nakrájané na plátky, pripravené na chrumkavý spôsob, zelenina, teriyaki omáčka. Príloha: ryža D. OBENTO SUSHI futomaki (avokádo, uhorka, losos) maki sake-avocado (losos-avokádo) vege rolky, šalát s dresingom",
+      "price": "9,10 €"
+    }
+  ],
+  "weekly_menu": [
+    {
+      "name": "A. KURACIE KUNG PAO Kuracie mäso () na šťave, zelenina, ázijské a shitake huby, bambus, ázijské omáčky, arašidy. Príloha: ryža B. KURACIE KÚSKY Kuracie prsia () obalené v jemnom cestíčku, Teriyaki omáčka. Príloha: ryža OBEDOVÉ MENU UTOROK S1 10:30 -15:00 Ostrokyslá polievka 0,2l Hustá polievka s kuracím mäsom, vajíčkom, zeleninou a jarnou cibuľkou.",
+      "price": "7,05 €"
+    }
+  ]
+}
