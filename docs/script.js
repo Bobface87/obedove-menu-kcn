@@ -13,12 +13,7 @@ async function loadMenu() {
 
       let html = `<h2>${r.restaurant}</h2>`;
 
-      // Reštaurácie iba s odkazom
-      if (r.type === "link_menu") {
-        html += `<a href="${r.menu_url}" target="_blank">Zobraziť menu</a>`;
-      }
-
-      // Quo Vadis - obrázok menu s otvorením vo veľkom
+      // Obrázkové menu
       if (r.type === "image_menu") {
         html += `
           <a href="${r.image_url}" target="_blank">
@@ -33,7 +28,9 @@ async function loadMenu() {
       // Klasické menu
       if (r.meals && r.meals.length > 0) {
 
-        html += `<p><strong>Polievka:</strong> ${r.soup}</p>`;
+        if (r.soup) {
+          html += `<p><strong>Polievka:</strong> ${r.soup}</p>`;
+        }
 
         html += `<ul>`;
 
@@ -45,31 +42,86 @@ async function loadMenu() {
             html += `<strong>${m.menu}.</strong> `;
           }
 
-          html += `${m.name} - ${m.price}`;
+          html += `${m.name}`;
+
+          if (m.price) {
+            html += ` - ${m.price}`;
+          }
 
           html += `</li>`;
-
         });
 
         html += `</ul>`;
-
-        if (r.dessert) {
-
-          html += `<p><strong>🍰 Dezert:</strong> `;
-
-          html += r.dessert.name;
-
-          if (r.dessert.weight) {
-            html += ` (${r.dessert.weight})`;
-          }
-
-          if (r.dessert.delivery === false) {
-            html += ` <em>– neplatí pre donášku</em>`;
-          }
-
-          html += `</p>`;
-        }
       }
+
+
+      // Sakura menu
+      if (r.restaurant === "Sakura") {
+
+        if (r.soups && r.soups.length > 0) {
+
+          html += `<p><strong>🍲 Polievky:</strong></p><ul>`;
+
+          r.soups.forEach(s => {
+            html += `<li>${s.name} - ${s.price}</li>`;
+          });
+
+          html += `</ul>`;
+        }
+
+
+        const sections = [
+          ["🍣 Sushi", r.sushi],
+          ["🍜 Denné menu", r.daily_menu],
+          ["📅 Týždenné menu", r.weekly_menu]
+        ];
+
+
+        sections.forEach(([title, items]) => {
+
+          if (items && items.length > 0) {
+
+            html += `<p><strong>${title}:</strong></p>`;
+            html += `<ul>`;
+
+            items.forEach(m => {
+
+              html += `<li>`;
+
+              if (m.number) {
+                html += `<strong>${m.number}.</strong> `;
+              }
+
+              html += m.name;
+
+              if (m.price) {
+                html += ` - ${m.price}`;
+              }
+
+              html += `</li>`;
+            });
+
+            html += `</ul>`;
+          }
+        });
+      }
+
+
+      if (r.dessert) {
+
+        html += `<p><strong>🍰 Dezert:</strong> ${r.dessert.name}`;
+
+        if (r.dessert.weight) {
+          html += ` (${r.dessert.weight})`;
+        }
+
+        if (r.dessert.delivery === false) {
+          html += ` <em>– neplatí pre donášku</em>`;
+        }
+
+        html += `</p>`;
+      }
+
 
       div.innerHTML = html;
       app.appendChild(div);
