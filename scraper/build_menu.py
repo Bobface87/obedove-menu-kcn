@@ -10,6 +10,7 @@ from buganka import scrape_buganka
 from kotolna import scrape_kotolna
 from hospudka import scrape_hospudka
 from smichov import scrape_smichov
+from sakura import scrape_sakura
 
 
 # koreň projektu (o úroveň vyššie ako scraper)
@@ -296,6 +297,36 @@ def build():
 
         print(
             "❌ Kotolňa error:",
+            e
+        )
+
+
+
+    # SAKURA
+    try:
+
+        print(
+            "Načítavam Sakuru..."
+        )
+
+
+        data.append(
+            safe_scrape(
+                "Sakura",
+                scrape_sakura
+            )
+        )
+
+
+        print(
+            "✅ Sakura OK"
+        )
+
+
+    except Exception as e:
+
+        print(
+            "❌ Sakura error:",
             e
         )
 

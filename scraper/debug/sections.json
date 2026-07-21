@@ -1,0 +1,268 @@
+{
+  "soups": [
+    {
+      "y": 55.82796039289315,
+      "text": "POLIEVKY"
+    },
+    {
+      "y": 92.38882718069453,
+      "text": "Rybacia polievka 0,2l 1,90 € / 4 /"
+    },
+    {
+      "y": 105.51802902657221,
+      "text": "Rybí vývar s rajčinami a jarnou cibuľkou."
+    }
+  ],
+  "daily": [
+    {
+      "y": 165.8412203928931,
+      "text": "SUSHI"
+    },
+    {
+      "y": 197.8891201806946,
+      "text": "10,10 € 1. RAINBOW MENU 14ks /4,11/"
+    },
+    {
+      "y": 212.6112317743258,
+      "text": "8ks uramaki (losos, avokádo, špargľa, kaviár)"
+    },
+    {
+      "y": 230.61893061304215,
+      "text": "3ks maki sake (losos), 3ks maki maguro (tuniak)"
+    },
+    {
+      "y": 270.2853701806946,
+      "text": "9,10 € 2. SPICY TATAR 14ks /2,3,4,6,10/"
+    },
+    {
+      "y": 284.6420391343257,
+      "text": "8ks uramaki (pikantný lososový tatarák, krabia"
+    },
+    {
+      "y": 302.6497409743258,
+      "text": "tyčinka, avokádo)"
+    },
+    {
+      "y": 320.657440563363,
+      "text": "3ks maki sake (losos), 3ks maki ebi (kreveta)"
+    },
+    {
+      "y": 361.0007701806946,
+      "text": "8,05 € 3. CRISPY SUSHI 14ks /1,4,11/"
+    },
+    {
+      "y": 374.68054608336314,
+      "text": "8ks uramaki (losos, avokádo, chrumkavá cibuľka)"
+    },
+    {
+      "y": 392.6882479233631,
+      "text": "3ks maki sake (losos), 3ks maki avocado"
+    },
+    {
+      "y": 410.6959497633631,
+      "text": "(avokádo)"
+    },
+    {
+      "y": 451.4894701806946,
+      "text": "7,00 € 4. VEGGIE SET 14ks /1,3,7,11/"
+    },
+    {
+      "y": 464.7190552833631,
+      "text": "8ks crunchy futomaki (avokádo, mrkva, uhorka,"
+    },
+    {
+      "y": 482.72675712336314,
+      "text": "syr Philadelphia, sezam)"
+    },
+    {
+      "y": 500.7344589633631,
+      "text": "6ks futomaki (avokádo, mrkva, uhorka, syr"
+    },
+    {
+      "y": 518.742160803363,
+      "text": "Philadelphia, sezam)"
+    },
+    {
+      "y": 165.8412203928931,
+      "text": "TEPLÉ JEDLÁ"
+    },
+    {
+      "y": 197.8891201806946,
+      "text": "5. UDON REZANCE 200g /1,2,3,6/"
+    },
+    {
+      "y": 212.6112370265722,
+      "text": "7,40 € a) s kuracím mäsom (100g)"
+    },
+    {
+      "y": 230.6189388665722,
+      "text": "8,45 € b) s krevetami (90g)"
+    },
+    {
+      "y": 249.2596753366363,
+      "text": "c) s tofu (100g) 7,70 €"
+    },
+    {
+      "y": 266.63434254657216,
+      "text": "Restované japonské rezance, zelenina, čínska"
+    },
+    {
+      "y": 284.6420391343257,
+      "text": "kapusta, vajíčko, chrumkavá cibuľka."
+    },
+    {
+      "y": 324.23969018069465,
+      "text": "CHẢ LỐT 6. BÚN LÁ 200g 8,00 € / 1 ,3 ,4 ,5 , 1 1 /"
+    },
+    {
+      "y": 338.6651424033631,
+      "text": "Mleté hovädzie (80g) a bravčové mäso (70g)"
+    },
+    {
+      "y": 356.67284424336316,
+      "text": "obalené betelovým listom, zelenina,"
+    },
+    {
+      "y": 374.68054608336314,
+      "text": "koriander, arašidy, ryžové rezance, šalátová"
+    },
+    {
+      "y": 392.6882479233631,
+      "text": "rybacia omáčka. Podávané za studena."
+    },
+    {
+      "y": 432.0525501806946,
+      "text": "7,00 € 7. CHICKEN GRILL 200g /1,3,6,10,11/"
+    },
+    {
+      "y": 446.7113534433631,
+      "text": "Grilované kuracie prsia (120g) na špízoch,"
+    },
+    {
+      "y": 464.7190552833631,
+      "text": "restovaná zelenina, sakura omáčkou."
+    },
+    {
+      "y": 482.72675712336314,
+      "text": "Príloha: ryža."
+    },
+    {
+      "y": 522.1963801806946,
+      "text": "8. LOSOS TERIYAKI 200g 9,10 € / 4 /"
+    },
+    {
+      "y": 536.7498626433631,
+      "text": "Plátky lososa (100g), restovaná zelenina,"
+    },
+    {
+      "y": 554.7575644833631,
+      "text": "sezam, teriyaki omáčka. Príloha: ryža."
+    },
+    {
+      "y": 624.7077547918716,
+      "text": "pripravenú našu týždennú ponuku, ktorú si viete"
+    },
+    {
+      "y": 671.1374801806946,
+      "text": "C. CHRUMKAVÉ KURA 250g 7,05 € / 1 ,3 ,6 ,7 , 1 1 /"
+    },
+    {
+      "y": 686.3614070265722,
+      "text": "Kuracie stehno nakrájané na plátky, pripravené"
+    },
+    {
+      "y": 704.3691088665722,
+      "text": "na chrumkavý spôsob, zelenina, teriyaki"
+    },
+    {
+      "y": 722.3768107065722,
+      "text": "omáčka. Príloha: ryža"
+    },
+    {
+      "y": 763.0922001806946,
+      "text": "D. OBENTO SUSHI 18ks 10,45 € / 1 ,3 , 4 , 6 , 1 0 , 1 1 /"
+    },
+    {
+      "y": 776.3999109743258,
+      "text": "6ks futomaki (avokádo, uhorka, losos)"
+    },
+    {
+      "y": 794.4076105633632,
+      "text": "6ks maki sake-avocado (losos-avokádo)"
+    },
+    {
+      "y": 812.4153124033631,
+      "text": "6ks vege rolky, šalát s dresingom"
+    }
+  ],
+  "weekly": [
+    {
+      "y": 594.6912393928932,
+      "text": "TÝŽDENNÁ PONUKA"
+    },
+    {
+      "y": 624.7077547918716,
+      "text": "Nevybrali ste si z našej dennej ponuky? Máme pre Vás"
+    },
+    {
+      "y": 641.2148166126418,
+      "text": "vychutnať PON - PIA v čase obedového menu."
+    },
+    {
+      "y": 670.9027401806947,
+      "text": "A. KURACIE KUNG PAO 250g 7,05 € / 5 , 6 /"
+    },
+    {
+      "y": 686.3614070265722,
+      "text": "Kuracie mäso (120g) na šťave, zelenina, ázijské"
+    },
+    {
+      "y": 704.3691088665722,
+      "text": "a shitake huby, bambus, ázijské omáčky,"
+    },
+    {
+      "y": 722.3768107065722,
+      "text": "arašidy. Príloha: ryža"
+    },
+    {
+      "y": 762.1667801806946,
+      "text": "7,05 € B. KURACIE KÚSKY 250g / 1 , 3 , 6 , 7 , 1 1 /"
+    },
+    {
+      "y": 776.3999109743258,
+      "text": "Kuracie prsia (120g) obalené v jemnom cestíčku,"
+    },
+    {
+      "y": 794.4076105633632,
+      "text": "Teriyaki omáčka. Príloha: ryža"
+    },
+    {
+      "y": 8.009430636636353,
+      "text": "OBEDOVÉ MENU"
+    },
+    {
+      "y": 24.61655464899036,
+      "text": "UTOROK"
+    },
+    {
+      "y": 40.230456664391795,
+      "text": "S1"
+    },
+    {
+      "y": 46.92414933663633,
+      "text": "10:30 -15:00"
+    },
+    {
+      "y": 90.70963618069459,
+      "text": "Ostrokyslá polievka 0,2l 1,95 € / 3 , 6 /"
+    },
+    {
+      "y": 105.34510102657214,
+      "text": "Hustá polievka s kuracím mäsom, vajíčkom,"
+    },
+    {
+      "y": 123.35280286657212,
+      "text": "zeleninou a jarnou cibuľkou."
+    }
+  ]
+}
