@@ -123,21 +123,6 @@
       },
       {
         "name": "Špargľové rizoto s cuketou a parmezánom odber:",
-      },
-      {
-        "name": "Kuracia quesadilla s kukuricou, čedarom a bbq omáčkou, tenké hranolky",
-        "price": "8,90 €"
-      },
-      {
-        "name": "Pizza Salámová s baraními rohmi (paradajková omáčka, mozzarella, saláma, baranie rohy)",
-        "price": "8,70 €"
-      },
-      {
-        "name": "Miešané šalátové listy, kuracie prsia na grile, cherry paradajky, bylinkový dresing, parmezán, pizza chlieb",
-        "price": "8,70 €"
-      },
-      {
-        "name": "Vyprážaný kurací rezeň, zemiakové pyré, paradajkovo - cibuľový šalát",
         "price": "8,70 €"
       }
     ]
@@ -250,8 +235,6 @@
         "weight": "18ks",
         "price": "10,45 €",
         "description": "OBENTO SUSHI 18ks 10,45 € 6ks futomaki (avokádo, uhorka, losos) 6ks maki sake-avocado (losos-avokádo) 6ks vege rolky, šalát s dresingom"
-        "name": "Špargľové rizoto s cuketou a parmezánom odber:",
-        "price": "8,70 €"
       }
     ]
   },

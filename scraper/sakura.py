@@ -235,7 +235,7 @@ def get_weight(t):
 # -----------------------------
 
 
-def parse_soups(left + right):
+def parse_soups(lines):
 
     text=" ".join(lines)
 
