@@ -5,17 +5,17 @@
     "meals": [
       {
         "menu": 1,
-        "name": "Vyprážaný plnený bravčový rezeň (šunka, niva, kápia), šťuchané zemiaky, rajčinovo-cibuľový šalát",
+        "name": "Sous-vide bravčová panenka obalená v slanine na prírodnej hríbovej omáčke, pečené zemiaky v šupke",
         "price": "8,90 €"
       },
       {
         "menu": 2,
-        "name": "Tortilla plnená grilovaným kuracím mäsom, zeleninou a cheddarom, hranolky, slaninový dressing",
+        "name": "Pečené kuracie stehno so žemľovou plnkou, dusená ryža, kompót",
         "price": "8,90 €"
       },
       {
         "menu": 3,
-        "name": "Pečené bravčové koleno na čiernom pive, nakladaná zelenina, chren, horčica, chlieb",
+        "name": "Penne Quatro formaggi so šunkovými rezancami",
         "price": "8,90 €"
       },
       {
@@ -25,7 +25,7 @@
       },
       {
         "menu": 5,
-        "name": "Grilovaný losos s kôprovou omáčkou, varené baby zemiaky s maslom",
+        "name": "Konfitované kačacie prsia na hruškovom chutney, krokety",
         "price": "9,40 €"
       }
     ],
@@ -38,7 +38,7 @@
   {
     "restaurant": "Quo Vadis",
     "type": "image_menu",
-    "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/07/5-3-724x1024.jpg",
+    "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/07/pondelok-2-3-724x1024.jpg",
     "soup": "",
     "meals": []
   },
@@ -58,16 +58,16 @@
   },
   {
     "restaurant": "Hospúdka u Slováka",
-    "soup": "Česká bramboračka s hubami 0,3 l (1)",
+    "soup": "Kyslá šošovicová so zemiakmi 0,3 l (1,7)",
     "meals": [
       {
         "menu": 1,
-        "name": "Segedínsky guláš, parená knedľa 150 g (1,7)",
-        "price": "9,90 €"
+        "name": "Grilovaná bravčová panenka, omáčka z lesného ovocia, zemiakové rösti 150 g (1)",
+        "price": "11,90 €"
       },
       {
         "menu": 2,
-        "name": "Fritovaný syr „Encián Camembert“, varené zemiaky, brusnice 120 g (7)",
+        "name": "Cuketa zapečená s mletým mäsom a syrom cheddar, holandská omáčka, varené baby zemiaky s maslom 200 g (1,3,7)",
         "price": "9,90 €"
       },
       {
@@ -99,31 +99,31 @@
   },
   {
     "restaurant": "Kotolňa",
-    "soup": "0,40 l Brokolicový krém so špenátom a krutónmi",
+    "soup": "0,40 l Zeleninová s cestovinou",
     "meals": [
       {
-        "name": "Dusená hovädzia roštenka na slaninke a hubách, maslová tarhoňa, kyslá uhorka",
-        "price": "9,50 €"
-      },
-      {
-        "name": "Kuracia quesadilla s kukuricou, čedarom a bbq omáčkou, tenké hranolky",
+        "name": "Pomaly pečené vykostené morčacie stehno, dusená ryža, žemľová plnka, kompót",
         "price": "8,90 €"
       },
       {
-        "name": "Pizza Salámová s baraními rohmi (paradajková omáčka, mozzarella, saláma, baranie rohy)",
+        "name": "Chrumkavé kuracie prsia preliate teryiaki omáčkou, restovaná zelenina, jazmínová ryža, sezam",
         "price": "8,70 €"
       },
       {
-        "name": "Miešané šalátové listy, kuracie prsia na grile, cherry paradajky, bylinkový dresing, parmezán, pizza chlieb",
+        "name": "Pizza Klasika (paradajková omáčka, mozzarella, šunka, kukurica, šampiňóny)",
         "price": "8,70 €"
       },
       {
-        "name": "Vyprážaný kurací rezeň, zemiakové pyré, paradajkovo - cibuľový šalát",
-        "price": "8,70 €"
+        "name": "Miešané šalátové listy, stripsy z bravčovej panenky, sweet chilli omáčka, pizza chlieb",
+        "price": "8,90 €"
       },
       {
-        "name": "Špargľové rizoto s cuketou a parmezánom odber:",
-        "price": "8,70 €"
+        "name": "Naložené hranolky s trhaným hovädzím stehnom, čedarovou omáčkou, rozkrájanou kyslou uhorkou a chrumkavou cibuľkou",
+        "price": "9,50 €"
+      },
+      {
+        "name": "Kapustové strapačky s opečenou slaninkou",
+        "price": "8,50 €"
       }
     ]
   },
@@ -138,27 +138,27 @@
     "sushi": [
       {
         "number": "1",
-        "name": "RAINBOW MENU 14ks 8ks uramaki (losos, avokádo, špargľa, kaviár) 3ks maki sake (losos), 3ks maki maguro (tuniak)",
-        "price": "9,10 €",
-        "description": "1. RAINBOW MENU 14ks 8ks uramaki (losos, avokádo, špargľa, kaviár) 3ks maki sake (losos), 3ks maki maguro (tuniak) 9,10 €"
+        "name": "ROYAL MENU 14ks",
+        "price": "10,10 €",
+        "description": "1. ROYAL MENU 14ks 10,10 € 8ks uramaki (losos, avokádo, krabia tyčinka, tuniak) 3ks maki sake (losos), 3ks maki maguro (tuniak)"
       },
       {
         "number": "2",
-        "name": "SPICY TATAR 14ks 8ks uramaki (pikantný lososový tatarák, krabia tyčinka, avokádo) 3ks maki sake (losos), 3ks maki ebi (kreveta)",
-        "price": "8,05 €",
-        "description": "2. SPICY TATAR 14ks 8ks uramaki (pikantný lososový tatarák, krabia tyčinka, avokádo) 3ks maki sake (losos), 3ks maki ebi (kreveta) 8,05 €"
+        "name": "SHRIMP MENU 14ks",
+        "price": "9,10 €",
+        "description": "2. SHRIMP MENU 14ks 9,10 € 8ks uramaki (avokádo, krevety tempura, uhorka, flambovaný losos, mango omáčka, majonéza, Sakura omáčka) 6ks maki avokádo 8,05 €"
       },
       {
         "number": "3",
-        "name": "CRISPY SUSHI 14ks 8ks uramaki (losos, avokádo, chrumkavá cibuľka) 3ks maki sake (losos), 3ks maki avocado (avokádo)",
+        "name": "MAKI MAKI MENU 18ks 6ks maki sake (losos) 3ks maki managatsuo (maslová ryba), 3ks maguro (tuniak), 6ks maki avocado (avokádo)",
         "price": "7,00 €",
-        "description": "3. CRISPY SUSHI 14ks 8ks uramaki (losos, avokádo, chrumkavá cibuľka) 3ks maki sake (losos), 3ks maki avocado (avokádo) 7,00 €"
+        "description": "3. MAKI MAKI MENU 18ks 6ks maki sake (losos) 3ks maki managatsuo (maslová ryba), 3ks maguro (tuniak), 6ks maki avocado (avokádo) 7,00 €"
       },
       {
         "number": "4",
-        "name": "VEGGIE SET 14ks 8ks crunchy futomaki (avokádo, mrkva, uhorka, syr Philadelphia, sezam) 6ks futomaki (avokádo, mrkva, uhorka, syr Philadelphia, sezam) TÝŽDENNÁ PONUKA Nevybrali ste si z našej dennej ponuky? Máme pre Vás vychutnať PON - PIA v čase obedového menu. A. KURACIE KUNG PAO 250g",
+        "name": "VEGGIE SET 14ks 8ks uramaki (špargľa, avokádo, uhorka, majonéza, sezam) 6ks maki avocado (avokádo) TÝŽDENNÁ PONUKA Nevybrali ste si z našej dennej ponuky? Máme pre Vás vychutnať PON - PIA v čase obedového menu. A. KURACIE KUNG PAO 250g",
         "price": "7,05 €",
-        "description": "4. VEGGIE SET 14ks 8ks crunchy futomaki (avokádo, mrkva, uhorka, syr Philadelphia, sezam) 6ks futomaki (avokádo, mrkva, uhorka, syr Philadelphia, sezam) TÝŽDENNÁ PONUKA Nevybrali ste si z našej dennej ponuky? Máme pre Vás vychutnať PON - PIA v čase obedového menu. A. KURACIE KUNG PAO 250g 7,05 € Kuracie mäso (120g) na šťave, zelenina, ázijské a shitake huby, bambus, ázijské omáčky, arašidy. Príloha: ryža 7,05 € B. KURACIE KÚSKY 250g Kuracie prsia (120g) obalené v jemnom cestíčku, Teriyaki omáčka. Príloha: ryža"
+        "description": "4. VEGGIE SET 14ks 8ks uramaki (špargľa, avokádo, uhorka, majonéza, sezam) 6ks maki avocado (avokádo) TÝŽDENNÁ PONUKA Nevybrali ste si z našej dennej ponuky? Máme pre Vás vychutnať PON - PIA v čase obedového menu. A. KURACIE KUNG PAO 250g 7,05 € Kuracie mäso (120g) na šťave, zelenina, ázijské a shitake huby, bambus, ázijské omáčky, arašidy. Príloha: ryža 7,05 € B. KURACIE KÚSKY 250g Kuracie prsia (120g) obalené v jemnom cestíčku, Teriyaki omáčka. Príloha: ryža"
       }
     ],
     "daily_menu": [
@@ -183,28 +183,28 @@
             "price": "7,70 €"
           }
         ],
-        "description": "Restované japonské rezance, zelenina, čínska kapusta, vajíčko, chrumkavá cibuľka. CHẢ LỐT 6. BÚN LÁ 200g 8,00 € / 1 ,3 ,4 ,5 , 1 1 / Mleté hovädzie (80g) a bravčové mäso (70g) obalené betelovým listom, zelenina, koriander, arašidy, ryžové rezance, šalátová rybacia omáčka. Podávané za studena. 7,00 € 7. CHICKEN GRILL 200g /1,3,6,10,11/ Grilované kuracie prsia (120g) na špízoch, restovaná zelenina, sakura omáčkou. Príloha: ryža. 8. LOSOS TERIYAKI 200g 9,10 € / 4 / Plátky lososa (100g), restovaná zelenina, sezam, teriyaki omáčka. Príloha: ryža. pripravenú našu týždennú ponuku, ktorú si viete C. CHRUMKAVÉ KURA 250g 7,05 € / 1 ,3 ,6 ,7 , 1 1 / Kuracie stehno nakrájané na plátky, pripravené na chrumkavý spôsob, zelenina, teriyaki omáčka. Príloha: ryža D. OBENTO SUSHI 18ks 10,45 € / 1 ,3 , 4 , 6 , 1 0 , 1 1 / 6ks futomaki (avokádo, uhorka, losos) 6ks maki sake-avocado (losos-avokádo) 6ks vege rolky, šalát s dresingom"
+        "description": "Restované udon rezance, vajíčko, zelenina, chrumkavá cibuľka, pikantná curry omáčka. 6. ORANGE KURA 200g 7,00 € / 1 ,3 ,1 1 / Obaľované kuracie prsia (110g) v strúhanke, medovo-pomarančová omáčka, šalát. Príloha: ryža 7. KURA TEMPURA 7,00 € /1,3,6,7,10,11/ 200g Kuracie prsia (120 g) v tempure, sakura omáčka, japonská majonéza, sezam, šalát. Príloha: ryža. 7,20 € 8. CHILI KÚSKY 200g / 1 , 3 , 7 , 1 1 / Kuracie kúsky v cestíčku na sladko-pikatný spôsob, sezam. Príloha: ryža. pripravenú našu týždennú ponuku, ktorú si viete C. CHRUMKAVÉ KURA 250g 7,05 € / 1 ,3 ,6 ,7 , 1 1 / Kuracie stehno nakrájané na plátky, pripravené na chrumkavý spôsob, zelenina, teriyaki omáčka. Príloha: ryža D. OBENTO SUSHI 18ks 10,45 € / 1 ,3 , 4 , 6 , 1 0 , 1 1 / 6ks futomaki (avokádo, uhorka, losos) 6ks maki sake-avocado (losos-avokádo) 6ks vege rolky, šalát s dresingom"
       },
       {
         "number": "6",
-        "name": "BÚN LÁ",
+        "name": "ORANGE KURA",
         "weight": "200g",
-        "price": "8,00 €",
-        "description": "BÚN LÁ 200g 8,00 € Mleté hovädzie (80g) a bravčové mäso (70g) obalené betelovým listom, zelenina, koriander, arašidy, ryžové rezance, šalátová rybacia omáčka. Podávané za studena. 7,00 €"
+        "price": "7,00 €",
+        "description": "ORANGE KURA 200g 7,00 € Obaľované kuracie prsia (110g) v strúhanke, medovo-pomarančová omáčka, šalát. Príloha: ryža"
       },
       {
         "number": "7",
-        "name": "CHICKEN GRILL",
+        "name": "KURA TEMPURA 7,00 €",
         "weight": "200g",
-        "price": null,
-        "description": "CHICKEN GRILL 200g Grilované kuracie prsia (120g) na špízoch, restovaná zelenina, sakura omáčkou. Príloha: ryža."
+        "price": "7,00 €",
+        "description": "KURA TEMPURA 7,00 € 200g Kuracie prsia (120 g) v tempure, sakura omáčka, japonská majonéza, sezam, šalát. Príloha: ryža. 7,20 €"
       },
       {
         "number": "8",
-        "name": "LOSOS TERIYAKI",
+        "name": "CHILI KÚSKY",
         "weight": "200g",
-        "price": "9,10 €",
-        "description": "LOSOS TERIYAKI 200g 9,10 € Plátky lososa (100g), restovaná zelenina, sezam, teriyaki omáčka. Príloha: ryža. pripravenú našu týždennú ponuku, ktorú si viete C. CHRUMKAVÉ KURA 250g 7,05 € Kuracie stehno nakrájané na plátky, pripravené na chrumkavý spôsob, zelenina, teriyaki omáčka. Príloha: ryža D. OBENTO SUSHI 18ks 10,45 € 6ks futomaki (avokádo, uhorka, losos) 6ks maki sake-avocado (losos-avokádo) 6ks vege rolky, šalát s dresingom"
+        "price": "7,05 €",
+        "description": "CHILI KÚSKY 200g Kuracie kúsky v cestíčku na sladko-pikatný spôsob, sezam. Príloha: ryža. pripravenú našu týždennú ponuku, ktorú si viete C. CHRUMKAVÉ KURA 250g 7,05 € Kuracie stehno nakrájané na plátky, pripravené na chrumkavý spôsob, zelenina, teriyaki omáčka. Príloha: ryža D. OBENTO SUSHI 18ks 10,45 € 6ks futomaki (avokádo, uhorka, losos) 6ks maki sake-avocado (losos-avokádo) 6ks vege rolky, šalát s dresingom"
       }
     ],
     "weekly_menu": [
@@ -220,7 +220,7 @@
         "name": "KURACIE KÚSKY",
         "weight": "250g",
         "price": "1,95 €",
-        "description": "KURACIE KÚSKY 250g Kuracie prsia (120g) obalené v jemnom cestíčku, Teriyaki omáčka. Príloha: ryža OBEDOVÉ MENU UTOROK S1 10:30 -15:00 Ostrokyslá polievka 0,2l 1,95 € Hustá polievka s kuracím mäsom, vajíčkom, zeleninou a jarnou cibuľkou. TEPLÉ JEDLÁ 5. UDON REZANCE 200g 7,40 € a) s kuracím mäsom (100g) 8,45 € b) s krevetami (90g) c) s tofu (100g) 7,70 € Restované japonské rezance, zelenina, čínska kapusta, vajíčko, chrumkavá cibuľka. CHẢ LỐT 6. BÚN LÁ 200g 8,00 € Mleté hovädzie (80g) a bravčové mäso (70g) obalené betelovým listom, zelenina, koriander, arašidy, ryžové rezance, šalátová rybacia omáčka. Podávané za studena. 7,00 € 7. CHICKEN GRILL 200g Grilované kuracie prsia (120g) na špízoch, restovaná zelenina, sakura omáčkou. Príloha: ryža. 8. LOSOS TERIYAKI 200g 9,10 € Plátky lososa (100g), restovaná zelenina, sezam, teriyaki omáčka. Príloha: ryža. pripravenú našu týždennú ponuku, ktorú si viete"
+        "description": "KURACIE KÚSKY 250g Kuracie prsia (120g) obalené v jemnom cestíčku, Teriyaki omáčka. Príloha: ryža OBEDOVÉ MENU STREDA S1 10:30 -15:00 Ostrokyslá polievka 0,2l 1,95 € Hustá polievka s kuracím mäsom, vajíčkom, zeleninou a jarnou cibuľkou. TEPLÉ JEDLÁ 5. CURRY UDON 200g 7,40 € a) s kuracím mäsom (100g) 8,45 € b) s krevetami (90g) c) s tofu (100g) 7,70 € Restované udon rezance, vajíčko, zelenina, chrumkavá cibuľka, pikantná curry omáčka. 6. ORANGE KURA 200g 7,00 € Obaľované kuracie prsia (110g) v strúhanke, medovo-pomarančová omáčka, šalát. Príloha: ryža 7. KURA TEMPURA 7,00 € 200g Kuracie prsia (120 g) v tempure, sakura omáčka, japonská majonéza, sezam, šalát. Príloha: ryža. 7,20 € 8. CHILI KÚSKY 200g Kuracie kúsky v cestíčku na sladko-pikatný spôsob, sezam. Príloha: ryža. pripravenú našu týždennú ponuku, ktorú si viete"
       },
       {
         "number": "C",
