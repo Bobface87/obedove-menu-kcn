@@ -56,16 +56,6 @@ def should_update():
         return False
 
 
-    # iba medzi 08:00 - 22:59
-    if not (8 <= now.hour <= 22):
-
-        print(
-            "⏰ Mimo času aktualizácie (08:00 - 22:59)."
-        )
-
-        return False
-
-
     return True
 
 
