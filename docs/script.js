@@ -1,141 +1,378 @@
 async function loadMenu() {
+
   try {
+
     const res = await fetch("menu.json");
+
     const data = await res.json();
 
+
     const app = document.getElementById("app");
+
     app.innerHTML = "";
 
-    data.forEach(r => {
 
-      const div = document.createElement("div");
-      div.className = "card";
 
-      let html = `<h2>${r.restaurant}</h2>`;
+    const rows = [
 
-      // Obrázkové menu
-      if (r.type === "image_menu") {
-        html += `
-          <a href="${r.image_url}" target="_blank">
-            <img
-              src="${r.image_url}"
-              alt="Denné menu"
-              class="qv-image">
-          </a>
-        `;
-      }
+      [
+        "Hoffer",
+        "Hospúdka u Slováka",
+        "Kotolňa"
+      ],
 
-      // Klasické menu
-      if (r.meals && r.meals.length > 0) {
+      [
+        "Quo Vadis",
+        "Bellissimo",
+        "Buganka"
+      ],
 
-        if (r.soup) {
-          html += `<p><strong>Polievka:</strong> ${r.soup}</p>`;
+      [
+        "Sakura"
+      ],
+
+      [
+        "Smíchov"
+      ]
+
+    ];
+
+
+
+    rows.forEach(row => {
+
+
+      const rowDiv = document.createElement("div");
+
+      rowDiv.className = "menu-row";
+
+
+
+      row.forEach(name => {
+
+
+        const r = data.find(
+          item => item.restaurant === name
+        );
+
+
+        if (!r) return;
+
+
+
+        const div = document.createElement("div");
+
+        div.className = "card";
+
+
+
+        let html = `<h2>${r.restaurant}</h2>`;
+
+
+
+        // Obrázkové menu
+
+        if (r.type === "image_menu") {
+
+
+          html += `
+
+            <a href="${r.image_url}" target="_blank">
+
+              <img
+
+                src="${r.image_url}"
+
+                alt="Denné menu"
+
+                class="qv-image">
+
+            </a>
+
+          `;
+
         }
 
-        html += `<ul>`;
 
-        r.meals.forEach(m => {
 
-          html += `<li>`;
+        // Klasické menu
 
-          if (m.menu) {
-            html += `<strong>${m.menu}.</strong> `;
+        if (r.meals && r.meals.length > 0) {
+
+
+
+          if (r.soup) {
+
+            html += `
+
+              <p>
+
+                <strong>Polievka:</strong>
+
+                ${r.soup}
+
+              </p>
+
+            `;
+
           }
 
-          html += `${m.name}`;
-
-          if (m.price) {
-            html += ` - ${m.price}`;
-          }
-
-          html += `</li>`;
-        });
-
-        html += `</ul>`;
-      }
 
 
-      // Sakura menu
-      if (r.restaurant === "Sakura") {
+          html += `<ul>`;
 
-        if (r.soups && r.soups.length > 0) {
 
-          html += `<p><strong>🍲 Polievky:</strong></p><ul>`;
 
-          r.soups.forEach(s => {
-            html += `<li>${s.name} - ${s.price}</li>`;
+          r.meals.forEach(m => {
+
+
+
+            html += `<li>`;
+
+
+
+            if (m.menu) {
+
+              html += `<strong>${m.menu}.</strong> `;
+
+            }
+
+
+
+            html += `${m.name}`;
+
+
+
+            if (m.price) {
+
+              html += ` - <strong>${m.price}</strong>`;
+
+            }
+
+
+
+            html += `</li>`;
+
+
+
           });
 
+
+
           html += `</ul>`;
+
         }
 
 
-        const sections = [
-          ["🍣 Sushi", r.sushi],
-          ["🍜 Denné menu", r.daily_menu],
-          ["📅 Týždenné menu", r.weekly_menu]
-        ];
 
 
-        sections.forEach(([title, items]) => {
 
-          if (items && items.length > 0) {
+        // Sakura menu
 
-            html += `<p><strong>${title}:</strong></p>`;
-            html += `<ul>`;
+        if (r.restaurant === "Sakura") {
 
-            items.forEach(m => {
 
-              html += `<li>`;
 
-              if (m.number) {
-                html += `<strong>${m.number}.</strong> `;
-              }
+          if (r.soups && r.soups.length > 0) {
 
-              html += m.name;
 
-              if (m.price) {
-                html += ` - ${m.price}`;
-              }
+            html += `
 
-              html += `</li>`;
+              <p><strong>🍲 Polievky:</strong></p>
+
+              <ul>
+
+            `;
+
+
+            r.soups.forEach(s => {
+
+
+              html += `
+
+                <li>
+
+                  ${s.name} - ${s.price}
+
+                </li>
+
+              `;
+
+
             });
 
+
             html += `</ul>`;
+
           }
-        });
-      }
 
 
-      if (r.dessert) {
 
-        html += `<p><strong>🍰 Dezert:</strong> ${r.dessert.name}`;
 
-        if (r.dessert.weight) {
-          html += ` (${r.dessert.weight})`;
+
+          const sections = [
+
+            ["🍣 Sushi", r.sushi],
+
+            ["🍜 Denné menu", r.daily_menu],
+
+            ["📅 Týždenné menu", r.weekly_menu]
+
+          ];
+
+
+
+
+
+          sections.forEach(([title, items]) => {
+
+
+
+            if (items && items.length > 0) {
+
+
+
+              html += `<p><strong>${title}:</strong></p>`;
+
+              html += `<ul>`;
+
+
+
+
+              items.forEach(m => {
+
+
+
+                html += `<li>`;
+
+
+
+                if (m.number) {
+
+                  html += `<strong>${m.number}.</strong> `;
+
+                }
+
+
+
+                html += m.name;
+
+
+
+                if (m.price) {
+
+                  html += ` - <strong>${m.price}</strong>`;
+
+                }
+
+
+
+                html += `</li>`;
+
+
+
+              });
+
+
+
+              html += `</ul>`;
+
+            }
+
+
+
+          });
+
+
+
         }
 
-        if (r.dessert.delivery === false) {
-          html += ` <em>– neplatí pre donášku</em>`;
+
+
+
+
+        // Dezert
+
+        if (r.dessert) {
+
+
+
+          html += `
+
+            <p>
+
+              <strong>🍰 Dezert:</strong>
+
+              ${r.dessert.name}
+
+          `;
+
+
+
+          if (r.dessert.weight) {
+
+            html += ` (${r.dessert.weight})`;
+
+          }
+
+
+
+          if (r.dessert.delivery === false) {
+
+            html += ` <em>– neplatí pre donášku</em>`;
+
+          }
+
+
+
+          html += `</p>`;
+
         }
 
-        html += `</p>`;
-      }
 
 
-      div.innerHTML = html;
-      app.appendChild(div);
+
+        div.innerHTML = html;
+
+
+        rowDiv.appendChild(div);
+
+
+
+      });
+
+
+
+      app.appendChild(rowDiv);
+
+
 
     });
 
-  } catch (e) {
+
+
+  }
+
+
+  catch (e) {
+
+
 
     document.getElementById("app").innerHTML =
+
       "❌ Chyba načítania menu";
+
+
 
     console.error(e);
 
+
+
   }
+
+
 }
+
+
 
 loadMenu();
