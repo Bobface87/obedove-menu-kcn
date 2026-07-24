@@ -224,8 +224,8 @@
   },
   {
     "restaurant": "Smíchov",
-    "type": "image_menu",
-    "image_url": "https://www.restauraciasmichov.sk/images/Obedove%20Menu%2027.07-31.07.2026_page-0001.jpg",
+    "status": "error",
+    "message": "Menu sa nepodarilo načítať",
     "soup": "",
     "meals": []
   }
