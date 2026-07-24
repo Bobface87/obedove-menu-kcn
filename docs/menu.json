@@ -1,7 +1,7 @@
 [
   {
     "restaurant": "Hoffer",
-    "soup": "0,33l Teľací vývar so zeleninou a fritovanými rezancami",
+    "soup": "0,33l Zemiaková kulajda s vajíčkom, chlieb",
     "meals": [
       {
         "menu": 1,
@@ -30,7 +30,7 @@
       }
     ],
     "dessert": {
-      "name": "Jahodové tiramisu",
+      "name": "Svieže jablkové rezy s piškótami",
       "weight": "50g",
       "delivery": false
     }

@@ -2,23 +2,25 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+
+DEBUG = False
+
 
 MAIN_URL = "https://www.penzion-hoffer.sk/18614/zamocka-koruna-u-hoffera"
-
 
 
 def find_menu_url():
 
     print("🔎 Hľadám aktuálne Hoffer obedové menu...")
 
-
     headers = {
         "User-Agent": "Mozilla/5.0"
     }
 
-
     try:
-
         response = requests.get(
             MAIN_URL,
             headers=headers,
@@ -28,9 +30,7 @@ def find_menu_url():
         response.raise_for_status()
 
     except requests.RequestException:
-
         return None
-
 
 
     soup = BeautifulSoup(
@@ -39,10 +39,7 @@ def find_menu_url():
     )
 
 
-    for link in soup.find_all(
-        "a",
-        href=True
-    ):
+    for link in soup.find_all("a", href=True):
 
         href = link["href"]
 
@@ -64,20 +61,15 @@ def find_menu_url():
                     + href
                 )
 
-
             print(
                 "Hoffer menu URL:",
                 href
             )
 
-
             return href
 
 
-
     return None
-
-
 
 
 
@@ -96,19 +88,13 @@ def extract_price(text):
 
 
 
-
-
 def clean_text(text):
 
-    text = re.sub(
+    return re.sub(
         r"\s+",
         " ",
         text
-    )
-
-    return text.strip()
-
-
+    ).strip()
 
 
 
@@ -122,22 +108,61 @@ def remove_allergens(text):
 
 
 
+def get_today_string():
+
+    now = datetime.now(
+        ZoneInfo("Europe/Bratislava")
+    )
+
+    return now.strftime(
+        "%d.%m.%Y"
+    )
 
 
-def extract_allergens(text):
+
+def extract_today_block(text):
+
+    today = get_today_string()
+
+    pattern = (
+        r"([A-Za-zÁČĎÉÍĽĹŇÓÔŔŠŤÚÝŽáčďéíľĺňóôŕšťúýž]+ "
+        + re.escape(today)
+        + r")(.*?)(?=[A-Za-zÁČĎÉÍĽĹŇÓÔŔŠŤÚÝŽáčďéíľĺňóôŕšťúýž]+ \d{2}\.\d{2}\.\d{4}|$)"
+    )
+
 
     match = re.search(
-        r"\((\d+(?:,\d+)*)\)\s*$",
-        text
+        pattern,
+        text,
+        re.DOTALL
     )
+
 
     if match:
 
-        return match.group(1)
+        block = (
+            match.group(1)
+            + match.group(2)
+        )
 
-    return None
+
+        if DEBUG:
+
+            print(
+                "========== HOFFER DNES =========="
+            )
+
+            print(block)
+
+            print(
+                "========== KONIEC =========="
+            )
 
 
+        return block
+
+
+    return text
 
 
 
@@ -206,6 +231,10 @@ def scrape_hoffer():
         strip=True
     )
 
+
+    text = extract_today_block(text)
+
+
     lines = [
         clean_text(x)
         for x in text.split("\n")
@@ -213,12 +242,12 @@ def scrape_hoffer():
     ]
 
 
+
     soup_text = ""
 
     meals = []
 
     dessert = None
-
 
     current_menu = None
 
@@ -229,11 +258,20 @@ def scrape_hoffer():
 
         if line.upper() == "POLIEVKA":
 
-            if index + 1 < len(lines):
+            for j in range(index + 1, len(lines)):
 
-                soup_text = remove_allergens(
-                    lines[index + 1]
-                )
+                candidate = lines[j]
+
+                if (
+                    candidate.upper() == "HLAVNÉ JEDLÁ"
+                    or re.match(r"\d+\.\)", candidate)
+                ):
+                    break
+
+                if len(candidate) > 5:
+
+                    soup_text = remove_allergens(candidate)
+                    break
 
             continue
 
@@ -300,10 +338,18 @@ def scrape_hoffer():
 
         if line.upper() == "DEZERT":
 
-            if index + 1 < len(lines):
+            dessert_line = None
 
-                dessert_line = lines[index + 1]
 
+            for next_line in lines[index + 1:]:
+
+                if next_line:
+
+                    dessert_line = next_line
+                    break
+
+
+            if dessert_line:
 
                 delivery = True
 
@@ -334,6 +380,7 @@ def scrape_hoffer():
 
                     weight = weight_match.group(1)
 
+
                     dessert_line = dessert_line.replace(
                         weight,
                         "",
@@ -341,46 +388,11 @@ def scrape_hoffer():
                     )
 
 
-                dessert_line = remove_allergens(
-                    dessert_line
-                )
-
-
                 dessert = {
-                    "name": dessert_line.strip(),
+                    "name": remove_allergens(dessert_line),
                     "weight": weight,
                     "delivery": delivery
                 }
-
-
-    if not meals:
-
-        page_text = text.lower()
-
-
-        if any(word in page_text for word in [
-            "sviatok",
-            "zatvorené",
-            "zatvorene",
-            "dovolenka",
-            "nevaríme",
-            "nevarime"
-        ]):
-
-            return {
-                "restaurant": "Hoffer",
-                "status": "Sviatok",
-                "soup": "",
-                "meals": []
-            }
-
-
-        return {
-            "restaurant": "Hoffer",
-            "status": "Menu sa nepodarilo načítať",
-            "soup": "",
-            "meals": []
-        }
 
 
 
