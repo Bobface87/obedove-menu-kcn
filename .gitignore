@@ -4,5 +4,8 @@ __pycache__/
 # Lokálny stav scraperu
 .menu_updated
 
+# Environment variables
+.env
+
 # Visual Studio Code
 .vscode/

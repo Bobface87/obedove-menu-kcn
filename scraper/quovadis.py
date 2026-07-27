@@ -3,6 +3,9 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
+from ocr import extract_text_from_image
+from ocr_parser import parse_menu_text
+
 
 URL = "https://www.quovadisnitra.sk/tyzdenne-menu/"
 
@@ -147,10 +150,38 @@ def scrape_quovadis():
     image_url = find_today_image()
 
 
+    meals = []
+
+
+    try:
+
+        print("Spúšťam OCR...")
+
+        text = extract_text_from_image(
+            image_url
+        )
+
+        meals = parse_menu_text(
+            text
+        )
+
+        print(
+            f"OCR našlo položiek: {len(meals)}"
+        )
+
+
+    except Exception as e:
+
+        print(
+            "OCR chyba:",
+            e
+        )
+
+
     return {
         "restaurant": "Quo Vadis",
-        "type": "image_menu",
+        "type": "ocr_menu" if meals else "image_menu",
         "image_url": image_url,
         "soup": "",
-        "meals": []
+        "meals": meals
     }

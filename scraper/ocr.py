@@ -1,40 +1,73 @@
-import pytesseract
-from PIL import Image
 import requests
 from io import BytesIO
-import re
+
+from PIL import Image, ImageEnhance
+import pytesseract
 
 
-def download_image(url):
-    response = requests.get(url)
-    return Image.open(BytesIO(response.content))
+def download_image(image_url):
+    """
+    Stiahne obrázok menu z URL.
+    """
+    response = requests.get(image_url, timeout=30)
+    response.raise_for_status()
+
+    return Image.open(
+        BytesIO(response.content)
+    )
 
 
-def extract_text_from_image(url):
-    img = download_image(url)
-    text = pytesseract.image_to_string(img, lang="slk+eng")
+def preprocess_image(image):
+    """
+    Základné vylepšenie obrázka pre OCR.
+    """
+
+    # zväčšenie
+    image = image.resize(
+        (image.width * 2, image.height * 2)
+    )
+
+    # odtiene sivej
+    image = image.convert("L")
+
+    # jemné zvýšenie kontrastu
+    image = ImageEnhance.Contrast(image).enhance(1.5)
+
+    return image
+
+
+def extract_text_from_image(image_url):
+    """
+    Hlavná OCR funkcia.
+
+    Vstup:
+        URL obrázka menu
+
+    Výstup:
+        text z obrázka
+    """
+
+    image = download_image(image_url)
+
+    image = preprocess_image(image)
+
+    text = pytesseract.image_to_string(
+        image,
+        lang="slk"
+    )
+
     return text
 
 
-def extract_meals(text):
-    lines = [l.strip() for l in text.split("\n") if l.strip()]
+if __name__ == "__main__":
 
-    meals = []
-    soup = ""
+    TEST_IMAGE = (
+        "https://www.quovadisnitra.sk/"
+        "wp-content/uploads/2026/07/"
+        "pondelok-4-4-724x1024.jpg"
+    )
 
-    for i, line in enumerate(lines):
+    result = extract_text_from_image(TEST_IMAGE)
 
-        if "POLIEVKA" in line.upper():
-            soup = line
-
-        price_match = re.search(r"\d+,\d+", line)
-        price = float(price_match.group(0).replace(",", ".")) if price_match else None
-
-        if price:
-            name = re.sub(r"\d+,\d+.*", "", line).strip()
-            meals.append({
-                "name": name,
-                "price": price
-            })
-
-    return soup, meals[:6]
+    print("===== OCR TEST =====")
+    print(result)
