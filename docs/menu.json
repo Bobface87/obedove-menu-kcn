@@ -39,7 +39,8 @@
     "restaurant": "Quo Vadis",
     "type": "ocr_menu",
     "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/07/pondelok-10-724x1024.jpg",
-    "soup": "",
+    "starter": "80g Domáca paštéta z kačacej pečene s brusnicami a opečeným kváskovým chlebom. /1, 3, 7/ 8,90 €",
+    "soup": "0,25 l Poctivá fazuľová polievka, podávaná s čerstvým chlebom./1/",
     "meals": [
       {
         "name": "CLASSIC MENU - MANGO CHICKEN",
@@ -261,8 +262,8 @@
   },
   {
     "restaurant": "Smíchov",
-    "status": "error",
-    "message": "Menu sa nepodarilo načítať",
+    "type": "image_menu",
+    "image_url": "https://www.restauraciasmichov.sk/images/Obedove%20Menu%2027.07-31.07.2026_page-0001.jpg",
     "soup": "",
     "meals": []
   }
