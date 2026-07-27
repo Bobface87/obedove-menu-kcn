@@ -95,7 +95,7 @@ async function loadMenu() {
 
 
 
-        // Klasické menu
+        // Klasické menu + OCR menu
 
         if (r.meals && r.meals.length > 0) {
 
@@ -139,13 +139,39 @@ async function loadMenu() {
 
 
 
-            html += `${m.name}`;
+            html += `<strong>${m.name}</strong>`;
+
+
+
+            // OCR popis jedla
+
+            if (m.description) {
+
+              html += `
+
+                <br>
+
+                <span class="description">
+
+                  ${m.description}
+
+                </span>
+
+              `;
+
+            }
 
 
 
             if (m.price) {
 
-              html += ` - <strong>${m.price}</strong>`;
+              html += `
+
+                <br>
+
+                <strong>${m.price}</strong>
+
+              `;
 
             }
 
@@ -235,6 +261,7 @@ async function loadMenu() {
               html += `<p><strong>${title}:</strong></p>`;
 
               html += `<ul>`;
+
 
 
 
@@ -369,6 +396,7 @@ async function loadMenu() {
 
 
   }
+
 
 
 }
