@@ -101,13 +101,35 @@ async function loadMenu() {
 
 
 
+          // Predjedlo (OCR menu - napr. Quo Vadis)
+
+          if (r.starter) {
+
+            html += `
+
+              <p>
+
+                <strong>🥗 Predjedlo:</strong>
+
+                ${r.starter}
+
+              </p>
+
+            `;
+
+          }
+
+
+
+          // Polievka
+
           if (r.soup) {
 
             html += `
 
               <p>
 
-                <strong>Polievka:</strong>
+                <strong>🍲 Polievka:</strong>
 
                 ${r.soup}
 
