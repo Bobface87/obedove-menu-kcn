@@ -17,17 +17,13 @@ REMOVE_TEXT_PATTERNS = [
 
 def normalize_price(price):
     """
-    Oprava typických OCR chýb pri cenách.
+    Oprava OCR cien.
     """
 
     if not price:
         return None
 
-    price = price.replace(
-        " ",
-        ""
-    )
-
+    price = price.replace(" ", "")
 
     if price in [
         "1,50€",
@@ -37,41 +33,71 @@ def normalize_price(price):
     ]:
         return None
 
-
     match = re.match(
         r"(\d+,\d+)€",
         price
     )
 
-
     if match:
+        return match.group(1) + " €"
 
-        return (
-            match.group(1)
-            + " €"
-        )
-
-
-    return price
+    return None
 
 
 
 def extract_price(text):
 
-    match = re.search(
+    prices = re.findall(
         r"(\d+,\d+)\s*€",
         text
     )
 
+    if not prices:
+        return None
 
-    if match:
 
-        return normalize_price(
-            match.group(1) + "€"
+    for price in reversed(prices):
+
+        result = normalize_price(
+            price + "€"
         )
+
+        if result:
+            return result
 
 
     return None
+
+
+
+def clean_text(text):
+
+    for pattern in REMOVE_TEXT_PATTERNS:
+
+        text = re.sub(
+            pattern,
+            "",
+            text,
+            flags=re.IGNORECASE
+        )
+
+
+    text = re.sub(
+        r"/zmena menu polievky.*",
+        "",
+        text,
+        flags=re.IGNORECASE
+    )
+
+
+    text = re.sub(
+        r"\s+",
+        " ",
+        text
+    )
+
+
+    return text.strip()
 
 
 
@@ -92,43 +118,19 @@ def clean_name(text):
 
 
 
-def clean_text(text):
-
-    for pattern in REMOVE_TEXT_PATTERNS:
-
-        text = re.sub(
-            pattern,
-            "",
-            text,
-            flags=re.IGNORECASE
-        )
-
-
-    text = re.sub(
-        r"\s+",
-        " ",
-        text
-    )
-
-
-    return text.strip()
-
-
-
 def is_menu_header(line):
 
     upper = line.upper()
 
-    for header in MENU_HEADERS:
-
-        if header in upper:
-            return True
-
-    return False
+    return any(
+        header in upper
+        for header in MENU_HEADERS
+    )
 
 
 
 def parse_menu_text(text):
+
 
     lines = [
         line.strip()
@@ -136,6 +138,120 @@ def parse_menu_text(text):
         if line.strip()
     ]
 
+
+    result = {
+
+        "starter": "",
+
+        "soup": "",
+
+        "meals": []
+
+    }
+
+
+
+    # =========================
+    # PREDJEDLO
+    # =========================
+
+    starter_start = None
+    soup_start = None
+
+
+    for i, line in enumerate(lines):
+
+        upper = line.upper().strip()
+
+
+        if "PREDJEDLO" in upper:
+
+            starter_start = i
+
+
+
+        # iba samostatná POLIEVKA
+        if upper == "POLIEVKA":
+
+            soup_start = i
+
+
+
+    if starter_start is not None and soup_start is not None:
+
+        starter_lines = lines[
+            starter_start + 1:soup_start
+        ]
+
+
+        result["starter"] = clean_text(
+            " ".join(starter_lines)
+        )
+
+
+
+    # =========================
+    # POLIEVKA
+    # =========================
+
+    soup_lines = []
+
+
+    if soup_start is not None:
+
+
+        for line in lines[soup_start + 1:]:
+
+
+            if is_menu_header(line):
+
+                break
+
+
+            soup_lines.append(line)
+
+
+
+    soup_text = " ".join(
+        soup_lines
+    )
+
+
+    # OCR opravy objemu
+
+    soup_text = re.sub(
+        r"0,251",
+        "0,25 l",
+        soup_text,
+        flags=re.IGNORECASE
+    )
+
+
+    soup_text = re.sub(
+        r"0,25l",
+        "0,25 l",
+        soup_text,
+        flags=re.IGNORECASE
+    )
+
+
+    soup_text = re.sub(
+        r"0,25[iI]",
+        "0,25 l",
+        soup_text,
+        flags=re.IGNORECASE
+    )
+
+
+    result["soup"] = clean_text(
+        soup_text
+    )
+
+
+
+    # =========================
+    # MENU
+    # =========================
 
     meals = []
 
@@ -147,8 +263,11 @@ def parse_menu_text(text):
 
         if is_menu_header(line):
 
+
             if current:
+
                 meals.append(current)
+
 
 
             current = {
@@ -160,6 +279,7 @@ def parse_menu_text(text):
                 "price": None
 
             }
+
 
             continue
 
@@ -205,4 +325,8 @@ def parse_menu_text(text):
         )
 
 
-    return meals
+
+    result["meals"] = meals
+
+
+    return result
