@@ -100,10 +100,31 @@
   },
   {
     "restaurant": "Buganka",
-    "type": "image_menu",
-    "image_url": "https://static.wixstatic.com/media/8822c6_2106e9b046564285b9fafd4137bf0547~mv2.jpg/v1/fill/w_713,h_1007,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Buganka%2027_7_%20-%2031_7_26_JPG.jpg",
-    "soup": "",
-    "meals": []
+    "type": "ocr_menu",
+    "soup": {
+      "price": "2,50 €",
+      "items": [
+        "Kulajda s vajíčkom",
+        "Letná zeleninová s mrveničkou"
+      ]
+    },
+    "meals": {
+      "price": "7,90 €",
+      "items": [
+        "Plnená paprika v paradajkovej omáčke s domácou knedľou",
+        "Hovädzí tokáň Buganka s maslovými haluškami",
+        "Pečené kura na masle s ryžou a domácim kompótom",
+        "Zabijačkový tanier podávaný s varenými zemiakmi a kyslou kapustou",
+        "Tradičné domáce rizoto so zeleninou, strúhaným syrom a kyslou uhorkou",
+        "Zemiakové placky plnené dusenými hubami, kyslou smotanou a syrom"
+      ]
+    },
+    "dessert": {
+      "price": "3,50 €",
+      "items": [
+        "Slivkové knedle"
+      ]
+    }
   },
   {
     "restaurant": "Hospúdka u Slováka",

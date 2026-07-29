@@ -82,10 +82,22 @@ def safe_scrape(
 
         return {
             "restaurant": restaurant_name,
+            "type": "error",
             "status": "error",
             "message": "Menu sa nepodarilo načítať",
-            "soup": "",
-            "meals": []
+            "image_url": "",
+            "soup": {
+                "price": "",
+                "items": []
+            },
+            "meals": {
+                "price": "",
+                "items": []
+            },
+            "dessert": {
+                "price": "",
+                "items": []
+            }
         }
 
 

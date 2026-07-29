@@ -67,9 +67,202 @@ async function loadMenu() {
 
 
 
-        // Obrázkové menu - iba zobrazenie obrázka
 
-        if (r.type === "image_menu") {
+        /*
+          BUGANKA OCR MENU
+          - platí iba pre Buganku
+          - ostatné reštaurácie nemeníme
+        */
+
+        if (
+          r.restaurant === "Buganka"
+          &&
+          r.type === "ocr_menu"
+        ) {
+
+
+          if (
+            r.soup
+            &&
+            r.soup.items
+            &&
+            r.soup.items.length
+          ) {
+
+
+            html += `
+
+              <p>
+
+                <strong>🍲 Polievky:</strong>
+
+              </p>
+
+              <ul>
+
+            `;
+
+
+            r.soup.items.forEach(item => {
+
+              html += `
+
+                <li>
+
+                  ${item}
+
+                </li>
+
+              `;
+
+            });
+
+
+            html += `
+
+              </ul>
+
+              <p>
+
+                <strong>Cena: ${r.soup.price}</strong>
+
+              </p>
+
+            `;
+
+          }
+
+
+
+
+
+          if (
+            r.meals
+            &&
+            r.meals.items
+            &&
+            r.meals.items.length
+          ) {
+
+
+            html += `
+
+              <p>
+
+                <strong>🍽 Hlavné jedlá:</strong>
+
+              </p>
+
+              <ul>
+
+            `;
+
+
+            r.meals.items.forEach(item => {
+
+
+              html += `
+
+                <li>
+
+                  ${item}
+
+                </li>
+
+              `;
+
+
+            });
+
+
+            html += `
+
+              </ul>
+
+              <p>
+
+                <strong>Cena: ${r.meals.price}</strong>
+
+              </p>
+
+            `;
+
+
+          }
+
+
+
+
+
+          if (
+            r.dessert
+            &&
+            r.dessert.items
+            &&
+            r.dessert.items.length
+          ) {
+
+
+            html += `
+
+              <p>
+
+                <strong>🍰 Dezert:</strong>
+
+              </p>
+
+
+              <ul>
+
+            `;
+
+
+            r.dessert.items.forEach(item => {
+
+
+              html += `
+
+                <li>
+
+                  ${item}
+
+                </li>
+
+              `;
+
+
+            });
+
+
+            html += `
+
+              </ul>
+
+
+              <p>
+
+                <strong>Cena: ${r.dessert.price}</strong>
+
+              </p>
+
+            `;
+
+
+          }
+
+
+        }
+
+
+
+
+
+        /*
+          Obrázkové menu
+          (ostatné reštaurácie)
+        */
+
+        else if (r.type === "image_menu") {
 
 
           html += `
@@ -88,13 +281,24 @@ async function loadMenu() {
 
 
 
-        // Klasické menu + OCR menu
-
-        if (r.meals && r.meals.length > 0) {
 
 
 
-          // Predjedlo (OCR menu - napr. Quo Vadis)
+        /*
+          Klasické menu
+        */
+
+        if (
+          r.type !== "image_menu"
+          &&
+          r.restaurant !== "Buganka"
+          &&
+          r.meals
+          &&
+          Array.isArray(r.meals)
+        ) {
+
+
 
           if (r.starter) {
 
@@ -114,7 +318,7 @@ async function loadMenu() {
 
 
 
-          // Polievka
+
 
           if (r.soup) {
 
@@ -134,7 +338,7 @@ async function loadMenu() {
 
 
 
-          // Extra polievka (napr. Smíchov OCR)
+
 
           if (r.extra_soup) {
 
@@ -154,6 +358,8 @@ async function loadMenu() {
 
 
 
+
+
           html += `<ul>`;
 
 
@@ -161,9 +367,7 @@ async function loadMenu() {
           r.meals.forEach(m => {
 
 
-
             html += `<li>`;
-
 
 
             if (m.menu) {
@@ -173,12 +377,9 @@ async function loadMenu() {
             }
 
 
-
             html += `<strong>${m.name}</strong>`;
 
 
-
-            // OCR popis jedla
 
             if (m.description) {
 
@@ -215,7 +416,6 @@ async function loadMenu() {
             html += `</li>`;
 
 
-
           });
 
 
@@ -228,18 +428,29 @@ async function loadMenu() {
 
 
 
-        // Sakura menu
+
+        /*
+          Sakura
+        */
 
         if (r.restaurant === "Sakura") {
 
 
 
-          if (r.soups && r.soups.length > 0) {
+          if (
+            r.soups
+            &&
+            r.soups.length > 0
+          ) {
 
 
             html += `
 
-              <p><strong>🍲 Polievky:</strong></p>
+              <p>
+
+                <strong>🍲 Polievky:</strong>
+
+              </p>
 
               <ul>
 
@@ -284,13 +495,15 @@ async function loadMenu() {
 
 
 
-
           sections.forEach(([title, items]) => {
 
 
 
-            if (items && items.length > 0) {
-
+            if (
+              items
+              &&
+              items.length > 0
+            ) {
 
 
               html += `<p><strong>${title}:</strong></p>`;
@@ -299,14 +512,10 @@ async function loadMenu() {
 
 
 
-
-
               items.forEach(m => {
 
 
-
                 html += `<li>`;
-
 
 
                 if (m.number) {
@@ -316,9 +525,7 @@ async function loadMenu() {
                 }
 
 
-
                 html += m.name;
-
 
 
                 if (m.price) {
@@ -328,9 +535,7 @@ async function loadMenu() {
                 }
 
 
-
                 html += `</li>`;
-
 
 
               });
@@ -339,57 +544,15 @@ async function loadMenu() {
 
               html += `</ul>`;
 
-            }
 
+            }
 
 
           });
 
 
-
         }
 
-
-
-
-
-        // Dezert
-
-        if (r.dessert) {
-
-
-
-          html += `
-
-            <p>
-
-              <strong>🍰 Dezert:</strong>
-
-              ${r.dessert.name}
-
-          `;
-
-
-
-          if (r.dessert.weight) {
-
-            html += ` (${r.dessert.weight})`;
-
-          }
-
-
-
-          if (r.dessert.delivery === false) {
-
-            html += ` <em>– neplatí pre donášku</em>`;
-
-          }
-
-
-
-          html += `</p>`;
-
-        }
 
 
 
@@ -419,15 +582,12 @@ async function loadMenu() {
   catch (e) {
 
 
-
     document.getElementById("app").innerHTML =
 
       "❌ Chyba načítania menu";
 
 
-
     console.error(e);
-
 
 
   }
