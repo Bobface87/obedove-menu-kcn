@@ -24,15 +24,12 @@ async function loadMenu() {
       [
         "Quo Vadis",
         "Bellissimo",
-        "Buganka"
-      ],
-
-      [
-        "Sakura"
-      ],
-
-      [
         "Smíchov"
+      ],
+
+      [
+        "Sakura",
+        "Buganka"
       ]
 
     ];

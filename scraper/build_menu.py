@@ -13,7 +13,7 @@ from smichov import scrape_smichov
 from sakura import scrape_sakura
 
 
-# koreň projektu (o úroveň vyššie ako scraper)
+# koreň projektu
 BASE_DIR = os.path.dirname(
     os.path.dirname(
         os.path.abspath(__file__)
@@ -67,7 +67,9 @@ def safe_scrape(
 
     try:
 
-        return scraper()
+        result = scraper()
+
+        return result
 
 
     except Exception as e:
@@ -85,6 +87,42 @@ def safe_scrape(
             "soup": "",
             "meals": []
         }
+
+
+
+def run_restaurant(
+    data,
+    name,
+    scraper
+):
+
+    print(
+        f"Načítavam {name}..."
+    )
+
+
+    result = safe_scrape(
+        name,
+        scraper
+    )
+
+
+    data.append(
+        result
+    )
+
+
+    if result.get("status") == "error":
+
+        print(
+            f"⚠️ {name} chyba"
+        )
+
+    else:
+
+        print(
+            f"✅ {name} OK"
+        )
 
 
 
@@ -112,242 +150,58 @@ def build():
 
 
 
-    # HOFFER
-    try:
+    restaurants = [
 
-        print(
-            "Načítavam Hoffera..."
+        (
+            "Hoffer",
+            scrape_hoffer
+        ),
+
+        (
+            "Quo Vadis",
+            scrape_quovadis
+        ),
+
+        (
+            "Bellissimo",
+            scrape_bellissimo
+        ),
+
+        (
+            "Buganka",
+            scrape_buganka
+        ),
+
+        (
+            "Hospúdka u Slováka",
+            scrape_hospudka
+        ),
+
+        (
+            "Kotolňa",
+            scrape_kotolna
+        ),
+
+        (
+            "Sakura",
+            scrape_sakura
+        ),
+
+        (
+            "Smíchov",
+            scrape_smichov
         )
 
+    ]
 
-        data.append(
-            safe_scrape(
-                "Hoffer",
-                scrape_hoffer
-            )
-        )
 
 
-        print(
-            "✅ Hoffer OK"
-        )
+    for name, scraper in restaurants:
 
-
-    except Exception as e:
-
-        print(
-            "❌ Hoffer error:",
-            e
-        )
-
-
-
-    # QUO VADIS
-    try:
-
-        print(
-            "Načítavam Quo Vadis..."
-        )
-
-
-        data.append(
-            safe_scrape(
-                "Quo Vadis",
-                scrape_quovadis
-            )
-        )
-
-
-        print(
-            "✅ Quo Vadis OK"
-        )
-
-
-    except Exception as e:
-
-        print(
-            "❌ Quo Vadis error:",
-            e
-        )
-
-
-
-    # BELLISSIMO
-    try:
-
-        print(
-            "Načítavam Bellissimo..."
-        )
-
-
-        data.append(
-            safe_scrape(
-                "Bellissimo",
-                scrape_bellissimo
-            )
-        )
-
-
-        print(
-            "✅ Bellissimo OK"
-        )
-
-
-    except Exception as e:
-
-        print(
-            "❌ Bellissimo error:",
-            e
-        )
-
-
-
-    # BUGANKA
-    try:
-
-        print(
-            "Načítavam Buganku..."
-        )
-
-
-        data.append(
-            safe_scrape(
-                "Buganka",
-                scrape_buganka
-            )
-        )
-
-
-        print(
-            "✅ Buganka OK"
-        )
-
-
-    except Exception as e:
-
-        print(
-            "❌ Buganka error:",
-            e
-        )
-
-
-
-    # HOSPÚDKA
-    try:
-
-        print(
-            "Načítavam Hospúdku..."
-        )
-
-
-        data.append(
-            safe_scrape(
-                "Hospúdka u Slováka",
-                scrape_hospudka
-            )
-        )
-
-
-        print(
-            "✅ Hospúdka OK"
-        )
-
-
-    except Exception as e:
-
-        print(
-            "❌ Hospúdka error:",
-            e
-        )
-
-
-
-    # KOTOLŇA
-    try:
-
-        print(
-            "Načítavam Kotolňu..."
-        )
-
-
-        data.append(
-            safe_scrape(
-                "Kotolňa",
-                scrape_kotolna
-            )
-        )
-
-
-        print(
-            "✅ Kotolňa OK"
-        )
-
-
-    except Exception as e:
-
-        print(
-            "❌ Kotolňa error:",
-            e
-        )
-
-
-
-    # SAKURA
-    try:
-
-        print(
-            "Načítavam Sakuru..."
-        )
-
-
-        data.append(
-            safe_scrape(
-                "Sakura",
-                scrape_sakura
-            )
-        )
-
-
-        print(
-            "✅ Sakura OK"
-        )
-
-
-    except Exception as e:
-
-        print(
-            "❌ Sakura error:",
-            e
-        )
-
-
-
-    # SMÍCHOV
-    try:
-
-        print(
-            "Načítavam Smíchov..."
-        )
-
-
-        data.append(
-            safe_scrape(
-                "Smíchov",
-                scrape_smichov
-            )
-        )
-
-
-        print(
-            "✅ Smíchov OK"
-        )
-
-
-    except Exception as e:
-
-        print(
-            "❌ Smíchov error:",
-            e
+        run_restaurant(
+            data,
+            name,
+            scraper
         )
 
 
@@ -375,7 +229,6 @@ def build():
 
 
 
-    # označíme, že prebehla aktualizácia
     with open(
         FLAG_PATH,
         "w",
