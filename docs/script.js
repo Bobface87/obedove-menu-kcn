@@ -142,7 +142,7 @@ async function loadMenu() {
 
               <p>
 
-                <strong>🍲 Ďalšia polievka:</strong>
+                <strong>🍲 Každodenná polievka:</strong>
 
                 ${r.extra_soup}
 
