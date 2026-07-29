@@ -1,10 +1,15 @@
 import requests
-
 from bs4 import BeautifulSoup
-from urllib.parse import urljoin
+from datetime import datetime
+
+
+from ocr import extract_text_from_image
+from bellissimo_ocr_parser import parse_bellissimo_menu
+
 
 
 URL = "https://bellissimonitra.com/obedove-menu/"
+
 
 
 HEADERS = {
@@ -17,95 +22,47 @@ HEADERS = {
 
 
 
-def find_image_url(soup):
+DAY_NAMES = {
 
-    """
-    Nájde aktuálne Bellissimo menu.
-    """
+    0: "Pondelok",
+    1: "Utorok",
+    2: "Streda",
+    3: "Štvrtok",
+    4: "Piatok"
 
-    possible_urls = []
-
-
-    for img in soup.find_all("img"):
-
-        sources = [
-
-            img.get("src", ""),
-
-            img.get("data-src", ""),
-
-            img.get("data-lazy-src", ""),
-
-        ]
-
-
-        srcset = img.get(
-            "srcset",
-            ""
-        )
-
-
-        if srcset:
-
-            sources.extend(
-                [
-                    x.strip().split(" ")[0]
-                    for x in srcset.split(",")
-                ]
-            )
-
-
-        for src in sources:
-
-            if not src:
-                continue
-
-
-            src_lower = src.lower()
-
-
-            if (
-                "menu" in src_lower
-                and
-                (
-                    "bell" in src_lower
-                    or
-                    "obed" in src_lower
-                )
-            ):
-
-                possible_urls.append(src)
+}
 
 
 
-    if not possible_urls:
-
-        return None
 
 
+def today_name():
 
-    # prvý nájdený obrázok
-
-    return urljoin(
-        URL,
-        possible_urls[0]
+    return DAY_NAMES.get(
+        datetime.now().weekday()
     )
 
 
 
 
-def scrape_bellissimo():
 
+
+
+def find_menu_image():
 
     print(
-        "Načítavam Bellissimo..."
+        "Načítavam Bellissimo stránku..."
     )
 
 
     response = requests.get(
+
         URL,
+
         headers=HEADERS,
+
         timeout=20
+
     )
 
 
@@ -114,43 +71,239 @@ def scrape_bellissimo():
 
 
     soup = BeautifulSoup(
+
         response.text,
+
         "html.parser"
+
     )
 
 
 
-    image_url = find_image_url(
-        soup
-    )
+    for img in soup.find_all("img"):
 
 
+        src = img.get(
 
-    if not image_url:
+            "src",
 
-        raise Exception(
-            "Obrázok menu Bellissimo sa nenašiel"
+            ""
+
         )
 
 
 
-    print(
-        "Bellissimo obrázok:",
-        image_url
+        if "menu-bellissimo" in src.lower():
+
+
+            print(
+
+                "Bellissimo obrázok:",
+
+                src
+
+            )
+
+
+            return src
+
+
+
+
+
+    raise Exception(
+
+        "Obrázok menu Bellissimo sa nenašiel"
+
     )
 
 
 
-    return {
 
-        "restaurant": "Bellissimo",
 
-        "type": "image_menu",
 
-        "image_url": image_url,
 
-        "soup": "",
 
-        "meals": []
 
-    }
+def scrape_bellissimo():
+
+
+    print(
+
+        "Načítavam Bellissimo..."
+
+    )
+
+
+
+    image_url = find_menu_image()
+
+
+
+
+
+    try:
+
+
+        print(
+
+            "Spúšťam Bellissimo OCR..."
+
+        )
+
+
+
+        text = extract_text_from_image(
+
+            image_url
+
+        )
+
+
+
+        day = today_name()
+
+
+
+        if not day:
+
+
+            raise Exception(
+
+                "Dnes nie je pracovný deň"
+
+            )
+
+
+
+
+
+        menu = parse_bellissimo_menu(
+
+            text,
+
+            day
+
+        )
+
+
+
+
+
+        print(
+
+            "Bellissimo OCR položiek:",
+
+            len(menu.get("meals", []))
+
+        )
+
+
+
+
+
+        #
+        # ochrana OCR
+        # ak nič nenašlo, necháme aspoň obrázok
+        #
+
+
+        if not menu.get("meals"):
+
+
+            raise Exception(
+
+                "Bellissimo OCR nenašlo menu"
+
+            )
+
+
+
+
+
+        return {
+
+
+            "restaurant": "Bellissimo",
+
+
+            "type": "ocr_menu",
+
+
+            "image_url": image_url,
+
+
+            "starter": menu.get(
+
+                "starter",
+
+                ""
+
+            ),
+
+
+            "soup": menu.get(
+
+                "soup",
+
+                ""
+
+            ),
+
+
+            "meals": menu.get(
+
+                "meals",
+
+                []
+
+            )
+
+
+        }
+
+
+
+
+
+
+    except Exception as e:
+
+
+        print(
+
+            "⚠ Bellissimo OCR chyba:",
+
+            e
+
+        )
+
+
+
+        #
+        # ZÁLOHA
+        # aspoň obrázok zostane
+        #
+
+
+        return {
+
+
+            "restaurant": "Bellissimo",
+
+
+            "type": "image_menu",
+
+
+            "image_url": image_url,
+
+
+            "starter": "",
+
+
+            "soup": "",
+
+
+            "meals": []
+
+        }
