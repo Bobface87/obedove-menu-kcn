@@ -364,20 +364,92 @@ async function loadMenu() {
 
 
 
-          r.meals.forEach(m => {
+        r.meals.forEach(m => {
 
 
-            html += `<li>`;
+          html += `<li>`;
 
 
-            if (m.menu) {
+          /*
+            Hoffer + Hospúdka
+            iba číslo menu bold
+          */
 
-              html += `<strong>${m.menu}.</strong> `;
+          if (
+            m.menu
+            &&
+            (
+              r.restaurant === "Hoffer"
+              ||
+              r.restaurant === "Hospúdka u Slováka"
+            )
+          ) {
 
-            }
+            html += `<strong>${m.menu}.</strong> `;
 
+          }
+
+
+
+          /*
+            Kotolňa
+            iba odrážka bold,
+            názov jedla normálne
+          */
+
+          if (
+            r.restaurant === "Kotolňa"
+          ) {
+
+            html += `<strong>•</strong> ${m.name}`;
+
+          }
+
+
+
+          /*
+            Quo Vadis
+            názov menu bold
+            (CLASSIC MENU, DAILY CHOICE MENU...)
+          */
+
+          else if (
+            r.restaurant === "Quo Vadis"
+          ) {
 
             html += `<strong>${m.name}</strong>`;
+
+          }
+
+
+
+          /*
+            Bellissimo + Smíchov
+            MENU 1, MENU 2...
+            bold
+          */
+
+          else if (
+            r.restaurant === "Bellissimo"
+            ||
+            r.restaurant === "Smíchov"
+          ) {
+
+            html += `<strong>${m.name}</strong>`;
+
+          }
+
+
+
+          /*
+            ostatné nechávame pôvodne
+          */
+
+          else {
+
+            html += m.name;
+
+          }
 
 
 
@@ -422,14 +494,7 @@ async function loadMenu() {
 
           html += `</ul>`;
 
-        }
-
-
-
-
-
-
-        /*
+        }        /*
           Sakura
         */
 
@@ -518,6 +583,7 @@ async function loadMenu() {
                 html += `<li>`;
 
 
+
                 if (m.number) {
 
                   html += `<strong>${m.number}.</strong> `;
@@ -525,7 +591,9 @@ async function loadMenu() {
                 }
 
 
+
                 html += m.name;
+
 
 
                 if (m.price) {
@@ -533,6 +601,7 @@ async function loadMenu() {
                   html += ` - <strong>${m.price}</strong>`;
 
                 }
+
 
 
                 html += `</li>`;
