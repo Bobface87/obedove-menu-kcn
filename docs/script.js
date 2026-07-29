@@ -401,7 +401,7 @@ async function loadMenu() {
             r.restaurant === "Kotolňa"
           ) {
 
-            html += `<strong>•</strong> ${m.name}`;
+            html += `<strong></strong> ${m.name}`;
 
           }
 
