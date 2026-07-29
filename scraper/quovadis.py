@@ -6,7 +6,7 @@ from urllib.parse import urljoin
 
 
 from ocr import extract_text_from_image
-from ocr_parser import parse_menu_text
+from quovadis_ocr_parser import parse_menu_text
 
 
 
