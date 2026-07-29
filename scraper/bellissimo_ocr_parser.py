@@ -100,6 +100,17 @@ def fix_grammage_errors(text):
 
         "i50g": "150g",
 
+
+        # --------------------------
+        # Polievka ml OCR opravy
+        # --------------------------
+
+        "Z00nnl": "300ml",
+        "Z00ml": "300ml",
+        "300m1": "300ml",
+        "3001m": "300ml",
+
+
     }
 
 
@@ -124,6 +135,13 @@ def fix_common_ocr_words(text):
         "steriyaki": "teriyaki",
         "snitake": "shitake",
         "chery": "cherry",
+
+
+        # --------------------------
+        # Zátvorky OCR
+        # --------------------------
+
+        "(1,7]": "(1,7)",
 
     }
 
@@ -445,6 +463,7 @@ def parse_bellissimo_menu(text, day=None):
         if looks_like_soup(line):
 
             soup_index = i
+
             break
 
 

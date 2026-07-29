@@ -55,7 +55,7 @@ def preprocess_image(image):
     image = image.filter(ImageFilter.SHARPEN)
 
     # uložiť pre kontrolu
-    image.save("debug_bellissimo.png")
+    # image.save("debug_bellissimo.png")
 
     return image
 
