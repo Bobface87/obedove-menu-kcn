@@ -67,14 +67,12 @@ async function loadMenu() {
 
 
 
-        // Obrázkové menu
+        // Obrázkové menu - iba zobrazenie obrázka
 
         if (r.type === "image_menu") {
 
 
           html += `
-
-            <a href="${r.image_url}" target="_blank">
 
               <img
 
@@ -83,8 +81,6 @@ async function loadMenu() {
                 alt="Denné menu"
 
                 class="qv-image">
-
-            </a>
 
           `;
 
@@ -129,6 +125,26 @@ async function loadMenu() {
                 <strong>🍲 Polievka:</strong>
 
                 ${r.soup}
+
+              </p>
+
+            `;
+
+          }
+
+
+
+          // Extra polievka (napr. Smíchov OCR)
+
+          if (r.extra_soup) {
+
+            html += `
+
+              <p>
+
+                <strong>🍲 Ďalšia polievka:</strong>
+
+                ${r.extra_soup}
 
               </p>
 
