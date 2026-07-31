@@ -269,9 +269,30 @@
   },
   {
     "restaurant": "Smíchov",
-    "type": "image_menu",
-    "image_url": "",
-    "soup": "",
-    "meals": []
+    "type": "ocr_menu",
+    "soup": "0,3l Brokolicový krém s krutónmi (1,7)",
+    "meals": [
+      {
+        "name": "MENU 1",
+        "description": "350g 12 hodín pečené trhané bravčové pliecko v ciabatte s naším coleslaw šalátom, hranolky, aioli (1,3,7,10,12)",
+        "price": "9,90 €"
+      },
+      {
+        "name": "MENU 2",
+        "description": "220/200g Pečené kuracie stehno s ryžou a hráškom, ovocný kompót (12)",
+        "price": "8,90 €"
+      },
+      {
+        "name": "MENU 3",
+        "description": "300g Caesar šalát - grilované kuracie prsia, opečená slanina, parmezán, krutóny, vajce, caesar drezing, rímsky šalát (1,3,4,7,10,12)",
+        "price": "11,90 €"
+      },
+      {
+        "name": "MENU 4",
+        "description": "120g/200g Vyprážaný bravčový rezeň, slovenský zemiakový šalát (1,3,7,10,12)",
+        "price": "8,90 €"
+      }
+    ],
+    "extra_soup": "0,3l Slepačí vývar s rezancami, mäsom a zeleninou (1,3,9)"
   }
 ]
