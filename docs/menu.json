@@ -1,21 +1,21 @@
 [
   {
     "restaurant": "Hoffer",
-    "soup": "0,33l Sýta zeleninová polievka s hráškom, liate cesto",
+    "soup": "0,33l Divinový guláš, chlieb",
     "meals": [
       {
         "menu": 1,
-        "name": "Sous-vide bravčová panenka na smotanovo-dubákovej omáčke, dusená ryža",
+        "name": "Vyprážané plnené kuracie prsia (cheddar, šunka) dusená ryža, rajčinovo - cibuľový šalát",
         "price": "8,90 €"
       },
       {
         "menu": 2,
-        "name": "Kuracie rezne v šunkovo - syrovom cestíčku, zemiakové pyré, kompót",
+        "name": "Zbojnícke bravčové soté so zemiakovými plackami, strúhaný syr",
         "price": "8,90 €"
       },
       {
         "menu": 3,
-        "name": "Bryndzové halušky s oravskou slaninou, jarná cibuľka",
+        "name": "Cestovinový šalát s grilovaným kuracím mäsom a syrom",
         "price": "8,90 €"
       },
       {
@@ -25,12 +25,12 @@
       },
       {
         "menu": 5,
-        "name": "Rezance s teriaky omáčkou a chrumkavými kačacími prsiami posypané sezamom",
+        "name": "Hovädzí roastbeef na grilovanej zelenine, varené baby zemiaky, cesnakový dip",
         "price": "9,40 €"
       }
     ],
     "dessert": {
-      "name": "Kakaový závin",
+      "name": "Lievanec s čučoriedkovým prelivom a šľahačkou",
       "weight": "50g",
       "delivery": false
     }
@@ -85,17 +85,16 @@
     "meals": {
       "price": "7,90 €",
       "items": [
-        "€) Pravá sviečková na smotane s domácou knedľou © Pražský hovädzí guláš",
-        "H s domácou knedľou v.s. €) Moravský vrabec",
-        "KA s dusenou kapustou a zemiakovými knedľami © Bravčový alebo kurací rezeň po pražsky so zemiakovým šalátom % © Pečené kuracie stehno na rasci",
-        "S so zemiakovou kašou a uhorkovým šalátom © Vyprážaný hermelín",
-        "A s s varenými zemiakmi a domácou tatárskou omáčkou | „s s.) Kôprová omáčka",
-        "NI s varenými vajíčkami a domácou knedľou",
-        "Včneček [co4 Ž s , ,",
-        "A oÝ 1051/.. z odpaľovaného cesta plnený žltkovým krémo",
-        "VS“. a poliaty cukrovou polevou.",
-        "Po dobrom jedle chutí aj život.",
-        "TI ) TT AN FA A TY VA A TMA —n TI ň Ú | ( a.) N A | Ja. | o) NA J « íWM [a NY B Ä A 1l [W! Ä a > | , | Ga f> Á v» o mmam v NÚ Ú A | W | , [9 a! i ! Í ČA „AN x. m 7"
+        ") Pravá sviečková na smotane s domácou knedľou © Pražský hovädzí guláš s domácou knedľou",
+        "Moravský vrabec",
+        "HA nik 7 lá s. dusenou kapustou a zemiakovými knedľami",
+        "J > \"A v p5 A va . u s. €) Bravčový alebo kurací rezeň po pražsky",
+        "NE so zemiakovým šalátom © Pečené kuracie stehno na rasci so zemiakovou kašou a uhorkovým šalátom sa: © Vyprážaný hermelín s varenými zemiakmi a domácou tatárskou omáčkou fe s. ©) Kôprová omáčka s varenými vajíčkami a domácou kneďľou",
+        "Véneček z odpaľovaného cesta plnený žltkovým krémor",
+        "U. a poliaty cukrovou polevou.",
+        "Po dobrom jedle chutí aj život. rá am A fh “a s r —„ —> <| -— 1——5] g v Ten? LT « 7 NS g [| r A NICA IE AX ( b fs“  [14",
+        "O) M | : á ra“ | a! | syry aj VA! | a)",
+        "ON. | U.I V% A W, o!) A Dali 1% U HA 1“ U Ž/ )"
       ]
     },
     "dessert": {
