@@ -68,10 +68,9 @@ async function loadMenu() {
 
 
 
+
         /*
           BUGANKA OCR MENU
-          - platí iba pre Buganku
-          - ostatné reštaurácie nemeníme
         */
 
         if (
@@ -258,8 +257,7 @@ async function loadMenu() {
 
 
         /*
-          Obrázkové menu
-          (ostatné reštaurácie)
+          OBRÁZKOVÉ MENU
         */
 
         else if (r.type === "image_menu") {
@@ -277,25 +275,197 @@ async function loadMenu() {
 
           `;
 
+        }        
+        
+        /*
+          SAKURA NOVÝ FORMÁT
+        */
+
+        else if (
+          r.restaurant === "Sakura"
+          &&
+          Array.isArray(r.daily_menu)
+        ) {
+
+
+          const categories = [
+
+            [
+              "🍲 Polievky",
+              "Polievky"
+            ],
+
+            [
+              "🍣 Sushi menu",
+              "Sushi menu"
+            ],
+
+            [
+              "🍜 Teplé jedlá",
+              "Teplé jedlá"
+            ],
+
+            [
+              "📅 Týždenná ponuka",
+              "Týždenná ponuka"
+            ]
+
+          ];
+
+
+
+          categories.forEach(([title, category]) => {
+
+
+            const items = r.daily_menu.filter(
+              item => item.category === category
+            );
+
+
+            if (!items.length) return;
+
+
+
+            html += `
+
+              <p>
+
+                <strong>${title}:</strong>
+
+              </p>
+
+              <ul>
+
+            `;
+
+
+
+            items.forEach(m => {
+
+
+              html += `<li>`;
+
+
+
+              /*
+                Sakura čísla menu
+                1-8 aj A-D
+              */
+
+              if (m.number) {
+
+                html += `<strong>${m.number}.</strong> `;
+
+              }
+
+
+
+              html += m.name;
+
+
+
+              if (m.weight) {
+
+                html += ` (${m.weight})`;
+
+              }
+
+
+
+              if (m.price) {
+
+                html += ` - <strong>${m.price}</strong>`;
+
+              }
+
+
+
+              if (m.description) {
+
+                html += `
+
+                  <br>
+
+                  <span class="description">
+
+                    ${m.description}
+
+                  </span>
+
+                `;
+
+              }
+
+
+
+              if (
+                m.variants
+                &&
+                m.variants.length
+              ) {
+
+
+                html += `<ul>`;
+
+
+
+                m.variants.forEach(v => {
+
+
+                  html += `
+
+                    <li>
+
+                      ${v.name}
+                      (${v.weight})
+                      -
+                      <strong>${v.price}</strong>
+
+                    </li>
+
+                  `;
+
+
+                });
+
+
+                html += `</ul>`;
+
+              }
+
+
+
+              html += `</li>`;
+
+
+            });
+
+
+
+            html += `</ul>`;
+
+
+          });
+
+
         }
 
 
 
 
 
-
         /*
-          Klasické menu
+          KLASICKÉ MENU
         */
 
-        if (
-          r.type !== "image_menu"
-          &&
-          r.restaurant !== "Buganka"
-          &&
+        else if (
+
           r.meals
+
           &&
+
           Array.isArray(r.meals)
+
         ) {
 
 
@@ -318,8 +488,6 @@ async function loadMenu() {
 
 
 
-
-
           if (r.soup) {
 
             html += `
@@ -335,8 +503,6 @@ async function loadMenu() {
             `;
 
           }
-
-
 
 
 
@@ -358,98 +524,70 @@ async function loadMenu() {
 
 
 
-
-
           html += `<ul>`;
 
 
 
-        r.meals.forEach(m => {
+          r.meals.forEach(m => {
 
 
-          html += `<li>`;
+            html += `<li>`;
 
 
-          /*
-            Hoffer + Hospúdka
-            iba číslo menu bold
-          */
 
-          if (
-            m.menu
-            &&
-            (
-              r.restaurant === "Hoffer"
+            if (
+              m.menu
+              &&
+              (
+                r.restaurant === "Hoffer"
+                ||
+                r.restaurant === "Hospúdka u Slováka"
+              )
+            ) {
+
+              html += `<strong>${m.menu}.</strong> `;
+
+            }
+
+
+
+            if (
+              r.restaurant === "Kotolňa"
+            ) {
+
+              html += m.name;
+
+            }
+
+
+
+            else if (
+              r.restaurant === "Quo Vadis"
+            ) {
+
+              html += `<strong>${m.name}</strong>`;
+
+            }
+
+
+
+            else if (
+              r.restaurant === "Bellissimo"
               ||
-              r.restaurant === "Hospúdka u Slováka"
-            )
-          ) {
+              r.restaurant === "Smíchov"
+            ) {
 
-            html += `<strong>${m.menu}.</strong> `;
+              html += `<strong>${m.name}</strong>`;
 
-          }
-
-
-
-          /*
-            Kotolňa
-            iba odrážka bold,
-            názov jedla normálne
-          */
-
-          if (
-            r.restaurant === "Kotolňa"
-          ) {
-
-            html += `<strong></strong> ${m.name}`;
-
-          }
+            }
 
 
 
-          /*
-            Quo Vadis
-            názov menu bold
-            (CLASSIC MENU, DAILY CHOICE MENU...)
-          */
+            else {
 
-          else if (
-            r.restaurant === "Quo Vadis"
-          ) {
+              html += m.name;
 
-            html += `<strong>${m.name}</strong>`;
-
-          }
-
-
-
-          /*
-            Bellissimo + Smíchov
-            MENU 1, MENU 2...
-            bold
-          */
-
-          else if (
-            r.restaurant === "Bellissimo"
-            ||
-            r.restaurant === "Smíchov"
-          ) {
-
-            html += `<strong>${m.name}</strong>`;
-
-          }
-
-
-
-          /*
-            ostatné nechávame pôvodne
-          */
-
-          else {
-
-            html += m.name;
-
-          }
+            }
 
 
 
@@ -494,132 +632,6 @@ async function loadMenu() {
 
           html += `</ul>`;
 
-        }        /*
-          Sakura
-        */
-
-        if (r.restaurant === "Sakura") {
-
-
-
-          if (
-            r.soups
-            &&
-            r.soups.length > 0
-          ) {
-
-
-            html += `
-
-              <p>
-
-                <strong>🍲 Polievky:</strong>
-
-              </p>
-
-              <ul>
-
-            `;
-
-
-            r.soups.forEach(s => {
-
-
-              html += `
-
-                <li>
-
-                  ${s.name} - ${s.price}
-
-                </li>
-
-              `;
-
-
-            });
-
-
-            html += `</ul>`;
-
-          }
-
-
-
-
-
-          const sections = [
-
-            ["🍣 Sushi", r.sushi],
-
-            ["🍜 Denné menu", r.daily_menu],
-
-            ["📅 Týždenné menu", r.weekly_menu]
-
-          ];
-
-
-
-
-          sections.forEach(([title, items]) => {
-
-
-
-            if (
-              items
-              &&
-              items.length > 0
-            ) {
-
-
-              html += `<p><strong>${title}:</strong></p>`;
-
-              html += `<ul>`;
-
-
-
-              items.forEach(m => {
-
-
-                html += `<li>`;
-
-
-
-                if (m.number) {
-
-                  html += `<strong>${m.number}.</strong> `;
-
-                }
-
-
-
-                html += m.name;
-
-
-
-                if (m.price) {
-
-                  html += ` - <strong>${m.price}</strong>`;
-
-                }
-
-
-
-                html += `</li>`;
-
-
-              });
-
-
-
-              html += `</ul>`;
-
-
-            }
-
-
-          });
-
-
         }
 
 
@@ -632,7 +644,6 @@ async function loadMenu() {
         rowDiv.appendChild(div);
 
 
-
       });
 
 
@@ -640,12 +651,11 @@ async function loadMenu() {
       app.appendChild(rowDiv);
 
 
-
     });
 
 
-
   }
+
 
 
   catch (e) {
@@ -660,7 +670,6 @@ async function loadMenu() {
 
 
   }
-
 
 
 }
