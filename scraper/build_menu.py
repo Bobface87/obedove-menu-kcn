@@ -60,6 +60,126 @@ def should_update():
 
 
 
+# =====================================================
+# SAKURA KATEGÓRIE
+# =====================================================
+
+def detect_sakura_category(item):
+
+    number = item.get(
+        "number"
+    )
+
+
+    if number is None:
+
+        return "Polievky"
+
+
+
+    if number in [
+        "1",
+        "2",
+        "3",
+        "4"
+    ]:
+
+        return "Sushi menu"
+
+
+
+    if number in [
+        "5",
+        "6",
+        "7",
+        "8"
+    ]:
+
+        return "Teplé jedlá"
+
+
+
+    if number in [
+        "A",
+        "B",
+        "C",
+        "D"
+    ]:
+
+        return "Týždenná ponuka"
+
+
+
+    return "Ostatné"
+
+
+
+
+def sort_sakura_menu(menu):
+
+
+    category_order = {
+
+        "Polievky": 1,
+
+        "Sushi menu": 2,
+
+        "Teplé jedlá": 3,
+
+        "Týždenná ponuka": 4,
+
+        "Ostatné": 5
+
+    }
+
+
+
+    number_order = {
+
+        None: 0,
+
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+
+        "5": 5,
+        "6": 6,
+        "7": 7,
+        "8": 8,
+
+        "A": 9,
+        "B": 10,
+        "C": 11,
+        "D": 12
+
+    }
+
+
+
+    return sorted(
+
+        menu,
+
+        key=lambda x: (
+
+            category_order.get(
+                x.get("category"),
+                99
+            ),
+
+            number_order.get(
+                x.get("number"),
+                99
+            )
+
+        )
+
+    )
+
+
+
+
 def safe_scrape(
     restaurant_name,
     scraper
@@ -102,6 +222,7 @@ def safe_scrape(
 
 
 
+
 def run_restaurant(
     data,
     name,
@@ -119,9 +240,39 @@ def run_restaurant(
     )
 
 
+
+    # =============================================
+    # Sakura špeciálna úprava
+    # =============================================
+
+    if name == "Sakura":
+
+
+        menu = result.get(
+            "daily_menu",
+            []
+        )
+
+
+        for item in menu:
+
+
+            item["category"] = detect_sakura_category(
+                item
+            )
+
+
+
+        result["daily_menu"] = sort_sakura_menu(
+            menu
+        )
+
+
+
     data.append(
         result
     )
+
 
 
     if result.get("status") == "error":
@@ -138,10 +289,12 @@ def run_restaurant(
 
 
 
+
 def build():
 
 
     if not should_update():
+
 
         if os.path.exists(FLAG_PATH):
 
@@ -149,7 +302,9 @@ def build():
                 FLAG_PATH
             )
 
+
         return
+
 
 
 
@@ -256,6 +411,7 @@ def build():
     print(
         f"✅ HOTOVO -> {OUTPUT_PATH}"
     )
+
 
 
 
