@@ -539,11 +539,6 @@ async function loadMenu() {
                 ${r.dessert.weight ? r.dessert.weight + " " : ""}
                 ${r.dessert.name}
 
-                ${
-                  r.dessert.delivery === false
-                    ? "<br><span class=\"description\">Neplatí pre donášku</span>"
-                    : ""
-                }
 
               </p>
 
