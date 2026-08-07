@@ -59,7 +59,7 @@
       },
       {
         "name": "BUSINESS MENU - STEAK ZO SVIEČKOVEJ",
-        "description": "400g / 200g Grilovaný steak z hovädzej sviečkovej podávaný s aromatickou omáčkou Café de Paris a pečeným zemiakom s jemným krémom Creme Fraiche . /4,7,10/",
+        "description": "400g / 200g Grilovaný steak z hovädzej sviečkovej podávaný s aromatickou omáčkou Café de Paris a pečeným zemiakom s jemným krémom Créme Fraiche . /4,7,10/",
         "price": "20,90 €"
       }
     ]
@@ -85,12 +85,16 @@
     "meals": {
       "price": "7,90 €",
       "items": [
-        ") Pravá sviečková na smotane s.domácou knedľou © Pražský hovädzí guláš s domácou knedľou © Moravský vrabec s. dusenou kapustou a zemiakovými knedľami",
-        "M . © Bravčový alebo kurací rezeň po pražsky so zemiakovým šalátom © Pečené kuracie stehno na rasci so zemiakovou kašou a uhorkovým šalátom © Vyprážaný hermelín",
-        "S s varenými zemiakmi a domácou tatárskou omáčkou ©. Kôprová omáčka s varenými vajíčkami a domácou kneďľou",
+        ") Pravá sviečková na smotane s domácou knedľou © Pražský hovädzí guláš s domácou knedľou",
+        "Moravský vrabec",
+        "HA nik 7 lá s. dusenou kapustou a zemiakovými knedľami",
+        "J > \"A v p5 A va . u s. €) Bravčový alebo kurací rezeň po pražsky",
+        "NE so zemiakovým šalátom © Pečené kuracie stehno na rasci so zemiakovou kašou a uhorkovým šalátom sa: © Vyprážaný hermelín s varenými zemiakmi a domácou tatárskou omáčkou fe s. ©) Kôprová omáčka s varenými vajíčkami a domácou kneďľou",
         "Véneček z odpaľovaného cesta plnený žltkovým krémor",
         "U. a poliaty cukrovou polevou.",
-        "Po do obrom jedle chutí i živo"
+        "Po dobrom jedle chutí aj život. rá am A fh “a s r —„ —> <| -— 1——5] g v Ten? LT « 7 NS g [| r A NICA IE AX ( b fs“  [14",
+        "O) M | : á ra“ | a! | syry aj VA! | a)",
+        "ON. | U.I V% A W, o!) A Dali 1% U HA 1“ U Ž/ )"
       ]
     },
     "dessert": {
@@ -321,30 +325,9 @@
   },
   {
     "restaurant": "Smíchov",
-    "type": "ocr_menu",
-    "soup": "0,3l Cuketový krém s cesnakovými krutónmi (1,7)",
-    "meals": [
-      {
-        "name": "MENU 1",
-        "description": "350g Bryndzové halušky s farmárskou klobásou, strúhaným údeným syrom a jarnou cibuľkou (1,3,7)",
-        "price": "9,90 €"
-      },
-      {
-        "name": "MENU 2",
-        "description": "130g/200g Kurací steak „sous vide“ s nivovou omáčkou, zemiakové krokety, listový šalát (1,3,7,9)",
-        "price": "8,90 €"
-      },
-      {
-        "name": "MENU 3",
-        "description": "300g Caesar šalát - grilované kuracie prsia, opečená slanina, parmezán, krutóny, vajce, caesar drezing, rímsky šalát (1,3,4,7,10,12)",
-        "price": "11,90 €"
-      },
-      {
-        "name": "MENU 4",
-        "description": "120g/200g Vyprážaný bravčový rezeň, slovenský zemiakový šalát (1,3,7,10,12)",
-        "price": "8,90 €"
-      }
-    ],
-    "extra_soup": "0,3l Slepačí vývar s rezancami, mäsom a zeleninou (1,3,9)"
+    "type": "image_menu",
+    "image_url": "",
+    "soup": "",
+    "meals": []
   }
 ]
