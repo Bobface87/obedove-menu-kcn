@@ -37,6 +37,9 @@ def get_pdf_url():
     )
 
 
+    pdf_links = []
+
+
     for link in soup.find_all(
         "a",
         href=True
@@ -50,24 +53,51 @@ def get_pdf_url():
         ).lower()
 
 
-        if ".pdf" in href.lower():
-
-            if (
-                "menu" in text
-                or "obed" in text
-                or "menu" in href.lower()
-                or "obed" in href.lower()
-            ):
-
-                if href.startswith("/"):
-
-                    href = (
-                        "https://starakotolna.sk"
-                        + href
-                    )
+        if ".pdf" not in href.lower():
+            continue
 
 
-                return href
+        if href.startswith("/"):
+
+            href = (
+                "https://starakotolna.sk"
+                + href
+            )
+
+
+        pdf_links.append(
+            {
+                "url": href,
+                "text": text
+            }
+        )
+
+
+
+    # odstránime jedálny lístok
+    pdf_links = [
+
+        pdf for pdf in pdf_links
+
+        if "jedáln" not in pdf["url"].lower()
+        and "jedaln" not in pdf["url"].lower()
+        and "listok" not in pdf["url"].lower()
+
+    ]
+
+
+    # preferujeme obedové menu
+
+    for pdf in pdf_links:
+
+        if (
+            "obed" in pdf["url"].lower()
+            or "obed" in pdf["text"]
+            or "menu" in pdf["text"]
+        ):
+
+            return pdf["url"]
+
 
 
     raise Exception(
