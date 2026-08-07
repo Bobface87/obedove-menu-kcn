@@ -473,5 +473,12 @@
         "price": "9,90 €"
       }
     ]
+  },
+  {
+    "restaurant": "Media Cafe",
+    "type": "image_menu",
+    "image_url": "https://www.mediacafe.sk/images/obedove_menu_media_cafe_nitra_donaska_3fe4d25bf10ed88b.webp",
+    "soup": null,
+    "meals": []
   }
 ]

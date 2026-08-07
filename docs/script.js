@@ -34,7 +34,8 @@ async function loadMenu() {
       ],
 
       [
-        "Buganka"
+        "Buganka",
+        "Media Cafe"
       ]
 
     ];

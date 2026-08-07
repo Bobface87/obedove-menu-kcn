@@ -13,6 +13,7 @@ from smichov import scrape_smichov
 from sakura import scrape_sakura
 from ukrba import scrape_ukrba
 from moretti import scrape_moretti
+from mediacafe import scrape_mediacafe
 
 
 # koreň projektu
@@ -368,6 +369,10 @@ def build():
         (
             "Moretti",
             scrape_moretti
+        ),
+        (
+            "Media Cafe",
+            scrape_mediacafe
         )
 
     ]
