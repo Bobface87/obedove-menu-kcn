@@ -12,6 +12,7 @@ from hospudka import scrape_hospudka
 from smichov import scrape_smichov
 from sakura import scrape_sakura
 from ukrba import scrape_ukrba
+from moretti import scrape_moretti
 
 
 # koreň projektu
@@ -363,6 +364,10 @@ def build():
         (
             "U Krba",
             scrape_ukrba
+        ),
+        (
+            "Moretti",
+            scrape_moretti
         )
 
     ]

@@ -29,8 +29,12 @@ async function loadMenu() {
 
       [
         "Sakura",
-        "Buganka",
+        "Moretti",
         "U Krba"
+      ],
+
+      [
+        "Buganka"
       ]
 
     ];
@@ -584,6 +588,8 @@ async function loadMenu() {
                 r.restaurant === "Hospúdka u Slováka"
                 ||
                 r.restaurant === "U Krba"
+                ||
+                r.restaurant === "Moretti"
               )
             ) {
 
