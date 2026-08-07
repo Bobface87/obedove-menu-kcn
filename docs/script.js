@@ -488,28 +488,33 @@ async function loadMenu() {
 
 
 
+        if (r.soup) {
 
-          if (r.soup) {
+          html += `
 
-            html += `
+            <p>
 
-              <p>
+              <strong>🍲 Polievka:</strong>
 
-                <strong>🍲 Polievka:</strong>
+              ${
+                typeof r.soup === "object"
+                  ? r.soup.name
+                  : r.soup
+              }
 
-                ${
-                  typeof r.soup === "object"
-                    ? r.soup.name
-                    : r.soup
-                }
+              ${
+                typeof r.soup === "object"
+                &&
+                r.soup.allergens
+                  ? `<br><span class="description">Alergény: ${r.soup.allergens}</span>`
+                  : ""
+              }
 
-              </p>
+            </p>
 
-            `;
+          `;
 
-          }
-
-
+        }
 
 
 
