@@ -11,6 +11,7 @@ from kotolna import scrape_kotolna
 from hospudka import scrape_hospudka
 from smichov import scrape_smichov
 from sakura import scrape_sakura
+from ukrba import scrape_ukrba
 
 
 # koreň projektu
@@ -357,6 +358,11 @@ def build():
         (
             "Smíchov",
             scrape_smichov
+        ),
+
+        (
+            "U Krba",
+            scrape_ukrba
         )
 
     ]

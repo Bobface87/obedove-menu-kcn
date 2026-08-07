@@ -29,7 +29,8 @@ async function loadMenu() {
 
       [
         "Sakura",
-        "Buganka"
+        "Buganka",
+        "U Krba"
       ]
 
     ];
@@ -277,6 +278,8 @@ async function loadMenu() {
 
         }        
         
+
+        
         /*
           SAKURA NOVÝ FORMÁT
         */
@@ -450,10 +453,6 @@ async function loadMenu() {
 
         }
 
-
-
-
-
         /*
           KLASICKÉ MENU
         */
@@ -488,6 +487,8 @@ async function loadMenu() {
 
 
 
+
+
           if (r.soup) {
 
             html += `
@@ -496,13 +497,19 @@ async function loadMenu() {
 
                 <strong>🍲 Polievka:</strong>
 
-                ${r.soup}
+                ${
+                  typeof r.soup === "object"
+                    ? r.soup.name
+                    : r.soup
+                }
 
               </p>
 
             `;
 
           }
+
+
 
 
 
@@ -521,6 +528,8 @@ async function loadMenu() {
             `;
 
           }
+
+
 
 
 
@@ -547,6 +556,9 @@ async function loadMenu() {
           }
 
 
+
+
+
           html += `<ul>`;
 
 
@@ -565,12 +577,16 @@ async function loadMenu() {
                 r.restaurant === "Hoffer"
                 ||
                 r.restaurant === "Hospúdka u Slováka"
+                ||
+                r.restaurant === "U Krba"
               )
             ) {
 
               html += `<strong>${m.menu}.</strong> `;
 
             }
+
+
 
 
 
@@ -584,6 +600,8 @@ async function loadMenu() {
 
 
 
+
+
             else if (
               r.restaurant === "Quo Vadis"
             ) {
@@ -591,6 +609,8 @@ async function loadMenu() {
               html += `<strong>${m.name}</strong>`;
 
             }
+
+
 
 
 
@@ -606,11 +626,39 @@ async function loadMenu() {
 
 
 
+
+
             else {
 
               html += m.name;
 
             }
+
+
+
+
+
+            /*
+              Alergény - U Krba + ostatné
+            */
+
+            if (m.allergens) {
+
+              html += `
+
+                <br>
+
+                <span class="description">
+
+                  Alergény: ${m.allergens}
+
+                </span>
+
+              `;
+
+            }
+
+
 
 
 
@@ -629,6 +677,8 @@ async function loadMenu() {
               `;
 
             }
+
+
 
 
 
