@@ -145,22 +145,33 @@
   },
   {
     "restaurant": "Kotolňa",
-    "type": "error",
-    "status": "error",
-    "message": "Menu sa nepodarilo načítať",
-    "image_url": "",
-    "soup": {
-      "price": "",
-      "items": []
-    },
-    "meals": {
-      "price": "",
-      "items": []
-    },
-    "dessert": {
-      "price": "",
-      "items": []
-    }
+    "soup": "0,40 l Hokkaido krém s krutónmi",
+    "meals": [
+      {
+        "name": "Bravčová panenka na grile, burgundská omáčka, zemiakové rosti, šalátik",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Kuracie prsia v chrumkavom cestíčku, teryiaki omáčka, restovaná zelenina, jazmínová ryža",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Pizza BBQ (bbq omáčka, mozarella, slanina, kuracie mäso, cibuľa) SK",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Miešané šalátové listy, grilovaný filet lososa, cherry paradajky, bylinkový dresing, pizza chlieb",
+        "price": "10,50 €"
+      },
+      {
+        "name": "Kuracie prsia na grile, grilovaná zelenina, popučené maslové zemiaky, syrová omáčka",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Vyprážaný karfiol, zemiakové pyré, tatárska omáčka Cena pre",
+        "price": "8,50 €"
+      }
+    ]
   },
   {
     "restaurant": "Sakura",
