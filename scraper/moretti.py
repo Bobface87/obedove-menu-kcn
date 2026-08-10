@@ -16,7 +16,6 @@ DAYS = {
 }
 
 
-
 def clean_text(text):
 
     if not text:
@@ -29,7 +28,6 @@ def clean_text(text):
     )
 
     return text.strip()
-
 
 
 def extract_allergens(text):
@@ -50,7 +48,6 @@ def extract_allergens(text):
     return ""
 
 
-
 def remove_allergens(text):
 
     return re.sub(
@@ -58,7 +55,6 @@ def remove_allergens(text):
         "",
         text
     )
-
 
 
 def extract_price(text):
@@ -75,7 +71,6 @@ def extract_price(text):
     return ""
 
 
-
 def remove_price(text):
 
     return re.sub(
@@ -85,40 +80,25 @@ def remove_price(text):
     )
 
 
-
 def get_today_marker():
 
     today = datetime.today()
 
     weekday = today.strftime("%A")
 
-
     if weekday not in DAYS:
 
         return None
 
-
-    date = (
-        str(today.day)
-        +
-        "."
-        +
-        str(today.month)
-        +
-        "."
-        +
-        str(today.year)
-    )
-
-
     return (
         DAYS[weekday]
-        +
-        ": "
-        +
-        date
+        + ": "
+        + str(today.day)
+        + "."
+        + str(today.month)
+        + "."
+        + str(today.year)
     )
-
 
 
 def parse_soup(text):
@@ -127,26 +107,19 @@ def parse_soup(text):
         text
     )
 
-
     name = text.replace(
         "Polievka:",
         ""
     )
 
-
     name = remove_allergens(
         name
     )
 
-
     return {
-
         "name": clean_text(name),
-
         "allergens": allergens
-
     }
-
 
 
 def parse_meal(text, number):
@@ -155,66 +128,76 @@ def parse_meal(text, number):
         text
     )
 
-
     price = extract_price(
         text
     )
-
 
     name = remove_allergens(
         text
     )
 
-
     name = remove_price(
         name
     )
 
-
     return {
-
         "menu": str(number),
-
         "name": clean_text(name),
-
         "allergens": allergens,
-
         "price": price
-
     }
 
 
-
-def scrape_moretti():
-
-    print("Načítavam Moretti...")
-
+def get_page_lines():
 
     r = requests.get(
         URL,
-        timeout=20
+        headers={
+            "User-Agent": "Mozilla/5.0"
+        },
+        timeout=20,
+        verify=False
     )
 
+    r.raise_for_status()
 
-    r.encoding = "utf-8"
-
+    # Moretti má nesprávne/staré deklarované kódovanie.
+    # Obsah stránky je v skutočnosti UTF-8.
+    html = r.content.decode(
+        "utf-8",
+        errors="replace"
+    )
 
     soup = BeautifulSoup(
-        r.text,
+        html,
         "html.parser"
     )
 
+    raw_lines = soup.get_text(
+        "\n",
+        strip=True
+    ).splitlines()
 
-    text = clean_text(
-        soup.get_text(
-            "\n",
-            strip=True
+    lines = []
+
+    for line in raw_lines:
+
+        line = clean_text(
+            line
         )
-    )
 
+        if line:
+
+            lines.append(
+                line
+            )
+
+    return lines
+
+
+def find_today_section(lines):
 
     marker = get_today_marker()
-
 
     if not marker:
 
@@ -222,11 +205,44 @@ def scrape_moretti():
             "Dnes nie je pracovný deň"
         )
 
+    start = -1
 
-    start = text.find(
-        marker
-    )
+    for index, line in enumerate(lines):
 
+        # Moretti má dátum v HTML rozdelený:
+        #
+        # Pondelok: 10
+        # .8.2026
+        #
+        # Preto kontrolujeme obe možnosti.
+
+        if line == marker:
+
+            start = index
+
+            break
+
+        if line.startswith(
+            DAYS.get(
+                datetime.today().strftime("%A"),
+                ""
+            )
+            + ": "
+        ):
+
+            if index + 1 < len(lines):
+
+                combined = (
+                    line
+                    +
+                    lines[index + 1]
+                )
+
+                if combined == marker:
+
+                    start = index
+
+                    break
 
     if start == -1:
 
@@ -234,143 +250,239 @@ def scrape_moretti():
             "Dnešné menu Moretti nenájdené"
         )
 
+    today_lines = []
 
-    section = text[start:]
+    index = start + 1
+
+    # Ak bol dátum rozdelený na dva riadky,
+    # preskočíme aj druhý riadok dátumu.
+
+    if (
+        start + 1 < len(lines)
+        and re.match(
+            r"^\.\d+\.\d+$",
+            lines[start + 1]
+        )
+    ):
+
+        index += 1
+
+    while index < len(lines):
+
+        line = lines[index]
+
+        # Ďalší pracovný deň.
+        if re.match(
+            r"^(Pondelok|Utorok|Streda|Štvrtok|Piatok):",
+            line
+        ):
+
+            break
+
+        # Týždenná ponuka.
+        if line.startswith(
+            "Ak ste si nevybrali"
+        ):
+
+            break
+
+        # Alergény.
+        if line.startswith(
+            "Alergény:"
+        ):
+
+            break
+
+        if line.startswith(
+            "Prajeme Vám dobrú chuť"
+        ):
+
+            break
+
+        today_lines.append(
+            line
+        )
+
+        index += 1
+
+    return today_lines
 
 
-    end = section.find(
-        "Ak ste si nevybrali"
-    )
+def find_weekly_section(lines):
+
+    start = -1
+
+    for index, line in enumerate(lines):
+
+        if line.startswith(
+            "Ak ste si nevybrali"
+        ):
+
+            start = index
+
+            break
+
+    if start == -1:
+
+        return []
+
+    weekly_lines = []
+
+    for line in lines[start + 1:]:
+
+        if line.startswith(
+            "Alergény:"
+        ):
+
+            break
+
+        if line.startswith(
+            "Prajeme Vám"
+        ):
+
+            break
+
+        weekly_lines.append(
+            line
+        )
+
+    return weekly_lines
 
 
-    if end != -1:
-
-        daily = section[:end]
-
-        weekly = section[end:]
-
-    else:
-
-        daily = section
-
-        weekly = ""
-
-
-
-    soup_match = re.search(
-        r"Polievka:.*?(?=\s+\d:)",
-        daily
-    )
-
+def parse_today_menu(lines):
 
     soup_data = None
 
-
-    if soup_match:
-
-        soup_data = parse_soup(
-            soup_match.group(0)
-        )
-
-
-
     meals = []
 
+    for line in lines:
 
+        if line.startswith(
+            "Polievka:"
+        ):
 
-    # MENU 1-6
+            soup_data = parse_soup(
+                line
+            )
 
-    for match in re.finditer(
-        r"(\d+):\s*(.*?)(?=\s+\d+:|\Z)",
-        daily
-    ):
+            continue
 
+        match = re.match(
+            r"^([1-6]):\s*(.*)$",
+            line
+        )
+
+        if not match:
+
+            continue
 
         number = int(
             match.group(1)
         )
 
+        text = match.group(2)
 
-        if 1 <= number <= 6:
-
-            meals.append(
-                parse_meal(
-                    match.group(2),
-                    number
-                )
+        meals.append(
+            parse_meal(
+                text,
+                number
             )
+        )
+
+    return soup_data, meals
 
 
+def parse_weekly_menu(lines):
 
-    # TYZDENNA PONUKA 7-11
-
-    weekly_text = weekly.split(
-        "Alergény:"
-    )[0]
-
-
-    # odstráni úvodnú vetu:
-    # "Ak ste si nevybrali z ponuky nášho denného menu,
-    # máme pre Vás na celý týždeň:"
-
-    weekly_text = re.sub(
-        r"^.*?celý týždeň:",
-        "",
-        weekly_text,
-        flags=re.I | re.S
-    )
-
-
-    weekly_items = re.findall(
-        r"(.+?)\s+(\d+,\d+€)",
-        weekly_text
-    )
-
+    meals = []
 
     number = 7
 
-
-    for item, price in weekly_items:
-
+    for line in lines:
 
         if number > 11:
 
             break
 
+        line = clean_text(
+            line
+        )
+
+        if not line:
+
+            continue
+
+        match = re.match(
+            r"^(.*?)\s+(\d+,\d+)\s*€$",
+            line
+        )
+
+        if not match:
+
+            continue
+
+        name = match.group(1)
+
+        price = (
+            match.group(2)
+            + " €"
+        )
 
         meals.append(
             parse_meal(
-                item + " " + price,
+                name + " " + price,
                 number
             )
         )
 
-
         number += 1
 
+    return meals
 
+
+def scrape_moretti():
+
+    print(
+        "Načítavam Moretti..."
+    )
+
+    lines = get_page_lines()
+
+    today_lines = find_today_section(
+        lines
+    )
+
+    weekly_lines = find_weekly_section(
+        lines
+    )
+
+    soup_data, daily_meals = parse_today_menu(
+        today_lines
+    )
+
+    weekly_meals = parse_weekly_menu(
+        weekly_lines
+    )
+
+    meals = (
+        daily_meals
+        +
+        weekly_meals
+    )
 
     return {
-
         "restaurant": "Moretti",
-
         "type": "classic_menu",
-
         "soup": soup_data,
-
         "meals": meals
-
     }
-
 
 
 def main():
 
     import json
 
-
     data = scrape_moretti()
-
 
     print(
         json.dumps(
@@ -379,7 +491,6 @@ def main():
             indent=2
         )
     )
-
 
 
 if __name__ == "__main__":

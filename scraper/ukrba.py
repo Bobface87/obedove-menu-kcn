@@ -29,7 +29,6 @@ def clean_text(text):
 
     text = text.strip()
 
-
     # oprava rozbitých gramáží
     # napr. 20 0g -> 200g
     text = re.sub(
@@ -38,26 +37,34 @@ def clean_text(text):
         text
     )
 
-
     return text
-
 
 
 def extract_allergens(text):
 
+    # bežný zápis:
+    # (1,3,7)
+    #
+    # prípadne rozbitý:
+    # (1.3,7)
+
     match = re.search(
-        r"\(([\d,]+)\)",
+        r"\(([\d,\.]+)\)",
         text
     )
 
-
     if match:
 
-        return match.group(1)
+        allergens = match.group(1)
 
+        allergens = allergens.replace(
+            ".",
+            ","
+        )
+
+        return allergens
 
     return ""
-
 
 
 def extract_price(text):
@@ -67,14 +74,11 @@ def extract_price(text):
         text
     )
 
-
     if match:
 
         return match.group(1) + " €"
 
-
     return None
-
 
 
 def remove_price(text):
@@ -86,123 +90,147 @@ def remove_price(text):
     ).strip()
 
 
-
 def remove_allergens(text):
 
     return re.sub(
-        r"\([\d,]+\)",
+        r"\([\d,\.]+\)",
         "",
         text
     ).strip()
 
 
-
-def get_today_label():
+def get_today_pattern():
 
     today = datetime.today()
 
     weekday = today.strftime("%A")
 
-
     if weekday not in DAYS:
 
         return None
 
-
     day_name = DAYS[weekday]
 
+    # stránka môže mať napr.:
+    #
+    # Pondelok 10 .8.2026
+    #
+    # alebo:
+    #
+    # Pondelok 10. 8.2026
+    #
+    # alebo:
+    #
+    # Pondelok 10.8.2026
 
-    date = today.strftime(
-        "%d.%m.%Y"
+    return re.compile(
+
+        rf"{day_name}"
+        rf"\s*"
+        rf"{today.day}"
+        rf"\s*\.\s*"
+        rf"{today.month}"
+        rf"\s*\.\s*"
+        rf"{today.year}",
+
+        re.IGNORECASE
+
     )
 
 
-    # stránka používa napr. 7.8.2026
-    date = date.lstrip("0").replace(
-        ".0",
-        "."
+def find_today_block(full_text):
+
+    pattern = get_today_pattern()
+
+    if not pattern:
+
+        return None
+
+    today_match = pattern.search(
+        full_text
     )
 
+    if not today_match:
 
-    return f"{day_name} {date}"
+        return None
 
+    start = today_match.end()
 
+    # --------------------------------------------------
+    # nájdeme začiatok ďalšieho pracovného dňa
+    # --------------------------------------------------
 
-def parse_menu_items(items, start_number=1):
+    next_day_pattern = re.compile(
 
-    meals = []
+        r"(Pondelok|Utorok|Streda|Štvrtok|Piatok)"
+        r"\s*"
+        r"\d{1,2}"
+        r"\s*\.\s*"
+        r"\d{1,2}"
+        r"\s*\.\s*"
+        r"\d{4}",
 
-    number = start_number
+        re.IGNORECASE
 
+    )
 
-    for item in items:
+    next_match = None
 
-        text = clean_text(
-            item.get_text(
-                " ",
-                strip=True
-            )
-        )
+    for match in next_day_pattern.finditer(
+        full_text,
+        start
+    ):
 
+        next_match = match
 
-        if not text:
+        break
 
-            continue
+    if next_match:
 
+        end = next_match.start()
 
-        allergens = extract_allergens(
-            text
-        )
+    else:
 
+        end = len(full_text)
 
-        price = extract_price(
-            text
-        )
-
-
-        name = remove_price(
-            text
-        )
-
-
-        name = remove_allergens(
-            name
-        )
-
-
-        meals.append(
-            {
-                "menu": str(number),
-                "name": name,
-                "allergens": allergens,
-                "price": price
-            }
-        )
+    return full_text[
+        start:end
+    ]
 
 
-        number += 1
+def parse_meal_text(text, number):
 
+    text = clean_text(
+        text
+    )
 
-    return meals
+    if not text:
 
-
-
-def parse_extra_menu(text, number):
+        return None
 
     allergens = extract_allergens(
         text
     )
 
-
-    name = remove_price(
-        text[2:]
+    price = extract_price(
+        text
     )
 
+    name = remove_price(
+        text
+    )
 
     name = remove_allergens(
         name
     )
 
+    name = clean_text(
+        name
+    )
+
+    if not name:
+
+        return None
 
     return {
 
@@ -212,78 +240,162 @@ def parse_extra_menu(text, number):
 
         "allergens": allergens,
 
-        "price": extract_price(text)
+        "price": price
 
     }
 
 
+def parse_today_meals(today_text):
 
-def scrape_ukrba():
+    meals = []
 
-    response = requests.get(
-        URL,
-        timeout=20
+    # --------------------------------------------------
+    # odstránime polievku
+    #
+    # od "Polievka:" po prvú položku začínajúcu
+    # gramážou, napr. 150g / 350g
+    # --------------------------------------------------
+
+    soup_end = re.search(
+
+        r"\bPolievka\s*:?.*?"
+        r"(?=\s+\d+\s*g\b)",
+
+        today_text,
+
+        re.IGNORECASE
+
     )
 
+    if soup_end:
 
-    response.encoding = "utf-8"
+        meals_text = today_text[
+            soup_end.end():
+        ]
 
+    else:
 
-    soup = BeautifulSoup(
-        response.text,
-        "html.parser"
-    )
+        meals_text = today_text
 
+    # --------------------------------------------------
+    # nájdeme začiatky jednotlivých jedál
+    #
+    # napr.:
+    #
+    # 150g Medovo-horčicové...
+    # 350g Bryndzové halušky...
+    # 150g Grilovaný pstruh...
+    #
+    # --------------------------------------------------
 
-    paragraphs = soup.find_all(
-        "p"
-    )
+    matches = list(
 
+        re.finditer(
 
-    today_label = get_today_label()
+            r"(?<!\d)"
+            r"(\d+)\s*g\b",
 
+            meals_text,
 
-    if not today_label:
+            re.IGNORECASE
 
-        return None
-
-
-
-    start_index = None
-
-
-    for i, p in enumerate(paragraphs):
-
-        text = clean_text(
-            p.get_text(
-                " ",
-                strip=True
-            )
         )
 
+    )
 
-        if today_label in text:
+    number = 1
 
-            start_index = i
+    for index, match in enumerate(matches):
 
-            break
+        start = match.start()
+
+        if index + 1 < len(matches):
+
+            end = matches[
+                index + 1
+            ].start()
+
+        else:
+
+            end = len(meals_text)
+
+        meal_text = meals_text[
+            start:end
+        ]
+
+        meal = parse_meal_text(
+            meal_text,
+            number
+        )
+
+        if meal:
+
+            meals.append(
+                meal
+            )
+
+            number += 1
+
+    # --------------------------------------------------
+    # nechceme viac ako 3 denné menu
+    # --------------------------------------------------
+
+    meals = meals[:3]
+
+    return meals
 
 
+def parse_extra_menu(text, number):
 
-    if start_index is None:
+    text = clean_text(
+        text
+    )
+
+    # odstránenie čísla:
+    #
+    # 4. 150g ...
+    # 5. 350g ...
+
+    text = re.sub(
+        r"^\d+\.\s*",
+        "",
+        text
+    )
+
+    allergens = extract_allergens(
+        text
+    )
+
+    price = extract_price(
+        text
+    )
+
+    name = remove_price(
+        text
+    )
+
+    name = remove_allergens(
+        name
+    )
+
+    name = clean_text(
+        name
+    )
+
+    return {
+
+        "menu": str(number),
+
+        "name": name,
+
+        "allergens": allergens,
+
+        "price": price
+
+    }
 
 
-        return {
-
-            "restaurant": "U Krba",
-
-            "type": "classic_menu",
-
-            "error": "Dnešné menu nenájdené"
-
-        }
-
-
+def parse_soup(today_text):
 
     soup_data = {
 
@@ -293,111 +405,153 @@ def scrape_ukrba():
 
     }
 
+    soup_match = re.search(
 
-    meals = []
+        r"Polievka"
+        r"\s*:?\s*"
+        r"(.*?)"
+        r"(?=\s+\d+\s*g\b)",
+
+        today_text,
+
+        re.IGNORECASE
+
+    )
+
+    if not soup_match:
+
+        return soup_data
+
+    soup_text = clean_text(
+        soup_match.group(1)
+    )
+
+    # odstránenie objemu:
+    #
+    # 0,33l
+    # 0,33 l
+
+    soup_text = re.sub(
+
+        r"^\d+,\d+\s*l\s*",
+
+        "",
+
+        soup_text,
+
+        flags=re.IGNORECASE
+
+    )
+
+    soup_data[
+        "allergens"
+    ] = extract_allergens(
+        soup_text
+    )
+
+    soup_data[
+        "name"
+    ] = clean_text(
+        remove_allergens(
+            soup_text
+        )
+    )
+
+    return soup_data
 
 
+def scrape_ukrba():
 
+    print(
+        "Načítavam U Krba..."
+    )
+
+    response = requests.get(
+
+        URL,
+
+        timeout=20,
+
+        headers={
+            "User-Agent":
+            "Mozilla/5.0"
+        }
+
+    )
+
+    response.raise_for_status()
+
+    response.encoding = "utf-8"
+
+    soup = BeautifulSoup(
+        response.text,
+        "html.parser"
+    )
+
+    # --------------------------------------------------
+    # celý text stránky
+    # --------------------------------------------------
+
+    full_text = clean_text(
+
+        soup.get_text(
+            " ",
+            strip=True
+        )
+
+    )
+
+    # --------------------------------------------------
+    # dnešný blok
+    # --------------------------------------------------
+
+    today_text = find_today_block(
+        full_text
+    )
+
+    if not today_text:
+
+        return {
+
+            "restaurant": "U Krba",
+
+            "type": "classic_menu",
+
+            "error":
+            "Dnešné menu nenájdené"
+
+        }
+
+    # --------------------------------------------------
     # polievka
+    # --------------------------------------------------
 
-    for p in paragraphs[start_index + 1:]:
+    soup_data = parse_soup(
+        today_text
+    )
 
-
-        text = clean_text(
-            p.get_text(
-                " ",
-                strip=True
-            )
-        )
-
-
-        if text.startswith(
-            "Polievka"
-        ):
-
-
-            soup_text = text.replace(
-                "Polievka:",
-                ""
-            ).strip()
-
-
-            soup_text = re.sub(
-                r"^\d+,\d+l\s*",
-                "",
-                soup_text
-            )
-
-
-            soup_data["allergens"] = extract_allergens(
-                soup_text
-            )
-
-
-            soup_data["name"] = remove_allergens(
-                soup_text
-            )
-
-
-            break
-
-
-
-
+    # --------------------------------------------------
     # menu 1-3
+    # --------------------------------------------------
 
-    ol = None
+    meals = parse_today_meals(
+        today_text
+    )
 
-
-    for tag in soup.find_all("ol"):
-
-
-        previous = tag.find_previous(
-            "p"
-        )
-
-
-        if previous:
-
-            try:
-
-                index = paragraphs.index(
-                    previous
-                )
-
-
-                if index >= start_index:
-
-                    ol = tag
-
-                    break
-
-
-            except ValueError:
-
-                pass
-
-
-
-    if ol:
-
-
-        meals.extend(
-            parse_menu_items(
-                ol.find_all("li"),
-                1
-            )
-        )
-
-
-
+    # --------------------------------------------------
     # menu 4-5
+    #
+    # Univerzálna ponuka je mimo
+    # denného bloku.
+    # --------------------------------------------------
+
+    paragraphs = soup.find_all(
+        "p"
+    )
 
     extra_started = False
 
-
     for p in paragraphs:
-
 
         text = clean_text(
             p.get_text(
@@ -406,6 +560,9 @@ def scrape_ukrba():
             )
         )
 
+        if not text:
+
+            continue
 
         if "Pre tých" in text:
 
@@ -413,37 +570,73 @@ def scrape_ukrba():
 
             continue
 
+        if not extra_started:
 
+            continue
 
-        if extra_started:
+        # --------------------------------------------------
+        # menu 4
+        # --------------------------------------------------
 
+        if re.match(
+            r"^4\.\s*",
+            text
+        ):
 
-            if text.startswith("4."):
+            item = parse_extra_menu(
+                text,
+                4
+            )
 
+            if item["name"]:
 
-                meals.append(
-                    parse_extra_menu(
-                        text,
-                        4
+                if not any(
+                    m["menu"] == "4"
+                    for m in meals
+                ):
+
+                    meals.append(
+                        item
                     )
-                )
 
+        # --------------------------------------------------
+        # menu 5
+        # --------------------------------------------------
 
+        elif re.match(
+            r"^5\.\s*",
+            text
+        ):
 
-            elif text.startswith("5."):
+            item = parse_extra_menu(
+                text,
+                5
+            )
 
+            if item["name"]:
 
-                meals.append(
-                    parse_extra_menu(
-                        text,
-                        5
+                if not any(
+                    m["menu"] == "5"
+                    for m in meals
+                ):
+
+                    meals.append(
+                        item
                     )
-                )
 
+            break
 
-                break
+    # --------------------------------------------------
+    # zoradenie menu
+    # --------------------------------------------------
 
+    meals.sort(
 
+        key=lambda x: int(
+            x["menu"]
+        )
+
+    )
 
     return {
 
