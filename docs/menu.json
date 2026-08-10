@@ -99,23 +99,17 @@
     "soup": {
       "price": "2,50 €",
       "items": [
-        "Bramboračka s lesnými hubami",
-        "Cesnačka so syrom a opečeným chlebom"
+        "Šošovicová na kyselo"
       ]
     },
     "meals": {
       "price": "7,90 €",
       "items": [
-        ") Pravá sviečková na smotane s domácou knedľou © Pražský hovädzí guláš s domácou knedľou",
-        "Moravský vrabec",
-        "HA nik 7 lá s. dusenou kapustou a zemiakovými knedľami",
-        "J > \"A v p5 A va . u s. €) Bravčový alebo kurací rezeň po pražsky",
-        "NE so zemiakovým šalátom © Pečené kuracie stehno na rasci so zemiakovou kašou a uhorkovým šalátom sa: © Vyprážaný hermelín s varenými zemiakmi a domácou tatárskou omáčkou fe s. ©) Kôprová omáčka s varenými vajíčkami a domácou kneďľou",
-        "Véneček z odpaľovaného cesta plnený žltkovým krémor",
-        "U. a poliaty cukrovou polevou.",
-        "Po dobrom jedle chutí aj život. rá am A fh “a s r —„ —> <| -— 1——5] g v Ten? LT « 7 NS g [| r A NICA IE AX ( b fs“  [14",
-        "O) M | : á ra“ | a! | syry aj VA! | a)",
-        "ON. | U.I V% A W, o!) A Dali 1% U HA 1“ U Ž/ )"
+        "€) Pravá sviečková na smotane",
+        "S domácou knedľou € Pražský hovädzí guláš s domácou knedľou | © Vepťo - knedlo - zelo s dusenou kapustou a knedľou € Bravčový alebo kurací rezeň po pražsky so zemiakovým šalátom — © Pečené kuracie stehno na rasci so zemiakovou kašou a uhorkovým šalátom © Smažák — vyprážaný syr s varenými zemiakmi a tatárskou umáčkou © Pečený pstruh na masle s opekanými zemiakmi",
+        "České pečené buchty povidlové „Sú s posýpkou a maslom",
+        "Po dobrom Kl chutí i aj ž Živoľ.",
+        "K , [7G AN | A i .] vyd |"
       ]
     },
     "dessert": {
@@ -397,7 +391,7 @@
   {
     "restaurant": "Artin",
     "type": "image_menu",
-    "image_url": "https://static.wixstatic.com/media/8822c6_5d2055e75a5d4d94996cdd199c177c79~mv2.jpg",
+    "image_url": "https://static.wixstatic.com/media/8822c6_098177e582c84f9b898558203a4c6a52~mv2.jpg",
     "soup": null,
     "meals": []
   }
