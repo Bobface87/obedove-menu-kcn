@@ -44,7 +44,7 @@
     "meals": [
       {
         "name": "CLASSIC MENU - ČERNOHORSKÝ REZEŇ",
-        "description": "350g / 150g Vyprážaný černohorský bravčový rezeň zapečený So syrom, podávaný s jemnou zemiakovou kašou a sviežim paradajkovo-cibuľovým šalátom. /1,3,7/",
+        "description": "350g / 15Og Vyprážaný černohorský bravčový rezeň zapečený So syrom, podávaný s jemnou zemiakovou kašou a sviežim paradajkovo-cibuľovým šalátom. /1,3,7/",
         "price": "10,90 €"
       },
       {
@@ -69,16 +69,16 @@
     "type": "ocr_menu",
     "image_url": "https://bellissimonitra.com/wp-content/uploads/2026/08/menu-bellissimo-33-2-722x1024.jpg",
     "starter": "",
-    "soup": "Šošovicová kyslá so zemiakmi, chlieb 300mm! (1,7)",
+    "soup": "",
     "meals": [
       {
         "name": "MENU 1",
-        "description": "450g/200g Kurací paprikáš s bylinkovými haluškami, kyslou smotanou a nakladanými uhorkamiť(1,3,7]",
+        "description": "450g/200g Kurací paprikáš s bylinkovými haluškami, kyslou smotanou a nakladanými uhorkamií(1,3,7]",
         "price": "9,90 €"
       },
       {
         "name": "MENU 2",
-        "description": "3504g/150g Arancini plnené mozzarellou s paradajkovou omáčkou a rukolou (1,3,7)",
+        "description": "3504/150g Arancini plnené mozzarellou s paradajkovou omáčkou a rukolou (1,3,7)",
         "price": "9,90 €"
       },
       {
@@ -88,8 +88,8 @@
       },
       {
         "name": "MENU 4",
-        "description": "550g Pizza podľa týždennej ponuky (1,7)",
-        "price": "8,90 €"
+        "description": "550g Pizza podľa týždennej ponuky (1,7) 8920€",
+        "price": null
       },
       {
         "name": "MENU 5",
@@ -111,10 +111,10 @@
       "price": "7,90 €",
       "items": [
         "€) Pravá sviečková na smotane",
-        "S domácou knedľou € Pražský hovädzí guláš s domácou knedľou | © Vepťo - knedlo - zelo s dusenou kapustou a knedľou € Bravčový alebo kurací rezeň po pražsky so zemiakovým šalátom — © Pečené kuracie stehno na rasci so zemiakovou kašou a uhorkovým šalátom © Smažák — vyprážaný syr s varenými zemiakmi a tatárskou umáčkou © Pečený pstruh na masle s opekanými zemiakmi",
-        "České pečené buchty povidlové „Sú s posýpkou a maslom",
-        "Po dobrom Kl chutí i aj ž Živoľ.",
-        "K , [7G AN | A i .] vyd |"
+        "S domácou knedľou © Pražský hovädzí guláš s domácou knedľou | € Vepťo - knedlo - zelo s dusenou kapustou a knedľou © Bravčový alebo kurací rezeň po pražsky so zemiakovým šalátom — © Pečené kuracie stehno na rasci so zemiakovou kašou a uhorkovým šalátom © Smažák — vyprážaný syr $ varenými zemiakmi a tatárskou umáčkou © Pečený pstruh na masle s opekanými zemiakmi",
+        "České pečené buchty povidlové „Súča s posýpkou a maslom",
+        "Po dobrom lm chutí tí aj ž Život.",
+        "K , [Ga AN | WA i .] k I"
       ]
     },
     "dessert": {
@@ -346,10 +346,31 @@
   },
   {
     "restaurant": "Smíchov",
-    "type": "image_menu",
-    "image_url": "",
-    "soup": "",
-    "meals": []
+    "type": "ocr_menu",
+    "soup": "0,3l Kelová s párkom, chlieb (1)",
+    "meals": [
+      {
+        "name": "MENU 1",
+        "description": "130g/200g Steak s bravčovej panenky s volským okom, zemiakovo-slaninkový koláčik, omáčka zo zeleného korenia, polníček (3,7,12)",
+        "price": "9,90 €"
+      },
+      {
+        "name": "MENU 2",
+        "description": "1860g/200g Vyprážaný karfiol, varené zemiaky, tatárska omáčka (1,3,7,10,12)",
+        "price": "8,90 €"
+      },
+      {
+        "name": "MENU 3",
+        "description": "300g Caesar šalát - grilované kuracie prsia, opečená slanina, parmezán, krutóny, vajce, caesar drezing, rímsky šalát (1,3,4,7,10,12)",
+        "price": "11,90 €"
+      },
+      {
+        "name": "MENU 4",
+        "description": "120g/200g Vyprážaný bravčový rezeň, slovenský zemiakový šalát (1,3,7,10,12)",
+        "price": "8,90 €"
+      }
+    ],
+    "extra_soup": "0,3l Slepačí vývar s rezancami, mäsom a zeleninou (1,3,9)"
   },
   {
     "restaurant": "U Krba",
@@ -393,22 +414,79 @@
   },
   {
     "restaurant": "Moretti",
-    "type": "error",
-    "status": "error",
-    "message": "Menu sa nepodarilo načítať",
-    "image_url": "",
+    "type": "classic_menu",
     "soup": {
-      "price": "",
-      "items": []
+      "name": "Francúzska s cestovinou",
+      "allergens": "1,3"
     },
-    "meals": {
-      "price": "",
-      "items": []
-    },
-    "dessert": {
-      "price": "",
-      "items": []
-    }
+    "meals": [
+      {
+        "menu": "1",
+        "name": "Marinovaná bravčová panenka, šťuchané zemiaky",
+        "allergens": "7",
+        "price": "10,90 €"
+      },
+      {
+        "menu": "2",
+        "name": "Vykostené kuracie stehná bez kože v smotanovo-paradajkovej omáčke so špenátom a bazalkou, ryža",
+        "allergens": "7",
+        "price": "9,90 €"
+      },
+      {
+        "menu": "3",
+        "name": "Linguine aglio e olio s krevetami a cherry paradajkami",
+        "allergens": "1,3",
+        "price": "12,90 €"
+      },
+      {
+        "menu": "4",
+        "name": "Teľací viedenský rezeň, zemiaky s maslom a petržlenovou vňaťou",
+        "allergens": "1,3,7",
+        "price": "12,90 €"
+      },
+      {
+        "menu": "5",
+        "name": "Losos na grile, kôprová / holandská omáčka, baby zemiaky na masle",
+        "allergens": "3,7",
+        "price": "12,50 €"
+      },
+      {
+        "menu": "6",
+        "name": "Zubáč na grile, dusená zelenina,baby zemiaky",
+        "allergens": "7",
+        "price": "12,90 €"
+      },
+      {
+        "menu": "7",
+        "name": "Insalata Roma (miešaný šalát s kuracími kúskami na grile, opečená bagetka)",
+        "allergens": "1,3",
+        "price": "9,90 €"
+      },
+      {
+        "menu": "8",
+        "name": "Insalata Gyros (miešaný šalát, kuracie prsia s gyros korením, feta)",
+        "allergens": "7",
+        "price": "10,50 €"
+      },
+      {
+        "menu": "9",
+        "name": "Vyprážaný bravčový rezeň z panenky, majonézový šalát/ryža,broskyňový kompót",
+        "allergens": "",
+        "price": "10,90 €"
+      },
+      {
+        "menu": "10",
+        "name": "Vyprážaný kurací rezeň, majonézový šalát/ryža,broskyňový kompót",
+        "allergens": "",
+        "price": "10,50 €"
+      },
+      {
+        "menu": "11",
+        "name": "Penne pomodoro (pikantné, nepikantné)",
+        "allergens": "1,3",
+        "price": "9,90 €"
+      }
+    ]
   },
   {
     "restaurant": "Media Cafe",
@@ -423,5 +501,61 @@
     "image_url": "https://static.wixstatic.com/media/8822c6_098177e582c84f9b898558203a4c6a52~mv2.jpg",
     "soup": null,
     "meals": []
+  },
+  {
+    "restaurant": "Divadlo",
+    "pdf_url": "http://www.cateringnitra.sk/images/menu01.pdf",
+    "pdf_file": "C:\\Users\\petrik.robert\\Documents\\GitHub\\obedove-menu-kcn\\scraper\\divadlo_menu.pdf",
+    "week": "11.08.2026 - 14.08.2026",
+    "days": [
+      {
+        "day": "UTOROK",
+        "date": "11.08.2026",
+        "soup": {
+          "name": "Frankfurtská polievka s párkom, chlieb",
+          "weight": null,
+          "description": null,
+          "allergens": [
+            "1"
+          ]
+        },
+        "menus": [
+          {
+            "number": 1,
+            "price": "8,90 €",
+            "name": "Cestoviny Farfalle s kuracím mäsom, paradajkami, cuketou a syrom parmezán",
+            "weight": "250g",
+            "description": null,
+            "allergens": [
+              "13",
+              "7"
+            ]
+          },
+          {
+            "number": 2,
+            "price": "8,90 €",
+            "name": "Čiernohorský bravčový rezeň, zemiakové pyré, šalát",
+            "weight": "120g",
+            "description": null,
+            "allergens": [
+              "1",
+              "3",
+              "7"
+            ]
+          },
+          {
+            "number": 3,
+            "price": "8,90 €",
+            "name": "Špargľový šalát s lososom a kozím syrom, mix listový šalát, cherry paradajky, dresing",
+            "weight": "250g",
+            "description": null,
+            "allergens": [
+              "7",
+              "10"
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]

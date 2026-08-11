@@ -15,6 +15,7 @@ from ukrba import scrape_ukrba
 from moretti import scrape_moretti
 from mediacafe import scrape_mediacafe
 from artin import scrape_artin
+from divadlo import scrape_divadlo
 
 
 # koreň projektu
@@ -378,6 +379,10 @@ def build():
         (
             "Artin",
             scrape_artin
+        ),
+        (
+            "Divadlo",
+            scrape_divadlo
         )
 
     ]

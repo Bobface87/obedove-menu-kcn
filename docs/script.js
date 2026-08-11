@@ -37,6 +37,10 @@ async function loadMenu() {
         "Buganka",
         "Media Cafe",
         "Artin"
+      ],
+
+      [
+        "Divadlo"
       ]
 
     ];
@@ -458,6 +462,182 @@ async function loadMenu() {
 
 
         }
+
+          /*
+            DIVADLO
+          */
+
+          else if (
+            r.restaurant === "Divadlo"
+            &&
+            Array.isArray(r.days)
+            &&
+            r.days.length
+          ) {
+
+            const day = r.days[0];
+
+
+            /*
+              POLIEVKA
+            */
+
+            if (day.soup) {
+
+              html += `
+
+                <p>
+
+                  <strong>🍲 Polievka:</strong>
+
+                  ${day.soup.name}
+
+                  ${
+                    day.soup.allergens
+                    &&
+                    day.soup.allergens.length
+                      ? `
+                        <br>
+                        <span class="description">
+                          Alergény: ${day.soup.allergens.join(", ")}
+                        </span>
+                      `
+                      : ""
+                  }
+
+                </p>
+
+              `;
+
+            }
+
+
+            /*
+              MENU
+            */
+
+            if (
+              Array.isArray(day.menus)
+              &&
+              day.menus.length
+            ) {
+
+              html += `<ul>`;
+
+
+              day.menus.forEach(m => {
+
+                html += `<li>`;
+
+
+                /*
+                  ČÍSLO MENU
+                */
+
+                if (m.number) {
+
+                  html += `
+                    <strong>${m.number}.</strong>
+                  `;
+
+                }
+
+
+                /*
+                  NÁZOV
+                */
+
+                html += `
+                  <strong>${m.name}</strong>
+                `;
+
+
+                /*
+                  HMOTNOSŤ
+                */
+
+                if (m.weight) {
+
+                  html += `
+                    (${m.weight})
+                  `;
+
+                }
+
+
+                /*
+                  ALERGÉNY
+                */
+
+                if (
+                  m.allergens
+                  &&
+                  m.allergens.length
+                ) {
+
+                  html += `
+
+                    <br>
+
+                    <span class="description">
+
+                      Alergény: ${m.allergens.join(", ")}
+
+                    </span>
+
+                  `;
+
+                }
+
+
+                /*
+                  CENA
+                */
+
+                if (m.price) {
+
+                  html += `
+
+                    <br>
+
+                    <strong>${m.price}</strong>
+
+                  `;
+
+                }
+
+
+                /*
+                  POPIS
+                */
+
+                if (m.description) {
+
+                  html += `
+
+                    <br>
+
+                    <span class="description">
+
+                      ${m.description}
+
+                    </span>
+
+                  `;
+
+                }
+
+
+                html += `</li>`;
+
+              });
+
+
+              html += `</ul>`;
+
+            }
+
+          }
 
         /*
           KLASICKÉ MENU
