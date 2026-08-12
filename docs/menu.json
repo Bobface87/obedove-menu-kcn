@@ -351,10 +351,31 @@
   },
   {
     "restaurant": "Smíchov",
-    "type": "image_menu",
-    "image_url": "",
-    "soup": "",
-    "meals": []
+    "type": "ocr_menu",
+    "soup": "0,3l Kelová s párkom, chlieb (1)",
+    "meals": [
+      {
+        "name": "MENU 1",
+        "description": "130g/200g Steak s bravčovej panenky s volským okom, zemiakovo-slaninkový koláčik, omáčka zo zeleného korenia, polníček (3,7,12)",
+        "price": "9,90 €"
+      },
+      {
+        "name": "MENU 2",
+        "description": "160g/200g Vyprážaný karfiol, varené zemiaky, tatárska omáčka (1,3,7,10,12)",
+        "price": "8,90 €"
+      },
+      {
+        "name": "MENU 3",
+        "description": "300g Caesar šalát - grilované kuracie prsia, opečená slanina, parmezán, krutóny, vajce, caesar drezing, rímsky šalát (1,3,4,7,10,12)",
+        "price": "11,90 €"
+      },
+      {
+        "name": "MENU 4",
+        "description": "120g/200g Vyprážaný bravčový rezeň, slovenský zemiakový šalát (1,3,7,10,12)",
+        "price": "8,90 €"
+      }
+    ],
+    "extra_soup": "0,3l Slepačí vývar s rezancami, mäsom a zeleninou (1,3,9)"
   },
   {
     "restaurant": "U Krba",
@@ -398,22 +419,79 @@
   },
   {
     "restaurant": "Moretti",
-    "type": "error",
-    "status": "error",
-    "message": "Menu sa nepodarilo načítať",
-    "image_url": "",
+    "type": "classic_menu",
     "soup": {
-      "price": "",
-      "items": []
+      "name": "Francúzska cibuľačka s opečenou syrovou bagetkou",
+      "allergens": "1,7"
     },
-    "meals": {
-      "price": "",
-      "items": []
-    },
-    "dessert": {
-      "price": "",
-      "items": []
-    }
+    "meals": [
+      {
+        "menu": "1",
+        "name": "Španielsky vtáčik, ryža",
+        "allergens": "3",
+        "price": "10,90 €"
+      },
+      {
+        "menu": "2",
+        "name": "Kurací špíz so zeleninou, paradajková salsa, hranolky",
+        "allergens": "",
+        "price": "9,90 €"
+      },
+      {
+        "menu": "3",
+        "name": "Lososové fettuccine",
+        "allergens": "1,3,7",
+        "price": "10,90 €"
+      },
+      {
+        "menu": "4",
+        "name": "Teľací viedenský rezeň, zemiaky s maslom a petržlenovou vňaťou",
+        "allergens": "1,3,7",
+        "price": "12,90 €"
+      },
+      {
+        "menu": "5",
+        "name": "Losos na grile, kôprová / holandská omáčka, baby zemiaky na masle",
+        "allergens": "3,7",
+        "price": "12,50 €"
+      },
+      {
+        "menu": "6",
+        "name": "Zubáč na grile, dusená zelenina,baby zemiaky",
+        "allergens": "7",
+        "price": "12,90 €"
+      },
+      {
+        "menu": "7",
+        "name": "Insalata Roma (miešaný šalát s kuracími kúskami na grile, opečená bagetka)",
+        "allergens": "1,3",
+        "price": "9,90 €"
+      },
+      {
+        "menu": "8",
+        "name": "Insalata Gyros (miešaný šalát, kuracie prsia s gyros korením, feta)",
+        "allergens": "7",
+        "price": "10,50 €"
+      },
+      {
+        "menu": "9",
+        "name": "Vyprážaný bravčový rezeň z panenky, majonézový šalát/ryža,broskyňový kompót",
+        "allergens": "",
+        "price": "10,90 €"
+      },
+      {
+        "menu": "10",
+        "name": "Vyprážaný kurací rezeň, majonézový šalát/ryža,broskyňový kompót",
+        "allergens": "",
+        "price": "10,50 €"
+      },
+      {
+        "menu": "11",
+        "name": "Penne pomodoro (pikantné, nepikantné)",
+        "allergens": "1,3",
+        "price": "9,90 €"
+      }
+    ]
   },
   {
     "restaurant": "Media Cafe",
