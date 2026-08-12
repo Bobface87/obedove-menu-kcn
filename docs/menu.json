@@ -160,22 +160,33 @@
   },
   {
     "restaurant": "Kotolňa",
-    "type": "error",
-    "status": "error",
-    "message": "Menu sa nepodarilo načítať",
-    "image_url": "",
-    "soup": {
-      "price": "",
-      "items": []
-    },
-    "meals": {
-      "price": "",
-      "items": []
-    },
-    "dessert": {
-      "price": "",
-      "items": []
-    }
+    "soup": "0,40 l Čínska ostrokyslá",
+    "meals": [
+      {
+        "name": "Kurací černohorský rezeň v zemiakovom cestíčku, maslové zemiaky, údený syr, miešaný sladko - kyslý šalát",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Teľací perkelt s haluškami a kyslou uhorkou (DE) a",
+        "price": "9,20 €"
+      },
+      {
+        "name": "Pizza Klasika (paradajková omáčka, mozzarella, šunka, kukurica, šampiňóny)",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Miešané šalátové listy, vyprážané olomoucké syrčeky, sweet chilli omáčka, pizza chlieb",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Hot dog s viedenským párkom (dijon majonéza, polníček, párok, fritovaná cibuľka, strúhaný čedar, kečup), hranolky",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Zemiakovo - batátové ňoky s cesnakom, olivovým olejom, baby špenátom a parmezánom",
+        "price": "8,50 €"
+      }
+    ]
   },
   {
     "restaurant": "Sakura",
