@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 import re
+import json
 
 
 URL = "https://www.ukrba.sk/sk/denne-menu"
@@ -15,6 +16,10 @@ DAYS = {
     "Friday": "Piatok"
 }
 
+
+# --------------------------------------------------
+# ČISTENIE TEXTU
+# --------------------------------------------------
 
 def clean_text(text):
 
@@ -30,7 +35,12 @@ def clean_text(text):
     text = text.strip()
 
     # oprava rozbitých gramáží
-    # napr. 20 0g -> 200g
+    #
+    # napr.:
+    # 20 0g -> 200g
+    # 15 0g -> 150g
+    # 35 0g -> 350g
+
     text = re.sub(
         r"(\d)\s+(\d)g",
         r"\1\2g",
@@ -40,13 +50,11 @@ def clean_text(text):
     return text
 
 
-def extract_allergens(text):
+# --------------------------------------------------
+# ALERGÉNY
+# --------------------------------------------------
 
-    # bežný zápis:
-    # (1,3,7)
-    #
-    # prípadne rozbitý:
-    # (1.3,7)
+def extract_allergens(text):
 
     match = re.search(
         r"\(([\d,\.]+)\)",
@@ -67,6 +75,19 @@ def extract_allergens(text):
     return ""
 
 
+def remove_allergens(text):
+
+    return re.sub(
+        r"\([\d,\.]+\)",
+        "",
+        text
+    ).strip()
+
+
+# --------------------------------------------------
+# CENA
+# --------------------------------------------------
+
 def extract_price(text):
 
     match = re.search(
@@ -76,7 +97,10 @@ def extract_price(text):
 
     if match:
 
-        return match.group(1) + " €"
+        return (
+            match.group(1)
+            + " €"
+        )
 
     return None
 
@@ -90,63 +114,144 @@ def remove_price(text):
     ).strip()
 
 
-def remove_allergens(text):
+# --------------------------------------------------
+# NÁJDENIE DNEŠNÉHO DÁTUMU
+# --------------------------------------------------
 
-    return re.sub(
-        r"\([\d,\.]+\)",
-        "",
-        text
-    ).strip()
-
-
-def get_today_pattern():
+def find_today_heading(full_text):
 
     today = datetime.today()
 
-    weekday = today.strftime("%A")
+    weekday = today.strftime(
+        "%A"
+    )
 
     if weekday not in DAYS:
 
         return None
 
-    day_name = DAYS[weekday]
+    day_name = DAYS[
+        weekday
+    ]
 
-    # stránka môže mať napr.:
+    # --------------------------------------------------
+    # U Krba môže mať dátum rôzne zápisy:
     #
-    # Pondelok 10 .8.2026
+    # Utorok 18.8.2026
+    # Utorok 18 .8.2026
+    # Utorok 18.8 .2026
+    # Utorok 18 . 8 . 2026
     #
-    # alebo:
+    # ale dokonca:
     #
-    # Pondelok 10. 8.2026
+    # Utorok 18.8 .202 6
     #
-    # alebo:
+    # Preto povoľujeme medzery aj MEDZI ČÍSLICAMI.
     #
-    # Pondelok 10.8.2026
+    # Stále však kontrolujeme presný:
+    # deň + mesiac + rok.
+    # --------------------------------------------------
 
-    return re.compile(
+    day_pattern = "".join(
+        rf"{re.escape(digit)}\s*"
+        for digit in str(today.day)
+    )
 
-        rf"{day_name}"
+    month_pattern = "".join(
+        rf"{re.escape(digit)}\s*"
+        for digit in str(today.month)
+    )
+
+    year_pattern = "".join(
+        rf"{re.escape(digit)}\s*"
+        for digit in str(today.year)
+    )
+
+    pattern = re.compile(
+
+        rf"{re.escape(day_name)}"
+        rf"\s+"
+        rf"{day_pattern}"
         rf"\s*"
-        rf"{today.day}"
-        rf"\s*\.\s*"
-        rf"{today.month}"
-        rf"\s*\.\s*"
-        rf"{today.year}",
+        rf"\."
+        rf"\s*"
+        rf"{month_pattern}"
+        rf"\s*"
+        rf"\."
+        rf"\s*"
+        rf"{year_pattern}",
 
         re.IGNORECASE
+    )
 
+    match = pattern.search(
+        full_text
+    )
+
+    if match:
+
+        return match
+
+    return None
+
+
+# --------------------------------------------------
+# NÁJDENIE ĎALŠIEHO DŇA
+# --------------------------------------------------
+
+def find_next_day_heading(
+    full_text,
+    start
+):
+
+    # --------------------------------------------------
+    # Rovnaká tolerancia ako pri dnešnom dátume.
+    #
+    # Príklady:
+    #
+    # Streda 19.8.2026
+    # Streda 19 .8 .2026
+    # Streda 19.8 .202 6
+    # --------------------------------------------------
+
+    day_names = (
+        "Pondelok|"
+        "Utorok|"
+        "Streda|"
+        "Štvrtok|"
+        "Piatok"
+    )
+
+    next_day_pattern = re.compile(
+
+        rf"({day_names})"
+        rf"\s+"
+        rf"\d\s*\d?"
+        rf"\s*"
+        rf"\."
+        rf"\s*"
+        rf"\d\s*\d?"
+        rf"\s*"
+        rf"\."
+        rf"\s*"
+        rf"\d\s*\d\s*\d\s*\d",
+
+        re.IGNORECASE
+    )
+
+    return next_day_pattern.search(
+        full_text,
+        start
     )
 
 
+# --------------------------------------------------
+# DNEŠNÝ BLOK
+# --------------------------------------------------
+
 def find_today_block(full_text):
 
-    pattern = get_today_pattern()
-
-    if not pattern:
-
-        return None
-
-    today_match = pattern.search(
+    today_match = find_today_heading(
         full_text
     )
 
@@ -156,34 +261,10 @@ def find_today_block(full_text):
 
     start = today_match.end()
 
-    # --------------------------------------------------
-    # nájdeme začiatok ďalšieho pracovného dňa
-    # --------------------------------------------------
-
-    next_day_pattern = re.compile(
-
-        r"(Pondelok|Utorok|Streda|Štvrtok|Piatok)"
-        r"\s*"
-        r"\d{1,2}"
-        r"\s*\.\s*"
-        r"\d{1,2}"
-        r"\s*\.\s*"
-        r"\d{4}",
-
-        re.IGNORECASE
-
-    )
-
-    next_match = None
-
-    for match in next_day_pattern.finditer(
+    next_match = find_next_day_heading(
         full_text,
         start
-    ):
-
-        next_match = match
-
-        break
+    )
 
     if next_match:
 
@@ -198,7 +279,190 @@ def find_today_block(full_text):
     ]
 
 
-def parse_meal_text(text, number):
+# --------------------------------------------------
+# POLIEVKA
+# --------------------------------------------------
+
+def parse_soup(today_text):
+
+    soup_data = {
+
+        "name": "",
+
+        "allergens": None
+    }
+
+    soup_match = re.search(
+
+        r"Polievka"
+        r"\s*:?\s*"
+        r"(.*?)"
+        r"(?=\s+\d+\s*g\b)",
+
+        today_text,
+
+        re.IGNORECASE
+    )
+
+    if not soup_match:
+
+        return soup_data
+
+    soup_text = clean_text(
+        soup_match.group(1)
+    )
+
+    # odstránenie objemu:
+    #
+    # 0,33l
+    # 0,33 l
+
+    soup_text = re.sub(
+
+        r"^\d+,\d+\s*l\s*",
+
+        "",
+
+        soup_text,
+
+        flags=re.IGNORECASE
+    )
+
+    soup_data[
+        "allergens"
+    ] = extract_allergens(
+        soup_text
+    )
+
+    soup_data[
+        "name"
+    ] = clean_text(
+        remove_allergens(
+            soup_text
+        )
+    )
+
+    return soup_data
+
+
+# --------------------------------------------------
+# MENU 1-3
+# --------------------------------------------------
+
+def parse_today_meals(today_text):
+
+    meals = []
+
+    # --------------------------------------------------
+    # odstránime polievku
+    # --------------------------------------------------
+
+    soup_end = re.search(
+
+        r"\bPolievka\s*:?.*?"
+        r"(?=\s+\d+\s*g\b)",
+
+        today_text,
+
+        re.IGNORECASE
+    )
+
+    if soup_end:
+
+        meals_text = today_text[
+            soup_end.end():
+        ]
+
+    else:
+
+        meals_text = today_text
+
+    # --------------------------------------------------
+    # DEZERT NESMIE SPADNÚŤ DO MENU 1-3
+    # --------------------------------------------------
+
+    dessert_match = re.search(
+
+        r"\bDezert\s*:",
+
+        meals_text,
+
+        re.IGNORECASE
+    )
+
+    if dessert_match:
+
+        meals_text = meals_text[
+            :dessert_match.start()
+        ]
+
+    # --------------------------------------------------
+    # začiatky menu podľa gramáže
+    # --------------------------------------------------
+
+    matches = list(
+
+        re.finditer(
+
+            r"(?<!\d)"
+            r"(\d+)\s*g\b",
+
+            meals_text,
+
+            re.IGNORECASE
+        )
+    )
+
+    number = 1
+
+    for index, match in enumerate(matches):
+
+        start = match.start()
+
+        if index + 1 < len(matches):
+
+            end = matches[
+                index + 1
+            ].start()
+
+        else:
+
+            end = len(meals_text)
+
+        meal_text = meals_text[
+            start:end
+        ]
+
+        meal = parse_meal_text(
+            meal_text,
+            number
+        )
+
+        if meal:
+
+            meals.append(
+                meal
+            )
+
+            number += 1
+
+    # --------------------------------------------------
+    # maximálne 3 denné menu
+    # --------------------------------------------------
+
+    meals = meals[:3]
+
+    return meals
+
+
+# --------------------------------------------------
+# PARSOVANIE JEDLA
+# --------------------------------------------------
+
+def parse_meal_text(
+    text,
+    number
+):
 
     text = clean_text(
         text
@@ -241,111 +505,141 @@ def parse_meal_text(text, number):
         "allergens": allergens,
 
         "price": price
-
     }
 
 
-def parse_today_meals(today_text):
+# --------------------------------------------------
+# DEZERT
+# --------------------------------------------------
 
-    meals = []
+def parse_dessert(today_text):
 
     # --------------------------------------------------
-    # odstránime polievku
-    #
-    # od "Polievka:" po prvú položku začínajúcu
-    # gramážou, napr. 150g / 350g
+    # nájdeme začiatok dezertu
     # --------------------------------------------------
 
-    soup_end = re.search(
+    dessert_match = re.search(
 
-        r"\bPolievka\s*:?.*?"
-        r"(?=\s+\d+\s*g\b)",
+        r"\bDezert\s*:\s*",
 
         today_text,
 
         re.IGNORECASE
-
     )
 
-    if soup_end:
+    # Dezert dnes neexistuje.
+    #
+    # V takom prípade ho vôbec nepridáme
+    # do výsledného JSON.
 
-        meals_text = today_text[
-            soup_end.end():
-        ]
+    if not dessert_match:
 
-    else:
+        return None
 
-        meals_text = today_text
+    start = dessert_match.end()
 
     # --------------------------------------------------
-    # nájdeme začiatky jednotlivých jedál
+    # hľadáme cenu dezertu
     #
     # napr.:
     #
-    # 150g Medovo-horčicové...
-    # 350g Bryndzové halušky...
-    # 150g Grilovaný pstruh...
-    #
+    # 6,50€
+    # 6,50 €
     # --------------------------------------------------
 
-    matches = list(
+    price_match = re.search(
 
-        re.finditer(
+        r"(\d+,\d+)\s*€",
 
-            r"(?<!\d)"
-            r"(\d+)\s*g\b",
+        today_text[start:],
 
-            meals_text,
-
-            re.IGNORECASE
-
-        )
-
+        re.IGNORECASE
     )
 
-    number = 1
+    # Ak existuje "Dezert:", ale nemá cenu,
+    # nepovažujeme ho za kompletný dezert.
+    #
+    # Teda nevytvoríme:
+    #
+    # "dessert": {
+    #     "name": "...",
+    #     "price": null
+    # }
+    #
+    # ale dezert vôbec nepridáme.
 
-    for index, match in enumerate(matches):
+    if not price_match:
 
-        start = match.start()
+        return None
 
-        if index + 1 < len(matches):
+    end = (
+        start
+        +
+        price_match.start()
+    )
 
-            end = matches[
-                index + 1
-            ].start()
+    dessert_text = clean_text(
 
-        else:
-
-            end = len(meals_text)
-
-        meal_text = meals_text[
+        today_text[
             start:end
         ]
+    )
 
-        meal = parse_meal_text(
-            meal_text,
-            number
-        )
+    if not dessert_text:
 
-        if meal:
-
-            meals.append(
-                meal
-            )
-
-            number += 1
+        return None
 
     # --------------------------------------------------
-    # nechceme viac ako 3 denné menu
+    # alergény
     # --------------------------------------------------
 
-    meals = meals[:3]
+    allergens = extract_allergens(
+        dessert_text
+    )
 
-    return meals
+    # --------------------------------------------------
+    # názov bez alergénov
+    # --------------------------------------------------
+
+    name = remove_allergens(
+        dessert_text
+    )
+
+    name = clean_text(
+        name
+    )
+
+    if not name:
+
+        return None
+
+    # --------------------------------------------------
+    # cena
+    # --------------------------------------------------
+
+    price = (
+        price_match.group(1)
+        + " €"
+    )
+
+    return {
+
+        "name": name,
+
+        "allergens": allergens,
+
+        "price": price
+    }
 
 
-def parse_extra_menu(text, number):
+# --------------------------------------------------
+# MENU 4-5
+# --------------------------------------------------
+
+def parse_extra_menu(
+    text,
+    number
+):
 
     text = clean_text(
         text
@@ -391,74 +685,12 @@ def parse_extra_menu(text, number):
         "allergens": allergens,
 
         "price": price
-
     }
 
 
-def parse_soup(today_text):
-
-    soup_data = {
-
-        "name": "",
-
-        "allergens": None
-
-    }
-
-    soup_match = re.search(
-
-        r"Polievka"
-        r"\s*:?\s*"
-        r"(.*?)"
-        r"(?=\s+\d+\s*g\b)",
-
-        today_text,
-
-        re.IGNORECASE
-
-    )
-
-    if not soup_match:
-
-        return soup_data
-
-    soup_text = clean_text(
-        soup_match.group(1)
-    )
-
-    # odstránenie objemu:
-    #
-    # 0,33l
-    # 0,33 l
-
-    soup_text = re.sub(
-
-        r"^\d+,\d+\s*l\s*",
-
-        "",
-
-        soup_text,
-
-        flags=re.IGNORECASE
-
-    )
-
-    soup_data[
-        "allergens"
-    ] = extract_allergens(
-        soup_text
-    )
-
-    soup_data[
-        "name"
-    ] = clean_text(
-        remove_allergens(
-            soup_text
-        )
-    )
-
-    return soup_data
-
+# --------------------------------------------------
+# HLAVNÝ SCRAPER
+# --------------------------------------------------
 
 def scrape_ukrba():
 
@@ -476,7 +708,6 @@ def scrape_ukrba():
             "User-Agent":
             "Mozilla/5.0"
         }
-
     )
 
     response.raise_for_status()
@@ -498,7 +729,6 @@ def scrape_ukrba():
             " ",
             strip=True
         )
-
     )
 
     # --------------------------------------------------
@@ -519,11 +749,10 @@ def scrape_ukrba():
 
             "error":
             "Dnešné menu nenájdené"
-
         }
 
     # --------------------------------------------------
-    # polievka
+    # POLIEVKA
     # --------------------------------------------------
 
     soup_data = parse_soup(
@@ -531,7 +760,7 @@ def scrape_ukrba():
     )
 
     # --------------------------------------------------
-    # menu 1-3
+    # MENU 1-3
     # --------------------------------------------------
 
     meals = parse_today_meals(
@@ -539,10 +768,15 @@ def scrape_ukrba():
     )
 
     # --------------------------------------------------
-    # menu 4-5
-    #
-    # Univerzálna ponuka je mimo
-    # denného bloku.
+    # DEZERT
+    # --------------------------------------------------
+
+    dessert = parse_dessert(
+        today_text
+    )
+
+    # --------------------------------------------------
+    # MENU 4-5
     # --------------------------------------------------
 
     paragraphs = soup.find_all(
@@ -575,7 +809,7 @@ def scrape_ukrba():
             continue
 
         # --------------------------------------------------
-        # menu 4
+        # MENU 4
         # --------------------------------------------------
 
         if re.match(
@@ -600,7 +834,7 @@ def scrape_ukrba():
                     )
 
         # --------------------------------------------------
-        # menu 5
+        # MENU 5
         # --------------------------------------------------
 
         elif re.match(
@@ -635,10 +869,13 @@ def scrape_ukrba():
         key=lambda x: int(
             x["menu"]
         )
-
     )
 
-    return {
+    # --------------------------------------------------
+    # základný výsledok
+    # --------------------------------------------------
+
+    result = {
 
         "restaurant": "U Krba",
 
@@ -647,5 +884,47 @@ def scrape_ukrba():
         "soup": soup_data,
 
         "meals": meals
-
     }
+
+    # --------------------------------------------------
+    # DEZERT
+    #
+    # pridáme IBA ak:
+    #
+    # 1. existuje "Dezert:"
+    # 2. má názov
+    # 3. má cenu
+    #
+    # Ak dezert na stránke nebude,
+    # kľúč "dessert" sa vôbec nevytvorí.
+    # --------------------------------------------------
+
+    if dessert is not None:
+
+        result[
+            "dessert"
+        ] = dessert
+
+    return result
+
+
+# --------------------------------------------------
+# TEST
+# --------------------------------------------------
+
+def main():
+
+    data = scrape_ukrba()
+
+    print(
+        json.dumps(
+            data,
+            ensure_ascii=False,
+            indent=2
+        )
+    )
+
+
+if __name__ == "__main__":
+
+    main()

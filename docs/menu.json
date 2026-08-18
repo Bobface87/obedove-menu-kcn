@@ -106,15 +106,18 @@
     "meals": {
       "price": "7,90 €",
       "items": [
-        "NhrOE ZE TV PN S Vu cena",
         "Džuveč s bravčovým mäsom, ryžou a zeleninou",
         "Pečené kuracie stehno po balkánsky s paradajkami, paprikou a zemiakmi",
         "Srbský bravčový perkelt s domácimi haluškami",
         "Grilované kuracie prsia so šopským šalátom a pečenými zemiakmi",
         "Karadorďev rezeň — plnený kajmakom, so zemiakmi a tatárskou omáčkou",
-        "Grilované rybie filé, varené zemiaky so zeleninou a citrónom",
-        "Grilovaný syr so šopským šalátom a opekanými zemiakmi",
-        "Po NA chutí aj ž vy da m ww) tr |"
+        "Grilované rybie filé, varené zemiaky so zeleninou a citrónom — BA — 31 Grilovaný syr so šopským šalátom",
+        "PU: O) % a opekanými zemiakmi ám AP <>. (Sž £ T ž > a 9. jod MÚČNIK NIA",
+        "U mí S",
+        "VŠ £",
+        "OA  ž SA)",
+        "A v NA EO + Palacinky s orechmi a čokoládou",
+        "Po dobrom jedle chutí aj ži? al FA 2—2 5] ih. 4. ab, 1€, “"
       ]
     },
     "dessert": {
@@ -354,7 +357,47 @@
   {
     "restaurant": "U Krba",
     "type": "classic_menu",
-    "error": "Dnešné menu nenájdené"
+    "soup": {
+      "name": "Polievka z pečených paradajok s parmezánovou bagetkou",
+      "allergens": "1,7"
+    },
+    "meals": [
+      {
+        "menu": "1",
+        "name": "150g Kuracie stehno so silnou paprikovou omáčkou a domácou zemiakovou knedľou plnenou slaninou",
+        "allergens": "1,3,7",
+        "price": "9,50 €"
+      },
+      {
+        "menu": "2",
+        "name": "350g Cheddarové rigatoni s chrumkavou slaninou, cibuľkou a grilovanými chilli krevetami s koriandrom",
+        "allergens": "1,4,7,8",
+        "price": "9,80 €"
+      },
+      {
+        "menu": "3",
+        "name": "150g Grilovaná chobotnica s cviklovým humusom a pečenou maslovou tekvicou s bylinkami",
+        "allergens": "4,7",
+        "price": "17,90 €"
+      },
+      {
+        "menu": "4",
+        "name": "150g Vyprážaný kurací rezeň s dusenou ryžou, broskyňový kompót",
+        "allergens": "1,3,7",
+        "price": "9,20 €"
+      },
+      {
+        "menu": "5",
+        "name": "350g Cézar šalát s kuracím mäsom",
+        "allergens": "1,3,4,7",
+        "price": "9,50 €"
+      }
+    ],
+    "dessert": {
+      "name": "Opekané palacinkové rezance s marhuľami, marhuľovým coulis, čokoládou a pistáciami",
+      "allergens": "1,3,7",
+      "price": "6,50 €"
+    }
   },
   {
     "restaurant": "Moretti",
