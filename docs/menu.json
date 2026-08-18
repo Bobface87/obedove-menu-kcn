@@ -401,22 +401,79 @@
   },
   {
     "restaurant": "Moretti",
-    "type": "error",
-    "status": "error",
-    "message": "Menu sa nepodarilo načítať",
-    "image_url": "",
+    "type": "classic_menu",
     "soup": {
-      "price": "",
-      "items": []
+      "name": "Zeleninová s krupicovými haluškami",
+      "allergens": "1,3"
     },
-    "meals": {
-      "price": "",
-      "items": []
-    },
-    "dessert": {
-      "price": "",
-      "items": []
-    }
+    "meals": [
+      {
+        "menu": "1",
+        "name": "150g Kurací \"Cordon Bleu\", zemiakové pyré, broskyňový kompót",
+        "allergens": "1,3,7",
+        "price": "10,90 €"
+      },
+      {
+        "menu": "2",
+        "name": "150g Teľacie ragú na zelenine, tarhoňa, kyslé uhorky",
+        "allergens": "7",
+        "price": "10,90 €"
+      },
+      {
+        "menu": "3",
+        "name": "250g Fettuccine di ragú al vino rosso (s hovädzím ragú na červenom víne)",
+        "allergens": "1,3",
+        "price": "10,90 €"
+      },
+      {
+        "menu": "4",
+        "name": "Teľací viedenský rezeň, zemiaky s maslom a petržlenovou vňaťou",
+        "allergens": "1,3,7",
+        "price": "12,90 €"
+      },
+      {
+        "menu": "5",
+        "name": "Losos na grile, kôprová / holandská omáčka, baby zemiaky na masle",
+        "allergens": "3,7",
+        "price": "12,50 €"
+      },
+      {
+        "menu": "6",
+        "name": "Mletý bravčový rezeň so syrom, zemiakové pyré, kyslé uhorky",
+        "allergens": "7",
+        "price": "10,90 €"
+      },
+      {
+        "menu": "7",
+        "name": "Insalata Roma (miešaný šalát s kuracími kúskami na grile, opečená bagetka)",
+        "allergens": "1,3",
+        "price": "9,90 €"
+      },
+      {
+        "menu": "8",
+        "name": "Insalata Gyros (miešaný šalát, kuracie prsia s gyros korením, feta)",
+        "allergens": "7",
+        "price": "10,50 €"
+      },
+      {
+        "menu": "9",
+        "name": "Vyprážaný bravčový rezeň z panenky, majonézový šalát/ryža,broskyňový kompót",
+        "allergens": "",
+        "price": "10,90 €"
+      },
+      {
+        "menu": "10",
+        "name": "Vyprážaný kurací rezeň, majonézový šalát/ryža,broskyňový kompót",
+        "allergens": "",
+        "price": "10,50 €"
+      },
+      {
+        "menu": "11",
+        "name": "Penne pomodoro (pikantné, nepikantné)",
+        "allergens": "1,3",
+        "price": "9,90 €"
+      }
+    ]
   },
   {
     "restaurant": "Media Cafe",
