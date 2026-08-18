@@ -289,6 +289,7 @@ async function loadMenu() {
         }        
         
 
+
         
         /*
           SAKURA NOVÝ FORMÁT
@@ -442,6 +443,7 @@ async function loadMenu() {
                 });
 
 
+
                 html += `</ul>`;
 
               }
@@ -461,183 +463,186 @@ async function loadMenu() {
           });
 
 
+
         }
 
+
+        /*
+          DIVADLO
+        */
+
+        else if (
+          r.restaurant === "Divadlo"
+          &&
+          Array.isArray(r.days)
+          &&
+          r.days.length
+        ) {
+
+          const day = r.days[0];
+
+
           /*
-            DIVADLO
+            POLIEVKA
           */
 
-          else if (
-            r.restaurant === "Divadlo"
-            &&
-            Array.isArray(r.days)
-            &&
-            r.days.length
-          ) {
+          if (day.soup) {
 
-            const day = r.days[0];
+            html += `
 
+              <p>
 
-            /*
-              POLIEVKA
-            */
+                <strong>🍲 Polievka:</strong>
 
-            if (day.soup) {
+                ${day.soup.name}
 
-              html += `
-
-                <p>
-
-                  <strong>🍲 Polievka:</strong>
-
-                  ${day.soup.name}
-
-                  ${
-                    day.soup.allergens
-                    &&
-                    day.soup.allergens.length
-                      ? `
-                        <br>
-                        <span class="description">
-                          Alergény: ${day.soup.allergens.join(", ")}
-                        </span>
-                      `
-                      : ""
-                  }
-
-                </p>
-
-              `;
-
-            }
-
-
-            /*
-              MENU
-            */
-
-            if (
-              Array.isArray(day.menus)
-              &&
-              day.menus.length
-            ) {
-
-              html += `<ul>`;
-
-
-              day.menus.forEach(m => {
-
-                html += `<li>`;
-
-
-                /*
-                  ČÍSLO MENU
-                */
-
-                if (m.number) {
-
-                  html += `
-                    <strong>${m.number}.</strong>
-                  `;
-
-                }
-
-
-                /*
-                  NÁZOV
-                */
-
-                html += `
-                  <strong>${m.name}</strong>
-                `;
-
-
-                /*
-                  HMOTNOSŤ
-                */
-
-                if (m.weight) {
-
-                  html += `
-                    (${m.weight})
-                  `;
-
-                }
-
-
-                /*
-                  ALERGÉNY
-                */
-
-                if (
-                  m.allergens
+                ${
+                  day.soup.allergens
                   &&
-                  m.allergens.length
-                ) {
-
-                  html += `
-
-                    <br>
-
-                    <span class="description">
-
-                      Alergény: ${m.allergens.join(", ")}
-
-                    </span>
-
-                  `;
-
+                  day.soup.allergens.length
+                    ? `
+                      <br>
+                      <span class="description">
+                        Alergény: ${day.soup.allergens.join(", ")}
+                      </span>
+                    `
+                    : ""
                 }
 
+              </p>
 
-                /*
-                  CENA
-                */
-
-                if (m.price) {
-
-                  html += `
-
-                    <br>
-
-                    <strong>${m.price}</strong>
-
-                  `;
-
-                }
-
-
-                /*
-                  POPIS
-                */
-
-                if (m.description) {
-
-                  html += `
-
-                    <br>
-
-                    <span class="description">
-
-                      ${m.description}
-
-                    </span>
-
-                  `;
-
-                }
-
-
-                html += `</li>`;
-
-              });
-
-
-              html += `</ul>`;
-
-            }
+            `;
 
           }
+
+
+          /*
+            MENU
+          */
+
+          if (
+            Array.isArray(day.menus)
+            &&
+            day.menus.length
+          ) {
+
+            html += `<ul>`;
+
+
+            day.menus.forEach(m => {
+
+              html += `<li>`;
+
+
+              /*
+                ČÍSLO MENU
+              */
+
+              if (m.number) {
+
+                html += `
+                  <strong>${m.number}.</strong>
+                `;
+
+              }
+
+
+              /*
+                NÁZOV
+              */
+
+              html += `
+                <strong>${m.name}</strong>
+              `;
+
+
+              /*
+                HMOTNOSŤ
+              */
+
+              if (m.weight) {
+
+                html += `
+                  (${m.weight})
+                `;
+
+              }
+
+
+              /*
+                ALERGÉNY
+              */
+
+              if (
+                m.allergens
+                &&
+                m.allergens.length
+              ) {
+
+                html += `
+
+                  <br>
+
+                  <span class="description">
+
+                    Alergény: ${m.allergens.join(", ")}
+
+                  </span>
+
+                `;
+
+              }
+
+
+              /*
+                CENA
+              */
+
+              if (m.price) {
+
+                html += `
+
+                  <br>
+
+                  <strong>${m.price}</strong>
+
+                `;
+
+              }
+
+
+              /*
+                POPIS
+              */
+
+              if (m.description) {
+
+                html += `
+
+                  <br>
+
+                  <span class="description">
+
+                    ${m.description}
+
+                  </span>
+
+                `;
+
+              }
+
+
+              html += `</li>`;
+
+            });
+
+
+            html += `</ul>`;
+
+          }
+
+        }
+
 
         /*
           KLASICKÉ MENU
@@ -674,33 +679,33 @@ async function loadMenu() {
 
 
 
-        if (r.soup) {
+          if (r.soup) {
 
-          html += `
+            html += `
 
-            <p>
+              <p>
 
-              <strong>🍲 Polievka:</strong>
+                <strong>🍲 Polievka:</strong>
 
-              ${
-                typeof r.soup === "object"
-                  ? r.soup.name
-                  : r.soup
-              }
+                ${
+                  typeof r.soup === "object"
+                    ? r.soup.name
+                    : r.soup
+                }
 
-              ${
-                typeof r.soup === "object"
-                &&
-                r.soup.allergens
-                  ? `<br><span class="description">Alergény: ${r.soup.allergens}</span>`
-                  : ""
-              }
+                ${
+                  typeof r.soup === "object"
+                  &&
+                  r.soup.allergens
+                    ? `<br><span class="description">Alergény: ${r.soup.allergens}</span>`
+                    : ""
+                }
 
-            </p>
+              </p>
 
-          `;
+            `;
 
-        }
+          }
 
 
 
@@ -724,8 +729,23 @@ async function loadMenu() {
 
 
 
+          /*
+            DEZERT
+            Hoffer + U Krba
+
+            Dezert sa zobrazí iba vtedy,
+            ak parser dodal r.dessert.
+
+            Ak dessert neexistuje alebo je null,
+            nič sa nezobrazí.
+          */
+
           if (
-            r.restaurant === "Hoffer"
+            (
+              r.restaurant === "Hoffer"
+              ||
+              r.restaurant === "U Krba"
+            )
             &&
             r.dessert
           ) {
@@ -736,9 +756,33 @@ async function loadMenu() {
 
                 <strong>🍰 Dezert:</strong>
 
-                ${r.dessert.weight ? r.dessert.weight + " " : ""}
+                ${
+                  r.dessert.weight
+                  ? r.dessert.weight + " "
+                  : ""
+                }
+
                 ${r.dessert.name}
 
+                ${
+                  r.dessert.allergens
+                  ? `
+                    <br>
+                    <span class="description">
+                      Alergény: ${r.dessert.allergens}
+                    </span>
+                  `
+                  : ""
+                }
+
+                ${
+                  r.dessert.price
+                  ? `
+                    <br>
+                    <strong>${r.dessert.price}</strong>
+                  `
+                  : ""
+                }
 
               </p>
 
@@ -926,7 +970,6 @@ async function loadMenu() {
 
   catch (e) {
 
-
     document.getElementById("app").innerHTML =
 
       "❌ Chyba načítania menu";
@@ -934,9 +977,7 @@ async function loadMenu() {
 
     console.error(e);
 
-
   }
-
 
 }
 
