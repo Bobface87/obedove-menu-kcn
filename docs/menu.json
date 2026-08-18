@@ -168,33 +168,22 @@
   },
   {
     "restaurant": "Kotolňa",
-    "soup": "0,40 l Šošovicová s klobáskou a zeleninou, chlieb",
-    "meals": [
-      {
-        "name": "Hovädzie dusené plece s kôprovou omáčkou, vajíčko, parená knedľa",
-        "price": "9,50 €"
-      },
-      {
-        "name": "Vyprážaný kurací rezeň v panko strúhanke s bylinkovým maslom, zemiakové pyré, hlávkový šalát",
-        "price": "8,70 €"
-      },
-      {
-        "name": "Pizza Jalapeňo (paradajková omáčka, mozzarella, chorizo, jalapeňo)",
-        "price": "8,70 €"
-      },
-      {
-        "name": "Miešané šalátové listy, marinované kuracie krídelka, sweet chilli, pizza chlieb (AT)",
-        "price": "8,70 €"
-      },
-      {
-        "name": "Bravčová panenka na grile, syrový krém, dusená ryža, šalátik",
-        "price": "8,90 €"
-      },
-      {
-        "name": "Krémové arborio rizoto s kuriatkami a parmezánom a",
-        "price": "8,90 €"
-      }
-    ]
+    "type": "error",
+    "status": "error",
+    "message": "Menu sa nepodarilo načítať",
+    "image_url": "",
+    "soup": {
+      "price": "",
+      "items": []
+    },
+    "meals": {
+      "price": "",
+      "items": []
+    },
+    "dessert": {
+      "price": "",
+      "items": []
+    }
   },
   {
     "restaurant": "Sakura",
