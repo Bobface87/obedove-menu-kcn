@@ -198,23 +198,154 @@
   },
   {
     "restaurant": "Sakura",
-    "type": "error",
-    "status": "error",
-    "message": "Menu sa nepodarilo načítať",
-    "image_url": "",
-    "soup": {
-      "price": "",
-      "items": []
-    },
-    "meals": {
-      "price": "",
-      "items": []
-    },
-    "dessert": {
-      "price": "",
-      "items": []
-    },
-    "daily_menu": []
+    "daily_menu": [
+      {
+        "number": null,
+        "name": "Rybacia polievka",
+        "weight": "0,2l",
+        "price": "1,90 €",
+        "allergens": "4",
+        "variants": [],
+        "description": "Rybí vývar s rajčinami a jarnou cibuľkou.",
+        "category": "Polievky"
+      },
+      {
+        "number": null,
+        "name": "Ostrokyslá polievka",
+        "weight": "0,2l",
+        "price": "1,95 €",
+        "allergens": "3,6",
+        "variants": [],
+        "description": "Hustá polievka s kuracím mäsom, vajíčkom, zeleninou a jarnou cibuľkou.",
+        "category": "Polievky"
+      },
+      {
+        "number": "1",
+        "name": "RAINBOW MENU",
+        "weight": "14ks",
+        "price": "10,10 €",
+        "allergens": "4,11",
+        "variants": [],
+        "description": "8ks uramaki (losos, avokádo, špargľa, kaviár) 3ks maki sake (losos), 3ks maki maguro (tuniak)",
+        "category": "Sushi menu"
+      },
+      {
+        "number": "2",
+        "name": "SPICY TATAR",
+        "weight": "14ks",
+        "price": "9,10 €",
+        "allergens": "2,3,4,6,10",
+        "variants": [],
+        "description": "8ks uramaki (pikantný lososový tatarák, krabia tyčinka, avokádo) 3ks maki sake (losos), 3ks maki ebi (kreveta)",
+        "category": "Sushi menu"
+      },
+      {
+        "number": "3",
+        "name": "CRISPY SUSHI",
+        "weight": "14ks",
+        "price": "8,05 €",
+        "allergens": "1,4,11",
+        "variants": [],
+        "description": "8ks uramaki (losos, avokádo, chrumkavá cibuľka) 3ks maki sake (losos), 3ks maki avocado (avokádo)",
+        "category": "Sushi menu"
+      },
+      {
+        "number": "4",
+        "name": "VEGGIE SET",
+        "weight": "14ks",
+        "price": "7,00 €",
+        "allergens": "1,3,7,11",
+        "variants": [],
+        "description": "8ks crunchy futomaki (avokádo, mrkva, uhorka, syr Philadelphia, sezam) 6ks futomaki (avokádo, mrkva, uhorka, syr Philadelphia, sezam)",
+        "category": "Sushi menu"
+      },
+      {
+        "number": "5",
+        "name": "UDON REZANCE",
+        "weight": "200g",
+        "price": null,
+        "allergens": "1 ,3 ,4 ,5 , 1 1",
+        "variants": [
+          {
+            "name": "a) s kuracím mäsom",
+            "weight": "100g",
+            "price": "7,40 €"
+          },
+          {
+            "name": "b) s krevetami",
+            "weight": "90g",
+            "price": "8,45 €"
+          },
+          {
+            "name": "c) s tofu",
+            "weight": "100g",
+            "price": "7,70 €"
+          }
+        ],
+        "description": "Restované japonské rezance, zelenina, čínska kapusta, vajíčko, chrumkavá cibuľka. Mleté hovädzie (80g) a bravčové mäso (70g) obalené betelovým listom, zelenina, koriander, arašidy, ryžové rezance, šalátová rybacia omáčka. Podávané za studena.",
+        "category": "Teplé jedlá"
+      },
+      {
+        "number": "7",
+        "name": "CHICKEN GRILL",
+        "weight": "200g",
+        "price": "7,00 €",
+        "allergens": "1,3,6,10,11",
+        "variants": [],
+        "description": "Grilované kuracie prsia (120g) na špízoch, restovaná zelenina, sakura omáčkou. Príloha: ryža.",
+        "category": "Teplé jedlá"
+      },
+      {
+        "number": "8",
+        "name": "LOSOS TERIYAKI",
+        "weight": "200g",
+        "price": "9,10 €",
+        "allergens": "4",
+        "variants": [],
+        "description": "Plátky lososa (100g), restovaná zelenina, sezam, teriyaki omáčka. Príloha: ryža.",
+        "category": "Teplé jedlá"
+      },
+      {
+        "number": "A",
+        "name": "KURACIE KUNG PAO",
+        "weight": "250g",
+        "price": "7,05 €",
+        "allergens": "5,6",
+        "variants": [],
+        "description": "Kuracie mäso (120g) na šťave, zelenina, ázijské a shitake huby, bambus, ázijské omáčky, arašidy. Príloha: ryža",
+        "category": "Týždenná ponuka"
+      },
+      {
+        "number": "B",
+        "name": "KURACIE KÚSKY",
+        "weight": "250g",
+        "price": "7,05 €",
+        "allergens": "1,3,6,7,11",
+        "variants": [],
+        "description": "Kuracie prsia (120g) obalené v jemnom cestíčku, Teriyaki omáčka. Príloha: ryža",
+        "category": "Týždenná ponuka"
+      },
+      {
+        "number": "C",
+        "name": "CHRUMKAVÉ KURA",
+        "weight": "250g",
+        "price": "7,05 €",
+        "allergens": "1,3,6,7,11",
+        "variants": [],
+        "description": "Kuracie stehno nakrájané na plátky, pripravené na chrumkavý spôsob, zelenina, teriyaki omáčka. Príloha: ryža",
+        "category": "Týždenná ponuka"
+      },
+      {
+        "number": "D",
+        "name": "OBENTO SUSHI",
+        "weight": "18ks",
+        "price": "10,45 €",
+        "allergens": "1,3,4,6,10,11",
+        "variants": [],
+        "description": "6ks futomaki (avokádo, uhorka, losos) 6ks maki sake-avocado (losos-avokádo) 6ks vege rolky, šalát s dresingom",
+        "category": "Týždenná ponuka"
+      }
+    ]
   },
   {
     "restaurant": "Smíchov",
