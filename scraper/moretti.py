@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
+from zoneinfo import ZoneInfo
 import re
 
 
@@ -14,6 +15,11 @@ DAYS = {
     "Thursday": "Štvrtok",
     "Friday": "Piatok"
 }
+
+
+TIMEZONE = ZoneInfo(
+    "Europe/Bratislava"
+)
 
 
 def clean_text(text):
@@ -80,25 +86,67 @@ def remove_price(text):
     )
 
 
-def get_today_marker():
+def get_today_data():
 
-    today = datetime.today()
+    """
+    Vytvorí dnešný deň a dátum podľa
+    slovenského času Europe/Bratislava.
 
-    weekday = today.strftime("%A")
+    Príklad:
+
+        day_name:
+            Utorok
+
+        day_number:
+            18
+
+        month:
+            8
+
+        year:
+            2026
+
+        date_variants:
+            18.8.2026
+            18.08.2026
+    """
+
+    today = datetime.now(
+        TIMEZONE
+    )
+
+    weekday = today.strftime(
+        "%A"
+    )
 
     if weekday not in DAYS:
 
         return None
 
-    return (
-        DAYS[weekday]
-        + ": "
-        + str(today.day)
-        + "."
-        + str(today.month)
-        + "."
-        + str(today.year)
-    )
+    day_name = DAYS[
+        weekday
+    ]
+
+    day_number = today.day
+
+    month = today.month
+
+    year = today.year
+
+    date_variants = [
+        f"{day_number}.{month}.{year}",
+        f"{day_number:02d}.{month:02d}.{year}",
+        f"{day_number:02d}.{month}.{year}",
+        f"{day_number}.{month:02d}.{year}"
+    ]
+
+    return {
+        "day_name": day_name,
+        "day_number": day_number,
+        "month": month,
+        "year": year,
+        "date_variants": date_variants
+    }
 
 
 def parse_soup(text):
@@ -109,6 +157,11 @@ def parse_soup(text):
 
     name = text.replace(
         "Polievka:",
+        ""
+    )
+
+    name = name.replace(
+        "Polievka :",
         ""
     )
 
@@ -163,6 +216,7 @@ def get_page_lines():
 
     # Moretti má nesprávne/staré deklarované kódovanie.
     # Obsah stránky je v skutočnosti UTF-8.
+
     html = r.content.decode(
         "utf-8",
         errors="replace"
@@ -197,52 +251,181 @@ def get_page_lines():
 
 def find_today_section(lines):
 
-    marker = get_today_marker()
+    """
+    Nájde dnešný blok menu.
 
-    if not marker:
+    Moretti môže dátum zobrazovať napr.:
+
+        Utorok 18.8.2026
+
+    alebo:
+
+        Utorok: 18.8.2026
+
+    alebo môže byť dátum rozdelený:
+
+        Utorok 18
+        .8.2026
+
+    Parser preto nevychádza z jedného presného
+    textového formátu.
+
+    Dnešný deň a dátum si vytvorí sám podľa
+    Europe/Bratislava.
+    """
+
+    today_data = get_today_data()
+
+    if not today_data:
 
         raise Exception(
             "Dnes nie je pracovný deň"
         )
 
+    day_name = today_data[
+        "day_name"
+    ]
+
+    date_variants = today_data[
+        "date_variants"
+    ]
+
     start = -1
 
-    for index, line in enumerate(lines):
+    # ----------------------------------------------------
+    # 1. Hľadáme deň + dátum v jednom riadku
+    # ----------------------------------------------------
 
-        # Moretti má dátum v HTML rozdelený:
-        #
-        # Pondelok: 10
-        # .8.2026
-        #
-        # Preto kontrolujeme obe možnosti.
+    for index, line in enumerate(
+        lines
+    ):
 
-        if line == marker:
+        # Odstránime prípadnú dvojbodku
+        # medzi názvom dňa a dátumom.
+
+        normalized = re.sub(
+            r"^"
+            + re.escape(day_name)
+            + r"\s*:?\s*",
+            "",
+            line,
+            flags=re.IGNORECASE
+        )
+
+        normalized = normalized.strip()
+
+        if normalized in date_variants:
 
             start = index
 
             break
 
-        if line.startswith(
-            DAYS.get(
-                datetime.today().strftime("%A"),
-                ""
-            )
-            + ": "
+    # ----------------------------------------------------
+    # 2. Dátum môže byť rozdelený na dva riadky
+    # ----------------------------------------------------
+
+    if start == -1:
+
+        for index, line in enumerate(
+            lines
         ):
 
-            if index + 1 < len(lines):
+            if not re.match(
+                r"^"
+                + re.escape(day_name)
+                + r"\s*:?\s*\d{1,2}$",
+                line,
+                re.IGNORECASE
+            ):
 
-                combined = (
-                    line
-                    +
-                    lines[index + 1]
-                )
+                continue
 
-                if combined == marker:
+            if index + 1 >= len(lines):
 
-                    start = index
+                continue
 
-                    break
+            combined = (
+                line
+                +
+                lines[index + 1]
+            )
+
+            normalized = re.sub(
+                r"^"
+                + re.escape(day_name)
+                + r"\s*:?\s*",
+                "",
+                combined,
+                flags=re.IGNORECASE
+            )
+
+            normalized = normalized.strip()
+
+            if normalized in date_variants:
+
+                start = index
+
+                break
+
+    # ----------------------------------------------------
+    # 3. Ak dátum nevieme nájsť presne,
+    #    skúsime ešte všeobecný dátumový vzor
+    #    v riadku dnešného dňa.
+    # ----------------------------------------------------
+
+    if start == -1:
+
+        date_pattern = re.compile(
+            r"^"
+            + re.escape(day_name)
+            + r"\s*:?\s*"
+            r"(\d{1,2})\.(\d{1,2})\.(\d{4})"
+            r"\s*$",
+            re.IGNORECASE
+        )
+
+        for index, line in enumerate(
+            lines
+        ):
+
+            match = date_pattern.match(
+                line
+            )
+
+            if not match:
+
+                continue
+
+            day_number = int(
+                match.group(1)
+            )
+
+            month = int(
+                match.group(2)
+            )
+
+            year = int(
+                match.group(3)
+            )
+
+            if (
+                day_number
+                == today_data["day_number"]
+                and
+                month
+                == today_data["month"]
+                and
+                year
+                == today_data["year"]
+            ):
+
+                start = index
+
+                break
+
+    # ----------------------------------------------------
+    # 4. Dnešný deň sa nenašiel
+    # ----------------------------------------------------
 
     if start == -1:
 
@@ -254,8 +437,10 @@ def find_today_section(lines):
 
     index = start + 1
 
+    # ----------------------------------------------------
     # Ak bol dátum rozdelený na dva riadky,
-    # preskočíme aj druhý riadok dátumu.
+    # preskočíme druhý riadok.
+    # ----------------------------------------------------
 
     if (
         start + 1 < len(lines)
@@ -267,14 +452,20 @@ def find_today_section(lines):
 
         index += 1
 
+    # ----------------------------------------------------
+    # Čítame menu dnešného dňa
+    # ----------------------------------------------------
+
     while index < len(lines):
 
         line = lines[index]
 
         # Ďalší pracovný deň.
         if re.match(
-            r"^(Pondelok|Utorok|Streda|Štvrtok|Piatok):",
-            line
+            r"^(Pondelok|Utorok|Streda|Štvrtok|Piatok)"
+            r"\s*:?\s*\d{1,2}\.",
+            line,
+            re.IGNORECASE
         ):
 
             break
@@ -293,6 +484,7 @@ def find_today_section(lines):
 
             break
 
+        # Koniec menu.
         if line.startswith(
             "Prajeme Vám dobrú chuť"
         ):
@@ -312,7 +504,9 @@ def find_weekly_section(lines):
 
     start = -1
 
-    for index, line in enumerate(lines):
+    for index, line in enumerate(
+        lines
+    ):
 
         if line.startswith(
             "Ak ste si nevybrali"
@@ -357,8 +551,14 @@ def parse_today_menu(lines):
 
     for line in lines:
 
-        if line.startswith(
-            "Polievka:"
+        if (
+            line.startswith(
+                "Polievka:"
+            )
+            or
+            line.startswith(
+                "Polievka :"
+            )
         ):
 
             soup_data = parse_soup(
@@ -368,7 +568,7 @@ def parse_today_menu(lines):
             continue
 
         match = re.match(
-            r"^([1-6]):\s*(.*)$",
+            r"^([1-6])\s*:\s*(.*)$",
             line
         )
 
@@ -456,8 +656,10 @@ def scrape_moretti():
         lines
     )
 
-    soup_data, daily_meals = parse_today_menu(
-        today_lines
+    soup_data, daily_meals = (
+        parse_today_menu(
+            today_lines
+        )
     )
 
     weekly_meals = parse_weekly_menu(
