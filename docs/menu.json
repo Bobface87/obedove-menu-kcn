@@ -173,33 +173,22 @@
   },
   {
     "restaurant": "Kotolňa",
-    "soup": "0,40 l Zeleninová s kuracím mäsom a cestovinou",
-    "meals": [
-      {
-        "name": "Kuracie na spôsob sweet ´n sour, jazmínová ryža",
-        "price": "8,70 €"
-      },
-      {
-        "name": "Jemne pikantné rezance z bravčovej panenky s farebnou paprikou a hríbikmi v zemiakovej placke",
-        "price": "8,90 €"
-      },
-      {
-        "name": "Pizza Gyros (smotana, mozzarella, slanina, kuracie mäso, cibuľa) SK",
-        "price": "8,70 €"
-      },
-      {
-        "name": "Miešané šalátové listy, grilovaný syr halloumi, orechy, cvikla, bylinkový dresing, pizza chlieb",
-        "price": "8,90 €"
-      },
-      {
-        "name": "Restovaná kačacia pečeň na cibuľke, zemiakové lokše, karamelizovaná červená kapusta (AK)",
-        "price": "8,90 €"
-      },
-      {
-        "name": "Rigatoni v syrovom kréme s rukolou a parmezánom",
-        "price": "8,50 €"
-      }
-    ]
+    "type": "error",
+    "status": "error",
+    "message": "Menu sa nepodarilo načítať",
+    "image_url": "",
+    "soup": {
+      "price": "",
+      "items": []
+    },
+    "meals": {
+      "price": "",
+      "items": []
+    },
+    "dessert": {
+      "price": "",
+      "items": []
+    }
   },
   {
     "restaurant": "Sakura",
