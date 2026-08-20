@@ -173,22 +173,33 @@
   },
   {
     "restaurant": "Kotolňa",
-    "type": "error",
-    "status": "error",
-    "message": "Menu sa nepodarilo načítať",
-    "image_url": "",
-    "soup": {
-      "price": "",
-      "items": []
-    },
-    "meals": {
-      "price": "",
-      "items": []
-    },
-    "dessert": {
-      "price": "",
-      "items": []
-    }
+    "soup": "0,40 l Zeleninová s kuracím mäsom a cestovinou",
+    "meals": [
+      {
+        "name": "Kuracie na spôsob sweet ´n sour, jazmínová ryža",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Jemne pikantné rezance z bravčovej panenky s farebnou paprikou a hríbikmi v zemiakovej placke",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Pizza Gyros (smotana, mozzarella, slanina, kuracie mäso, cibuľa) SK",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Miešané šalátové listy, grilovaný syr halloumi, orechy, cvikla, bylinkový dresing, pizza chlieb",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Restovaná kačacia pečeň na cibuľke, zemiakové lokše, karamelizovaná červená kapusta (AK)",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Rigatoni v syrovom kréme s rukolou a parmezánom",
+        "price": "8,50 €"
+      }
+    ]
   },
   {
     "restaurant": "Sakura",
@@ -405,73 +416,22 @@
   },
   {
     "restaurant": "Moretti",
-    "type": "classic_menu",
+    "type": "error",
+    "status": "error",
+    "message": "Menu sa nepodarilo načítať",
+    "image_url": "",
     "soup": {
-      "name": "Gulášová, chlieb",
-      "allergens": ""
+      "price": "",
+      "items": []
     },
-    "meals": [
-      {
-        "menu": "1",
-        "name": "Pečené kura, ryža, broskyňový kompót",
-        "allergens": "",
-        "price": "10,90 €"
-      },
-      {
-        "menu": "2",
-        "name": "Vyprážaný karfiol, varené zemiaky, domáca tatárska omáčka",
-        "allergens": "1,3,7",
-        "price": "10,90 €"
-      },
-      {
-        "menu": "4",
-        "name": "Teľací viedenský rezeň, zemiaky s maslom a petržlenovou vňaťou",
-        "allergens": "1,3,7",
-        "price": "12,90 €"
-      },
-      {
-        "menu": "5",
-        "name": "Losos na grile, kôprová / holandská omáčka, baby zemiaky na masle",
-        "allergens": "3,7",
-        "price": "12,50 €"
-      },
-      {
-        "menu": "6",
-        "name": "Mletý bravčový rezeň so syrom, zemiakové pyré, kyslé uhorky",
-        "allergens": "7",
-        "price": "10,90 €"
-      },
-      {
-        "menu": "7",
-        "name": "Insalata Roma (miešaný šalát s kuracími kúskami na grile, opečená bagetka)",
-        "allergens": "1,3",
-        "price": "9,90 €"
-      },
-      {
-        "menu": "8",
-        "name": "Insalata Gyros (miešaný šalát, kuracie prsia s gyros korením, feta)",
-        "allergens": "7",
-        "price": "10,50 €"
-      },
-      {
-        "menu": "9",
-        "name": "Vyprážaný bravčový rezeň z panenky, majonézový šalát/ryža,broskyňový kompót",
-        "allergens": "",
-        "price": "10,90 €"
-      },
-      {
-        "menu": "10",
-        "name": "Vyprážaný kurací rezeň, majonézový šalát/ryža,broskyňový kompót",
-        "allergens": "",
-        "price": "10,50 €"
-      },
-      {
-        "menu": "11",
-        "name": "Penne pomodoro (pikantné, nepikantné)",
-        "allergens": "1,3",
-        "price": "9,90 €"
-      }
-    ]
+    "meals": {
+      "price": "",
+      "items": []
+    },
+    "dessert": {
+      "price": "",
+      "items": []
+    }
   },
   {
     "restaurant": "Media Cafe",
