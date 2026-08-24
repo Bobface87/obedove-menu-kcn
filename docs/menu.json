@@ -95,35 +95,10 @@
   },
   {
     "restaurant": "Buganka",
-    "type": "ocr_menu",
-    "soup": {
-      "price": "2,50 €",
-      "items": [
-        "Chorvátska paradajková polievka s bylinkami",
-        "MÄSITÉ"
-      ]
-    },
-    "meals": {
-      "price": "7,90 €",
-      "items": [
-        "NhrOE ZE TV IN Su cena.",
-        "Džuveč s bravčovým mäsom, ryžou a zeleninou",
-        "Pečené kuracie stehno po balkánsky s paradajkami, paprikou a zemiakmi",
-        "Srbský bravčový perkelt s domácimi haluškami",
-        "Grilované kuracie prsia so šopským šalátom a pečenými zemiakmi",
-        "Karadorďev rezeň — plnený kajmakom, so zemiakmi a tatárskou omáčkou",
-        "Grilované rybie filé, varené zemiaky so zeleninou a citrónom",
-        "Grilovaný syr so šopským šalátom a opekanými zemiakmi",
-        "Po dobrom jedle chutí aj ž ty cvy da m ww) tr | i£< [M | la",
-        "AV. VYJ A",
-        "TRY TAN A o B. | | s © A |  V",
-        "A Ju v."
-      ]
-    },
-    "dessert": {
-      "price": "",
-      "items": []
-    }
+    "type": "image_menu",
+    "image_url": "https://static.wixstatic.com/media/8822c6_0d8b73f34d054c78bfd2b9f0d344fb49~mv2.jpg/v1/fill/w_80,h_85,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/buganka_vektor_cmx_edited.jpg",
+    "soup": "",
+    "meals": []
   },
   {
     "restaurant": "Hospúdka u Slováka",
@@ -470,7 +445,7 @@
   {
     "restaurant": "Artin",
     "type": "image_menu",
-    "image_url": "https://static.wixstatic.com/media/8822c6_d307bd120aa34e95bf8b961f49d7ed82~mv2.jpg",
+    "image_url": "https://static.wixstatic.com/media/8822c6_755564e808214c76a6aed1d0c357b7c9~mv2.jpg",
     "soup": null,
     "meals": []
   },
