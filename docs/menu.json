@@ -1,9 +1,39 @@
 [
   {
     "restaurant": "Hoffer",
-    "status": "Web je momentálne nedostupný",
-    "soup": "",
-    "meals": []
+    "soup": "Divinová guľášová polievka, chlieb",
+    "meals": [
+      {
+        "menu": 1,
+        "name": "Kuracie rezníky v panko strúhanke, zemiakové pyré, rajčinovo-cibuľový šalát",
+        "price": "8,90 €"
+      },
+      {
+        "menu": 2,
+        "name": "Šťavnaté trhané bravčové mäso na korenených hranolkách preliate cheddarovou omáčkou a posypané chrumkavou cibuľkou",
+        "price": "8,90 €"
+      },
+      {
+        "menu": 3,
+        "name": "Zeleninové rizoto s kuracím mäsom posypané syrom, uhorkový šalát",
+        "price": "8,90 €"
+      },
+      {
+        "menu": 4,
+        "name": "Pizza podľa vlastného výberu (veľkosť classic) tatárska omáčka, kečup",
+        "price": "8,90 €"
+      },
+      {
+        "menu": 5,
+        "name": "Grilovaný losos na julienne zelenine, pečené zemiaky",
+        "price": "9,40 €"
+      }
+    ],
+    "dessert": {
+      "name": "Vanilková kocka",
+      "weight": null,
+      "delivery": true
+    }
   },
   {
     "restaurant": "Quo Vadis",
