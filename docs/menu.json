@@ -148,33 +148,22 @@
   },
   {
     "restaurant": "Kotolňa",
-    "soup": "0,40 l Cibuľačka so strúhaným syrom a krutónmi",
-    "meals": [
-      {
-        "name": "Kurací rezeň v parmezánovom cestíčku, zemiakové pyré, tzatziki",
-        "price": "8,70 €"
-      },
-      {
-        "name": "Dusené hovädzie plece na hubách, tarhoňa, kyslá uhorka (IRL)",
-        "price": "9,50 €"
-      },
-      {
-        "name": "Pizza Olívia (smotanový základ, mozzarella, chorizo, paradajka, čierne olivy)",
-        "price": "8,70 €"
-      },
-      {
-        "name": "Miešané šalátové listy, bravčová panenka na grile, sušené paradajky, parmezán, bylinkový dresing, pizza chlieb odber:",
-        "price": "8,90 €"
-      },
-      {
-        "name": "Marinované kuracie krídelka, hranolky, mrkva, zeler, nivový dip (AT)",
-        "price": "8,70 €"
-      },
-      {
-        "name": "Špagety na spôsob \"aglio e olio\" s krevetami, cesnakom a parmezánom",
-        "price": "8,70 €"
-      }
-    ]
+    "type": "error",
+    "status": "error",
+    "message": "Menu sa nepodarilo načítať",
+    "image_url": "",
+    "soup": {
+      "price": "",
+      "items": []
+    },
+    "meals": {
+      "price": "",
+      "items": []
+    },
+    "dessert": {
+      "price": "",
+      "items": []
+    }
   },
   {
     "restaurant": "Sakura",
