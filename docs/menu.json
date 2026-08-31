@@ -1,21 +1,21 @@
 [
   {
     "restaurant": "Hoffer",
-    "soup": "0,33l Krémová karfiolová polievka s chrumkavými bylinkovými krutónmi",
+    "soup": "0,33l Sedliacka zeleninová polievka s krúpami a údeným mäsom",
     "meals": [
       {
         "menu": 1,
-        "name": "Grilované kuracie medailónky na šampiňónovo-smotanovej omáčke, americké zemiaky",
+        "name": "Sous-vide bravčová panenka na jemnej slaninovej omáčke, pečené zemiaky v šupke",
         "price": "8,90 €"
       },
       {
         "menu": 2,
-        "name": "Vyprážaný plnený bravčový rezeň (slanina, syr), ryža, miešaný šalát",
+        "name": "Tortilla s vyprážaným kuracím mäsom, zeleninou, syrom cheddar, hranolky, majonézový dressing",
         "price": "8,90 €"
       },
       {
         "menu": 3,
-        "name": "Hydinový perkelt na smotane, maslové halušky",
+        "name": "Lokše plnené restovanou kačacou pečienkou, kyslé uhorky",
         "price": "8,90 €"
       },
       {
@@ -25,12 +25,12 @@
       },
       {
         "menu": 5,
-        "name": "Kuracia roláda plnená mozzarellou a bazalkovým pestom s cviklovým rizotom, parmezán",
-        "price": "8,90 €"
+        "name": "Hovädzie ragú s lesnými hubami a koreňovou zeleninou, žemľová knedľa",
+        "price": "9,40 €"
       }
     ],
     "dessert": {
-      "name": "Slivkové pirohy s makom",
+      "name": "Lotusový pohár s tvarohovým krémom",
       "weight": "50g",
       "delivery": false
     }
@@ -384,79 +384,22 @@
   },
   {
     "restaurant": "Moretti",
-    "type": "classic_menu",
+    "type": "error",
+    "status": "error",
+    "message": "Menu sa nepodarilo načítať",
+    "image_url": "",
     "soup": {
-      "name": "Cesnaková so smotanou",
-      "allergens": "7"
+      "price": "",
+      "items": []
     },
-    "meals": [
-      {
-        "menu": "1",
-        "name": "150g Kurací závitok plnený šunkou a syrom, zemiakové pyré, broskyňový kompót",
-        "allergens": "1,7",
-        "price": "10,90 €"
-      },
-      {
-        "menu": "2",
-        "name": "150g Grilované kúsky z bravčovej panenky na šaláte , pikantný dresing , hranolky",
-        "allergens": "7",
-        "price": "10,90 €"
-      },
-      {
-        "menu": "3",
-        "name": "250g Rigatoni s tuniakom a hráškom",
-        "allergens": "1,3",
-        "price": "9,90 €"
-      },
-      {
-        "menu": "4",
-        "name": "Teľací viedenský rezeň, zemiaky s maslom a petržlenovou vňaťou",
-        "allergens": "1,3,7",
-        "price": "12,90 €"
-      },
-      {
-        "menu": "5",
-        "name": "Losos na grile, kôprová / holandská omáčka, baby zemiaky na masle",
-        "allergens": "3,7",
-        "price": "12,50 €"
-      },
-      {
-        "menu": "6",
-        "name": "Kuracie prsia so syrovou omáčkou so šunkou a pórom, ryža",
-        "allergens": "7",
-        "price": "9,90 €"
-      },
-      {
-        "menu": "7",
-        "name": "Insalata Roma (miešaný šalát s kuracími kúskami na grile, opečená bagetka)",
-        "allergens": "1,3",
-        "price": "9,90 €"
-      },
-      {
-        "menu": "8",
-        "name": "Insalata Gyros (miešaný šalát, kuracie prsia s gyros korením, feta)",
-        "allergens": "7",
-        "price": "10,50 €"
-      },
-      {
-        "menu": "9",
-        "name": "Vyprážaný bravčový rezeň z panenky, majonézový šalát/ryža,broskyňový kompót",
-        "allergens": "",
-        "price": "10,90 €"
-      },
-      {
-        "menu": "10",
-        "name": "Vyprážaný kurací rezeň, majonézový šalát/ryža,broskyňový kompót",
-        "allergens": "",
-        "price": "10,50 €"
-      },
-      {
-        "menu": "11",
-        "name": "Penne pomodoro (pikantné, nepikantné)",
-        "allergens": "1,3",
-        "price": "9,90 €"
-      }
-    ]
+    "meals": {
+      "price": "",
+      "items": []
+    },
+    "dessert": {
+      "price": "",
+      "items": []
+    }
   },
   {
     "restaurant": "Media Cafe",
@@ -479,33 +422,33 @@
     "week": "31.08.2026 - 04.09.2026",
     "days": [
       {
-        "day": "PONDELOK",
-        "date": "31.08.2026",
+        "day": "UTOROK",
+        "date": "01.09.2026",
         "soup": {
-          "name": "Sedliacka krúpová polievka, chlieb",
+          "name": "Gulášová polievka, chlieb",
           "weight": null,
           "description": null,
           "allergens": [
-            "1",
-            "7"
+            "1"
           ]
         },
         "menus": [
           {
             "number": 1,
             "price": "8,90 €",
-            "name": "Kurací steak, smotanová omáčka so sušenými paradajkami, dusená ryža, šalát",
+            "name": "Hydinové nugetky v mandľovom trojobale, zemiakové pyré, šalát",
             "weight": "120g",
             "description": null,
             "allergens": [
               "1",
+              "3",
               "7"
             ]
           },
           {
             "number": 2,
             "price": "8,90 €",
-            "name": "Tiszay z bravčovej panenky, americké zemiaky, šalát",
+            "name": "Bravčový plátok na šampiňónoch, dusená ryža, šalát",
             "weight": "120g",
             "description": null,
             "allergens": [
@@ -515,13 +458,14 @@
           {
             "number": 3,
             "price": "8,90 €",
-            "name": "Zeleninový rezeň, varené zemiaky s maslom, dresing",
+            "name": "Cuketové placky, mix šalát so cherry paradajkami a olivami, dresing",
             "weight": "180g",
             "description": null,
             "allergens": [
               "1",
               "3",
-              "7"
+              "7",
+              "10"
             ]
           }
         ]
