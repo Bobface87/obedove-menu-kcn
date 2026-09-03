@@ -66,11 +66,22 @@
   },
   {
     "restaurant": "Bellissimo",
-    "type": "image_menu",
-    "image_url": "https://bellissimonitra.com/wp-content/uploads/2026/08/menu-bellissimo-36-722x1024.jpg",
-    "starter": "",
-    "soup": "",
-    "meals": []
+    "type": "error",
+    "status": "error",
+    "message": "Menu sa nepodarilo načítať",
+    "image_url": "",
+    "soup": {
+      "price": "",
+      "items": []
+    },
+    "meals": {
+      "price": "",
+      "items": []
+    },
+    "dessert": {
+      "price": "",
+      "items": []
+    }
   },
   {
     "restaurant": "Buganka",
@@ -145,194 +156,42 @@
   },
   {
     "restaurant": "Kotolňa",
-    "soup": "0,40 l Kelová so zemiakmi a párkom, chlieb",
-    "meals": [
-      {
-        "name": "Jägerschnitzel (vyprážaný bravčový rezeň preliaty hríbikovým krémom), popučené maslové zemiaky s pažítkou",
-        "price": "8,90 €"
-      },
-      {
-        "name": "Pečené vykostené morčacie stehno, žemľová plnka, dusená ryža, kompót",
-        "price": "8,90 €"
-      },
-      {
-        "name": "Pizza Gyrosová (smotana, mozzarella, slanina, kuracie mäso, cibuľa) SK",
-        "price": "8,70 €"
-      },
-      {
-        "name": "Miešané šalátové listy, stripsy z kuracích pŕs, sweet chilli omáčka, pizza chlieb",
-        "price": "8,90 €"
-      },
-      {
-        "name": "Šošovicový prívarok, mäsová fašírka, vajíčko, kôpor, viedenská cibuľka, kváskový chlieb",
-        "price": "8,90 €"
-      },
-      {
-        "name": "Halloumi syr na grile, batátové hranolky, slaninová majonéza, šalátik",
-        "price": "8,90 €"
-      }
-    ]
+    "type": "error",
+    "status": "error",
+    "message": "Menu sa nepodarilo načítať",
+    "image_url": "",
+    "soup": {
+      "price": "",
+      "items": []
+    },
+    "meals": {
+      "price": "",
+      "items": []
+    },
+    "dessert": {
+      "price": "",
+      "items": []
+    }
   },
   {
     "restaurant": "Sakura",
-    "daily_menu": [
-      {
-        "number": null,
-        "name": "Tom Yum",
-        "weight": "0,2l",
-        "price": "1,90 €",
-        "allergens": "2,4",
-        "variants": [],
-        "description": "Jemne pikantná polievka s krevetami, hubami, zeleninou, koriandrom a tom yum.",
-        "category": "Polievky"
-      },
-      {
-        "number": null,
-        "name": "Ostrokyslá polievka",
-        "weight": "0,2l",
-        "price": "1,95 €",
-        "allergens": "3,6",
-        "variants": [],
-        "description": "Hustá polievka s kuracím mäsom, vajíčkom, zeleninou a jarnou cibuľkou.",
-        "category": "Polievky"
-      },
-      {
-        "number": "1",
-        "name": "SAKE MENU",
-        "weight": "14ks",
-        "price": "10,10 €",
-        "allergens": "1,3,4,6,11",
-        "variants": [],
-        "description": "4ks uramaki (losos, avokádo, tempura sake, jarná cibuľka, sakura omáčka) 3ks maki avokádo, 3ks maki sake (losos) 4ks nigiri sake (losos)",
-        "category": "Sushi menu"
-      },
-      {
-        "number": "2",
-        "name": "CAVIAR MENU",
-        "weight": "14ks",
-        "price": "9,50 €",
-        "allergens": "2,4,11",
-        "variants": [],
-        "description": "8ks uramaki (dvojitý losos, avokádo, krabia tyčinka, kaviár) 3ks maki sake (losos) 3ks maki avocado (avokádo)",
-        "category": "Sushi menu"
-      },
-      {
-        "number": "3",
-        "name": "TUNA MENU",
-        "weight": "14ks",
-        "price": "8,05 €",
-        "allergens": "1,3,4,7,11",
-        "variants": [],
-        "description": "8ks uramaki (tuniak v tempure, avokádo, sezam) 3ks maki sake (losos), 3ks maki avocado (avokádo)",
-        "category": "Sushi menu"
-      },
-      {
-        "number": "4",
-        "name": "VEGGIE SET",
-        "weight": "12ks",
-        "price": "7,00 €",
-        "allergens": "1,3,7,11",
-        "variants": [],
-        "description": "6ks maki crunchy avocado (avokádo) 6ks maki crunchy asparagus (špargľa)",
-        "category": "Sushi menu"
-      },
-      {
-        "number": "5",
-        "name": "PAD THAI",
-        "weight": "200g",
-        "price": null,
-        "allergens": "2,3,5,6",
-        "variants": [
-          {
-            "name": "a) s kuracím mäsom",
-            "weight": "100g",
-            "price": "6,35 €"
-          },
-          {
-            "name": "b) s krevetami",
-            "weight": "90g",
-            "price": "7,40 €"
-          },
-          {
-            "name": "c) s tofu",
-            "weight": "100g",
-            "price": "6,65 €"
-          }
-        ],
-        "description": "Restované phở rezance, klíčky, cesnak, čili, zelenina, koriander, arašidy, tamarindová omáčka, limetková šťava.",
-        "category": "Teplé jedlá"
-      },
-      {
-        "number": "6",
-        "name": "BÚN BÒ NAM BỘ",
-        "weight": "200g",
-        "price": "8,05 €",
-        "allergens": "4,5",
-        "variants": [],
-        "description": "Hovädzie mäso (85g), ryžové rezance, zelenina, rybacia omáčka, chrum. cibuľka, arašidy. Podávané za studena.",
-        "category": "Teplé jedlá"
-      },
-      {
-        "number": "7",
-        "name": "YAKITORI KURA",
-        "weight": "200g",
-        "price": "7,00 €",
-        "allergens": "11",
-        "variants": [],
-        "description": "Kuracie mäso (100g) na špízoch, huby, zelenina, domáca omáčka. Príloha: ryža",
-        "category": "Teplé jedlá"
-      },
-      {
-        "number": "8",
-        "name": "HOVÄDZIE NA ŠŤAVE",
-        "weight": "200g",
-        "price": "7,40 €",
-        "allergens": "11",
-        "variants": [],
-        "description": "Hovädzie mäso (100g) na šťave, cibuľa, zelenina. Príloha: ryža.",
-        "category": "Teplé jedlá"
-      },
-      {
-        "number": "A",
-        "name": "KURACIE KUNG PAO",
-        "weight": "250g",
-        "price": "7,05 €",
-        "allergens": "5,6",
-        "variants": [],
-        "description": "Kuracie mäso (120g) na šťave, zelenina, ázijské a shitake huby, bambus, ázijské omáčky, arašidy. Príloha: ryža",
-        "category": "Týždenná ponuka"
-      },
-      {
-        "number": "B",
-        "name": "KURACIE KÚSKY",
-        "weight": "250g",
-        "price": "7,05 €",
-        "allergens": "1,3,6,7,11",
-        "variants": [],
-        "description": "Kuracie prsia (120g) obalené v jemnom cestíčku, Teriyaki omáčka. Príloha: ryža",
-        "category": "Týždenná ponuka"
-      },
-      {
-        "number": "C",
-        "name": "CHRUMKAVÉ KURA",
-        "weight": "250g",
-        "price": "7,05 €",
-        "allergens": "1,3,6,7,11",
-        "variants": [],
-        "description": "Kuracie stehno nakrájané na plátky, pripravené na chrumkavý spôsob, zelenina, teriyaki omáčka. Príloha: ryža",
-        "category": "Týždenná ponuka"
-      },
-      {
-        "number": "D",
-        "name": "OBENTO SUSHI",
-        "weight": "18ks",
-        "price": "10,45 €",
-        "allergens": "1,3,4,6,10,11",
-        "variants": [],
-        "description": "6ks futomaki (avokádo, uhorka, losos) 6ks maki sake-avocado (losos-avokádo) 6ks vege rolky, šalát s dresingom",
-        "category": "Týždenná ponuka"
-      }
-    ]
+    "type": "error",
+    "status": "error",
+    "message": "Menu sa nepodarilo načítať",
+    "image_url": "",
+    "soup": {
+      "price": "",
+      "items": []
+    },
+    "meals": {
+      "price": "",
+      "items": []
+    },
+    "dessert": {
+      "price": "",
+      "items": []
+    },
+    "daily_menu": []
   },
   {
     "restaurant": "Smíchov",
@@ -402,10 +261,22 @@
   },
   {
     "restaurant": "Media Cafe",
-    "type": "image_menu",
-    "image_url": "https://www.mediacafe.sk/images/obedove_menu_media_cafe_nitra_donaska_71278474d17bc07a.webp",
-    "soup": null,
-    "meals": []
+    "type": "error",
+    "status": "error",
+    "message": "Menu sa nepodarilo načítať",
+    "image_url": "",
+    "soup": {
+      "price": "",
+      "items": []
+    },
+    "meals": {
+      "price": "",
+      "items": []
+    },
+    "dessert": {
+      "price": "",
+      "items": []
+    }
   },
   {
     "restaurant": "Artin",
