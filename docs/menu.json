@@ -1,39 +1,9 @@
 [
   {
     "restaurant": "Hoffer",
-    "soup": "0,33l Zeleninová polievka s liatym cestom",
-    "meals": [
-      {
-        "menu": 1,
-        "name": "Zapekaná bravčová krkovička s hríbovým ragú, šťuchané zemiaky",
-        "price": "8,90 €"
-      },
-      {
-        "menu": 2,
-        "name": "Kurací steak na holandskej omáčke so zelenou špargľou, ryža",
-        "price": "8,90 €"
-      },
-      {
-        "menu": 3,
-        "name": "Vyprážaný syr v chrumkavej strúhanke, hranolky, tatárska omáčka",
-        "price": "8,90 €"
-      },
-      {
-        "menu": 4,
-        "name": "Pizza podľa vlastného výberu (veľkosť classic), tatárska omáčka, kečup",
-        "price": "8,90 €"
-      },
-      {
-        "menu": 5,
-        "name": "Pečené morčacie plátky s tekvicovým pyré a opraženými semiačkami",
-        "price": "8,90 €"
-      }
-    ],
-    "dessert": {
-      "name": "NEPLAZÍ PRE DONÁŠKU -  Svieže jablkové rezy",
-      "weight": "50g",
-      "delivery": true
-    }
+    "status": "Web je momentálne nedostupný",
+    "soup": "",
+    "meals": []
   },
   {
     "restaurant": "Quo Vadis",
@@ -383,79 +353,22 @@
   },
   {
     "restaurant": "Moretti",
-    "type": "classic_menu",
+    "type": "error",
+    "status": "error",
+    "message": "Menu sa nepodarilo načítať",
+    "image_url": "",
     "soup": {
-      "name": "Kuracia polievka so zázvorom a knedličkami",
-      "allergens": "1,3"
+      "price": "",
+      "items": []
     },
-    "meals": [
-      {
-        "menu": "1",
-        "name": "Hovädzie na milánsky spôsob, zemiakové pyré",
-        "allergens": "7",
-        "price": "10,90 €"
-      },
-      {
-        "menu": "2",
-        "name": "150g Morčacie soté so zeleninou, ryža",
-        "allergens": "1",
-        "price": "10,90 €"
-      },
-      {
-        "menu": "3",
-        "name": "250g Bryndzové halušky so slaninkou",
-        "allergens": "1,3,7",
-        "price": "9,90 €"
-      },
-      {
-        "menu": "4",
-        "name": "Teľací viedenský rezeň, zemiaky s maslom a petržlenovou vňaťou",
-        "allergens": "1,3,7",
-        "price": "12,90 €"
-      },
-      {
-        "menu": "5",
-        "name": "Losos na grile, kôprová / holandská omáčka, baby zemiaky na masle 12.50€",
-        "allergens": "3,7",
-        "price": ""
-      },
-      {
-        "menu": "6",
-        "name": "Kuracie prsia so syrovou omáčkou so šunkou a pórom, ryža",
-        "allergens": "7",
-        "price": "9,90 €"
-      },
-      {
-        "menu": "7",
-        "name": "Insalata Roma (miešaný šalát s kuracími kúskami na grile, opečená bagetka)",
-        "allergens": "1,3",
-        "price": "9,90 €"
-      },
-      {
-        "menu": "8",
-        "name": "Insalata Gyros (miešaný šalát, kuracie prsia s gyros korením, feta)",
-        "allergens": "7",
-        "price": "10,50 €"
-      },
-      {
-        "menu": "9",
-        "name": "Vyprážaný bravčový rezeň z panenky, majonézový šalát/ryža,broskyňový kompót",
-        "allergens": "",
-        "price": "10,90 €"
-      },
-      {
-        "menu": "10",
-        "name": "Vyprážaný kurací rezeň, majonézový šalát/ryža,broskyňový kompót",
-        "allergens": "",
-        "price": "10,50 €"
-      },
-      {
-        "menu": "11",
-        "name": "Penne pomodoro (pikantné, nepikantné)",
-        "allergens": "1,3",
-        "price": "9,90 €"
-      }
-    ]
+    "meals": {
+      "price": "",
+      "items": []
+    },
+    "dessert": {
+      "price": "",
+      "items": []
+    }
   },
   {
     "restaurant": "Media Cafe",
