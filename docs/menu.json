@@ -38,19 +38,19 @@
   {
     "restaurant": "Quo Vadis",
     "type": "ocr_menu",
-    "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/09/pondelok-3-724x1024.jpg",
-    "starter": "150g Chrumkavý opečený kváskový chlieb s pikantnou mduja nátierkou, šťavnatými cherry paradajkami, čerstvou rukolou a hoblinkami parmezánu. /1,7/ 8,90 €",
-    "soup": "0,25 l Poctivá domáca hrstková polievka so zeleninou a strukovinam. /1,3,9/",
+    "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/09/pondelok-4-724x1024.jpg",
+    "starter": "150g Chrumkavý opečený kváskový chlieb s pikantnou n\"duja nátierkou, šťavnatými cherry paradajkami, čerstvou rukolou a hoblinkami parmezánu. /1,7/ 8,90 €",
+    "soup": "0,25 l Silný hovädzí vývar s pečeňovými haluškami a chrumkavou zeleninou./1,3,9/",
     "meals": [
       {
-        "name": "CLASSIC MENU - ŠVÉDSKE MÄSOVÉ GUĽKY",
-        "description": "400g / 200g Švédske mäsové guľky v jemnej smotanovej omáčke, podávané s lahodnou zemiakovou kašou, čerstvým hráškom a brusnicami. /1,7/",
-        "price": "11,90 €"
+        "name": "CLASSIC MENU - BRAVČOVÝ REZEŇ",
+        "description": "350g / 150g Zlatistý vyprážaný bravčový rezeň, podávaný s poctivým domácim majonézovým šalátom. /1,3,7/",
+        "price": "10,90 €"
       },
       {
-        "name": "DAILY CHOICE MENU - RIZOTO",
-        "description": "400g Krémové dubákové rizoto s voňavými lesnými hubami, sypané hoblinkami parmezánu. /7/",
-        "price": "10,90 €"
+        "name": "DAILY CHOICE MENU - SAGHETTI CARBONARA",
+        "description": "400g Tradičné talianske špagety Carbonara s chrumkavou pancettou, žítkom, parmezánom a čerstvo mletým čiernym korením. /1,3,7 /",
+        "price": "11,90 €"
       },
       {
         "name": "FIT MENU - LOSOS",
@@ -59,49 +59,18 @@
       },
       {
         "name": "BUSINESS MENU - JELENÍ GUĽÁŠ",
-        "description": "400g /200g Poctivý jelení guláš na červenom vine, podávaný s nadýchanou karlovarskou knedľou /1, 3, 7/. /1,3,71",
+        "description": "400g /200g Poctivý jelení guláš na červenom vine, podávaný s nadýchanou karlovarskou knedľou /1, 3, 7/. /1,3,7/",
         "price": "18,90 €"
       }
     ]
   },
   {
     "restaurant": "Bellissimo",
-    "type": "ocr_menu",
+    "type": "image_menu",
     "image_url": "https://bellissimonitra.com/wp-content/uploads/2026/09/menu-bellissimo-37-722x1024.jpg",
     "starter": "",
-    "soup": "Gulášová polievka, chlieb 300m [1)",
-    "meals": [
-      {
-        "name": "MENU 1",
-        "description": "3804/80g Kurací rezeň v panko strúhanke s bylinkovým maslom, zemiaková kaša a uhorkovým šalátom( 1,3/7]",
-        "price": "9,90 €"
-      },
-      {
-        "name": "MENU 2",
-        "description": "350g/50g Udon wok s teriyaki omáčkou, sous vide kačacie prsia, paprika, shitake, edamame, chilli, jarná cibuľka, kešu, sezamové semiačka [1,3,6,)",
-        "price": "10,90 €"
-      },
-      {
-        "name": "MENU 3",
-        "description": "350g Talianske Špagety bolognese s parmezánom [1,3/7]",
-        "price": "10,90 €"
-      },
-      {
-        "name": "MENU 4",
-        "description": "550g Pizza podľa týždennej ponuky (1,7)",
-        "price": "8,90 €"
-      },
-      {
-        "name": "MENU 5",
-        "description": "3804/50g Sous-vide Steak z teľacieho karé, gratinované zemiaky, silný vínový demiglace a divoká brokolica (7) | AN N Piatok [ (la Kohúti vývar s mäsom, domácimi rezancami a zeleninou 30011 (1.3.2) M | A | 20050503 Poké bowle s grilovaným lososom, jazmínovou ryžou, teriyaki omáčkou, edamame, avokádom, U | A mrkvou, redkovkou, cibuľkou, wasabi majonézou a sezamom (3,4,6,7,8,) NE | | | 2. 350g Cisársky trhanec obalený v karameli s domácim jablkovým pyré (1,3,7)",
-        "price": "9,90 €"
-      },
-      {
-        "name": "MENU 3",
-        "description": "350g Talianske Špagety bolognese s parmezánom [1,3,7] A 4. 550g Pizza podľa týždennej ponuky (1,7) b M vide Steak z teľacieho karé, gratinované zemiaky, silný vínový demiglace a divoká brokolica (7] A j ä Ň Slepačia polievka s domácimi rezancami, zeleninou a mäsom (1,3,9) +2€ A V! Zmena prílohy + 1€ | V lá",
-        "price": "16,90 €"
-      }
-    ]
+    "soup": "",
+    "meals": []
   },
   {
     "restaurant": "Buganka",
@@ -134,17 +103,17 @@
   },
   {
     "restaurant": "Hospúdka u Slováka",
-    "soup": "Česká kulajda s kôprom, vajíčkom a hubami 0,3 l (3,7)",
+    "soup": "Hovädzí vývar s pečeňovými haluškami 0,3 l (1,3,9)",
     "meals": [
       {
         "menu": 1,
-        "name": "Pečený moravský vrabec, dusený špenát s cesnakom a maslom, zemiaková knedľa 200 g (1,3,7)",
-        "price": "10,90 €"
+        "name": "Vyprážaný viedenský teľací rezeň, viedenský zemiakový šalát s cibuľou 200 g (1,3,7)",
+        "price": "12,90 €"
       },
       {
         "menu": 2,
-        "name": "Vyprážaná bravčová fašírka, zemiakový prívarok, chlieb 200 g (1,3,7)",
-        "price": "9,90 €"
+        "name": "Pečený, jemne zaúdený pstruh, grécky šalát, bagetka 300 g (1,4,7)",
+        "price": "13,90 €"
       },
       {
         "menu": 4,
@@ -175,30 +144,30 @@
   },
   {
     "restaurant": "Kotolňa",
-    "soup": "0,40 l Frankfurtská s párkom a zemiakmi, chlieb",
+    "soup": "0,40 l Cícerový krém s chlebovými krutónmi",
     "meals": [
       {
-        "name": "Pomaly pečená bravčová krkovička, karamelizovaná červená kapusta, zemiakové lokše",
+        "name": "Bravčová panenka na grile, demi glace omáčka s hríbikmi, pečené zemiaky, šalátik",
         "price": "8,90 €"
       },
       {
-        "name": "Kuracie prsia na spôsob \"kung pao\", jazmínová ryža",
+        "name": "Pečené kuracie stehno, žemľová plnka, dusená ryža, kompót",
         "price": "8,70 €"
       },
       {
-        "name": "Pizza BBQ (bbq omáčka, mozzarella, slanina, kuracie mäso, cibuľa) SK",
-        "price": "8,70 €"
+        "name": "Pizza Buratta (paradajková omáčka, mozzarella, prošuto, rukola, mozzarella buratta, bazalkové pesto)",
+        "price": "9,50 €"
       },
       {
-        "name": "Miešané šalátové listy, kuracie stripsy, sweet chilli omáčka, pizza chlieb",
-        "price": "8,70 €"
+        "name": "Miešané šalátové listy, grilovaný kozí syr, marhuľové čatní, sušené paradajky, pizza chlieb",
+        "price": "8,90 €"
       },
       {
-        "name": "Hranolky naložené s bravčovým trhaným \"pulled pork\", strúhaným čedarom, krájanou kyslou uhorkou a slaninovou majonézou a",
-        "price": "9,20 €"
+        "name": "Kurací burger v cereálnej žemli (dijon majo, polníček, grilované kuracie prsia, čedar, slanina, medová horčica), batátové hranolky",
+        "price": "10,50 €"
       },
       {
-        "name": "Batátovo - zemiakové ňoky s bazalkovým pestom, cesnakom a parmezánom",
+        "name": "Tuniakovo - zeleninové fašírky, zemiakové pyré, tatárska omáčka",
         "price": "8,50 €"
       }
     ]
@@ -234,25 +203,25 @@
     "restaurant": "U Krba",
     "type": "classic_menu",
     "soup": {
-      "name": "Minestrone s cestovinou",
-      "allergens": "1,7,9"
+      "name": "Teľací vývar s celestínskymi rezancami a zeleninou",
+      "allergens": "1,3,7,9"
     },
     "meals": [
       {
         "menu": "1",
-        "name": "150g Hovädzie varené s kôprovou omáčkou, vajíčkom a knedľou",
-        "allergens": "1,3,7",
+        "name": "150g Pečené kuracie stehno s dusenou ryžou a uhorkovým smotanovým šalátom",
+        "allergens": "1,7",
         "price": "9,50 €"
       },
       {
         "menu": "2",
-        "name": "350g Red curry rizoto s krevetami, zeleninou a kokosovým mliekom",
-        "allergens": "4,6",
-        "price": "9,80 €"
+        "name": "350g Bryndzové halušky so slaninou a jarnou cibuľkou",
+        "allergens": "1,3,7",
+        "price": "9,50 €"
       },
       {
         "menu": "3",
-        "name": "150g Grilovaný losos s holandskou omáčkou, zelenou špargľou a varenými zemiakmi",
+        "name": "150g Grilovaný losos s holandskou omáčkou, zelenou špargľou a varenými zemiakmi Pre tých, čo si ne vybrali, máme každý pracovný deň v ponuke počas obedného menu: 4.",
         "allergens": "1,3,4,6,7",
         "price": "15,90 €"
       },
