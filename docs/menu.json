@@ -38,29 +38,29 @@
   {
     "restaurant": "Quo Vadis",
     "type": "ocr_menu",
-    "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/09/pondelok-4-2-724x1024.jpg",
-    "starter": "100g Chrumkavé fritované kačacie krokety s lahodnou foie gras majonézou, sviežim ríbezľovým gélom a čerstvým listovým šalátom. /1,3,7,/ 9,90 €",
-    "soup": "0,25 l Jemný tekvicový krém s opraženými tekvicovými semienkami a kvapkou tekvicového oleja. /7/",
+    "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/09/pondelok-4-3-724x1024.jpg",
+    "starter": "80g Jemny losos Gravlax s nadýchanou avokádovou penou, nakladanou červenou cibuľkou, čerstvým kôprom a chrumkavou francúzskou bagetou. /1,4,10,/ 9,90 €",
+    "soup": "0,25 l Hovädzí vývar s mäsom, rezancami a zeleninou. /1,3,9/",
     "meals": [
       {
-        "name": "CLASSIC MENU - FAŠÍRKA",
-        "description": "400g / 200g Domáca pečená faširka s vajíčkom, podávaná na zemiakovom prívarku s čerstvým kôprom a čerstvým kváskovým chlebom. /1,3,7/",
+        "name": "CLASSIC MENU - PEČENÉ KURA",
+        "description": "450g / 250g Zlatisté pečené kura podávané s dusenou ryžou, tradičnou pečeňovou plnkou a broskyňovým kompótom. /1,3,7/ £",
         "price": "10,90 €"
       },
       {
-        "name": "DAILY CHOICE MENU - BURRATA ŠALÁT",
-        "description": "350g/125g Čerstvý listový šalát s krémovou Burratou, osviežujúcim avokádovo-limetkovým dresingom, šťavnatým granátovým jablkom a nakladaným feniklom . /7 /",
-        "price": "14,90 €"
+        "name": "DAILY CHOICE MENU - MORAVSKÉ KOLÁČE",
+        "description": "300gNadýchané domáce moravské koláče plnené krémovým tvarohom, poctivým slivkovým lekvárom a posypané maslovou mrveničkou . /1,3,7 /",
+        "price": "9,90 €"
       },
       {
-        "name": "FIT MENU - POKÉ",
-        "description": "350g/150g Čerstvé Poké bowl s grilovaným lososom, farebnou ryžou, šťavnatým mangom, edamame, chrumkavou uhorkou, wakame a teriyaki omáčkou, preliate ľahkým wasabi-jogurtovým dresingom a posypané sezamom. /1,3,4,6,7,11/",
+        "name": "FIT MENU - ZUBÁČ",
+        "description": "400g/170gJemný zubáč na masle, podávaný so zemiakovo-cesnakovým pyré, baby brokolicou a osviežujúcou citrónovou omáčkou. /3,4,7/",
         "price": "15,90 €"
       },
       {
-        "name": "BUSINESS MENU - HOVÄDZIE REZANCE",
-        "description": "350g /180g Jemné rezance z hovädzej sviečkovej na voňavom zelenom korení, podávané s gratinovanými zemiakmi. /7/",
-        "price": "19,90 €"
+        "name": "BUSINESS MENU - BRAVČOVÁ PANENKA",
+        "description": "400g /200g Šťavnatá bravčová panenka podávaná na krémovom dubákovom rizote s parmezánom. /7/",
+        "price": "16,90 €"
       }
     ]
   },
@@ -246,22 +246,73 @@
   },
   {
     "restaurant": "Moretti",
-    "type": "error",
-    "status": "error",
-    "message": "Menu sa nepodarilo načítať",
-    "image_url": "",
+    "type": "classic_menu",
     "soup": {
-      "price": "",
-      "items": []
+      "name": "Mrkvový krém so zázvorom",
+      "allergens": "7"
     },
-    "meals": {
-      "price": "",
-      "items": []
-    },
-    "dessert": {
-      "price": "",
-      "items": []
-    }
+    "meals": [
+      {
+        "menu": "1",
+        "name": "180g Pečené morčacie prsia, horčicová omáčka, fazuľové lúsky so slaninkou, zemiakový gratin",
+        "allergens": "7",
+        "price": "10,90 €"
+      },
+      {
+        "menu": "2",
+        "name": "150g Lososový wrap so zeleninou a jogurtovo-kôprovým dresingom, hranolky",
+        "allergens": "1,7",
+        "price": "10,90 €"
+      },
+      {
+        "menu": "4",
+        "name": "Teľací viedenský rezeň, zemiaky s maslom a petržlenovou vňaťou",
+        "allergens": "1,3,7",
+        "price": "12,90 €"
+      },
+      {
+        "menu": "5",
+        "name": "Losos na grile, kôprová / holandská omáčka, baby zemiaky na masle",
+        "allergens": "3,7",
+        "price": "12,50 €"
+      },
+      {
+        "menu": "6",
+        "name": "Mletý bravčový rezeň so syrom, zemiakové pyré, kyslé uhorky",
+        "allergens": "7",
+        "price": "10,90 €"
+      },
+      {
+        "menu": "7",
+        "name": "Insalata Roma (miešaný šalát s kuracími kúskami na grile, opečená bagetka)",
+        "allergens": "1,3",
+        "price": "9,90 €"
+      },
+      {
+        "menu": "8",
+        "name": "Insalata Gyros (miešaný šalát, kuracie prsia s gyros korením, feta)",
+        "allergens": "7",
+        "price": "10,50 €"
+      },
+      {
+        "menu": "9",
+        "name": "Vyprážaný bravčový rezeň z panenky, majonézový šalát/ryža,broskyňový kompót",
+        "allergens": "",
+        "price": "10,90 €"
+      },
+      {
+        "menu": "10",
+        "name": "Vyprážaný kurací rezeň, majonézový šalát/ryža,broskyňový kompót",
+        "allergens": "",
+        "price": "10,50 €"
+      },
+      {
+        "menu": "11",
+        "name": "Penne pomodoro (pikantné, nepikantné)",
+        "allergens": "1,3",
+        "price": "9,90 €"
+      }
+    ]
   },
   {
     "restaurant": "Media Cafe",
