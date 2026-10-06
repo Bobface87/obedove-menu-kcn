@@ -1,21 +1,21 @@
 [
   {
     "restaurant": "Hoffer",
-    "soup": "Jarná zeleninová polievka s hráškom a liatym cestom",
+    "soup": "Poľovnícky kotlíkový guláš, chlieb",
     "meals": [
       {
         "menu": 1,
-        "name": "Vyprážaný kurací rezeň v syrovom cestíčku, dusená ryža, broskyňový kompót",
+        "name": "Šťavnaté kuracie kúsky v cornfleksoch, dusená ryža, sweet-chilli omáčka",
         "price": "8,90 €"
       },
       {
         "menu": 2,
-        "name": "Roláda z daniela plnená hríbovou plnkou, šťuchané zemiaky s rozmarínom, miešaný šalát",
+        "name": "Pomaly pečené trhané bravčové mäso na domácich hranolkách preliate cheddarovou omáčkou, smažená cibuľka",
         "price": "8,90 €"
       },
       {
         "menu": 3,
-        "name": "Grilovaný oštiepok so slivkovou omáčkou, krokety",
+        "name": "Kapustové strapačky s pečenou krkovičkou",
         "price": "8,90 €"
       },
       {
@@ -25,12 +25,12 @@
       },
       {
         "menu": 5,
-        "name": "Hovädzia wook panvička s udon rezancami a zeleninou",
+        "name": "Grilovaný losos s citrónovým prelivom a pečenou cviklou na hráškovom pyré",
         "price": "9,40 €"
       }
     ],
     "dessert": {
-      "name": "Ananásový zákusok",
+      "name": "Zmrzlinový pohár so šľahačkou",
       "weight": null,
       "delivery": true
     }
@@ -221,27 +221,27 @@
     "restaurant": "Moretti",
     "type": "classic_menu",
     "soup": {
-      "name": "Paradajková",
-      "allergens": ""
+      "name": "Fazuľová kyslá, chlieb",
+      "allergens": "1,7"
     },
     "meals": [
       {
         "menu": "1",
-        "name": "150g Bravčová panenka s omáčkou s brandy a sušenými slivkami, opekané zemiaky",
+        "name": "150g Hovädzia nízka roštenka na šaláte s hranolkami, omáčka pepe verde",
         "allergens": "7",
-        "price": "10,90 €"
+        "price": "13,90 €"
       },
       {
         "menu": "2",
-        "name": "150g Kurací wrap so zeleninou a jogurtovým dresingom, dollar chips",
+        "name": "150g Kuracie prsia plnené syrom v parmezánovej kruste, zemiakové pyré",
         "allergens": "1,7",
-        "price": "9,90 €"
+        "price": "10,90 €"
       },
       {
         "menu": "3",
-        "name": "250g Rigatoni Trentina (kuracie prsia, šampiňóny, smotana)",
-        "allergens": "1,3,7",
-        "price": "9,90 €"
+        "name": "Ceasar šalát s grilovanými kur.prsiami, slaninkou, vajíčkom a dresingom",
+        "allergens": "3,7",
+        "price": "10,90 €"
       },
       {
         "menu": "4",
@@ -314,49 +314,54 @@
     "week": "05.10.2026 - 09.10.2026",
     "days": [
       {
-        "day": "UTOROK",
-        "date": "06.10.2026",
+        "day": "STREDA",
+        "date": "07.10.2026",
         "soup": {
-          "name": "Frankfurtská polievka s párkom, chlieb",
+          "name": "Zeleninová polievka s mrveničkou",
           "weight": null,
           "description": null,
           "allergens": [
-            "1"
+            "1",
+            "3",
+            "9"
           ]
         },
         "menus": [
           {
             "number": 1,
             "price": "8,90 €",
-            "name": "Kuracie rezance na čínsky spôsob, dusená ryža, šalát",
+            "name": "Hydinové nugetky v chrumkavom kruste, cestovinový šalát s jogurtom a zeleninou",
             "weight": "120g",
             "description": null,
             "allergens": [
-              "5",
-              "6"
+              "1",
+              "3",
+              "7"
             ]
           },
           {
             "number": 2,
             "price": "8,90 €",
-            "name": "Pečené bravčové rebrá na čiernom pive, pšenično ražný chlieb, sterilizovaná zelenina",
-            "weight": "250g",
+            "name": "Sviečková na smotane, knedľa",
+            "weight": "120g",
             "description": null,
             "allergens": [
               "1",
+              "3",
+              "7",
               "10"
             ]
           },
           {
             "number": 3,
             "price": "8,90 €",
-            "name": "Tuniakový šalát s avokádom, mix listový šalát, cherry paradajky, uhorka a balkánsky syr",
+            "name": "Listový šalát s mix grilovanou zeleninou, kozím syrom a semiačkami, celozrnný chlebík",
             "weight": "250g",
             "description": null,
             "allergens": [
-              "4",
               "7",
-              "10"
+              "8",
+              "11"
             ]
           }
         ]
