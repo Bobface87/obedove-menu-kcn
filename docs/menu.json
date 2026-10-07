@@ -1,21 +1,21 @@
 [
   {
     "restaurant": "Hoffer",
-    "soup": "Poľovnícky kotlíkový guláš, chlieb",
+    "soup": "Teľací vývar s mäsovými haluškami a zeleninou",
     "meals": [
       {
         "menu": 1,
-        "name": "Šťavnaté kuracie kúsky v cornfleksoch, dusená ryža, sweet-chilli omáčka",
+        "name": "Sous-vide bravčová panenka na jemnej slaninkovej omáčke, pečené zemiaky v šupke",
         "price": "8,90 €"
       },
       {
         "menu": 2,
-        "name": "Pomaly pečené trhané bravčové mäso na domácich hranolkách preliate cheddarovou omáčkou, smažená cibuľka",
+        "name": "Zapekané kuracie prsia so slaninkou a syrom na prírodnej omáčke, dusená ryža",
         "price": "8,90 €"
       },
       {
         "menu": 3,
-        "name": "Kapustové strapačky s pečenou krkovičkou",
+        "name": "Zemiakový prívarok s vyprážanými bravčovými fašírkami, chlieb",
         "price": "8,90 €"
       },
       {
@@ -25,12 +25,12 @@
       },
       {
         "menu": 5,
-        "name": "Grilovaný losos s citrónovým prelivom a pečenou cviklou na hráškovom pyré",
+        "name": "Hovädzí SMASH burger, slanina, cheddar, kyslá uhorka, cibuľa, hranolky, cheddarový dip",
         "price": "9,40 €"
       }
     ],
     "dessert": {
-      "name": "Zmrzlinový pohár so šľahačkou",
+      "name": "Kysnutý marhuľový koláč s posýpkou",
       "weight": null,
       "delivery": true
     }
@@ -262,27 +262,27 @@
     "restaurant": "Moretti",
     "type": "classic_menu",
     "soup": {
-      "name": "Fazuľová kyslá, chlieb",
-      "allergens": "1,7"
+      "name": "Slepačia s rezancami",
+      "allergens": "1,3"
     },
     "meals": [
       {
         "menu": "1",
-        "name": "150g Hovädzia nízka roštenka na šaláte s hranolkami, omáčka pepe verde",
+        "name": "Pečená bravčová krkovička, zemiaky na cibuľke a petržlenovej vňati",
         "allergens": "7",
-        "price": "13,90 €"
+        "price": "10,90 €"
       },
       {
         "menu": "2",
-        "name": "150g Kuracie prsia plnené syrom v parmezánovej kruste, zemiakové pyré",
-        "allergens": "1,7",
-        "price": "10,90 €"
+        "name": "Indická tikka marsala, ryža",
+        "allergens": "7",
+        "price": "9,90 €"
       },
       {
         "menu": "3",
-        "name": "Ceasar šalát s grilovanými kur.prsiami, slaninkou, vajíčkom a dresingom",
-        "allergens": "3,7",
-        "price": "10,90 €"
+        "name": "Žemľovka s tvarohom 9,90",
+        "allergens": "1,3,7",
+        "price": ""
       },
       {
         "menu": "4",
@@ -355,35 +355,31 @@
     "week": "05.10.2026 - 09.10.2026",
     "days": [
       {
-        "day": "STREDA",
-        "date": "07.10.2026",
+        "day": "ŠTVRTOK",
+        "date": "08.10.2026",
         "soup": {
-          "name": "Zeleninová polievka s mrveničkou",
+          "name": "Gulášová polievka, chlieb",
           "weight": null,
           "description": null,
           "allergens": [
-            "1",
-            "3",
-            "9"
+            "1"
           ]
         },
         "menus": [
           {
             "number": 1,
             "price": "8,90 €",
-            "name": "Hydinové nugetky v chrumkavom kruste, cestovinový šalát s jogurtom a zeleninou",
+            "name": "Kuracia rolka v parmskej šunke, dusená ryža s hráškom, šalát",
             "weight": "120g",
             "description": null,
             "allergens": [
-              "1",
-              "3",
-              "7"
+              "1"
             ]
           },
           {
             "number": 2,
             "price": "8,90 €",
-            "name": "Sviečková na smotane, knedľa",
+            "name": "Vyprážaný bravčový rezeň v trojobale, divadelný zemiakový šalát s majonézou",
             "weight": "120g",
             "description": null,
             "allergens": [
@@ -396,13 +392,14 @@
           {
             "number": 3,
             "price": "8,90 €",
-            "name": "Listový šalát s mix grilovanou zeleninou, kozím syrom a semiačkami, celozrnný chlebík",
-            "weight": "250g",
+            "name": "Syr Encián v lístkovom ceste, poľníčkový šalát s marinovanou hruškou a karamelizovanými orechami",
+            "weight": "120g",
             "description": null,
             "allergens": [
+              "1",
+              "3",
               "7",
-              "8",
-              "11"
+              "8"
             ]
           }
         ]
