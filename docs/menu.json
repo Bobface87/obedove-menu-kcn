@@ -158,22 +158,33 @@
   },
   {
     "restaurant": "Kotolňa",
-    "type": "error",
-    "status": "error",
-    "message": "Menu sa nepodarilo načítať",
-    "image_url": "",
-    "soup": {
-      "price": "",
-      "items": []
-    },
-    "meals": {
-      "price": "",
-      "items": []
-    },
-    "dessert": {
-      "price": "",
-      "items": []
-    }
+    "soup": "0,40 l Krém zo žltého hrachu so zeleninou a údeným mäsom, chlieb",
+    "meals": [
+      {
+        "name": "Kačacie prsia na grile, brusnicovo - slivková omáčka, štuchané zemiaky na masti s cibuľkou",
+        "price": "10,20 €"
+      },
+      {
+        "name": "Bravčová panenka podávaná a krémovom hokkaido rizote s parmezánom",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Pizza Sellácka (paradajková omáčka, mozzarella, saláma, slanina, klobása, cibuľa, feferóny)",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Miešané šalátové listy, kuracie stripsy, sweet chilli omáčka, pizza chlieb",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Vyprážaný kurací rezeň plnený olomouckým tvarôžkom, maslové zemiaky s pažítkou, uhorkový šalát",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Grilovaný syr halloumi, batátové hranolky, rukolový šalátik so sušenými paradajkami, slaninová majonéza",
+        "price": "8,90 €"
+      }
+    ]
   },
   {
     "restaurant": "Sakura",
