@@ -1,21 +1,21 @@
 [
   {
     "restaurant": "Hoffer",
-    "soup": "0,33l Slepačí vývar s mäsom, zeleninou a niťovkami",
+    "soup": "0,33l Šošovicová kyslá polievka so slivkami, chlieb",
     "meals": [
       {
         "menu": 1,
-        "name": "Vyprážaná kuracia kapsa (šunka, cheddar), dusená ryža, miešaný šalát",
+        "name": "Bravčový černohorský rezeň posypaný syrom, zemiakové pyré, kapustový šalát",
         "price": "8,90 €"
       },
       {
         "menu": 2,
-        "name": "Pomaly pečené bravčové koleno glazurované čierným pivom s kapustnými zemiakmi, baranie rohy",
+        "name": "Kuracia roláda (proscchiutto, mozzarella) na holandskej omáčke, dusená ryža",
         "price": "8,90 €"
       },
       {
         "menu": 3,
-        "name": "Zemiaková placka plnená bryndzou, pečenou slaninkou a jarnou cibuľkou, posypané oštiepkom",
+        "name": "Marinovaný halloumi syr s grilovanou zeleninou, restované baby zemiaky, dressing zo smotany a čerstvých byliniek",
         "price": "8,90 €"
       },
       {
@@ -25,12 +25,12 @@
       },
       {
         "menu": 5,
-        "name": "Šťavnaté trhané hovädzie mäso na domácich hranolkách, cheddarová omáčka, chrumkavá cibuľka, jalapeňos",
-        "price": "9,40 €"
+        "name": "Dusené plátky z daniela na koreňovej zelenine a červenom víne so zemiakovo-zelerovým pyré",
+        "price": "8,90 €"
       }
     ],
     "dessert": {
-      "name": "Čokoládovo-jablkový perník",
+      "name": "Tvarohové rezy ,,Míša,,",
       "weight": "50g",
       "delivery": false
     }
@@ -221,27 +221,27 @@
     "restaurant": "Moretti",
     "type": "classic_menu",
     "soup": {
-      "name": "Slepačí vývar",
-      "allergens": "1,3"
+      "name": "Frankfurtská s párkom, chlieb",
+      "allergens": ""
     },
     "meals": [
       {
         "menu": "1",
-        "name": "Segedínsky guláš, knedľa",
-        "allergens": "1,7",
+        "name": "Morčacia roláda plnená šunkou, syrom a kápiou, zemiakové pyré, kyslé uhorky",
+        "allergens": "7",
         "price": "10,90 €"
       },
       {
         "menu": "2",
-        "name": "Grilovaný syr typu halloumi na šaláte s brusnicami, hranolky",
+        "name": "Kuracie prsia so smotanou a bylinkami, ryža",
         "allergens": "7",
         "price": "9,90 €"
       },
       {
         "menu": "3",
-        "name": "Penne s kuracím mäsom, smotanou a paradajkovou omáčkou zapekané so syrom",
-        "allergens": "1,3,7",
-        "price": "10,50 €"
+        "name": "Šúľance s orechami a maslom",
+        "allergens": "1,7",
+        "price": "10,90 €"
       },
       {
         "menu": "4",
@@ -314,32 +314,37 @@
     "week": "12.10.2026 - 16.10.2026",
     "days": [
       {
-        "day": "ŠTVRTOK",
-        "date": "15.10.2026",
+        "day": "PIATOK",
+        "date": "16.10.2026",
         "soup": {
-          "name": "Kapustnica, chlieb",
+          "name": "Slepačí vývar s mäsom, rezancami a zeleninou",
           "weight": null,
           "description": null,
           "allergens": [
-            "1"
+            "1",
+            "3",
+            "9"
           ]
         },
         "menus": [
           {
             "number": 1,
             "price": "8,90 €",
-            "name": "Grilovaný kurací steak, dusená ryža, fazuľkové struky v slaninke",
-            "weight": "120g",
+            "name": "Pečené kuracie stehno s mandľovou plnkou, dusená ryža, šalát",
+            "weight": "240g",
             "description": null,
             "allergens": [
-              "7"
+              "1",
+              "3",
+              "7",
+              "8"
             ]
           },
           {
             "number": 2,
             "price": "8,90 €",
-            "name": "Francúzske zemiaky, sterilizovaná uhorka",
-            "weight": "250g",
+            "name": "Pečené bravčové karé so slivkovo vínovou omáčkou, opekané zemiakové šúlance s tymiánom",
+            "weight": "120g",
             "description": null,
             "allergens": [
               "1",
@@ -350,13 +355,14 @@
           {
             "number": 3,
             "price": "8,90 €",
-            "name": "Vyprážaný syr Camembert v trojobale, batátové hranolky, dresing",
-            "weight": "120g",
+            "name": "Parené buchty s orechovou alebo makovou posýpkou, maslom",
+            "weight": "250g",
             "description": null,
             "allergens": [
               "1",
               "3",
-              "7"
+              "7",
+              "8"
             ]
           }
         ]
