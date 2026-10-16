@@ -38,28 +38,28 @@
   {
     "restaurant": "Quo Vadis",
     "type": "ocr_menu",
-    "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/10/pondelok-3-1-724x1024.jpg",
-    "starter": "80g Hovädzí tatársky biftek s hriankami a rukolou. /1,3,7,10/9,90 €",
-    "soup": "0,25 l Krém z pečenej červenej papriky s mascarpone./7/",
+    "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/10/pondelok-4-1-724x1024.jpg",
+    "starter": "80g Hovädzí tatársky biftek s hriankami a rukolou. /1,3,7,10/9,90 €£",
+    "soup": "0,25 l - Hovädzí vývar so zeleninou a pečeňovými haluškami. [1,3,9/",
     "meals": [
       {
-        "name": "CLASSIC MENU - PRÍVAROK",
-        "description": "400g / 200g Hovädzie mäso na paprike, tradičný prívarok z bielej tekvice a domáci kváskový chlieb./1,3,7/",
+        "name": "CLASSIC MENU - CORDON BLEU",
+        "description": "350g / 150g Vyprážané kuracie prsia plnené šunkou a Nivou, podávané s dusenou ryžou a cibuľovo-paradajkovým šalátom. /1,3,7/",
         "price": "11,90 €"
       },
       {
-        "name": "DAILY CHOICE MENU - ZAPEKANÉ CESTOVINY",
-        "description": "400g Zapekané paradajkové cestoviny s ricottou, baby špenátom a mozzarellou. /1,3,7,/",
-        "price": "9,90 €"
+        "name": "DAILY CHOICE MENU - PEČENÉ BUCHTY",
+        "description": "300g Domáce pečené buchty plnené slivkovým lekvárom, podávané s vanilkovým pudingom a pohárom kravského mlieka. [1,3,7",
+        "price": "110,90 €"
       },
       {
         "name": "FIT MENU - PRAŽMA",
-        "description": "350g/180g Filety z pražmy na masle s grilovanou zeleninou a omáčkou Chimichurri. /4,7/",
+        "description": "350g/180g Filety z pražmy na masle s grilovanou zeleninou a omáčkou Chimichurri. /4,7/ £",
         "price": "16,90 €"
       },
       {
         "name": "BUSINESS MENU - FLANK STEAK",
-        "description": "400g /200g Grilovaný Flank steak na drevenom uhli, podávaný s batatovými hranolkami a omáčkou Café de Paris. /4,7,10/",
+        "description": "400g /200g Grilovaný Flank steak na drevenom uhl, podávaný s batatovými hranolkami a omáčkou Café de Paris. /4,7,10/",
         "price": "18,90 €"
       }
     ]
@@ -81,17 +81,17 @@
   },
   {
     "restaurant": "Hospúdka u Slováka",
-    "soup": "Kyslá fazuľová s údeným mäsom, chlieb 0,3 l (1,7)",
+    "soup": "Hovädzí vývar s rezancami 0,3 l (1,3,9)",
     "meals": [
       {
         "menu": 1,
-        "name": "Varené hovädzie mäso, chrenová omáčka, parená knedľa 150 g (1,7)",
-        "price": "11,90 €"
+        "name": "Vyprážaný viedenský teľací rezeň, viedenský zemiakový šalát s cibuľou 200 g (1,3,7)",
+        "price": "12,90 €"
       },
       {
         "menu": 2,
-        "name": "Krémové rizoto s lesnými hubami, grilované kuracie prsia, strúhaný parmezán 300 g (7)",
-        "price": "10,90 €"
+        "name": "Jemne údený pečený pstruh, varené baby zemiaky s maslom, paradajková pikantná salsa s bazalkou, rez citrónu 300 g (4,7)",
+        "price": "12,90 €"
       },
       {
         "menu": 4,
@@ -122,31 +122,31 @@
   },
   {
     "restaurant": "Kotolňa",
-    "soup": "0,40 l Frankfurtská s párkom a zemiakmi, chlieb",
+    "soup": "0,40 l Cícerový krém s krutónmi",
     "meals": [
       {
-        "name": "Francúzske rezne z kuracích pŕs, zemiakové pyré, coleslaw šalát",
+        "name": "Bravčová panenka na grile, demi omáčka zjemnená smotanou, štuchané zemiaky s cibuľkou a slaninou, šalátik €",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Gyros tanier - kurací gyros, hranolky, čerstvá zelenina, cesnakový dip, pikantný dip, pizza chlieb",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Pizza Talianska (paradajková omáčka, mozzarella, prošuto, rukola, parmezán)",
         "price": "8,70 €"
       },
       {
-        "name": "Fusilli s hovädzím mäsom, slaninkou, sušenými paradajkami, cuketou a parmezánom",
+        "name": "Miešané šalátové listy, grilovaný losos, bylinkové maslo, cherry paradajky, bylinkový dresing, pizza chlieb €",
         "price": "9,50 €"
       },
       {
-        "name": "Pizza preklopená Calzone (paradajková omáčka, mozzarella, šunka, saláma, kukurica)",
+        "name": "Zapekané cestoviny v čedarovej omáčke s kuracím mäsom a brokolicou",
         "price": "8,70 €"
       },
       {
-        "name": "Miešané šalátové listy, kurací gyros, uhorka, čierne olivy, strúhaná feta, bylinkový dresing, pizza chlieb",
+        "name": "Syrovo - šunkový špíz v cestíčku, zemiakové pyré, tatárska omáčka",
         "price": "8,70 €"
-      },
-      {
-        "name": "Plnená paprika v paradajkovej omáčke, parená knedľa Cena pre",
-        "price": "8,70 €"
-      },
-      {
-        "name": "Vyprážaný hermelín, maslové zemiaky, tatárska omáčka Cena pre",
-        "price": "8,50 €"
       }
     ]
   },
@@ -181,25 +181,25 @@
     "restaurant": "U Krba",
     "type": "classic_menu",
     "soup": {
-      "name": "Paradajková s feta syrom",
-      "allergens": "7"
+      "name": "Zelerový krém s údeným mäsom",
+      "allergens": "7,9"
     },
     "meals": [
       {
         "menu": "1",
-        "name": "150g Vyprážaný kurací rezeň v cestíčku s kúskami údenej šunky so zemiakovou kašou a coleslaw šalátom",
+        "name": "150g Hovädzí guláš s domácou karlovarskou knedľou",
         "allergens": "1,3,7",
-        "price": "9,50 €"
+        "price": "9,80 €"
       },
       {
         "menu": "2",
-        "name": "350g Rigatoni v cheddarovom kréme s chrumkavými stripsami, slaninkou a petržlenovou vňaťkou",
-        "allergens": "1,3,7",
+        "name": "350g Ázijské rezance s kuracími prsiami v krémovej kari omáčke s mrkvou, bambusovými výhonkami, cibuľkou a limetkou",
+        "allergens": "1,2,7",
         "price": "9,50 €"
       },
       {
         "menu": "3",
-        "name": "250 g Pečené kačacie stehno s tekvicovým pyré, zemiakovou knedľou, čučoriedkami a demi-glace omáčkou s nádychom zázvoru",
+        "name": "250 g Pečené kačacie stehno s tekvicovým pyré, zemiakovou knedľou, čučoriedkami a demi-glace omáčkou s nádychom zázvoru Pre tých, čo si ne vybrali, máme každý pracovný deň v ponuke počas obedného menu: 4.",
         "allergens": "1,3,7",
         "price": "19,90 €"
       },
