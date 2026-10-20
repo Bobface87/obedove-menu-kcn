@@ -1,21 +1,21 @@
 [
   {
     "restaurant": "Hoffer",
-    "soup": "Divinová gulášová polievka so zemiakmi, chlieb",
+    "soup": "Sedliacka kapustnica s klobásou a údeným mäsom, chlieb",
     "meals": [
       {
         "menu": 1,
-        "name": "Vyprážané DUO (Eidam, kuracie stripsy), hranolky, tatárska omáčka",
+        "name": "Steak z bravčovej krkovičky na čiernom pive s cibuľkou a volským okom, pečené zemiaky, cesnakový dressing",
         "price": "8,90 €"
       },
       {
         "menu": 2,
-        "name": "Pikantné bravčové soté so zemiakovými plackami, posypané syrom",
+        "name": "Vyprážaný kurací Gordon Bleu, dusená ryža, rajčinovo - cibuľový šalát",
         "price": "8,90 €"
       },
       {
         "menu": 3,
-        "name": "Balkánske čevapčiči, varené zemiaky, cibuľka, horčica, ajvar",
+        "name": "Furmanské halušky s pečenou klobásou a údeným syrom",
         "price": "8,90 €"
       },
       {
@@ -25,12 +25,12 @@
       },
       {
         "menu": 5,
-        "name": "Sous-vide chrbát z daniela na vínovo - brusnicovej omáčke, zemiaky v šupke s rozmarínom",
+        "name": "Zapekaná quesadilla s hovädzím mäsom a syrom cheddar, guacamole, kyslá smotana, rajčinová salsa",
         "price": "9,40 €"
       }
     ],
     "dessert": {
-      "name": "Dukátové buchtičky s vanilkovým krémom",
+      "name": "Domáci kysnutý makový závin s višňami",
       "weight": null,
       "delivery": true
     }
@@ -103,20 +103,18 @@
     "meals": {
       "price": "",
       "items": [
-        ",50 €",
+        "— SUB |",
         "Divinový guláš s parenou knedľou",
         "Držkový perkelt s haluškami",
         "Jelenie ragú na červenom víne s koreňovou zeleninou a zemiakovou kašou",
-        "Divá kačka s dusenou kapustou a domácou knedľou |",
+        "Divá kačka s dusenou kapustou a domácou knedľou",
         "Pečené kuriatko s brusnicami a opekanými zemiakmi",
         "Pečený pstruh na poľovnicky spôsob",
-        "Hubové rizoto s parmezánom sna MÚČNIK IEBHAA VÁ",
-        "Makové slíže s brusnicami 1. RA > a maslom a“",
-        "SAV s sia M",
-        "O a) —28",
-        "ZN ZA > AA x VY AN ZY",
-        "V. do i9 >",
-        "Rakúsko - Uhorsko — /,2 bora — vôňa lesa v najstaršej reštaurácii v Nitre | I 0908 130 925 „OA ja Chad"
+        "Hubové rizoto s parmezánom",
+        "MÚČNIK IERSUM 3:",
+        "Makové slíže s brusnicami 1, Z a maslom",
+        "Rakúsko - Uhorsko (2 Donáška vôňa lesa v najstaršej reštaurácii v Nitre HL 0908 130 925",
+        "A . a Cl % CXD"
       ]
     },
     "dessert": {
@@ -266,27 +264,27 @@
     "restaurant": "Moretti",
     "type": "classic_menu",
     "soup": {
-      "name": "Francúzska cibuľačka s opečenou syrovou bagetkou",
-      "allergens": "1,7"
+      "name": "Francúzska s cestovinou",
+      "allergens": "1,3"
     },
     "meals": [
       {
         "menu": "1",
-        "name": "Živánska, kyslé uhorky",
-        "allergens": "",
+        "name": "Španielsky vtáčik, ryža",
+        "allergens": "3",
         "price": "10,90 €"
       },
       {
         "menu": "2",
-        "name": "Vykostené kuracie stehná bez kože v paradajkovo-smotanovej omáčke so špenátom, ryža",
-        "allergens": "7",
+        "name": "Kurací špíz so zeleninou, paradajková salsa, hranolky",
+        "allergens": "",
         "price": "9,90 €"
       },
       {
         "menu": "3",
-        "name": "Linguine aglio e olio s krevetami a cherry paradajkami",
-        "allergens": "1,3",
-        "price": "12,90 €"
+        "name": "Lososové fettuccine",
+        "allergens": "1,3,7",
+        "price": "10,90 €"
       },
       {
         "menu": "4",
@@ -359,51 +357,53 @@
     "week": "19.10.2026 - 23.10.2026",
     "days": [
       {
-        "day": "UTOROK",
-        "date": "20.10.2026",
+        "day": "STREDA",
+        "date": "21.10.2026",
         "soup": {
-          "name": "Kapustová polievka s rajčiakmi, chlieb",
+          "name": "Slepačí vývar s mäsom a rezancami, zeleninou",
           "weight": null,
           "description": null,
           "allergens": [
-            "1"
+            "1",
+            "3",
+            "9"
           ]
         },
         "menus": [
           {
             "number": 1,
             "price": "8,90 €",
-            "name": "Morčacie prsia na smotane s brusnicami, knedľa",
+            "name": "Tiszay z kuracích pŕs, zemiakové lokše, šalát",
             "weight": "120g",
             "description": null,
             "allergens": [
-              "1",
-              "3",
-              "7",
-              "9",
-              "10"
+              "1"
             ]
           },
           {
             "number": 2,
             "price": "8,90 €",
-            "name": "Čiernorský bravčový rezeň, zemiakové pyré, šalát",
-            "weight": "120g",
+            "name": "Zabíjačkový tanier (pečené mäso, klobása, jaternica), chlieb, sterilizovaná zelenina mix",
+            "weight": "200g",
             "description": null,
             "allergens": [
               "1",
-              "3",
-              "7"
+              "10"
             ]
           },
           {
             "number": 3,
             "price": "8,90 €",
-            "name": "Mix listový šalát s kačacími prsiami, pomarančami, granátovým jablkom a orechami, bageta",
+            "name": "Waldorfský šalát s kuracím mäsom, zelerom a orechami, croissant",
             "weight": "250g",
             "description": null,
             "allergens": [
-              "1"
+              "1",
+              "3",
+              "7",
+              "8",
+              "9",
+              "10"
             ]
           }
         ]
