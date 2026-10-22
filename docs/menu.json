@@ -1,21 +1,21 @@
 [
   {
     "restaurant": "Hoffer",
-    "soup": "Hovädzí vývar s mäsom, zeleninou a širokými rezancami",
+    "soup": "Rajčinová polievka so syrom",
     "meals": [
       {
         "menu": 1,
-        "name": "Sous- vide bravčová panenka na dubákovo-smotanovej omáčke so slaninou a cibuľou, restované zemiaky na rozmaríne",
+        "name": "Šťavnaté trhané bravčové mäso na domácich hranolkách s cheddarovým prelivom a chrumkavou cibuľkou",
         "price": "8,90 €"
       },
       {
         "menu": 2,
-        "name": "Tortila s vyprážaným kuracím mäsom a zeleninou, batátové hranolky, slaninová majonéza",
+        "name": "Zapekané vykostené kuracie stehná na čiernom pive so slaninou, dusená ryža, cviklový šalát",
         "price": "8,90 €"
       },
       {
         "menu": 3,
-        "name": "Segedínsky guláš špeciál, varená knedľa",
+        "name": "Vyprážaný syr, varené zemiaky, tatárska omáčka",
         "price": "8,90 €"
       },
       {
@@ -25,12 +25,12 @@
       },
       {
         "menu": 5,
-        "name": "Grilovaný zubáč, šošovicovo - majonézový šalát, opekaný toast s bylinkovým maslom",
-        "price": "9,40 €"
+        "name": "Divinové ragú na koreňovej zelenine, žemľová knedľa, brusnice",
+        "price": "8,90 €"
       }
     ],
     "dessert": {
-      "name": "Svieže jablkové rezy",
+      "name": "Čokoládový donut",
       "weight": null,
       "delivery": true
     }
@@ -103,18 +103,20 @@
     "meals": {
       "price": "",
       "items": [
-        "— SUB |",
+        ",50 €",
         "Divinový guláš s parenou knedľou",
         "Držkový perkelt s haluškami",
         "Jelenie ragú na červenom víne s koreňovou zeleninou a zemiakovou kašou",
-        "Divá kačka s dusenou kapustou a domácou knedľou",
+        "Divá kačka s dusenou kapustou a domácou knedľou |",
         "Pečené kuriatko s brusnicami a opekanými zemiakmi",
         "Pečený pstruh na poľovnicky spôsob",
-        "Hubové rizoto s parmezánom",
-        "MÚČNIK IERSUM 3:",
-        "Makové slíže s brusnicami 1, Z a maslom",
-        "Rakúsko - Uhorsko (2 Donáška vôňa lesa v najstaršej reštaurácii v Nitre HL 0908 130 925",
-        "A . a Cl % CXD"
+        "Hubové rizoto s parmezánom sna MÚČNIK IEBHAA VÁ",
+        "Makové slíže s brusnicami 1. RA > a maslom a“",
+        "SAV s sia M",
+        "O a) —28",
+        "ZN ZA > AA x VY AN ZY",
+        "V. do i9 >",
+        "Rakúsko - Uhorsko — /,2 bora — vôňa lesa v najstaršej reštaurácii v Nitre | I 0908 130 925 „OA ja Chad"
       ]
     },
     "dessert": {
@@ -262,22 +264,79 @@
   },
   {
     "restaurant": "Moretti",
-    "type": "error",
-    "status": "error",
-    "message": "Menu sa nepodarilo načítať",
-    "image_url": "",
+    "type": "classic_menu",
     "soup": {
-      "price": "",
-      "items": []
+      "name": "Slepačí vývar s rezancami",
+      "allergens": "1,3"
     },
-    "meals": {
-      "price": "",
-      "items": []
-    },
-    "dessert": {
-      "price": "",
-      "items": []
-    }
+    "meals": [
+      {
+        "menu": "1",
+        "name": "Hovädzie s chrenovou omáčkou, knedľa",
+        "allergens": "1,3,7",
+        "price": "10,90 €"
+      },
+      {
+        "menu": "2",
+        "name": "Králik na rozmaríne, zemiakové pyré",
+        "allergens": "7",
+        "price": "10,90 €"
+      },
+      {
+        "menu": "3",
+        "name": "Rigatoni s bravčovou panenkou a pórom",
+        "allergens": "1,3",
+        "price": "10,90 €"
+      },
+      {
+        "menu": "4",
+        "name": "Teľací viedenský rezeň, zemiaky s maslom a petržlenovou vňaťou",
+        "allergens": "1,3,7",
+        "price": "12,90 €"
+      },
+      {
+        "menu": "5",
+        "name": "Losos na grile, kôprová / holandská omáčka, baby zemiaky na masle",
+        "allergens": "3,7",
+        "price": "12,90 €"
+      },
+      {
+        "menu": "6",
+        "name": "Zubáč na grile, dusená zelenina,baby zemiaky",
+        "allergens": "7",
+        "price": "12,90 €"
+      },
+      {
+        "menu": "7",
+        "name": "Insalata Roma (miešaný šalát s kuracími kúskami na grile, opečená bagetka)",
+        "allergens": "1,3",
+        "price": "9,90 €"
+      },
+      {
+        "menu": "8",
+        "name": "Insalata Gyros (miešaný šalát, kuracie prsia s gyros korením, feta)",
+        "allergens": "7",
+        "price": "10,50 €"
+      },
+      {
+        "menu": "9",
+        "name": "Vyprážaný bravčový rezeň z panenky, majonézový šalát/ryža,broskyňový kompót",
+        "allergens": "",
+        "price": "10,90 €"
+      },
+      {
+        "menu": "10",
+        "name": "Vyprážaný kurací rezeň, majonézový šalát/ryža,broskyňový kompót",
+        "allergens": "",
+        "price": "10,50 €"
+      },
+      {
+        "menu": "11",
+        "name": "Penne pomodoro (pikantné, nepikantné)",
+        "allergens": "1,3",
+        "price": "9,90 €"
+      }
+    ]
   },
   {
     "restaurant": "Media Cafe",
@@ -300,52 +359,11 @@
     "week": "19.10.2026 - 23.10.2026",
     "days": [
       {
-        "day": "ŠTVRTOK",
-        "date": "22.10.2026",
-        "soup": {
-          "name": "Fazuľovica s údeným mäsom, chlieb",
-          "weight": null,
-          "description": null,
-          "allergens": [
-            "1",
-            "9"
-          ]
-        },
-        "menus": [
-          {
-            "number": 1,
-            "price": "8,90 €",
-            "name": "Kuracie prsia Supreme, tekvicové rizoto, rukolový šalát",
-            "weight": "180g",
-            "description": null,
-            "allergens": [
-              "1",
-              "7"
-            ]
-          },
-          {
-            "number": 2,
-            "price": "8,90 €",
-            "name": "Špíz z bravčovej panenky, pečené zemiaky, šalát",
-            "weight": "120g",
-            "description": null,
-            "allergens": [
-              "1"
-            ]
-          },
-          {
-            "number": 3,
-            "price": "8,90 €",
-            "name": "Špenátové halušky so syrovou omáčkou a sušenými paradajkami, chrumkavá slaninka",
-            "weight": "300g",
-            "description": null,
-            "allergens": [
-              "1",
-              "3",
-              "7"
-            ]
-          }
-        ]
+        "day": "PIATOK",
+        "date": "23.10.2026",
+        "status": "Zatvorené",
+        "soup": null,
+        "menus": []
       }
     ]
   }
