@@ -109,19 +109,25 @@
       "price": "",
       "items": [
         ",50 €",
-        "Divinový guláš s parenou knedľou",
-        "Držkový perkelt s haluškami",
-        "Jelenie ragú na červenom víne s koreňovou zeleninou a zemiakovou kašou",
-        "Divá kačka s dusenou kapustou a domácou knedľou |",
-        "Pečené kuriatko s brusnicami a opekanými zemiakmi",
-        "Pečený pstruh na poľovnicky spôsob",
-        "Hubové rizoto s parmezánom sna MÚČNIK IEBHAA VÁ",
-        "Makové slíže s brusnicami 1. RA > a maslom a“",
-        "SAV s sia M",
-        "O a) —28",
-        "ZN ZA > AA x VY AN ZY",
-        "V. do i9 >",
-        "Rakúsko - Uhorsko — /,2 bora — vôňa lesa v najstaršej reštaurácii v Nitre | I 0908 130 925 „OA ja Chad"
+        "Sedmohradský bravčový tokáň",
+        "S paprikou, cibuľou a domácimi haluškami",
+        "Sarmale",
+        "Kapustné listy plnené mäsom a ryžou. s kukuričnou kašou a kyslou smotanou",
+        "Pečené bravčové koleno",
+        "S cesnakom, dusenou kapustou a opekanými zemiakmi",
+        "Hovädzie ragú na červenom víne",
+        "S koreňovou zeleninou a zemiakovou plackou",
+        "Sedmohradský pstruh na masle",
+        "Pečený pstruh s cesnakom, bylinkami a opekanými zemiakmi —5 .. »„ »",
+        "BEZMASITE JEDLA 7,50 €",
+        "N Hubový paprikáš",
+        "Lesné huby dusené na paprike, cibuli a smotane s domácimi haluškami",
+        "Sedmohradské syrové placky (Pláčinte cu bránzá)",
+        "Domáce placky plnené ovčím syrom, podávané s kyslou smotanou",
+        "MÚČNIK ment Krupicová kaša so škoricou",
+        "Tradičná krupicová kaša s maslom, » škoricou a lesným ovocím hn TU € Panská dolina 65  EE sk > nt",
+        "Nitra-Zobor Vitajte tam, kde chutí história",
+        "O — £.. Donáška: | ) 0908 130 925"
       ]
     },
     "dessert": {
@@ -342,7 +348,7 @@
   {
     "restaurant": "Artin",
     "type": "image_menu",
-    "image_url": "https://static.wixstatic.com/media/8822c6_c560818cf7d743b580fa366edab6da29~mv2.jpg",
+    "image_url": "https://static.wixstatic.com/media/8822c6_51f9b4c6c80042d6bf1037e1378199ce~mv2.jpg",
     "soup": null,
     "meals": []
   },
