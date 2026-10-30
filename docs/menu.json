@@ -199,42 +199,7 @@
   {
     "restaurant": "U Krba",
     "type": "classic_menu",
-    "soup": {
-      "name": "Teľací vývar s celestínskymi rezancami a zeleninou",
-      "allergens": "1,3,7,9"
-    },
-    "meals": [
-      {
-        "menu": "1",
-        "name": "150g Černohorský rezeň so šťuchanými zemiakmi s maslom, jarnou cibuľkou a slaninou s hlávkovým šalátom",
-        "allergens": "1,3,7",
-        "price": "9,80 €"
-      },
-      {
-        "menu": "2",
-        "name": "350g Gyros wrap - kuracie gyros mäso, cesnakovo - jogurtový dip, fialová kapusta, taradajka, cibuľa, rímsky šalát, hranolky",
-        "allergens": "1,3,7",
-        "price": "9,50 €"
-      },
-      {
-        "menu": "3",
-        "name": "300 g Jahňacie kolienko so zemiakovou kašou a viedenskou cibuľkou Pre tých, čo si ne vybrali, máme každý pracovný deň v ponuke počas obedného menu: 4.",
-        "allergens": "1,7",
-        "price": "17,90 €"
-      },
-      {
-        "menu": "4",
-        "name": "150g Vyprážaný kurací rezeň s dusenou ryžou, broskyňový kompót",
-        "allergens": "1,3,7",
-        "price": "9,20 €"
-      },
-      {
-        "menu": "5",
-        "name": "350g Cézar šalát s kuracím mäsom",
-        "allergens": "1,3,4,7",
-        "price": "9,50 €"
-      }
-    ]
+    "error": "Dnešné menu nenájdené"
   },
   {
     "restaurant": "Moretti",
