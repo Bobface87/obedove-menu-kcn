@@ -144,22 +144,33 @@
   },
   {
     "restaurant": "Kotolňa",
-    "type": "error",
-    "status": "error",
-    "message": "Menu sa nepodarilo načítať",
-    "image_url": "",
-    "soup": {
-      "price": "",
-      "items": []
-    },
-    "meals": {
-      "price": "",
-      "items": []
-    },
-    "dessert": {
-      "price": "",
-      "items": []
-    }
+    "soup": "0,40 l Hrachová so zeleninou a klobáskou, chlieb",
+    "meals": [
+      {
+        "name": "Vyprážaný plnený kurací rezeň (syr, šunka), zemiakové pyré, miešaný sladko - kyslý šalát",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Ragú z bravčovej panenky s brusnicami a hríbikmi, dusená ryža",
+        "price": "8,90 €"
+      },
+      {
+        "name": "Pizza Sellácka (paradajková omáčka, mozzarella, saláma, slanina, klobása, cibuľa, feferóny)",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Miešané šalátové listy, kurací gyros, strúhaná feta, uhorka, kukurica, bylinkový dresing, pizza palice",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Kurací wrap Caprese (majonéza, rukola, kuracie prsia grilované, mozzarella, bazalkové pesto), tenké hranolky odber:",
+        "price": "9,50 €"
+      },
+      {
+        "name": "Gorgonzolové arborio rizoto s vlašskými orechmi a karamelizovanou hruškou",
+        "price": "8,90 €"
+      }
+    ]
   },
   {
     "restaurant": "Sakura",
