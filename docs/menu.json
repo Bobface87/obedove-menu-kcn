@@ -298,10 +298,22 @@
   },
   {
     "restaurant": "Artin",
-    "type": "image_menu",
-    "image_url": "https://static.wixstatic.com/media/8822c6_121eac44fabe4e119fb6d951e80b1490~mv2.jpg",
-    "soup": null,
-    "meals": []
+    "type": "error",
+    "status": "error",
+    "message": "Menu sa nepodarilo načítať",
+    "image_url": "",
+    "soup": {
+      "price": "",
+      "items": []
+    },
+    "meals": {
+      "price": "",
+      "items": []
+    },
+    "dessert": {
+      "price": "",
+      "items": []
+    }
   },
   {
     "restaurant": "Divadlo",
