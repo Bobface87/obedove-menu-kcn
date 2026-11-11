@@ -1,7 +1,7 @@
 [
   {
     "restaurant": "Hoffer",
-    "soup": "0,33 l Divinová gulášová polievka, chlieb",
+    "soup": "0,33 l Sedliacka kapustnica s klobáskou, chlieb",
     "meals": [
       {
         "menu": 1,
@@ -34,19 +34,19 @@
   {
     "restaurant": "Quo Vadis",
     "type": "ocr_menu",
-    "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/11/5-1-724x1024.jpg",
-    "starter": "",
-    "soup": "0,25 l Tradičná frankfurtská polievka s párkom, podávaná s čerstvým chlebom. /1,7/",
+    "image_url": "https://www.quovadisnitra.sk/wp-content/uploads/2026/11/pondelok-2-1-724x1024.jpg",
+    "starter": "80g Hovädzí tatársky biftek s hriankami, čerstvou rukolou a cesnakom. /1,3,10/ 9,90 €",
+    "soup": "0,25 ITalianska polievka Minestrone . /9/",
     "meals": [
       {
-        "name": "CLASSIC MENU - BUTTER CHICKEN",
-        "description": "400g /200g Indické maslové kura v jemnej paradajkovo- smotanovej omáčke, podávané s basmati ryžou. /7/",
-        "price": "10,90 €"
+        "name": "CLASSIC MENU - BRAVČOVÁ PANENKA",
+        "description": "400g /200g Bravčová panenka na krémovej tarhoni s pečenou paprikou a mascarpone . /1,7/",
+        "price": "11,90 €"
       },
       {
-        "name": "DAILY CHOICE MENU - SCIALATIELLI",
-        "description": "400g Domäce cestoviny Scialatielli so smotanou, konfitovaným cesnakom, parmezánom a chrumkavou pancettou. /1,3,7/",
-        "price": "10,90 €"
+        "name": "DAILY CHOICE MENU - PARENÉ BUCHTY",
+        "description": "300g Parené buchty plnené slivkovým lekvárom, preliate prepusteným maslom, s posýpkou podľa výberu (mak, orech, kakao)./1,3,7,8/",
+        "price": "9,90 €"
       },
       {
         "name": "FIT MENU - VIETNAMSKÝ ŠALÁT S KREVETAMI",
@@ -55,8 +55,8 @@
       },
       {
         "name": "BUSINESS MENU - FLANK STEAK",
-        "description": "400g /200g Grilovaný flank steak s holandskou omáčkou a domácimi parmezánovými hranolkami. /3,7/",
-        "price": "18,90 €"
+        "description": "400g /200g Grilovaný flank steak s holandskou omáčkou a domácimi parmezánovými hranolkami. /[3,",
+        "price": "7118,90 €"
       }
     ]
   },
@@ -65,17 +65,12 @@
     "type": "ocr_menu",
     "image_url": "https://bellissimonitra.com/wp-content/uploads/2026/11/menu-bellissimo-4-722x1024.jpg",
     "starter": "",
-    "soup": "Fazuľová kyslá so zemiakmi, chlieb 300121 (1.7)",
+    "soup": "Špenátový krém svajíčkom a krutónmi 30011 (1,7)",
     "meals": [
       {
-        "name": "MENU 1",
-        "description": "380g/180g Kuracie stripsy v panko strúhanke s hranolkami, šalátom a sweetchilli majonézou (1,3,7]",
-        "price": "9,90 €"
-      },
-      {
         "name": "MENU 2",
-        "description": "350ag/120g Strozzapretí s kúskarní lososa, baby špenát, cherry paradajky, parmezán (1,3,4,7]",
-        "price": "10,90 €"
+        "description": "450a/250g Vyprážaný karfiol svarenými zemiakmi a domácou tatárskou omáčkou [1,3,7] 930€",
+        "price": null
       },
       {
         "name": "MENU 3",
@@ -84,13 +79,13 @@
       },
       {
         "name": "MENU 4",
-        "description": "550g Pizza podľa týždennej ponuky (1,7)",
-        "price": "8,90 €"
+        "description": "550g Pizza podľa týždennej ponuky (1,7) 8920€",
+        "price": null
       },
       {
         "name": "MENU 5",
-        "description": "380g/50g Zubáč na grile s ratatouille zeleninou a cesnakovou bruschettou (",
-        "price": "14,90 €"
+        "description": "380g/50g Zubáč na grile s ratatouille zeleninou a cesnakovou bruschettou (1,7) 1490€",
+        "price": null
       }
     ]
   },
@@ -103,16 +98,16 @@
   },
   {
     "restaurant": "Hospúdka u Slováka",
-    "soup": "Mrkvový krém s údenou šunkou 0,3 l (7)",
+    "soup": "Sedliacka cesnačka so slaninou 0,3 l",
     "meals": [
       {
         "menu": 1,
-        "name": "Maďarský hovädzí guláš, parená knedľa 150 g (1)",
+        "name": "Grilovaná bravčová panenka, slivková omáčka, zemiakové rösti 150 g (1,3)",
         "price": "11,90 €"
       },
       {
         "menu": 2,
-        "name": "Koložvárska kapusta zapečená so syrom 250 g (7)",
+        "name": "Vyprážané šampiňóny, varené zemiaky s maslom, hospodská tatárska omáčka 150 g (1,3,7)",
         "price": "9,90 €"
       },
       {
@@ -144,31 +139,31 @@
   },
   {
     "restaurant": "Kotolňa",
-    "soup": "0,40 l Teľací vývar so zeleninou a rezancami (DE)",
+    "soup": "0,40 l Frankfurtská s párkom a zemiakmi, chlieb",
     "meals": [
       {
-        "name": "Pečené vykostené morčacie stehno, žemľová plnka, dusená ryža, kompót",
+        "name": "Vyprážaný kurací rezeň plnený nivou v zemiakovom cestíčku, maslové zemiaky, coleslaw šalát",
         "price": "8,90 €"
       },
       {
-        "name": "Maďarský bravčový guláš s maslovými haluškami a kopčekom kyslej smotany 1, 7/",
+        "name": "Pomaly pečené špikované bravčové karé, chrenová omáčka, parená knedľa",
         "price": "8,70 €"
       },
       {
-        "name": "Pizza (paradajková omáčka, mozzarella, chorizo, olivy, šampiňóny)",
+        "name": "Pizza Šunková s olivami (paradajková omáčka, mozzarella, šunka, olivy)",
         "price": "8,70 €"
       },
       {
-        "name": "Miešané šalátové listy, bravčová panenka na grile, cherry paradajky, parmezán, bylinkový dresing, pizza chlieb odber:",
+        "name": "Miešané šalátové listy, kačacie prsia na grile, brusnice v géle, pomaranč, tekvicové jadierka, pizza chlieb (HU)",
+        "price": "10,20 €"
+      },
+      {
+        "name": "Vyprážané vykostené horné kuracie stehná marinované v cmare, dusená ryža s hráškom, tatárska omáčka €",
+        "price": "8,70 €"
+      },
+      {
+        "name": "Kuriatkové krémové arborio rizoto s parmezánom a",
         "price": "8,90 €"
-      },
-      {
-        "name": "Kurací gyros, pečená kápia, jazmínová ryža, pizza chlieb, tzatziki Cena prre",
-        "price": "8,70 €"
-      },
-      {
-        "name": "Grilovaný hermelín, zemiakové krokety, brusnice, šalátik",
-        "price": "8,50 €"
       }
     ]
   },
@@ -203,20 +198,20 @@
     "restaurant": "U Krba",
     "type": "classic_menu",
     "soup": {
-      "name": "Batátový krém s kokosovým krémom krutónmi",
+      "name": "Francúzska s mušličkami",
       "allergens": "1"
     },
     "meals": [
       {
         "menu": "1",
-        "name": "150g Sous-vide bravčová panenka s caffee de Paris omáčkou a šťuchanými zemiakmi so slaninkou",
-        "allergens": "1,7,10",
+        "name": "150g Hovädzí stroganoff s bylinkovými haluškami a kyslou uhorkou",
+        "allergens": "1,3,7",
         "price": "9,80 €"
       },
       {
         "menu": "2",
-        "name": "350g Quesadilla s kuracím mäsom, cheedarom,paradajkami ,kyslou smotanou a hranolkami",
-        "allergens": "1,7",
+        "name": "350g Zemiakový prívarok s bravčovými fašírkami",
+        "allergens": "1,3,7",
         "price": "9,50 €"
       },
       {
@@ -243,27 +238,27 @@
     "restaurant": "Moretti",
     "type": "classic_menu",
     "soup": {
-      "name": "Paradajková so syrom",
-      "allergens": "7"
+      "name": "Fazuľová kyslá, chlieb",
+      "allergens": "1,7"
     },
     "meals": [
       {
         "menu": "1",
-        "name": "150g Bravčová panenka s omáčkou s brandy a sušenými slivkami, opekané zemiaky",
+        "name": "150g Flank steak na šaláte s hranolkami, omáčka pepe verde",
         "allergens": "7",
-        "price": "10,90 €"
+        "price": "13,90 €"
       },
       {
         "menu": "2",
-        "name": "150g Kurací wrap so zeleninou a jogurtovým dresingom, dollar chips",
+        "name": "150g Kuracie prsia plnené syrom v parmezánovej kruste, zemiakové pyré",
         "allergens": "1,7",
-        "price": "9,90 €"
+        "price": "10,90 €"
       },
       {
         "menu": "3",
-        "name": "250g Rigatoni Trentina (kuracie prsia, šampiňóny, smotana)",
-        "allergens": "1,3,7",
-        "price": "9,90 €"
+        "name": "Ceasar šalát s grilovanými kur.prsiami, slaninkou, vajíčkom a dresingom",
+        "allergens": "3,7",
+        "price": "10,90 €"
       },
       {
         "menu": "4",
@@ -348,10 +343,10 @@
     "week": "09.11.2026 - 13.11.2026",
     "days": [
       {
-        "day": "UTOROK",
-        "date": "10.11.2026",
+        "day": "STREDA",
+        "date": "11.11.2026",
         "soup": {
-          "name": "Zeleninová polievka s mrveničkou",
+          "name": "Hydinový vývar s pečeňovými haluškami a zeleninou",
           "weight": null,
           "description": null,
           "allergens": [
@@ -364,7 +359,7 @@
           {
             "number": 1,
             "price": "8,90 €",
-            "name": "Vyprážané kuracie stripsy v chrumkavom kruste, cestovinový šalát s jogurtom a zeleninou",
+            "name": "Vyprážaný syr v trojobale, zemiakové hranolky, tatárska omáčka",
             "weight": "120g",
             "description": null,
             "allergens": [
@@ -376,24 +371,28 @@
           {
             "number": 2,
             "price": "8,90 €",
-            "name": "Pikantné bravčové soté, zemiaková placka, šalát",
+            "name": "Sviečková na smotane, knedľa",
             "weight": "120g",
             "description": null,
             "allergens": [
               "1",
-              "3"
+              "3",
+              "7",
+              "10"
             ]
           },
           {
             "number": 3,
             "price": "8,90 €",
-            "name": "Mix listový šalát s avokádom, kuracími prsiami a balkánskym syrom, limetkový dresing",
+            "name": "Waldorfský šalát s kuracím mäsom, zelerom a orechami, croissant",
             "weight": "250g",
             "description": null,
             "allergens": [
+              "1",
+              "3",
               "7",
-              "10",
-              "13"
+              "9",
+              "10"
             ]
           }
         ]
