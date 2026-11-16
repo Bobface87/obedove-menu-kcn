@@ -1,32 +1,32 @@
 [
   {
     "restaurant": "Hoffer",
-    "soup": "Rajčinová polievka s čerstvou bazalkou a strúhaným syrom",
+    "soup": "Fazuľová polievka s údeným mäsom a širokými rezancami",
     "meals": [
       {
         "menu": 1,
         "name": "2.)",
-        "price": "8,90 €"
+        "price": "10,90 €"
       },
       {
         "menu": 2,
         "name": "3.)",
-        "price": "8,90 €"
+        "price": "10,90 €"
       },
       {
         "menu": 3,
         "name": "4.)",
-        "price": "8,90 €"
+        "price": "10,90 €"
       },
       {
         "menu": 4,
         "name": "5.)",
-        "price": "8,90 €"
+        "price": "10,90 €"
       },
       {
         "menu": 5,
         "name": "Jedlá môžu obsahovať zložky spôsobujúce alergickú reakciu podľa výnosu MP SR č. 1187/2004",
-        "price": "8,90 €"
+        "price": "10,90 €"
       }
     ],
     "dessert": null
@@ -238,26 +238,26 @@
     "restaurant": "Moretti",
     "type": "classic_menu",
     "soup": {
-      "name": "Pórový krém",
-      "allergens": "7"
+      "name": "Boršč, chlieb",
+      "allergens": "1,7"
     },
     "meals": [
       {
         "menu": "1",
-        "name": "Kurací steak zapekaný so špenátom a mozzarellou, ryža",
+        "name": "Bravčová panenka na hubovej omáčke,šťuchané zemiaky",
         "allergens": "7",
-        "price": "9,90 €"
+        "price": "10,90 €"
       },
       {
         "menu": "2",
-        "name": "BBQ kuracie kúsky na šaláte, slaninkový preliv, dollar chips",
-        "allergens": "",
-        "price": "9,90 €"
+        "name": "Plnený kurací rezeň (niva,šampiňóny) ,zeleninová ryža ,čalamáda",
+        "allergens": "1,3,7",
+        "price": "10,90 €"
       },
       {
         "menu": "3",
-        "name": "Zeleninové rizoto s kuracím mäsom",
-        "allergens": "7",
+        "name": "Špenátové lasagne s kuracím mäsom",
+        "allergens": "1,3,7",
         "price": "9,90 €"
       },
       {
@@ -343,23 +343,21 @@
     "week": "16.11.2026 - 20.11.2026",
     "days": [
       {
-        "day": "PONDELOK",
-        "date": "16.11.2026",
+        "day": "UTOROK",
+        "date": "17.11.2026",
         "soup": {
-          "name": "Paradajková polievka so syrom, bagetka",
+          "name": "Frankfurtská polievka s párkom, chlieb",
           "weight": null,
           "description": null,
           "allergens": [
-            "1",
-            "3",
-            "7"
+            "1"
           ]
         },
         "menus": [
           {
             "number": 1,
             "price": "8,90 €",
-            "name": "Vyprážané kuracie prsia v parmezánovom cestíčku, americké zemiaky, BBQ majonéza",
+            "name": "Vyprážané kuracie prsia Gordon blue v trojobale (plnené šunka, syr), zemiaková kaša, šalát",
             "weight": "120g",
             "description": null,
             "allergens": [
@@ -371,24 +369,22 @@
           {
             "number": 2,
             "price": "8,90 €",
-            "name": "Segedínsky guláš, knedľa",
+            "name": "Chilli con carne s kyslou smotanou, syrom Čedar a koriandrom, jazmínová ryža",
             "weight": "120g",
             "description": null,
             "allergens": [
-              "1",
-              "3",
               "7"
             ]
           },
           {
             "number": 3,
             "price": "8,90 €",
-            "name": "Syr Encián v lístkovom ceste, mix listový šalát so cherry paradajkami, bylinkový dresing",
-            "weight": "120g",
+            "name": "Caesar šalát s krevetami (rímsky šalát, avokádo, syr parmezán, krevety), jogurtový dresing",
+            "weight": "250g",
             "description": null,
             "allergens": [
               "1",
-              "3",
+              "4",
               "7",
               "10"
             ]
