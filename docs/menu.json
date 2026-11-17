@@ -1,7 +1,7 @@
 [
   {
     "restaurant": "Hoffer",
-    "soup": "Fazuľová polievka s údeným mäsom a širokými rezancami",
+    "soup": "Kotlíkový guláš, chlieb",
     "meals": [
       {
         "menu": 1,
@@ -238,27 +238,27 @@
     "restaurant": "Moretti",
     "type": "classic_menu",
     "soup": {
-      "name": "Boršč, chlieb",
-      "allergens": "1,7"
+      "name": "Morčací vývar s celestínskymi rezancami",
+      "allergens": "1,3,7"
     },
     "meals": [
       {
         "menu": "1",
-        "name": "Bravčová panenka na hubovej omáčke,šťuchané zemiaky",
-        "allergens": "7",
+        "name": "Bravčový paprikáš s haluškami, kyslé uhorky",
+        "allergens": "1,3,7",
         "price": "10,90 €"
       },
       {
         "menu": "2",
-        "name": "Plnený kurací rezeň (niva,šampiňóny) ,zeleninová ryža ,čalamáda",
+        "name": "Vyprážaný syr, baby zemiaky s maslom a petržlenovou vňaťou, domáca tatarská omáčka",
         "allergens": "1,3,7",
         "price": "10,90 €"
       },
       {
         "menu": "3",
-        "name": "Špenátové lasagne s kuracím mäsom",
+        "name": "Fettuccine bolognese",
         "allergens": "1,3,7",
-        "price": "9,90 €"
+        "price": "10,90 €"
       },
       {
         "menu": "4",
@@ -343,50 +343,52 @@
     "week": "16.11.2026 - 20.11.2026",
     "days": [
       {
-        "day": "UTOROK",
-        "date": "17.11.2026",
+        "day": "STREDA",
+        "date": "18.11.2026",
         "soup": {
-          "name": "Frankfurtská polievka s párkom, chlieb",
+          "name": "Slepačí vývar s mäsom, rezancami a zeleninou",
           "weight": null,
           "description": null,
           "allergens": [
-            "1"
+            "1",
+            "3",
+            "9"
           ]
         },
         "menus": [
           {
             "number": 1,
             "price": "8,90 €",
-            "name": "Vyprážané kuracie prsia Gordon blue v trojobale (plnené šunka, syr), zemiaková kaša, šalát",
+            "name": "Pečené kuracie prsia s kožou, šťuchané zemiaky, marinovaná tekvica s rozmarínom",
             "weight": "120g",
             "description": null,
             "allergens": [
-              "1",
-              "3",
               "7"
             ]
           },
           {
             "number": 2,
             "price": "8,90 €",
-            "name": "Chilli con carne s kyslou smotanou, syrom Čedar a koriandrom, jazmínová ryža",
-            "weight": "120g",
+            "name": "Pečené bravčové rebrá na čiernom pive, pšenično ražný chlieb, sterilizovaná zelenina mix",
+            "weight": "250g",
             "description": null,
             "allergens": [
-              "7"
+              "1",
+              "3",
+              "10"
             ]
           },
           {
             "number": 3,
             "price": "8,90 €",
-            "name": "Caesar šalát s krevetami (rímsky šalát, avokádo, syr parmezán, krevety), jogurtový dresing",
+            "name": "Mix šalát s pečenou cviklou, jabĺčkom, kozím syrom a parmskou šunkou, opekané orechy, croissant",
             "weight": "250g",
             "description": null,
             "allergens": [
               "1",
-              "4",
+              "3",
               "7",
-              "10"
+              "8"
             ]
           }
         ]
